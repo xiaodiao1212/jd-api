@@ -1,0 +1,1475 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 内容API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/postContentImages": {
+      "post": {
+        "operationId": "postContentImages",
+        "summary": "公域内容上传图片接口",
+        "description": "公域内容上传图片接口\n\nJD method: POST.sp-content.v0.public-domain-content-images",
+        "tags": [
+          "内容API"
+        ],
+        "x-jd-method": "POST.sp-content.v0.public-domain-content-images",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostContentImagesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostContentImagesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11703001001": {
+                    "summary": "必传参数未传@#$请检查参数，达人id未传"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postContentVideos": {
+      "post": {
+        "operationId": "postContentVideos",
+        "summary": "公域内容获取视频上传URL",
+        "description": "公域内容获取视频上传URL\n\nJD method: POST.sp-content.v0.public-domain-content-videos",
+        "tags": [
+          "内容API"
+        ],
+        "x-jd-method": "POST.sp-content.v0.public-domain-content-videos",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostContentVideosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostContentVideosResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11702001001": {
+                    "summary": "必传参数不能为空@#$talentId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postContents": {
+      "post": {
+        "operationId": "postContents",
+        "summary": "保存公域内容信息",
+        "description": "保存公域内容信息\n\nJD method: POST.sp-content.v0.public-domain-contents",
+        "tags": [
+          "内容API"
+        ],
+        "x-jd-method": "POST.sp-content.v0.public-domain-contents",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostContentsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostContentsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11701002001": {
+                    "summary": "视频信息不规范@#$横版视频要求尺寸3:4，请检查后再上传"
+                  },
+                  "11701001001": {
+                    "summary": "必传入参为空@#$入参style为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/putContents": {
+      "put": {
+        "operationId": "putContents",
+        "summary": "更新公域内容信息",
+        "description": "更新公域内容信息\n\nJD method: PUT.sp-content.v0.public-domain-contents._contentId",
+        "tags": [
+          "内容API"
+        ],
+        "x-jd-method": "PUT.sp-content.v0.public-domain-contents._contentId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutContentsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PutContentsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11701002001": {
+                    "summary": "视频信息不规范@#$横版视频要求尺寸3:4，请检查后再上传"
+                  },
+                  "11701001001": {
+                    "summary": "必传入参为空@#$入参style为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listContents": {
+      "get": {
+        "operationId": "listContents",
+        "summary": "批量查询内容",
+        "description": "创服平台查询发布的内容信息列表\n\nJD method: GET.sp-content.v0.public-domain-contents",
+        "tags": [
+          "内容API"
+        ],
+        "x-jd-method": "GET.sp-content.v0.public-domain-contents",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListContentsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListContentsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11701001001": {
+                    "summary": "必传入参为空@#$检查必填参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostContentImagesRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求入参",
+            "x-java-type": "com.jd.open.rest.client.content.image.model.request.PostContentImgRequest",
+            "type": "object",
+            "properties": {
+              "imgBase64": {
+                "description": "京东内容创服平台注册的创作者id",
+                "type": "string",
+                "default": ""
+              },
+              "talentId": {
+                "description": "登录创作者PIN",
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "description": "图片的base64编码",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "appKey": {
+                "description": "宙斯应用appKey",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PostContentImagesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "图片链接信息",
+            "x-java-type": "com.jd.open.rest.client.content.image.model.dto.data.ImageUrlDTO",
+            "type": "object",
+            "properties": {
+              "imgUrl": {
+                "description": "图片链接，已加密，写入内容时直接透传",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostContentVideosRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求入参",
+            "x-java-type": "com.jd.open.rest.client.content.video.model.request.PostContentVideoRequest",
+            "type": "object",
+            "properties": {
+              "videoUploadDTO": {
+                "description": "视频上传参数",
+                "x-java-type": "com.jd.open.rest.client.content.video.model.dto.VideoUploadDTO",
+                "type": "object",
+                "properties": {
+                  "talentId": {
+                    "description": "京东内容创服平台注册的创作者id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "pin": {
+                    "description": "登录创作者PIN",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "fileSize": {
+                    "description": "视频文件大小，单位k",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "videoName": {
+                    "description": "上传的文件名称",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "appKey": {
+                    "description": "宙斯应用appKey",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostContentVideosResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "视频上传信息",
+            "x-java-type": "com.jd.open.rest.client.content.video.model.dto.VideoUploadUrlDTO",
+            "type": "object",
+            "properties": {
+              "videoId": {
+                "description": "视频ID",
+                "type": "integer",
+                "default": 0
+              },
+              "uploadUrl": {
+                "description": "视频上传地址，使用此地址进行实际的视频上传操作",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误明细",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostContentsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.content.model.request.PostContentsRequest",
+            "type": "object",
+            "properties": {
+              "style": {
+                "description": "2表示横版视频，11表示竖版视频内容，25表示图文内容 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "imgTextContent": {
+                "description": "图文内容信息",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.ImgTextContentDTO",
+                "type": "object",
+                "properties": {
+                  "ext": {
+                    "description": "扩展信息，JSON对象格式",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "talentIp": {
+                    "description": "发布ip",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "imgSkuAnchors": {
+                    "description": "图片商品锚点信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.ImgSkuAnchorDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "img": {
+                          "description": "正文图片id",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "skus": {
+                          "description": "锚点商品信息",
+                          "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.SkuAnchorDetailDTO>",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "xPercent": {
+                                "description": "相对图片左上角向右偏移百分比",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "yPercent": {
+                                "description": "相对图片左上角向下偏移百分比",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "name": {
+                                "description": "锚点文案",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "direct": {
+                                "description": "文案在打标的位置，0:右 1:左",
+                                "type": "integer",
+                                "default": 0
+                              },
+                              "skuId": {
+                                "description": "商品sku",
+                                "type": "string",
+                                "default": ""
+                              }
+                            }
+                          }
+                        },
+                        "width": {
+                          "description": "图片宽，像素",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "encryptImg": {
+                          "description": "加密的正文图片链接，优先使用此字段传递图片链接",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "height": {
+                          "description": "图片高，像素",
+                          "type": "integer",
+                          "default": 0
+                        }
+                      }
+                    }
+                  },
+                  "original": {
+                    "description": "原创说明，0：未声明，1：原创",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "description": {
+                    "description": "图文内容描述",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "title": {
+                    "description": "图文内容标题",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "skuIds": {
+                    "description": "商品id列表",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "tags": {
+                    "description": "标签信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.TagDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "标签id，需与运营或产品提前沟通传值",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "name": {
+                          "description": "标签名称，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "type": {
+                          "description": "标签类型，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        }
+                      }
+                    }
+                  },
+                  "topicId": {
+                    "description": "话题id",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "contentSource": {
+                    "description": "发布来源",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "indexImages": {
+                    "description": "封面图id列表",
+                    "x-java-type": "java.util.List <java.lang.Long>",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "music": {
+                    "description": "背景音乐",
+                    "x-java-type": "com.jd.open.rest.client.content.model.dto.data.MusicDTO",
+                    "type": "object",
+                    "properties": {
+                      "duration": {
+                        "description": "音乐时长",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "creator": {
+                        "description": "音乐作者",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "musicId": {
+                        "description": "音乐id",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "音乐名",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "playUrl": {
+                        "description": "播放链接",
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "talentId": {
+                    "description": "京东内容创服平台注册的创作者id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "pin": {
+                    "description": "登录创作者PIN",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "styleId": {
+                    "description": "样式id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "encryptIndexImages": {
+                    "description": "加密后的封面图列表，优先使用此字段传递封面图",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "appKey": {
+                    "description": "宙斯应用appKey",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "subChannelId": {
+                    "description": "子渠道id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "advertisementFlag": {
+                    "description": "广告标识，0否，1是",
+                    "type": "integer",
+                    "default": 0
+                  }
+                }
+              },
+              "videoContent": {
+                "description": "视频内容信息，style为2和11时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.VideoContentDTO",
+                "type": "object",
+                "properties": {
+                  "talentIp": {
+                    "description": "发布ip",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ext": {
+                    "description": "扩展信息，JSON对象格式",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "original": {
+                    "description": "原创说明，0：未声明，1：原创",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "indexImage": {
+                    "description": "封面图，加密后链接",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "videoInfo": {
+                    "description": "视频信息",
+                    "x-java-type": "com.jd.open.rest.client.content.model.dto.data.VideoDTO",
+                    "type": "object",
+                    "properties": {
+                      "appHomeImg": {
+                        "description": "首页露出图，加密后链接",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoDuration": {
+                        "description": "视频时长，单位秒",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "videoImg": {
+                        "description": "视频封面图，加密后链接",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoId": {
+                        "description": "视频ID",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoSize": {
+                        "description": "视频大小，字节数",
+                        "type": "integer",
+                        "default": 0
+                      }
+                    }
+                  },
+                  "description": {
+                    "description": "视频内容描述，0-1000字符",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "title": {
+                    "description": "视频内容标题，5-27字符",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "skuIds": {
+                    "description": "商品id列表",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "tags": {
+                    "description": "标签信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.TagDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "标签名称，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "id": {
+                          "description": "标签id，需与运营或产品提前沟通传值",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "type": {
+                          "description": "标签类型，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        }
+                      }
+                    }
+                  },
+                  "topicId": {
+                    "description": "话题id",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "contentSource": {
+                    "description": "发布来源，需与运营或产品提前沟通传值",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "talentId": {
+                    "description": "京东内容创服平台注册的创作者id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "pin": {
+                    "description": "登录创作者PIN",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "styleId": {
+                    "description": "样式id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "appKey": {
+                    "description": "宙斯应用appKey",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "subChannelId": {
+                    "description": "子渠道id，需与运营或产品提前沟通传值",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "advertisementFlag": {
+                    "description": "广告标识，0否，1是",
+                    "type": "integer",
+                    "default": 0
+                  }
+                }
+              }
+            },
+            "required": [
+              "style"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "PostContentsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "保存返回内容",
+            "x-java-type": "com.jd.open.rest.client.content.model.dto.PublicDomainContentDTO",
+            "type": "object",
+            "properties": {
+              "style": {
+                "description": "2和11表示视频内容，25表示图文内容",
+                "type": "string",
+                "default": ""
+              },
+              "videoContent": {
+                "description": "视频内容信息，style为2和11时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.VideoContentDTO",
+                "type": "object",
+                "properties": {
+                  "contentId": {
+                    "description": "内容id",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "imgTextContent": {
+                "description": "图文内容信息，style为25时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.ImgTextContentDTO",
+                "type": "object",
+                "properties": {
+                  "contentId": {
+                    "description": "内容id",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PutContentsRequest": {
+        "type": "object",
+        "properties": {
+          "contentId": {
+            "description": "内容id | 必填",
+            "type": "integer",
+            "default": 0
+          },
+          "request": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.content.model.request.PutContentsRequest",
+            "type": "object",
+            "properties": {
+              "style": {
+                "description": "2表示横版视频，11表示竖版视频内容，25表示图文内容 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "imgTextContent": {
+                "description": "图文内容信息",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.ImgTextContentDTO",
+                "type": "object",
+                "properties": {
+                  "ext": {
+                    "description": "扩展信息，JSON对象格式",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "talentIp": {
+                    "description": "发布ip",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "imgSkuAnchors": {
+                    "description": "图片商品锚点信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.ImgSkuAnchorDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "img": {
+                          "description": "正文图片id",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "skus": {
+                          "description": "锚点商品信息",
+                          "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.SkuAnchorDetailDTO>",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "xPercent": {
+                                "description": "相对图片左上角向右偏移百分比",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "yPercent": {
+                                "description": "相对图片左上角向下偏移百分比",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "name": {
+                                "description": "锚点文案",
+                                "type": "string",
+                                "default": ""
+                              },
+                              "direct": {
+                                "description": "文案在打标的位置，0:右 1:左",
+                                "type": "integer",
+                                "default": 0
+                              },
+                              "skuId": {
+                                "description": "商品sku",
+                                "type": "string",
+                                "default": ""
+                              }
+                            }
+                          }
+                        },
+                        "width": {
+                          "description": "图片宽，像素",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "encryptImg": {
+                          "description": "加密的正文图片链接，优先使用此字段传递图片链接",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "height": {
+                          "description": "图片高，像素",
+                          "type": "integer",
+                          "default": 0
+                        }
+                      }
+                    }
+                  },
+                  "original": {
+                    "description": "原创说明，0：未声明，1：原创",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "description": {
+                    "description": "图文内容描述",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "title": {
+                    "description": "图文内容标题",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "skuIds": {
+                    "description": "商品id列表",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "tags": {
+                    "description": "标签信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.TagDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "标签id，需与运营或产品提前沟通传值",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "name": {
+                          "description": "标签名称，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "type": {
+                          "description": "标签类型，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        }
+                      }
+                    }
+                  },
+                  "topicId": {
+                    "description": "话题id",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "contentSource": {
+                    "description": "发布来源",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "indexImages": {
+                    "description": "封面图id列表",
+                    "x-java-type": "java.util.List <java.lang.Long>",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "music": {
+                    "description": "背景音乐",
+                    "x-java-type": "com.jd.open.rest.client.content.model.dto.data.MusicDTO",
+                    "type": "object",
+                    "properties": {
+                      "duration": {
+                        "description": "音乐时长",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "creator": {
+                        "description": "音乐作者",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "musicId": {
+                        "description": "音乐id",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "音乐名",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "playUrl": {
+                        "description": "播放链接",
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "talentId": {
+                    "description": "京东内容创服平台注册的创作者id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "pin": {
+                    "description": "登录创作者PIN",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "styleId": {
+                    "description": "样式id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "encryptIndexImages": {
+                    "description": "加密后的封面图列表，优先使用此字段传递封面图",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "appKey": {
+                    "description": "宙斯应用appKey",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "subChannelId": {
+                    "description": "子渠道id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "advertisementFlag": {
+                    "description": "广告标识，0否，1是",
+                    "type": "integer",
+                    "default": 0
+                  }
+                }
+              },
+              "videoContent": {
+                "description": "视频内容信息，style为2和11时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.VideoContentDTO",
+                "type": "object",
+                "properties": {
+                  "talentIp": {
+                    "description": "发布ip",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ext": {
+                    "description": "扩展信息，JSON对象格式",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "original": {
+                    "description": "原创说明，0：未声明，1：原创",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "indexImage": {
+                    "description": "封面图，加密后链接",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "videoInfo": {
+                    "description": "视频信息",
+                    "x-java-type": "com.jd.open.rest.client.content.model.dto.data.VideoDTO",
+                    "type": "object",
+                    "properties": {
+                      "appHomeImg": {
+                        "description": "首页露出图，加密后链接",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoDuration": {
+                        "description": "视频时长，单位秒",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "videoImg": {
+                        "description": "视频封面图，加密后链接",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoId": {
+                        "description": "视频ID",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "videoSize": {
+                        "description": "视频大小，字节数",
+                        "type": "integer",
+                        "default": 0
+                      }
+                    }
+                  },
+                  "description": {
+                    "description": "视频内容描述，0-1000字符",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "title": {
+                    "description": "视频内容标题，5-27字符",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "skuIds": {
+                    "description": "商品id列表",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "tags": {
+                    "description": "标签信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.content.model.dto.data.TagDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "标签名称，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "id": {
+                          "description": "标签id，需与运营或产品提前沟通传值",
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "type": {
+                          "description": "标签类型，需与运营或产品提前沟通传值",
+                          "type": "string",
+                          "default": ""
+                        }
+                      }
+                    }
+                  },
+                  "topicId": {
+                    "description": "话题id",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "contentSource": {
+                    "description": "发布来源，需与运营或产品提前沟通传值",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "talentId": {
+                    "description": "京东内容创服平台注册的创作者id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "pin": {
+                    "description": "登录创作者PIN",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "styleId": {
+                    "description": "样式id",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "appKey": {
+                    "description": "宙斯应用appKey",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "subChannelId": {
+                    "description": "子渠道id，需与运营或产品提前沟通传值",
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "advertisementFlag": {
+                    "description": "广告标识，0否，1是",
+                    "type": "integer",
+                    "default": 0
+                  }
+                }
+              }
+            },
+            "required": [
+              "style"
+            ]
+          }
+        },
+        "required": [
+          "contentId",
+          "request"
+        ]
+      },
+      "PutContentsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "保存返回内容",
+            "x-java-type": "com.jd.open.rest.client.content.model.dto.PublicDomainContentDTO",
+            "type": "object",
+            "properties": {
+              "style": {
+                "description": "2和11表示视频内容，25表示图文内容",
+                "type": "string",
+                "default": ""
+              },
+              "videoContent": {
+                "description": "视频内容信息，style为2和11时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.VideoContentDTO",
+                "type": "object",
+                "properties": {
+                  "contentId": {
+                    "description": "内容id",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "imgTextContent": {
+                "description": "图文内容信息，style为25时传此字段",
+                "x-java-type": "com.jd.open.rest.client.content.model.dto.ImgTextContentDTO",
+                "type": "object",
+                "properties": {
+                  "contentId": {
+                    "description": "内容id",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListContentsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "批量查询内容请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.content.query.model.request.BatchQueryContentRequest",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "description": "创作者PIN",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "talentId": {
+                "description": "创作者ID | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "contentIds": {
+                "description": "内容ID列表 | 必填",
+                "x-java-type": "java.util.List <java.lang.Long>",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": [
+              "talentId",
+              "contentIds"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListContentsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "内容列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.content.query.model.dto.ContentDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "contentId": {
+                  "description": "内容ID",
+                  "type": "integer",
+                  "default": 0
+                },
+                "status": {
+                  "description": "公域状态： 1 公域审核通过 2 公域审核中  4 公域审核驳回\n\n公域状态+私域状态聚合使用场景：\n视频转码中 （privateStatus = -1 && status = 2）\n待审核 (privateStatus = 2 && status = 2)\n私域上线 (privateStatus = 1 && status = 2)\n公域上线 (privateStatus = 1 && status = 1)\n私域审核驳回 (privateStatus = 4 && status = 4)\n公域审核驳回 (privateStatus = 1 && status = 4)",
+                  "type": "integer",
+                  "default": 0
+                },
+                "statusDesc": {
+                  "description": "公域状态描述",
+                  "type": "string",
+                  "default": ""
+                },
+                "privateStatus": {
+                  "description": "私域状态：-1 视频转码中 1 私域审核通过  2私域审核中  4 私域审核驳回。\n\n\n公域状态+私域状态聚合使用场景：\n视频转码中 （privateStatus = -1 && status = 2）\n待审核 (privateStatus = 2 && status = 2)\n私域上线 (privateStatus = 1 && status = 2)\n公域上线 (privateStatus = 1 && status = 1)\n私域审核驳回 (privateStatus = 4 && status = 4)\n公域审核驳回 (privateStatus = 1 && status = 4)",
+                  "type": "integer",
+                  "default": 0
+                },
+                "privateStatusDesc": {
+                  "description": "私域状态描述",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "11701001001",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误提示",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

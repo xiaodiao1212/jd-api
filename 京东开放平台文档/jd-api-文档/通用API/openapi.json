@@ -1,0 +1,3141 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 通用API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/listAreas": {
+      "get": {
+        "operationId": "listAreas",
+        "summary": "获取京标四级地域信息",
+        "description": "查询京东四级地域名称及id\n\nJD method: GET.sp-address.v0.areas",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "GET.sp-address.v0.areas",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAreasRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAreasResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11101001002": {
+                    "summary": "请求参数listAreaRequest.level不正确\t@#$需补充地域层级字段，1：省份；2：城市；3：区县；4：乡镇"
+                  },
+                  "11101001001": {
+                    "summary": "请求参数request不能为空@#$补充request内容"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listFwmarketPurchaseRecords": {
+      "get": {
+        "operationId": "listFwmarketPurchaseRecords",
+        "summary": "查询服务市场订购记录",
+        "description": "用于获取指定用户指定应用的订购记录信息，由服务市场服务商使用，查询其某些服务的历史订购记录\n\nJD method: GET.open-service.v0.fwmarket-purchase-records",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "GET.open-service.v0.fwmarket-purchase-records",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListFwmarketPurchaseRecordsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListFwmarketPurchaseRecordsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11001001010": {
+                    "summary": "参数为空@#$检查必填参数是否有遗漏"
+                  },
+                  "11001001032": {
+                    "summary": "未传入商家pin@#$传入正确的商家pin值"
+                  },
+                  "11001001014": {
+                    "summary": "您输入的内容包含不支持的字符@#$检查输入内容是否含有特殊字符"
+                  },
+                  "11001001013": {
+                    "summary": "手速太快啦，请不要重复操作@#$减少相同操作的短时间重复次数"
+                  },
+                  "11001001034": {
+                    "summary": "未传入收费项目编码@#$传入正确的收费项目编码"
+                  },
+                  "11001002001": {
+                    "summary": "服务器开小差了，请稍后再试@#$稍等后仍出错建议联系相关人员处理"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listFwmarketOrders": {
+      "get": {
+        "operationId": "listFwmarketOrders",
+        "summary": "查询服务市场订单",
+        "description": "用于获取服务订单，由服务商使用，根据条件分页查询其对应服务的服务市场订单详情，返回订单列表\n\nJD method: GET.open-service.v0.fwmarket-orders",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "GET.open-service.v0.fwmarket-orders",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListFwmarketOrdersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListFwmarketOrdersResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11002001014": {
+                    "summary": "您输入的内容包含不支持的字符@#$检查输入内容是否含有特殊字符"
+                  },
+                  "11002001027": {
+                    "summary": "金额参数不合法@#$检查金额参数是否格式正确"
+                  },
+                  "11002001010": {
+                    "summary": "参数为空@#$检查必填参数是否有遗漏"
+                  },
+                  "11002001013": {
+                    "summary": "手速太快啦，请不要重复操作@#$减少相同操作的短时间重复次数"
+                  },
+                  "11002001035": {
+                    "summary": "订单类型不允许为空@#$填写有效的订单类型"
+                  },
+                  "11002002001": {
+                    "summary": "服务器开小差了，请稍后再试@#$稍等后仍出错建议联系相关人员处理"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listCredentials": {
+      "get": {
+        "operationId": "listCredentials",
+        "summary": "获取凭证",
+        "description": "根据用户id获取当前app的凭证\n\nJD method: GET.open-security.v0.credentials",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "GET.open-security.v0.credentials",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListCredentialsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCredentialsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11502000004": {
+                    "summary": "tms异常@#$tms异常，联系运营"
+                  },
+                  "11502000003": {
+                    "summary": "tms token in db is null.@#$当前没有对应的密钥，联系运营"
+                  },
+                  "11502000002": {
+                    "summary": "Invalid accessToken.@#$accessToken无效，修改入参"
+                  },
+                  "11502000001": {
+                    "summary": "accessToken or userId is null@#$入参错误，修改入参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postSecretKey": {
+      "post": {
+        "operationId": "postSecretKey",
+        "summary": "生成密钥",
+        "description": "对宙斯上的接口加密传输字段，如用户需解密使用的，需要提前根据解密凭证获取密钥。\n\n\nJD method: POST.open-security.v0.secret-keys",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "POST.open-security.v0.secret-keys",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostSecretKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostSecretKeyResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11501000003": {
+                    "summary": "KMS internal system error@#$系统内部错误，联系运营"
+                  },
+                  "11501000002": {
+                    "summary": "No key found on KMS@#$没有对应的凭证数据"
+                  },
+                  "11501000001": {
+                    "summary": "Invalid json input@#$错误入参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateVirtualNumber": {
+      "patch": {
+        "operationId": "updateVirtualNumber",
+        "summary": "更新虚拟号",
+        "description": "更新虚拟号绑定的主叫号码组（号码组追加更新）\n\nJD method: PATCH.open-security.v0.virtual-numbers._virtualNumber",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "PATCH.open-security.v0.virtual-numbers._virtualNumber",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVirtualNumberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateVirtualNumberResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11503001003": {
+                    "summary": "非法入参@#$【virtualNumber】参数不能为空"
+                  },
+                  "11503001004": {
+                    "summary": "非法入参@#$【operateType】参数不能为空"
+                  },
+                  "11503001001": {
+                    "summary": "资源不存在@#$隐私号绑定记录不存在"
+                  },
+                  "11503001012": {
+                    "summary": "非法入参@#$仅支持GXB模式700虚拟号维护主叫号码组"
+                  },
+                  "11503001002": {
+                    "summary": "非法入参@#$【orderId】参数不能为空"
+                  },
+                  "11503001007": {
+                    "summary": "非法入参@#$【telG】单次提交号码数量不能超过20个"
+                  },
+                  "11503001008": {
+                    "summary": "非法入参@#$【telG】主叫号码格式不正确"
+                  },
+                  "11503001005": {
+                    "summary": "非法入参@#$【operateType】只支持addNumbers和deleteNumbers"
+                  },
+                  "11503001006": {
+                    "summary": "非法入参@#$【telG】参数不能为空"
+                  },
+                  "11503004001": {
+                    "summary": "系统服务异常@#$系统服务异常"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/queryVirtualNumber": {
+      "get": {
+        "operationId": "queryVirtualNumber",
+        "summary": "查询虚拟号",
+        "description": "支持查询虚拟号已报备的主叫号码组，用于判断手机号是否已经报备到虚拟号主叫号码组\n\nJD method: GET.open-security.v0.virtual-numbers._virtualNumber",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "GET.open-security.v0.virtual-numbers._virtualNumber",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryVirtualNumberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryVirtualNumberResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11503001003": {
+                    "summary": "非法入参@#$【virtualNumber】参数不能为空"
+                  },
+                  "11503001001": {
+                    "summary": "资源不存在@#$隐私号绑定记录不存在"
+                  },
+                  "11503001012": {
+                    "summary": "非法入参@#$仅支持GXB模式700虚拟号维护主叫号码组"
+                  },
+                  "11503001002": {
+                    "summary": "非法入参@#$【orderId】参数不能为空"
+                  },
+                  "11503001009": {
+                    "summary": "非法入参@#$【phoneNumbers】参数不能为空"
+                  },
+                  "11503001010": {
+                    "summary": "非法入参@#$【phoneNumbers】单次提交号码数量不能超过20个"
+                  },
+                  "11503001011": {
+                    "summary": "非法入参@#$【phoneNumbers】主叫号码格式不正确"
+                  },
+                  "11503004001": {
+                    "summary": "系统服务异常@#$系统服务异常"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/redLineDetect": {
+      "put": {
+        "operationId": "redLineDetect",
+        "summary": "红盾检测对外开放接口",
+        "description": "本接口承接内容中内容安全方面的识别，旨在识别涉黄涉政敏感词等红线类违规的精准识别，为下游提供红线违规识别\n\nJD method: PUT.open-security.v0.redline-detects.batch",
+        "tags": [
+          "通用API"
+        ],
+        "x-jd-method": "PUT.open-security.v0.redline-detects.batch",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedLineDetectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedLineDetectResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11504001001": {
+                    "summary": "错误@#$参数异常，请检查参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListAreasRequest": {
+        "type": "object",
+        "properties": {
+          "listAreasRequest": {
+            "description": "查询地域请求信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.address.model.request.ListAreasRequest",
+            "type": "object",
+            "properties": {
+              "level": {
+                "description": "查询的地域层级。1：省份；2：城市；3：区县；4：乡镇 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "parentId": {
+                "description": "父级地域id，查询省份列表时，固定传入0 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "venderId": {
+                "description": "商家id",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "level",
+              "parentId"
+            ]
+          }
+        },
+        "required": [
+          "listAreasRequest"
+        ]
+      },
+      "ListAreasResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小",
+                "type": "integer",
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "地域信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.address.model.dto.AreaDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "地域编号",
+                  "type": "integer",
+                  "default": 0
+                },
+                "name": {
+                  "description": "地域名称",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "异常码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListFwmarketPurchaseRecordsRequest": {
+        "type": "object",
+        "properties": {
+          "listFwmarketPurchaseRecordsRequest": {
+            "description": "查询订购记录列表请求",
+            "x-java-type": "com.jd.plugin.remote.request.restful.ListFwmarketPurchaseRecordsRequest",
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "description": "示例: 0 | 默认: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "itemCode": {
+                "description": "应用收费代码，来源于服务市场发布服务时的生成的收费代码 | 示例: FW_GOODS-1712807-1",
+                "type": "string",
+                "example": "FW_GOODS-1712807-1",
+                "default": ""
+              },
+              "appKey": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListFwmarketPurchaseRecordsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回的订购记录",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "description": "用户PIN | 示例: test09017",
+                "type": "string",
+                "example": "test09017",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin的xid | 示例: test09017",
+                "type": "string",
+                "example": "test09017",
+                "default": ""
+              },
+              "moduleFlag": {
+                "description": "模块标识 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "endDate": {
+                "description": "结束日期 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "itemCode": {
+                "description": "商品编码 | 示例:  FW_GOODS-1712807-1 ",
+                "type": "string",
+                "example": " FW_GOODS-1712807-1 ",
+                "default": ""
+              },
+              "versionNo": {
+                "description": "版本号 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "appKey": {
+                "description": "应用密钥 | 示例: 16270B0CD3010B5DFAB69C3F41C7C2AD",
+                "type": "string",
+                "example": "16270B0CD3010B5DFAB69C3F41C7C2AD",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "操作成功标志 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 11001001010",
+                "type": "string",
+                "example": "11001001010",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 详细错误信息",
+                "type": "string",
+                "example": "详细错误信息",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 参数为空",
+                "type": "string",
+                "example": "参数为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListFwmarketOrdersRequest": {
+        "type": "object",
+        "properties": {
+          "listFwmarketOrdersRequest": {
+            "description": "查询订单列表请求",
+            "x-java-type": "com.jd.plugin.remote.request.restful.ListFwmarketOrdersRequest",
+            "type": "object",
+            "properties": {
+              "transactionPriceLeast": {
+                "description": "最低成交价 | 示例: 10.99",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "orderType": {
+                "description": "订单类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "accountRequestAccountType": {
+                "description": "账号信息_账号类型 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "orderId": {
+                "description": "订单id | 示例: 123456",
+                "type": "integer",
+                "example": 123456,
+                "default": 0
+              },
+              "endDate": {
+                "description": "结束时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "ownPin": {
+                "description": "复合账号，查当前PIN | 示例: testPIN",
+                "type": "string",
+                "example": "testPIN",
+                "default": ""
+              },
+              "freeOrder": {
+                "description": "免费试用订单 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "payType": {
+                "description": "付费类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "clientType": {
+                "description": "客户端类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "erpOrderId": {
+                "description": "erp订单id | 示例: 654321",
+                "type": "integer",
+                "example": 654321,
+                "default": 0
+              },
+              "sortBy": {
+                "description": "排序字段 | 示例: modified",
+                "type": "string",
+                "example": "modified",
+                "default": ""
+              },
+              "thirdLevelCategory": {
+                "description": "三级类目 | 示例: 301",
+                "type": "integer",
+                "example": 301,
+                "default": 0
+              },
+              "synFinishedTime": {
+                "description": "结算同步完成时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "tpOrderId": {
+                "description": "交易平台订单id | 示例: 123456",
+                "type": "integer",
+                "example": 123456,
+                "default": 0
+              },
+              "adjustZeroOrder": {
+                "description": "调价为0元的订单 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "itemId": {
+                "description": "收费项目Id | 示例: 123456",
+                "type": "integer",
+                "example": 123456,
+                "default": 0
+              },
+              "sortOrder": {
+                "description": "排序类型 | 示例: ASC",
+                "type": "string",
+                "example": "ASC",
+                "default": ""
+              },
+              "orderTradeType": {
+                "description": "订单交易类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "effectiveFlag": {
+                "description": "有效标识 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "firstLevelCategory": {
+                "description": "一级类目 | 示例: 101",
+                "type": "integer",
+                "example": 101,
+                "default": 0
+              },
+              "endModifiedTime": {
+                "description": "结束的修改时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "accountRequestLangTag": {
+                "description": "账号信息_语言标识 | 示例: zh-CN",
+                "type": "string",
+                "example": "zh-CN",
+                "default": ""
+              },
+              "beforeEndDate": {
+                "description": "结束时间之前 | 示例: 1609459200000",
+                "type": "integer",
+                "example": 1609459200000,
+                "default": 0
+              },
+              "orderPurchaseType": {
+                "description": "订购类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "serviceCode": {
+                "description": "服务编码 | 示例: FW_GOODS-1712807 | 必填",
+                "type": "string",
+                "example": "FW_GOODS-1712807",
+                "default": ""
+              },
+              "totalPrice": {
+                "description": "订单总金额 | 示例: 100.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "settleStatus": {
+                "description": "是否结算 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "accountRequestAccountRole": {
+                "description": "账号信息_账号身份 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "summationField": {
+                "description": "求和字段 | 示例: totalPrice",
+                "type": "string",
+                "example": "totalPrice",
+                "default": ""
+              },
+              "forAudit": {
+                "description": "是否是用于审核测试 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "accountRequestLoginPin": {
+                "description": "账号信息_登录商家pin | 示例: testPin",
+                "type": "string",
+                "example": "testPin",
+                "default": ""
+              },
+              "billStatus": {
+                "description": "账单状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "erpOrderStatus": {
+                "description": "erp订单对应的订单状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "refundPurchaseEndTime": {
+                "description": "退款订购结束时间 | 示例: 1609459200000",
+                "type": "integer",
+                "example": 1609459200000,
+                "default": 0
+              },
+              "sortMode": {
+                "description": "排序方式 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "parentId": {
+                "description": "父订单 | 示例: 123456789",
+                "type": "integer",
+                "example": 123456789,
+                "default": 0
+              },
+              "createStartTime": {
+                "description": "订单创建开始时间 | 示例: 1609459200000",
+                "type": "integer",
+                "example": 1609459200000,
+                "default": 0
+              },
+              "clientIp": {
+                "description": "客户端IP | 示例: 19216811",
+                "type": "integer",
+                "example": 19216811,
+                "default": 0
+              },
+              "includeFields": {
+                "description": "查询es的字段 | 示例: [&quot;field1&quot;, &quot;field2&quot;]",
+                "x-java-type": "java.lang.String[]",
+                "type": "object"
+              },
+              "beforeStartDate": {
+                "description": "查询指定时间大于开始时间的数据 | 示例: 1609459200000",
+                "type": "integer",
+                "example": 1609459200000,
+                "default": 0
+              },
+              "secondLevelCategory": {
+                "description": "二级类目 | 示例: 123",
+                "type": "integer",
+                "example": 123,
+                "default": 0
+              },
+              "serviceType": {
+                "description": "服务类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "itemCode": {
+                "description": "收费项目编码 | 示例: FW_GOODS-1712807-1",
+                "type": "string",
+                "example": "FW_GOODS-1712807-1",
+                "default": ""
+              },
+              "uuid": {
+                "description": "请求id | 示例: request123",
+                "type": "string",
+                "example": "request123",
+                "default": ""
+              },
+              "completeEndTime": {
+                "description": "订单完成结束时间 | 示例: 1609459200000",
+                "type": "integer",
+                "example": 1609459200000,
+                "default": 0
+              },
+              "activityId": {
+                "description": "活动id | 示例: 123456789",
+                "type": "integer",
+                "example": 123456789,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "mainPin": {
+                "description": "主pin | 示例: mainUser",
+                "type": "string",
+                "example": "mainUser",
+                "default": ""
+              },
+              "startModifiedTime": {
+                "description": "起始的修改时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "appId": {
+                "description": "开普勒AppId | 示例: testAppId",
+                "type": "string",
+                "example": "testAppId",
+                "default": ""
+              },
+              "afterStartDate": {
+                "description": "查询指定时间小于开始时间的数据 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "limit": {
+                "description": "限制 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "hasSubOrders": {
+                "description": "是否有子订单 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "skuId": {
+                "description": "skuId | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "accountInfoAccountType": {
+                "description": "账号身份信息\nPOP商家主账号=2001;POP商家子账号=2002;VC供应商主账号=3001;VC供应商子账号=3002;全渠道账号 6000 | 示例: 2001",
+                "type": "integer",
+                "example": 2001,
+                "default": 0
+              },
+              "nickName": {
+                "description": "昵称 | 示例: testNick",
+                "type": "string",
+                "example": "testNick",
+                "default": ""
+              },
+              "fwsId": {
+                "description": "服务商Id | 示例: 87654321",
+                "type": "integer",
+                "example": 87654321,
+                "default": 0
+              },
+              "groupField": {
+                "description": "分组字段 | 示例: testGroup",
+                "type": "string",
+                "example": "testGroup",
+                "default": ""
+              },
+              "orderCycle": {
+                "description": "订单周期 | 示例: 30",
+                "type": "integer",
+                "example": 30,
+                "default": 0
+              },
+              "createEndTime": {
+                "description": "订单创建结束时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "outOrderId": {
+                "description": "外部订单ID | 示例: 1234567890",
+                "type": "integer",
+                "example": 1234567890,
+                "default": 0
+              },
+              "jdPrice": {
+                "description": "京东价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "page": {
+                "description": "目标页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "orderDate": {
+                "description": "订购日期 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "cursor": {
+                "description": "游标 | 示例: testCursor",
+                "type": "string",
+                "example": "testCursor",
+                "default": ""
+              },
+              "advanceOrderId": {
+                "description": "高级订单ID | 示例: 123",
+                "type": "integer",
+                "example": 123,
+                "default": 0
+              },
+              "accountInfoBelongType": {
+                "description": "账号身份信息_账号当前的账户类型\n无界=1；门店=110；POP商家=200；VC供应商=300 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "discountPrice": {
+                "description": "优惠金额 | 示例: 12.34",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "orderStatus": {
+                "description": "订单状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "orderNum": {
+                "description": "数量 | 示例: 5",
+                "type": "integer",
+                "example": 5,
+                "default": 0
+              },
+              "mainSubSwitch": {
+                "description": "主子账号开关 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "deductionPrice": {
+                "description": "抵扣金额 | 示例: 10.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "countField": {
+                "description": "求数量字段 | 示例: count",
+                "type": "string",
+                "example": "count",
+                "default": ""
+              },
+              "afterEndDate": {
+                "description": "结束时间之后 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "accountRequestLoginCpin": {
+                "description": "账号信息_登录的Cpin | 示例: testCPin",
+                "type": "string",
+                "example": "testCPin",
+                "default": ""
+              },
+              "orderPaymentType": {
+                "description": "支付类型： | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "scrollId": {
+                "description": "游标 | 示例: cursor123",
+                "type": "string",
+                "example": "cursor123",
+                "default": ""
+              },
+              "effective": {
+                "description": "是否有效 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "childBuyer": {
+                "description": "订购子账号 | 示例: childBuyer123",
+                "type": "string",
+                "example": "childBuyer123",
+                "default": ""
+              },
+              "serviceId": {
+                "description": "服务编码id | 示例: service123",
+                "type": "string",
+                "example": "service123",
+                "default": ""
+              },
+              "returnUrl": {
+                "description": "返回URL | 示例: 111",
+                "type": "integer",
+                "example": 111,
+                "default": 0
+              },
+              "orderColumn": {
+                "description": "排序字段 | 示例: orderDate",
+                "type": "string",
+                "example": "orderDate",
+                "default": ""
+              },
+              "orderSource": {
+                "description": "订单来源 | 示例: source123",
+                "type": "string",
+                "example": "source123",
+                "default": ""
+              },
+              "manualSettleFlag": {
+                "description": "是否手动结算 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "transactionPriceMax": {
+                "description": "最高成交价 | 示例: 100.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "requestSource": {
+                "description": "示例: isv | 默认: isv",
+                "type": "string",
+                "example": "isv",
+                "default": "isv"
+              },
+              "excludeFields": {
+                "description": "排除es查询的字段 | 示例: [&quot;orderSource&quot;]",
+                "x-java-type": "java.lang.String[]",
+                "type": "object"
+              },
+              "completeStartTime": {
+                "description": "订单完成开始时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "virtualServiceId": {
+                "description": "虚拟服务Id | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "accountRequestBelongType": {
+                "description": "账号信息_账号当前的账户类型：无界=1；门店=110；POP商家=200；VC供应商=300 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "accountInfoBusinessId": {
+                "description": "账号信息_业务ID | 示例: businessId123",
+                "type": "string",
+                "example": "businessId123",
+                "default": ""
+              },
+              "accountInfoAccountExtension": {
+                "description": "账号身份信息_扩展信息 | 示例: extensionInfo",
+                "type": "string",
+                "example": "extensionInfo",
+                "default": ""
+              },
+              "realpayPrice": {
+                "description": "实付金额 | 示例: 50.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "fwsPin": {
+                "description": "服务商pin | 示例: test_pop_fws | 必填",
+                "type": "string",
+                "example": "test_pop_fws",
+                "default": ""
+              },
+              "xidIsv": {
+                "description": "服务商pin衍生xid | 示例: test_pop_fws",
+                "type": "string",
+                "example": "test_pop_fws",
+                "default": ""
+              }
+            },
+            "required": [
+              "pageSize",
+              "serviceCode",
+              "fwsPin"
+            ]
+          }
+        }
+      },
+      "ListFwmarketOrdersResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回的订单",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "serviceType": {
+                "description": "服务类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "invoiceApplyStatus": {
+                "description": "发票申请状态 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "orderType": {
+                "description": "订单类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "modifiedTime": {
+                "description": "最后修改时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "orderId": {
+                "description": "订单ID | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "endDate": {
+                "description": "结束时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "itemCode": {
+                "description": "商品编码 | 示例: FW_GOODS-1712807-1",
+                "type": "string",
+                "example": "FW_GOODS-1712807-1",
+                "default": ""
+              },
+              "type": {
+                "description": "类型 | 示例: 普通订单",
+                "type": "string",
+                "example": "普通订单",
+                "default": ""
+              },
+              "uuid": {
+                "description": "唯一标识 | 示例: UUID123456",
+                "type": "string",
+                "example": "UUID123456",
+                "default": ""
+              },
+              "activityId": {
+                "description": "活动ID | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "itemName": {
+                "description": "商品名称 | 示例: 示例商品",
+                "type": "string",
+                "example": "示例商品",
+                "default": ""
+              },
+              "clientType": {
+                "description": "客户端类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "limitedDiscountPrice": {
+                "description": "限时折扣价 | 示例: 19.99",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "articleType": {
+                "description": "订购类型（1：订购、2：续费、3：升级） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "appId": {
+                "description": "应用ID | 示例: APP123",
+                "type": "string",
+                "example": "APP123",
+                "default": ""
+              },
+              "createdTime": {
+                "description": "创建时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "combinationType": {
+                "description": "组合类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "erpOrderId": {
+                "description": "结算订单编号 | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "hasSubOrders": {
+                "description": "是否有子订单 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "totalRealpayPrice": {
+                "description": "实际支付总价 | 示例: 99.99",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "refundPrice": {
+                "description": "退款金额 | 示例: 0.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "skuId": {
+                "description": "商品skuId | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "invoiceFlag": {
+                "description": "发票标志 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "fwsPin": {
+                "description": "服务商PIN | 示例: test_pop_fws",
+                "type": "string",
+                "example": "test_pop_fws",
+                "default": ""
+              },
+              "xidIsv": {
+                "description": "ISVPIN衍生xid | 示例: test_pop_fws",
+                "type": "string",
+                "example": "test_pop_fws",
+                "default": ""
+              },
+              "directionalSalesPrice": {
+                "description": "定向销售价格 | 示例: 19.99",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "extensionInfo": {
+                "description": "扩展信息 | 示例: 扩展信息示例",
+                "type": "string",
+                "example": "扩展信息示例",
+                "default": ""
+              },
+              "tpOrderId": {
+                "description": "钱包订单号 | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "nickName": {
+                "description": "购买人昵称 | 示例: 测试用户",
+                "type": "string",
+                "example": "测试用户",
+                "default": ""
+              },
+              "fwsId": {
+                "description": "服务ID | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "orderNoteDTO": {
+                "description": "订单备注DTO",
+                "x-java-type": "com.jd.plugin.remote.restful.dto.OrderNoteDTO",
+                "type": "object",
+                "properties": {
+                  "note": {
+                    "description": "备注信息 | 示例: 订单备注信息",
+                    "type": "string",
+                    "example": "订单备注信息",
+                    "default": ""
+                  },
+                  "orderId": {
+                    "description": "订单ID | 示例: 12345678",
+                    "type": "integer",
+                    "example": 12345678,
+                    "default": 0
+                  },
+                  "phone": {
+                    "description": "电话号码 | 示例: 13800138000",
+                    "type": "string",
+                    "example": "13800138000",
+                    "default": ""
+                  },
+                  "buyerName": {
+                    "description": "买家姓名 | 示例: 张三",
+                    "type": "string",
+                    "example": "张三",
+                    "default": ""
+                  }
+                }
+              },
+              "extendInfo": {
+                "description": "扩展信息 | 示例: 扩展信息内容",
+                "type": "string",
+                "example": "扩展信息内容",
+                "default": ""
+              },
+              "buyer": {
+                "description": "购买人pin | 示例: test_pop_456",
+                "type": "string",
+                "example": "test_pop_456",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生xid | 示例: test_pop_456",
+                "type": "string",
+                "example": "test_pop_456",
+                "default": ""
+              },
+              "itemId": {
+                "description": "商品ID | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "orderCycle": {
+                "description": "订单周期 | 示例: 30",
+                "type": "integer",
+                "example": 30,
+                "default": 0
+              },
+              "outOrderId": {
+                "description": "外部订单ID | 示例: 987654321",
+                "type": "integer",
+                "example": 987654321,
+                "default": 0
+              },
+              "finishedTime": {
+                "description": "完成时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "orderTradeType": {
+                "description": "订单交易类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "jdPrice": {
+                "description": "京东价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "orderDate": {
+                "description": "下单时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "startDate": {
+                "description": "服务开始时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "cid": {
+                "description": "类目ID | 示例: 123",
+                "type": "integer",
+                "example": 123,
+                "default": 0
+              },
+              "status": {
+                "description": "状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "itemType": {
+                "description": "商品类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "flag": {
+                "description": "标志 | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "advanceOrderId": {
+                "description": "预售订单ID | 示例: 987654321",
+                "type": "integer",
+                "example": 987654321,
+                "default": 0
+              },
+              "totalPrice": {
+                "description": "总价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "serviceCode": {
+                "description": "服务编码 | 示例: FW_GOODS-1712807",
+                "type": "string",
+                "example": "FW_GOODS-1712807",
+                "default": ""
+              },
+              "settleStatus": {
+                "description": "结算状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "discountPrice": {
+                "description": "折扣价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "orderStatus": {
+                "description": "订单状态（1：等待付款、2：等待付款确认、4：订单完成、8：取消完成、16：退款中、64、退款完成） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "orderNum": {
+                "description": "订单数量 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "totalDiscountPrice": {
+                "description": "总折扣价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "forAudit": {
+                "description": "待审核标志 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "deductionPrice": {
+                "description": "扣除价 | 示例: 123.45",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "platform": {
+                "description": "平台 | 示例: JD",
+                "type": "string",
+                "example": "JD",
+                "default": ""
+              },
+              "orderPaymentType": {
+                "description": "订单支付类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "couponTotalPrice": {
+                "description": "优惠券总金额 | 示例: 10.00",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "couponDTOList": {
+                "description": "优惠券列表",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "couponDTOListItem": {
+                    "x-java-type": "CouponDTOList",
+                    "type": "object",
+                    "properties": {
+                      "manualSettleFlag": {
+                        "description": "手动结算标志 | 示例: 0",
+                        "type": "integer",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "couponType": {
+                        "description": "优惠券类型 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "couponKind": {
+                        "description": "优惠券种类 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "couponPrice": {
+                        "description": "优惠券金额 | 示例: 5.00",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "couponId": {
+                        "description": "优惠券ID | 示例: coupon123",
+                        "type": "string",
+                        "example": "coupon123",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              },
+              "combinationName": {
+                "description": "组合名称 | 示例: 组合商品名称",
+                "type": "string",
+                "example": "组合商品名称",
+                "default": ""
+              },
+              "billStatus": {
+                "description": "账单状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "erpOrderStatus": {
+                "description": "ERP订单状态 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "childBuyer": {
+                "description": "购买人子账号 | 示例: 子账号ID",
+                "type": "string",
+                "example": "子账号ID",
+                "default": ""
+              },
+              "commission": {
+                "description": "佣金 | 示例: 佣金信息",
+                "type": "string",
+                "example": "佣金信息",
+                "default": ""
+              },
+              "returnUrl": {
+                "description": "返回URL | 示例: http://example.com",
+                "type": "string",
+                "example": "http://example.com",
+                "default": ""
+              },
+              "serviceId": {
+                "description": "服务ID | 示例: 12345678",
+                "type": "integer",
+                "example": 12345678,
+                "default": 0
+              },
+              "officialFlag": {
+                "description": "官方标志 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "orderSource": {
+                "description": "订单来源 | 示例: APP",
+                "type": "string",
+                "example": "APP",
+                "default": ""
+              },
+              "manualSettleFlag": {
+                "description": "手动结算标志 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "appName": {
+                "description": "应用名称 | 示例: 应用程序名称",
+                "type": "string",
+                "example": "应用程序名称",
+                "default": ""
+              },
+              "combinationId": {
+                "description": "组合ID | 示例: 123456789",
+                "type": "integer",
+                "example": 123456789,
+                "default": 0
+              },
+              "discountWay": {
+                "description": "折扣方式 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "evaluatedFlag": {
+                "description": "评价标志 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "businessOwnership": {
+                "description": "业务归属 | 示例: 业务归属信息",
+                "type": "string",
+                "example": "业务归属信息",
+                "default": ""
+              },
+              "serviceName": {
+                "description": "服务名称 | 示例: 测试服务",
+                "type": "string",
+                "example": "测试服务",
+                "default": ""
+              },
+              "parentId": {
+                "description": "父ID | 示例: 123456789",
+                "type": "integer",
+                "example": 123456789,
+                "default": 0
+              },
+              "virtualServiceId": {
+                "description": "虚拟服务ID | 示例: 123456789",
+                "type": "integer",
+                "example": 123456789,
+                "default": 0
+              },
+              "clientIp": {
+                "description": "客户端IP | 示例: 192.168.1.1",
+                "type": "string",
+                "example": "192.168.1.1",
+                "default": ""
+              },
+              "erpChargeDTO": {
+                "description": "ERP收费DTO",
+                "x-java-type": "com.jd.plugin.remote.restful.dto.ErpChargeDTO",
+                "type": "object",
+                "properties": {
+                  "modifiedTime": {
+                    "description": "修改时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "erpChargeItemDTO": {
+                    "description": "ERP收费项目DTO",
+                    "x-java-type": "com.jd.plugin.remote.restful.dto.ErpChargeItemDTO",
+                    "type": "object",
+                    "properties": {
+                      "implementPrice": {
+                        "description": "实际价格 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "servicePriceString": {
+                        "description": "服务价格字符串 | 示例: 123.45",
+                        "type": "string",
+                        "example": "123.45",
+                        "default": ""
+                      },
+                      "secondDevPriceString": {
+                        "description": "二次开发价格字符串 | 示例: 123.45",
+                        "type": "string",
+                        "example": "123.45",
+                        "default": ""
+                      },
+                      "secondDevDescription": {
+                        "description": "二次开发描述 | 示例: 二次开发描述信息",
+                        "type": "string",
+                        "example": "二次开发描述信息",
+                        "default": ""
+                      },
+                      "itemCode": {
+                        "description": "项目代码 | 示例: FW_GOODS-1766803-1",
+                        "type": "string",
+                        "example": "FW_GOODS-1766803-1",
+                        "default": ""
+                      },
+                      "serviceTotalPrice": {
+                        "description": "服务总价 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "itemName": {
+                        "description": "项目名称 | 示例: 项目名称示例",
+                        "type": "string",
+                        "example": "项目名称示例",
+                        "default": ""
+                      },
+                      "otherPrice": {
+                        "description": "其他费用 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "otherPriceDescription": {
+                        "description": "其他费用描述 | 示例: 其他费用描述信息",
+                        "type": "string",
+                        "example": "其他费用描述信息",
+                        "default": ""
+                      },
+                      "implementPriceString": {
+                        "description": "实际价格字符串 | 示例: 123.45",
+                        "type": "string",
+                        "example": "123.45",
+                        "default": ""
+                      },
+                      "pageDisplayFlag": {
+                        "description": "页面显示标志 | 示例: true",
+                        "type": "boolean",
+                        "example": true,
+                        "default": false
+                      },
+                      "id": {
+                        "description": "项目ID | 示例: 1234567890",
+                        "type": "integer",
+                        "example": 1234567890,
+                        "default": 0
+                      },
+                      "implementNum": {
+                        "description": "实际数量 | 示例: 10",
+                        "type": "integer",
+                        "example": 10,
+                        "default": 0
+                      },
+                      "implementTotalPrice": {
+                        "description": "实际总价 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "productPriceString": {
+                        "description": "产品价格字符串 | 示例: 123.45",
+                        "type": "string",
+                        "example": "123.45",
+                        "default": ""
+                      },
+                      "secondDevPrice": {
+                        "description": "二次开发价格 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "secondDevNum": {
+                        "description": "二次开发数量 | 示例: 5",
+                        "type": "integer",
+                        "example": 5,
+                        "default": 0
+                      },
+                      "productPriceDescription": {
+                        "description": "产品价格描述 | 示例: 产品价格描述信息",
+                        "type": "string",
+                        "example": "产品价格描述信息",
+                        "default": ""
+                      },
+                      "implementPriceDescription": {
+                        "description": "实际价格描述 | 示例: 实际价格描述信息",
+                        "type": "string",
+                        "example": "实际价格描述信息",
+                        "default": ""
+                      },
+                      "serviceMonthNum": {
+                        "description": "服务月数 | 示例: 12",
+                        "type": "integer",
+                        "example": 12,
+                        "default": 0
+                      },
+                      "servicePrice": {
+                        "description": "服务价格 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "secondDevTotalPrice": {
+                        "description": "二次开发总价 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "servicePriceDescription": {
+                        "description": "服务价格描述 | 示例: 服务价格描述信息",
+                        "type": "string",
+                        "example": "服务价格描述信息",
+                        "default": ""
+                      },
+                      "productPrice": {
+                        "description": "产品价格 | 示例: 123.45",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "otherPriceString": {
+                        "description": "其他费用字符串 | 示例: 123.45",
+                        "type": "string",
+                        "example": "123.45",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "firstPaymentStr": {
+                    "description": "首付金额字符串 | 示例: 123.45",
+                    "type": "string",
+                    "example": "123.45",
+                    "default": ""
+                  },
+                  "serviceCode": {
+                    "description": "服务代码 | 示例: FW_GOODS-1712807",
+                    "type": "string",
+                    "example": "FW_GOODS-1712807",
+                    "default": ""
+                  },
+                  "totalPrice": {
+                    "description": "总价 | 示例: 123.45",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "promotionPrice": {
+                    "description": "促销价格 | 示例: 123.45",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "description": {
+                    "description": "描述信息 | 示例: 商品或服务的详细描述",
+                    "type": "string",
+                    "example": "商品或服务的详细描述",
+                    "default": ""
+                  },
+                  "forAudit": {
+                    "description": "是否待审核 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "finalPaymentStr": {
+                    "description": "最终支付金额字符串 | 示例: 1234.56",
+                    "type": "string",
+                    "example": "1234.56",
+                    "default": ""
+                  },
+                  "firstPayment": {
+                    "description": "首付金额 | 示例: 1234.56",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "finalPayment": {
+                    "description": "最终支付金额 | 示例: 1234.56",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "itemStatus": {
+                    "description": "项目状态 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "createdTime": {
+                    "description": "创建时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "confirmStatus": {
+                    "description": "确认状态 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "id": {
+                    "description": "ID | 示例: 12345678",
+                    "type": "integer",
+                    "example": 12345678,
+                    "default": 0
+                  },
+                  "serviceId": {
+                    "description": "服务ID | 示例: 12345678",
+                    "type": "integer",
+                    "example": 12345678,
+                    "default": 0
+                  },
+                  "totalPriceStr": {
+                    "description": "总价字符串 | 示例: 1234.56",
+                    "type": "string",
+                    "example": "1234.56",
+                    "default": ""
+                  },
+                  "confirmSecDevDate": {
+                    "description": "二次确认时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "fwsPin": {
+                    "description": "服务商PIN | 示例: test_pop_fws",
+                    "type": "string",
+                    "example": "test_pop_fws",
+                    "default": ""
+                  },
+                  "defaultFlag": {
+                    "description": "默认标志 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "fwsId": {
+                    "description": "服务商ID | 示例: 123456",
+                    "type": "integer",
+                    "example": 123456,
+                    "default": 0
+                  },
+                  "buyer": {
+                    "description": "买家 | 示例: testBuyer",
+                    "type": "string",
+                    "example": "testBuyer",
+                    "default": ""
+                  },
+                  "confirmServiceDate": {
+                    "description": "服务确认时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "confirmFirstPaymentDate": {
+                    "description": "首付确认时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "confirmFinalPaymentDate": {
+                    "description": "最终支付确认时间 | 示例: 1633046400000",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "promotionSkuId": {
+                    "description": "促销SKU ID | 示例: 1234567890",
+                    "type": "integer",
+                    "example": 1234567890,
+                    "default": 0
+                  }
+                }
+              },
+              "totalDeductionPrice": {
+                "description": "总扣款金额 | 示例: 1234.56",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "realpayPrice": {
+                "description": "实际支付价格 | 示例: 1234.56",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              }
+            }
+          },
+          "success": {
+            "description": "操作成功标志 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 11002001010",
+                "type": "string",
+                "example": "11002001010",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 详细错误信息",
+                "type": "string",
+                "example": "详细错误信息",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 参数为空",
+                "type": "string",
+                "example": "参数为空",
+                "default": ""
+              }
+            }
+          },
+          "totalPage": {
+            "description": "实际页数 | 示例: 10",
+            "type": "integer",
+            "example": 10,
+            "default": 0
+          },
+          "pageSize": {
+            "description": "每页个数 | 示例: 20",
+            "type": "integer",
+            "example": 20,
+            "default": 0
+          },
+          "currentPage": {
+            "description": "当前页 | 示例: 1",
+            "type": "integer",
+            "example": 1,
+            "default": 0
+          },
+          "totalCount": {
+            "description": "实际个数 | 示例: 100",
+            "type": "integer",
+            "example": 100,
+            "default": 0
+          }
+        }
+      },
+      "ListCredentialsRequest": {
+        "type": "object",
+        "properties": {
+          "voucherRequestByJosToken": {
+            "description": "凭证请求对象",
+            "x-java-type": "com.jd.security.tdeservicecommon.rest.ListCredentialsRequest",
+            "type": "object",
+            "properties": {
+              "customerUserId": {
+                "description": "用户ID",
+                "type": "integer",
+                "default": 0
+              },
+              "appKey": {
+                "description": "系统隐式传参",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "accessToken": {
+                "description": "系统隐式传参",
+                "type": "string",
+                "default": ""
+              },
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "范围元素",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListCredentialsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "com.jd.security.tdeservicecommon.rest.CredentialDTO",
+            "type": "object",
+            "properties": {
+              "credential": {
+                "description": "凭证",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.security.tdeservicecommon.rest.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误代码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostSecretKeyRequest": {
+        "type": "object",
+        "properties": {
+          "postSecretKeyRequest": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.security.tdeservicecommon.rest.PostSecretKeyRequest",
+            "type": "object",
+            "properties": {
+              "sig": {
+                "description": "密钥特殊签名结果",
+                "type": "string",
+                "default": ""
+              },
+              "tid": {
+                "description": "凭证id",
+                "type": "string",
+                "default": ""
+              },
+              "ts": {
+                "description": "时间戳",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "PostSecretKeyResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "KeyResponse Class\n \n  <P>",
+            "x-java-type": "com.jd.security.tdeservicecommon.rest.SecretKeyDTO",
+            "type": "object",
+            "properties": {
+              "tid": {
+                "description": "凭证id",
+                "type": "string",
+                "default": ""
+              },
+              "encServiceName": {
+                "description": "加密服务名称",
+                "type": "string",
+                "default": ""
+              },
+              "serviceKeyList": {
+                "description": "服务密钥列表",
+                "x-java-type": "java.util.List <com.jd.security.tdeservicecommon.rest.RestServiceKeyInfo>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "description": "服务名称",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "currentKeyVersion": {
+                      "description": "当前密钥版本",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "grantUsage": {
+                      "description": "授权用途",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "keys": {
+                      "description": "密钥列表",
+                      "x-java-type": "java.util.List <com.jd.security.tdeservicecommon.rest.RestMKData>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "密钥ID",
+                            "type": "string",
+                            "default": ""
+                          },
+                          "keyString": {
+                            "description": "密钥字符串",
+                            "type": "string",
+                            "default": ""
+                          },
+                          "keyType": {
+                            "description": "密钥类型",
+                            "type": "string",
+                            "default": ""
+                          },
+                          "keyExp": {
+                            "description": "密钥过期时间",
+                            "type": "integer",
+                            "default": 0
+                          },
+                          "keyEffective": {
+                            "description": "密钥生效时间",
+                            "type": "integer",
+                            "default": 0
+                          },
+                          "version": {
+                            "description": "版本号",
+                            "type": "integer",
+                            "default": 0
+                          },
+                          "keyStatus": {
+                            "description": "密钥状态",
+                            "type": "integer",
+                            "default": 0
+                          },
+                          "keyDigest": {
+                            "description": "密钥摘要",
+                            "type": "string",
+                            "default": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "keyCacheDisabled": {
+                "description": "密钥缓存禁用标志",
+                "type": "integer",
+                "default": 0
+              },
+              "keyBackupDisabled": {
+                "description": "密钥备份禁用标志",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.security.tdeservicecommon.rest.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误代码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateVirtualNumberRequest": {
+        "type": "object",
+        "properties": {
+          "virtualNumber": {
+            "description": "虚拟号 | 示例: 700217812345678 | 必填",
+            "type": "string",
+            "example": "700217812345678",
+            "default": ""
+          },
+          "patchVirtualNumberRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.pop.order.sensitive.model.PatchVirtualNumberRequest",
+            "type": "object",
+            "properties": {
+              "operateType": {
+                "description": "对主叫号码组的操作类型，addNumbers：添加号码； deleteNumbers：删除号码 | 示例: addNumbers | 必填",
+                "type": "string",
+                "example": "addNumbers",
+                "default": ""
+              },
+              "orderId": {
+                "description": "订单号/服务单号或其他业务单号（需要和绑定虚拟号时的单号保持一致） | 示例: 11111112312 | 必填",
+                "type": "integer",
+                "example": 11111112312,
+                "default": 0
+              },
+              "telG": {
+                "description": "向主叫号码组中添加/删除的电话号码，支持添加单个电话或者多个号码，多个号码之间用英文逗号分隔 当号码组超限时，程序会剔除先入组的号码，保证新号码能进组 | 示例: 13011112222,13011113333 | 必填",
+                "type": "string",
+                "example": "13011112222,13011113333",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "operateType",
+              "orderId",
+              "telG"
+            ]
+          }
+        },
+        "required": [
+          "virtualNumber",
+          "patchVirtualNumberRequest"
+        ]
+      },
+      "UpdateVirtualNumberResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "响应体",
+            "x-java-type": "com.jd.pop.order.sensitive.common.model.VirtualNumberDTO",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单号/服务单号或其他业务单号（和绑定虚拟号时的单号保持一致） | 示例: 11111112312",
+                "type": "integer",
+                "example": 11111112312,
+                "default": 0
+              },
+              "virtualNumber": {
+                "description": "虚拟号 | 示例: 700217812345678",
+                "type": "string",
+                "example": "700217812345678",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误集",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11503001001",
+                  "type": "string",
+                  "example": "11503001001",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 资源不存在",
+                  "type": "string",
+                  "example": "资源不存在",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细信息 | 示例: 隐私号绑定记录不存在",
+                  "type": "string",
+                  "example": "隐私号绑定记录不存在",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "requestId": {
+            "description": "请求唯一标识 | 示例: 1112572.1016625.17657658304125283/IAA=",
+            "type": "string",
+            "example": "1112572.1016625.17657658304125283/IAA=",
+            "default": ""
+          }
+        }
+      },
+      "QueryVirtualNumberRequest": {
+        "type": "object",
+        "properties": {
+          "virtualNumber": {
+            "description": "700虚拟号 | 示例: 700000000000001 | 必填",
+            "type": "string",
+            "example": "700000000000001",
+            "default": ""
+          },
+          "getVirtualNumberRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.pop.order.sensitive.model.GetVirtualNumberRequest",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单号/服务单号或其他业务单号（需要和绑定虚拟号时的单号保持一致） | 示例: 11111112312 | 必填",
+                "type": "integer",
+                "example": 11111112312,
+                "default": 0
+              },
+              "phoneNumbers": {
+                "description": "需要查询的号码，可以传1个或多个（多个号码之间使用英文逗号隔开）phoneNumbers | 示例: 13011112222,13011113333,13011114444 | 必填",
+                "type": "string",
+                "example": "13011112222,13011113333,13011114444",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "orderId",
+              "phoneNumbers"
+            ]
+          }
+        },
+        "required": [
+          "virtualNumber",
+          "getVirtualNumberRequest"
+        ]
+      },
+      "QueryVirtualNumberResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否请求成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求返回值",
+            "x-java-type": "com.jd.pop.order.sensitive.common.model.VirtualNumberDTO",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单号/服务单号或其他业务单号（和绑定虚拟号时的单号保持一致） | 示例: 11111112312",
+                "type": "integer",
+                "example": 11111112312,
+                "default": 0
+              },
+              "virtualNumber": {
+                "description": "虚拟号 | 示例: 700217812345678",
+                "type": "string",
+                "example": "700217812345678",
+                "default": ""
+              },
+              "telG": {
+                "description": "已经报备的主叫号码 | 示例: 130****2222,130****3333",
+                "type": "string",
+                "example": "130****2222,130****3333",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误集",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11503001001",
+                  "type": "string",
+                  "example": "11503001001",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 资源不存在",
+                  "type": "string",
+                  "example": "资源不存在",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细信息 | 示例: 隐私号绑定记录不存在",
+                  "type": "string",
+                  "example": "隐私号绑定记录不存在",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "requestId": {
+            "description": "请求唯一标识 | 示例: 1109572.1016625.17657658304125283/IAA=",
+            "type": "string",
+            "example": "1109572.1016625.17657658304125283/IAA=",
+            "default": ""
+          }
+        }
+      },
+      "RedLineDetectRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.redline.model.request.BatchPutRedLineDetectRequest",
+            "type": "object",
+            "properties": {
+              "detectType": {
+                "description": "1-文本2-图片3-视频4-音频 | 示例: 1 | 必填",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "requestId": {
+                "description": "请求唯一ID | 示例: 12345 | 必填",
+                "type": "string",
+                "example": "12345",
+                "default": ""
+              },
+              "detectDTO": {
+                "description": "检测数据 | 必填",
+                "x-java-type": "com.jd.open.rest.client.redline.model.dto.DetectDTO",
+                "type": "object",
+                "properties": {
+                  "textDetectDTO": {
+                    "description": "文本检测实体 | 必填",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.TextDetectDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectValue": {
+                        "description": "检测文本列表 | 必填",
+                        "x-java-type": "java.util.List <java.lang.String>",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "permissionCode": {
+                        "description": "权限码（需要申请） | 示例: 8f3730a543d57f31fda7f28a4862d4fe | 必填",
+                        "type": "string",
+                        "example": "8f3730a543d57f31fda7f28a4862d4fe",
+                        "default": ""
+                      },
+                      "contextInfo": {
+                        "description": "检测辅助参数",
+                        "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.ContextInfoDTO",
+                        "type": "object",
+                        "properties": {
+                          "pkVersion": {
+                            "description": "检测实体版本 | 示例: 1",
+                            "type": "string",
+                            "example": "1",
+                            "default": ""
+                          },
+                          "pkId": {
+                            "description": "检测实体唯一标识 | 示例: 1",
+                            "type": "string",
+                            "example": "1",
+                            "default": ""
+                          },
+                          "businessType": {
+                            "description": "业务类型 | 示例: 1",
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "detectValue",
+                      "permissionCode"
+                    ]
+                  },
+                  "audioDetectDTO": {
+                    "description": "音频检测实体 | 必填",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.AudioDetectDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectValue": {
+                        "description": "检测音频url | 示例: http://erewrew/werwer.mp3 | 必填",
+                        "type": "string",
+                        "example": "http://erewrew/werwer.mp3",
+                        "default": ""
+                      },
+                      "permissionCode": {
+                        "description": "权限码 | 示例: 8f3730a543d57f31fda7f28a4862d4fe | 必填",
+                        "type": "string",
+                        "example": "8f3730a543d57f31fda7f28a4862d4fe",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "detectValue",
+                      "permissionCode"
+                    ]
+                  },
+                  "videoDetectDTO": {
+                    "description": "视频检测实体 | 必填",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.VideoDetectDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectValue": {
+                        "description": "检测视频url | 示例: http://dsfsadfdf/wwadwef.mp4 | 必填",
+                        "type": "string",
+                        "example": "http://dsfsadfdf/wwadwef.mp4",
+                        "default": ""
+                      },
+                      "permissionCode": {
+                        "description": "权限码 | 示例: 8f3730a543d57f31fda7f28a4862d4fe | 必填",
+                        "type": "string",
+                        "example": "8f3730a543d57f31fda7f28a4862d4fe",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "detectValue",
+                      "permissionCode"
+                    ]
+                  },
+                  "imageDetectDTO": {
+                    "description": "图片检测实体 | 必填",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.ImageDetectDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectValue": {
+                        "description": "检测图片url列表 | 必填",
+                        "x-java-type": "java.util.List <java.lang.String>",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "contextInfo": {
+                        "description": "检测辅助参数",
+                        "x-java-type": "com.jd.open.rest.client.redline.model.dto.detect.ContextInfoDTO",
+                        "type": "object",
+                        "properties": {
+                          "pkVersion": {
+                            "description": "检测实体版本 | 示例: 1",
+                            "type": "string",
+                            "example": "1",
+                            "default": ""
+                          },
+                          "pkId": {
+                            "description": "检测实体唯一标识 | 示例: 1",
+                            "type": "string",
+                            "example": "1",
+                            "default": ""
+                          },
+                          "businessType": {
+                            "description": "业务类型 | 示例: 1",
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          }
+                        }
+                      },
+                      "permissionCode": {
+                        "description": "权限码 | 示例: 8f3730a543d57f31fda7f28a4862d4fe | 必填",
+                        "type": "string",
+                        "example": "8f3730a543d57f31fda7f28a4862d4fe",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "detectValue",
+                      "permissionCode"
+                    ]
+                  }
+                },
+                "required": [
+                  "textDetectDTO",
+                  "audioDetectDTO",
+                  "videoDetectDTO",
+                  "imageDetectDTO"
+                ]
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "detectType",
+              "requestId",
+              "detectDTO"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "RedLineDetectResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.open.rest.client.redline.model.dto.DetectDTO",
+            "type": "object",
+            "properties": {
+              "redLineDetectResultDTO": {
+                "description": "检测结果",
+                "x-java-type": "com.jd.open.rest.client.redline.model.dto.result.RedLineDetectResultDTO",
+                "type": "object",
+                "properties": {
+                  "imageDetectResultList": {
+                    "description": "图片检测结果",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.redline.model.dto.result.DetectResultDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "detectValue": {
+                          "description": "检测内容 | 示例: http://eqwerr/ewwqe.jpg",
+                          "type": "string",
+                          "example": "http://eqwerr/ewwqe.jpg",
+                          "default": ""
+                        },
+                        "detectResult": {
+                          "description": "检测结果 | 示例: 1",
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "resultDetails": {
+                          "description": "检测结果详情",
+                          "x-java-type": "java.util.List <com.jd.open.rest.client.redline.model.dto.result.AlgorithmResultDetailDTO>",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "detectSense": {
+                                "description": "检测场景 | 示例: 涉政",
+                                "type": "string",
+                                "example": "涉政",
+                                "default": ""
+                              },
+                              "detectResult": {
+                                "description": "检测结果 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "score": {
+                                "description": "算法识别分数 | 示例: 0.90",
+                                "type": "number",
+                                "example": 0.9,
+                                "default": 0
+                              },
+                              "lightThreshold": {
+                                "description": "轻阈值 | 示例: 0.50",
+                                "type": "number",
+                                "example": 0.5,
+                                "default": 0
+                              },
+                              "heavyThreshold": {
+                                "description": "重阈值 | 示例: 0.80",
+                                "type": "number",
+                                "example": 0.8,
+                                "default": 0
+                              },
+                              "location": {
+                                "description": "违规位置 | 示例: [\"1,2,3,4\",\"3,4,5,6\"]",
+                                "x-java-type": "java.lang.Character[]",
+                                "type": "object"
+                              },
+                              "identifyContent": {
+                                "description": "违规内容 | 示例: “哈哈”",
+                                "type": "string",
+                                "example": "“哈哈”",
+                                "default": ""
+                              },
+                              "detectSenseId": {
+                                "description": "检测场景ID | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "textDetectResultList": {
+                    "description": "文本检测结果",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.redline.model.dto.result.DetectResultDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "detectValue": {
+                          "description": "检测内容 | 示例: “哈哈”",
+                          "type": "string",
+                          "example": "“哈哈”",
+                          "default": ""
+                        },
+                        "detectResult": {
+                          "description": "检测结果 | 示例: 1",
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "resultDetails": {
+                          "description": "检测结果详情",
+                          "x-java-type": "java.util.List <com.jd.open.rest.client.redline.model.dto.result.AlgorithmResultDetailDTO>",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "detectSense": {
+                                "description": "检测场景 | 示例: 涉政",
+                                "type": "string",
+                                "example": "涉政",
+                                "default": ""
+                              },
+                              "detectResult": {
+                                "description": "检测结果 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "score": {
+                                "description": "算法分数 | 示例: 0.9",
+                                "type": "number",
+                                "example": 0.9,
+                                "default": 0
+                              },
+                              "lightThreshold": {
+                                "description": "轻阈值 | 示例: 0.5",
+                                "type": "number",
+                                "example": 0.5,
+                                "default": 0
+                              },
+                              "heavyThreshold": {
+                                "description": "重阈值 | 示例: 0.8",
+                                "type": "number",
+                                "example": 0.8,
+                                "default": 0
+                              },
+                              "location": {
+                                "description": "位置 | 示例: [\"1,2,3,4\",\"3,4,5,6\"]",
+                                "x-java-type": "java.lang.Character[]",
+                                "type": "object"
+                              },
+                              "identifyContent": {
+                                "description": "识别到内容 | 示例: “哈哈”",
+                                "type": "string",
+                                "example": "“哈哈”",
+                                "default": ""
+                              },
+                              "detectSenseId": {
+                                "description": "检测场景ID | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "audioDetectResult": {
+                    "description": "音频检测唯一标识检测结果需要订阅MQ返回检测结果）",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.result.DetectAsyncDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectId": {
+                        "description": "请求唯一ID | 示例: SAFWEFEW-234234234",
+                        "type": "string",
+                        "example": "SAFWEFEW-234234234",
+                        "default": ""
+                      },
+                      "detectValue": {
+                        "description": "检测内容URL | 示例: http://erewrew/werwer.mp3",
+                        "type": "string",
+                        "example": "http://erewrew/werwer.mp3",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "videoDetectResult": {
+                    "description": "视频检测唯一标识（检测结果需要订阅MQ返回检测结果）",
+                    "x-java-type": "com.jd.open.rest.client.redline.model.dto.result.DetectAsyncDTO",
+                    "type": "object",
+                    "properties": {
+                      "detectId": {
+                        "description": "请求唯一ID | 示例: SAFWEFEW-234234234",
+                        "type": "string",
+                        "example": "SAFWEFEW-234234234",
+                        "default": ""
+                      },
+                      "detectValue": {
+                        "description": "检测内容URL | 示例: http://dsfsadfdf/wwadwef.mp4",
+                        "type": "string",
+                        "example": "http://dsfsadfdf/wwadwef.mp4",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "请求结果 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11504001001",
+                  "type": "string",
+                  "example": "11504001001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 参数异常，请检查参数",
+                  "type": "string",
+                  "example": "参数异常，请检查参数",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 参数异常，请检查参数",
+                  "type": "string",
+                  "example": "参数异常，请检查参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

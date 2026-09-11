@@ -1,0 +1,2640 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 营销API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/postActivityReport": {
+      "post": {
+        "operationId": "postActivityReport",
+        "summary": "上报活动信息",
+        "description": "ISV上报商家活动信息\n\nJD method: POST.sp-marketing.v0.marketingactivities",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "POST.sp-marketing.v0.marketingactivities",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostActivityReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostActivityReportResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "200": {
+                    "summary": "成功@#$无"
+                  },
+                  "500*": {
+                    "summary": "活动上报失败@#$根据情况请求，或联系官方解决"
+                  },
+                  "400*": {
+                    "summary": "必填参数为空或必填参数校验有误@#$重新传参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPreCompute": {
+      "get": {
+        "operationId": "getPreCompute",
+        "summary": "人群预计算",
+        "description": "人群预计算\n\nJD method: GET.sp-marketing.v0.pre-computes",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.pre-computes",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPreComputeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPreComputeResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12204002001": {
+                    "summary": "人群预估失败@#$策略不存在"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postStrategy": {
+      "post": {
+        "operationId": "postStrategy",
+        "summary": "创建人群策略",
+        "description": "创建人群策略\n\nJD method: POST.sp-marketing.v0.strategies",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "POST.sp-marketing.v0.strategies",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostStrategyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostStrategyResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12202001001": {
+                    "summary": "请求参数strategyName不能为空@#$请求参数strategyName不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getStrategy": {
+      "get": {
+        "operationId": "getStrategy",
+        "summary": "查询策略详情",
+        "description": "查询策略详情\n\nJD method: GET.sp-marketing.v0.strategies._strategyId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.strategies._strategyId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetStrategyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetStrategyResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12202001009": {
+                    "summary": "请求参数strategyId不能为空@#$请求参数strategyId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getTestPin": {
+      "get": {
+        "operationId": "getTestPin",
+        "summary": "批量获取咚咚测试账号",
+        "description": "批量获取咚咚测试账号\n\nJD method: GET.sp-marketing.v0.dongdongs",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.dongdongs",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTestPinRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTestPinResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12205009999": {
+                    "summary": "服务异常@#$服务异常"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deleteUserPackage": {
+      "delete": {
+        "operationId": "deleteUserPackage",
+        "summary": "删除人群包",
+        "description": "删除人群包\n\nJD method: DELETE.sp-marketing.v0.userpackages._instanceId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "DELETE.sp-marketing.v0.userpackages._instanceId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteUserPackageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteUserPackageResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001006": {
+                    "summary": "请求参数instanceId不能为空@#$请求参数instanceId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listStrategies": {
+      "get": {
+        "operationId": "listStrategies",
+        "summary": "查询策略列表",
+        "description": "查询策略列表\n\nJD method: GET.sp-marketing.v0.strategies",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.strategies",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListStrategiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListStrategiesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12202001009": {
+                    "summary": "请求参数scope错误@#$请求参数scope错误"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchStrategy": {
+      "patch": {
+        "operationId": "patchStrategy",
+        "summary": "修改人群策略",
+        "description": "修改人群策略\n\nJD method: PATCH.sp-marketing.v0.strategies._strategyId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "PATCH.sp-marketing.v0.strategies._strategyId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchStrategyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchStrategyResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12202001001": {
+                    "summary": "请求参数strategyName不能为空@#$请求参数strategyName不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listTags": {
+      "get": {
+        "operationId": "listTags",
+        "summary": "查询人群标签列表",
+        "description": "查询人群标签列表，仅能获取有权限的标签，若需添加标签权限，请联系运营。\n\nJD method: GET.sp-marketing.v0.tags",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.tags",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListTagsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTagsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12201001001": {
+                    "summary": "请求参数begroup不能为空@#$请求参数begroup不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deleteStrategy": {
+      "delete": {
+        "operationId": "deleteStrategy",
+        "summary": "删除人群策略",
+        "description": "删除人群策略\n\nJD method: DELETE.sp-marketing.v0.strategies._strategyId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "DELETE.sp-marketing.v0.strategies._strategyId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteStrategyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteStrategyResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12202001009": {
+                    "summary": "请求参数strategyId不能为空@#$请求参数strategyId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listUserPackage": {
+      "get": {
+        "operationId": "listUserPackage",
+        "summary": "查询人群包列表",
+        "description": "查询人群包列表\n\nJD method: GET.sp-marketing.v0.userpackages",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.userpackages",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListUserPackageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListUserPackageResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001006": {
+                    "summary": "请求参数instanceId不能为空@#$请求参数instanceId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/uploadPackageStart": {
+      "post": {
+        "operationId": "uploadPackageStart",
+        "summary": "人群上传-开始阶段",
+        "description": "人群上传-开始阶段，使用人群上传功能时，需先调用此接口。\n\nJD method: POST.sp-marketing.v0.userpackages._instanceId.multiuploads",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "POST.sp-marketing.v0.userpackages._instanceId.multiuploads",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadPackageStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadPackageStartResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001003": {
+                    "summary": "请求参数fileSize不能为空@#$请求参数fileSize不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchUserPackage": {
+      "patch": {
+        "operationId": "patchUserPackage",
+        "summary": "更新人群包",
+        "description": "更新人群包，仅支持修改上传人群的活动id，同老接口（jingdong.data.vender.strategy.inst.bind ）\n\nJD method: PATCH.sp-marketing.v0.userpackages._instanceId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "PATCH.sp-marketing.v0.userpackages._instanceId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchUserPackageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchUserPackageResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001006": {
+                    "summary": "请求参数instanceId不能为空@#$请求参数instanceId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postUserPackage": {
+      "post": {
+        "operationId": "postUserPackage",
+        "summary": "创建人群包",
+        "description": "创建人群包\n\nJD method: POST.sp-marketing.v0.userpackages",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "POST.sp-marketing.v0.userpackages",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostUserPackageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostUserPackageResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001001": {
+                    "summary": "请求参数strategyId不能为空@#$请求参数strategyId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/uploadPackageProcessOrEnd": {
+      "patch": {
+        "operationId": "uploadPackageProcessOrEnd",
+        "summary": "人群上传-单分片上传或上传完成",
+        "description": "人群上传-单分片上传或上传完成，原单分片上传以及人群上传结束接口均整合在此接口\n\nJD method: PATCH.sp-marketing.v0.userpackages._instanceId.multiuploads._uploadId",
+        "tags": [
+          "营销API"
+        ],
+        "x-jd-method": "PATCH.sp-marketing.v0.userpackages._instanceId.multiuploads._uploadId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadPackageProcessOrEndRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadPackageProcessOrEndResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12203001007": {
+                    "summary": "请求参数bytes不能为空@#$字段partFileBase64Str转换后的字节数组为空，请检查partFileBase64Str是否正确"
+                  },
+                  "12203001005": {
+                    "summary": "请求参数uploadId不能为空@#$请求参数uploadId不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostActivityReportRequest": {
+        "type": "object",
+        "properties": {
+          "param1": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jdcloud.ecop.tripod.openapi.model.stableplatform.request.ActivityReportDTO",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家 ID | 示例: vender001 | 必填",
+                "type": "string",
+                "example": "vender001",
+                "default": ""
+              },
+              "basetype": {
+                "description": "活动基础类型，传枚举值 1、saas活动 2、定制活动 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "activityId": {
+                "description": "活动ID，pin+venderid+activityId唯一 | 示例: acticity001 | 必填",
+                "type": "string",
+                "example": "acticity001",
+                "default": ""
+              },
+              "activityType": {
+                "description": "活动类型 1=投票有礼; 2=收藏有礼(邀请有礼); 3=精准营销; 4=DZ时尚; 5=DZ伊利; 6=购物车红包; 7=爆品红包; 8=盖楼有礼; 9=店铺礼包; 10=评论有赏; 11=拼购定向投放; 12=买家秀; 13=开卡有礼; 14=会员礼包; 15=红包雨; 16=优惠券裂变; 17=品牌会员; 18=限时购; 19=分享有礼; 20=集卡有礼; 21=新人有礼; 22=群聊自营优惠券; 23=锦鲤圈抽奖; 24=裂变海报; 25=抽奖; 26=加购; 27=签到; 28=积分兑换; 29=商品收藏; 30=游戏; 31=砍价拼团; 32=专享价; 33=组队; 34=知识超人; 35=粉丝互动; 37=N元试用; 38=前N名优惠; 39=定制活动; 42=关注有礼; 44=浏览有礼; 45=群聊签到; 47=大促签到; 49=N元M件; 50=粉丝礼包; 69=复购有礼; 70=追单玩法; 71=短信营销(isv策略推荐) | 示例: 2 | 必填",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "activityName": {
+                "description": "活动名称 | 示例: 活动123 | 必填",
+                "type": "string",
+                "example": "活动123",
+                "default": ""
+              },
+              "activityUrl": {
+                "description": "活动完整链接 | 示例: https://aaa.bbb.com/test/api?xx=xxx | 必填",
+                "type": "string",
+                "example": "https://aaa.bbb.com/test/api?xx=xxx",
+                "default": ""
+              },
+              "startTime": {
+                "description": "活动开始时间 | 示例: yyyy-MM-dd HH:mm:ss | 必填",
+                "type": "string",
+                "example": "yyyy-MM-dd HH:mm:ss",
+                "default": ""
+              },
+              "endTime": {
+                "description": "活动结束时间 | 示例: yyyy-MM-dd HH:mm:ss | 必填",
+                "type": "string",
+                "example": "yyyy-MM-dd HH:mm:ss",
+                "default": ""
+              },
+              "placementPosition": {
+                "description": "活动曝光位置，多选，按照英文逗号隔开，传括号里的KEY值\n京东APP首页曝光位（HOME）、大促主会场资源（CHANNEL）、搜索与推荐链路（SEARCH_RECOMMEND）、店铺（SHOP）、域外曝光(OUTSIDE)、其他渠道(OTHER) | 示例: HOME,CHANNEL | 必填",
+                "type": "string",
+                "example": "HOME,CHANNEL",
+                "default": ""
+              },
+              "isKeyActivity": {
+                "description": "是否申报重点活动标识（0=否，1=是），作为平台评估专项技术保障资源倾斜的依据 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "isFinancialInvolved": {
+                "description": "标识该营销活动是否直接涉及用户资金流转、交易支付或金融权益发放；（0=否，1=是） | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "expectedPv": {
+                "description": "活动预估分钟级峰值流量（PV）活动单日最高PV | 示例: 10000",
+                "type": "string",
+                "example": "10000",
+                "default": ""
+              },
+              "historicalActivityPv": {
+                "description": "商家往期同类活动分钟级峰值流量（PV）活动单日最高PV | 示例: 15000",
+                "type": "string",
+                "example": "15000",
+                "default": ""
+              },
+              "shopMemberCount": {
+                "description": "店铺会员数量 | 示例: 500",
+                "type": "integer",
+                "example": 500,
+                "default": 0
+              },
+              "platformFilingStatus": {
+                "description": "是否和平台相关部门报备（0=否，1=是）采销、热点中心、舆情部门等\n不填默认为0 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "basetype",
+              "activityId",
+              "activityType",
+              "activityName",
+              "activityUrl",
+              "startTime",
+              "endTime",
+              "placementPosition",
+              "isKeyActivity",
+              "isFinancialInvolved"
+            ]
+          }
+        },
+        "required": [
+          "param1"
+        ]
+      },
+      "PostActivityReportResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "msg": {
+            "description": "返回值信息 | 示例: 活动成功上报",
+            "type": "string",
+            "example": "活动成功上报",
+            "default": ""
+          },
+          "code": {
+            "description": "返回code | 示例: 4001",
+            "type": "string",
+            "example": "4001",
+            "default": ""
+          },
+          "data": {
+            "description": "活动上报结果 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "success": {
+            "description": "接口请求是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "reqId": {
+            "description": "接口reqId | 示例: 1231231231231231",
+            "type": "string",
+            "example": "1231231231231231",
+            "default": ""
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 200",
+                "type": "integer",
+                "example": 200,
+                "default": 0
+              },
+              "message": {
+                "description": "错误信息 | 示例: 错误信息",
+                "type": "string",
+                "example": "错误信息",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 错误详情",
+                "type": "string",
+                "example": "错误详情",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetPreComputeRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.preCompute.GetPreComputeRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "strategyId": {
+                "description": "策略id，有策略id时，按照策略id进行人群预计算。 | 示例: 35894f85675e43c1a564a1dc6a64e6d4",
+                "type": "string",
+                "example": "35894f85675e43c1a564a1dc6a64e6d4",
+                "default": ""
+              },
+              "strategy": {
+                "description": "策略表达式，无策略id时，按照策略表达式进行人群预计算 | 示例: {     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } }",
+                "type": "string",
+                "example": "{     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } }",
+                "default": ""
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "pinType": {
+                "description": "pin类型，会员：1； 粉丝：2 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "partition": {
+                "description": "策略表达式中有类目标签时，必填，为一级类目id | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "applicationDomain": {
+                "description": "应用场景类型 1:精准营销，2：店铺个性化 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyOperateType": {
+                "description": "京麦侧官方策略：1；数坊侧粉丝人群策略：2；数坊侧会员重点人群策略：3；购买行为策略：4；店铺重点人群策略：5；店铺机会人群策略：6；行业人群策略：8 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "GetPreComputeResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.preCompute.GetPreComputeResponse",
+            "type": "object",
+            "properties": {
+              "total": {
+                "description": "人群总数 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "member": {
+                "description": "会员数 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12204002001",
+                "type": "string",
+                "example": "12204002001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 人群预估失败",
+                "type": "string",
+                "example": "人群预估失败",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 策略不存在",
+                "type": "string",
+                "example": "策略不存在",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PostStrategyRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.strategy.PostStrategyRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "name": {
+                "description": "策略名称 | 示例: 策略名称 | 必填",
+                "type": "string",
+                "example": "策略名称",
+                "default": ""
+              },
+              "description": {
+                "description": "策略描述 | 示例: 策略描述 | 必填",
+                "type": "string",
+                "example": "策略描述",
+                "default": ""
+              },
+              "strategy": {
+                "description": "策略表达式 | 示例: {     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } } | 必填",
+                "type": "string",
+                "example": "{     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } }",
+                "default": ""
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: 策略参数",
+                "type": "string",
+                "example": "策略参数",
+                "default": ""
+              },
+              "applicationDomain": {
+                "description": "标签策略应用场景\n1-精准营销应用（策略实例挖包等）\n2-店铺个性化（个性化营销策略人群匹配规则等） | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "partition": {
+                "description": "查询分区，策略中包含类目标签时，必填，为一级类目id | 示例: 123",
+                "type": "string",
+                "example": "123",
+                "default": ""
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "strategy",
+              "applicationDomain"
+            ]
+          }
+        }
+      },
+      "PostStrategyResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.strategy.PostStrategyResponse",
+            "type": "object",
+            "properties": {
+              "strategyId": {
+                "description": "策略id | 示例: 4699bf4a8e7646fcbdf10a02190662b0",
+                "type": "string",
+                "example": "4699bf4a8e7646fcbdf10a02190662b0",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12202001003",
+                "type": "string",
+                "example": "12202001003",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 参数不能为空",
+                "type": "string",
+                "example": "参数不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 参数不能为空",
+                "type": "string",
+                "example": "参数不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetStrategyRequest": {
+        "type": "object",
+        "properties": {
+          "strategyId": {
+            "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1 | 必填",
+            "type": "string",
+            "example": "35894f8567be43c1a564a1dc6a64e6d1",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.strategy.GetStrategyRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "strategyId"
+        ]
+      },
+      "GetStrategyResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.strategy.GetStrategyResponse",
+            "type": "object",
+            "properties": {
+              "strategyId": {
+                "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d1",
+                "default": ""
+              },
+              "name": {
+                "description": "策略名称 | 示例: 策略名称",
+                "type": "string",
+                "example": "策略名称",
+                "default": ""
+              },
+              "description": {
+                "description": "策略描述 | 示例: 策略描述",
+                "type": "string",
+                "example": "策略描述",
+                "default": ""
+              },
+              "strategy": {
+                "description": "策略表达式 | 示例: { &quot;bool&quot;: { &quot;must_not&quot;: [ { &quot;bool&quot;: { &quot;should&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: -999 } } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ], &quot;must&quot;: [ { &quot;bool&quot;: { &quot;must&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: 0 } } }, { &quot;terms&quot;: { &quot;opdata_shop_brand_member_flag&quot;: [ &quot;1&quot; ] } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ] } }",
+                "type": "string",
+                "example": "{ &quot;bool&quot;: { &quot;must_not&quot;: [ { &quot;bool&quot;: { &quot;should&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: -999 } } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ], &quot;must&quot;: [ { &quot;bool&quot;: { &quot;must&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: 0 } } }, { &quot;terms&quot;: { &quot;opdata_shop_brand_member_flag&quot;: [ &quot;1&quot; ] } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ] } }",
+                "default": ""
+              },
+              "createTime": {
+                "description": "创建时间 | 示例: 1779433221988",
+                "type": "integer",
+                "example": 1779433221988,
+                "default": 0
+              },
+              "updateTime": {
+                "description": "更新时间 | 示例: 1779433221988",
+                "type": "integer",
+                "example": 1779433221988,
+                "default": 0
+              },
+              "state": {
+                "description": "策略状态，1-已保存，2-已失效 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: 策略参数",
+                "type": "string",
+                "example": "策略参数",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12202001009",
+                "type": "string",
+                "example": "12202001009",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetTestPinRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.mkt.market.api.task.request.TestPinOperateRequest",
+            "type": "object",
+            "properties": {
+              "appKey": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "GetTestPinResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果，已添加的咚咚测试pin，多个以英文逗号分隔。 | 示例: test1,test2",
+            "type": "string",
+            "example": "test1,test2",
+            "default": ""
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12205009999",
+                "type": "string",
+                "example": "12205009999",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 服务异常",
+                "type": "string",
+                "example": "服务异常",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 服务异常",
+                "type": "string",
+                "example": "服务异常",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "DeleteUserPackageRequest": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "description": "人群实例id | 示例: 35894f8567be43c1a564a1dc6a64e6d0 | 必填",
+            "type": "string",
+            "example": "35894f8567be43c1a564a1dc6a64e6d0",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.yun_crm.client.rest.request.DeleteUserPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "instanceId"
+        ]
+      },
+      "DeleteUserPackageResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.yun_crm.client.rest.response.DeleteUserPackageResponse",
+            "type": "object",
+            "properties": {
+              "instanceId": {
+                "description": "人群实例id | 示例: 35894f8567be43c1a564a1dc6a64e6d0",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d0",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001006",
+                "type": "string",
+                "example": "12203001006",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数instanceId不能为空",
+                "type": "string",
+                "example": "请求参数instanceId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数instanceId不能为空",
+                "type": "string",
+                "example": "请求参数instanceId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListStrategiesRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.strategy.ListStrategyRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "scope": {
+                "description": "查询范围，1-官方策略，2-ISV商家策略 | 示例: 2 | 必填",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "state": {
+                "description": "策略状态，scope字段为2时生效，1-已保存，2-已失效 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "applicationDomain": {
+                "description": "应用场景类型，scope字段为2时生效， 1:精准营销，2：店铺个性化 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyOperateType": {
+                "description": "策略来源，scope字段为1时必填， 京麦侧官方策略：1；数坊侧粉丝人群策略：2；数坊侧会员重点人群策略：3；购买行为策略：4；店铺重点人群策略：5；店铺机会人群策略：6；行业人群策略：8 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "page": {
+                "description": "当前页，默认1 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页展示记录数，默认10 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          }
+        }
+      },
+      "ListStrategiesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "strategyId": {
+                "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d1",
+                "default": ""
+              },
+              "name": {
+                "description": "策略名称 | 示例: 策略名称",
+                "type": "string",
+                "example": "策略名称",
+                "default": ""
+              },
+              "description": {
+                "description": "策略描述 | 示例: 策略描述",
+                "type": "string",
+                "example": "策略描述",
+                "default": ""
+              },
+              "strategy": {
+                "description": "策略表达式 | 示例: { &quot;bool&quot;: { &quot;must_not&quot;: [ { &quot;bool&quot;: { &quot;should&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: -999 } } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ], &quot;must&quot;: [ { &quot;bool&quot;: { &quot;must&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: 0 } } }, { &quot;terms&quot;: { &quot;opdata_shop_brand_member_flag&quot;: [ &quot;1&quot; ] } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ] } }",
+                "type": "string",
+                "example": "{ &quot;bool&quot;: { &quot;must_not&quot;: [ { &quot;bool&quot;: { &quot;should&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: -999 } } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ], &quot;must&quot;: [ { &quot;bool&quot;: { &quot;must&quot;: [ { &quot;range&quot;: { &quot;opdata_shop_complete_ord_num&quot;: { &quot;lte&quot;: 0 } } }, { &quot;terms&quot;: { &quot;opdata_shop_brand_member_flag&quot;: [ &quot;1&quot; ] } } ], &quot;group&quot;: &quot;app_eco_user_act&quot; } } ] } }",
+                "default": ""
+              },
+              "createTime": {
+                "description": "创建时间 | 示例: 1779433221988",
+                "type": "integer",
+                "example": 1779433221988,
+                "default": 0
+              },
+              "updateTime": {
+                "description": "更新时间 | 示例: 1779433221988",
+                "type": "integer",
+                "example": 1779433221988,
+                "default": 0
+              },
+              "state": {
+                "description": "策略状态，仅scope为2时有值，1-已保存，2-已失效 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: 策略参数",
+                "type": "string",
+                "example": "策略参数",
+                "default": ""
+              },
+              "strategyType": {
+                "description": "策略类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "rule": {
+                "description": "人群策略定义（仅官方策略有值） | 示例: 人群策略定义（官方策略）",
+                "type": "string",
+                "example": "人群策略定义（官方策略）",
+                "default": ""
+              },
+              "applicationDomain": {
+                "description": "应用场景类型，1:精准营销，2：店铺个性化，仅scope为2时有值 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyOperateType": {
+                "description": "策略来源，scope字段为1时有值， 京麦侧官方策略：1；数坊侧粉丝人群策略：2；数坊侧会员重点人群策略：3；购买行为策略：4；店铺重点人群策略：5；店铺机会人群策略：6；行业人群策略：8 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12202001009",
+                "type": "string",
+                "example": "12202001009",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数scope错误",
+                "type": "string",
+                "example": "请求参数scope错误",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数scope错误",
+                "type": "string",
+                "example": "请求参数scope错误",
+                "default": ""
+              }
+            }
+          },
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总记录数 | 示例: 121",
+                "type": "integer",
+                "example": 121,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页展示记录数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "PatchStrategyRequest": {
+        "type": "object",
+        "properties": {
+          "strategyId": {
+            "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1 | 必填",
+            "type": "string",
+            "example": "35894f8567be43c1a564a1dc6a64e6d1",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.strategy.PatchStrategyRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "name": {
+                "description": "策略名称 | 示例: 策略名称 | 必填",
+                "type": "string",
+                "example": "策略名称",
+                "default": ""
+              },
+              "description": {
+                "description": "策略描述 | 示例: 策略描述 | 必填",
+                "type": "string",
+                "example": "策略描述",
+                "default": ""
+              },
+              "strategy": {
+                "description": "策略表达式 | 示例: {     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } } | 必填",
+                "type": "string",
+                "example": "{     &quot;bool&quot;: {         &quot;must_not&quot;: [             {                 &quot;bool&quot;: {                     &quot;should&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: -999                                 }                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ],         &quot;must&quot;: [             {                 &quot;bool&quot;: {                     &quot;must&quot;: [                         {                             &quot;range&quot;: {                                 &quot;opdata_shop_complete_ord_num&quot;: {                                     &quot;lte&quot;: 0                                 }                             }                         },                         {                             &quot;terms&quot;: {                                 &quot;opdata_shop_brand_member_flag&quot;: [                                     &quot;1&quot;                                 ]                             }                         }                     ],                     &quot;group&quot;: &quot;app_eco_user_act&quot;                 }             }         ]     } }",
+                "default": ""
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: 策略参数",
+                "type": "string",
+                "example": "策略参数",
+                "default": ""
+              },
+              "applicationDomain": {
+                "description": "标签策略应用场景\n1-精准营销应用（策略实例挖包等）\n2-店铺个性化（个性化营销策略人群匹配规则等） | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "partition": {
+                "description": "查询分区，策略中包含类目标签时，必填，为一级类目id\n | 示例: 123",
+                "type": "string",
+                "example": "123",
+                "default": ""
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "strategy",
+              "applicationDomain"
+            ]
+          }
+        },
+        "required": [
+          "strategyId"
+        ]
+      },
+      "PatchStrategyResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.strategy.PatchStrategyResponse",
+            "type": "object",
+            "properties": {
+              "strategyId": {
+                "description": "策略id | 示例: 4699bf4a8e7646fcbdf10a02190662b0",
+                "type": "string",
+                "example": "4699bf4a8e7646fcbdf10a02190662b0",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12202001003",
+                "type": "string",
+                "example": "12202001003",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 参数不能为空",
+                "type": "string",
+                "example": "参数不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 参数不能为空",
+                "type": "string",
+                "example": "参数不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListTagsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.tag.ListTagRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "begroup": {
+                "description": "标签分组，\napp_eco_user_live_act：直播行为标签分组\napp_eco_user_cate_dress_prefer：服饰偏好标签分组\napp_eco_user_cate_makeup_prefer：美妆偏好标签分组\napp_eco_user_act：用户行为标签分组\napp_eco_user_base：用户基础属性标签分组\napp_eco_user_sku_rebuy：复购标签分组\napp_eco_user_platform_prefer：平台标签分组 | 示例: app_eco_user_act | 必填",
+                "type": "string",
+                "example": "app_eco_user_act",
+                "default": ""
+              },
+              "version": {
+                "description": "标签版本 | 示例: 2 | 必填",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "applicationScenario": {
+                "description": "应用场景，1:精准营销应用，2:店铺个性化应用 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            },
+            "required": [
+              "begroup",
+              "version",
+              "applicationScenario"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListTagsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "lableName": {
+                "description": "标签名称 | 示例: seven_cid3",
+                "type": "string",
+                "example": "seven_cid3",
+                "default": ""
+              },
+              "lableMeaning": {
+                "description": "标签含义 | 示例: 近7天购买同类商品",
+                "type": "string",
+                "example": "近7天购买同类商品",
+                "default": ""
+              },
+              "lableDesc": {
+                "description": "标签描述 | 示例: 近7天购买同类商品",
+                "type": "string",
+                "example": "近7天购买同类商品",
+                "default": ""
+              },
+              "hasEnumValue": {
+                "description": "是否有枚举值 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "begroup": {
+                "description": "标签所属分组 | 示例: app_eco_user_act",
+                "type": "string",
+                "example": "app_eco_user_act",
+                "default": ""
+              },
+              "version": {
+                "description": "版本号 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "labelApplyType": {
+                "description": "标签应用场景分组：1:店铺维度，2:商品维度，3:类目维度 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "enumValues": {
+                "description": "标签对应的枚举值列表",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "enumValuesItem": {
+                    "x-java-type": "com.jd.ecodd.marketing_data_isv.client.vo.lable.LableEnumValueVO",
+                    "type": "object",
+                    "properties": {
+                      "fieldValue": {
+                        "description": "枚举描述 | 示例: 小米",
+                        "type": "string",
+                        "example": "小米",
+                        "default": ""
+                      },
+                      "realValue": {
+                        "description": "枚举值 | 示例: 1",
+                        "type": "string",
+                        "example": "1",
+                        "default": ""
+                      },
+                      "version": {
+                        "description": "版本号 | 示例: 2",
+                        "type": "integer",
+                        "example": 2,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "lableIntroduce": {
+                "description": "标签使用说明 | 示例: 标签使用说明",
+                "type": "string",
+                "example": "标签使用说明",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12201001002",
+                "type": "string",
+                "example": "12201001002",
+                "default": ""
+              },
+              "message": {
+                "description": "message | 示例: 请求参数begroup不能为空",
+                "type": "string",
+                "example": "请求参数begroup不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "details | 示例: 请求参数begroup不能为空",
+                "type": "string",
+                "example": "请求参数begroup不能为空",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          }
+        }
+      },
+      "DeleteStrategyRequest": {
+        "type": "object",
+        "properties": {
+          "strategyId": {
+            "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1 | 必填",
+            "type": "string",
+            "example": "35894f8567be43c1a564a1dc6a64e6d1",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.strategy.DeleteStrategyRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              }
+            }
+          }
+        },
+        "required": [
+          "strategyId"
+        ]
+      },
+      "DeleteStrategyResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.strategy.DeleteStrategyResponse",
+            "type": "object",
+            "properties": {
+              "strategyId": {
+                "description": "策略id | 示例: 35894f8567be43c1a564a1dc6a64e6d1",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d1",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12202001009",
+                "type": "string",
+                "example": "12202001009",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListUserPackageRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.yun_crm.client.rest.request.ListUserPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "createTime": {
+                "description": "人群包创建时间，格式：yyyy-MM-dd HH:mm:ss | 示例: 2026-05-20 12:00:00",
+                "type": "string",
+                "example": "2026-05-20 12:00:00",
+                "default": ""
+              },
+              "page": {
+                "description": "当前页，默认1 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页展示记录数，默认10 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "ListUserPackageResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "instanceId": {
+                "description": "人群实例id | 示例: 432ec28ac75d48b09501b9fba3a81221",
+                "type": "string",
+                "example": "432ec28ac75d48b09501b9fba3a81221",
+                "default": ""
+              },
+              "resultName": {
+                "description": "人群名称 | 示例: 人群名称",
+                "type": "string",
+                "example": "人群名称",
+                "default": ""
+              },
+              "resultDesc": {
+                "description": "人群描述 | 示例: 人群描述",
+                "type": "string",
+                "example": "人群描述",
+                "default": ""
+              },
+              "type": {
+                "description": "人群类型：1-初始包，2-合成包，6-结果包 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "resultNum": {
+                "description": "人群数量 | 示例: 123",
+                "type": "integer",
+                "example": 123,
+                "default": 0
+              },
+              "status": {
+                "description": "人群状态，\n0-无记录\n1-挖包中\n2-挖包完毕\n3-已保存\n4-已使用\n8-挖包终止\n9-删除 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001006",
+                "type": "string",
+                "example": "12203001006",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数instanceId不能为空",
+                "type": "string",
+                "example": "请求参数instanceId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数instanceId不能为空",
+                "type": "string",
+                "example": "请求参数instanceId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "UploadPackageStartRequest": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "description": "人群id，由于上传人群之前还未生成人群id，因此此处的人群id，固定为1，无实际意义 | 示例: 1 | 必填",
+            "type": "string",
+            "example": "1",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.upload.PostUploadPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "fileType": {
+                "description": "文件类型，加密文件传encrypt.txt，其他传txt | 示例: txt | 必填",
+                "type": "string",
+                "example": "txt",
+                "default": ""
+              },
+              "fileSize": {
+                "description": "文件大小，字节数 | 示例: 1000 | 必填",
+                "type": "integer",
+                "example": 1000,
+                "default": 0
+              },
+              "md5": {
+                "description": "文件md5值 | 示例: 35894f8567be43c1a564a1dc6a64e614 | 必填",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e614",
+                "default": ""
+              }
+            },
+            "required": [
+              "fileType",
+              "fileSize",
+              "md5"
+            ]
+          }
+        },
+        "required": [
+          "instanceId"
+        ]
+      },
+      "UploadPackageStartResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "uploadId，本次文件上传的唯一标识 | 示例: A3A4CD968C791271",
+            "type": "string",
+            "example": "A3A4CD968C791271",
+            "default": ""
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001003",
+                "type": "string",
+                "example": "12203001003",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数fileSize不能为空",
+                "type": "string",
+                "example": "请求参数fileSize不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数fileSize不能为空",
+                "type": "string",
+                "example": "请求参数fileSize不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PatchUserPackageRequest": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "description": "人群实例id | 示例: 35894f8567be43c1a564a1dc6a64e6d9 | 必填",
+            "type": "string",
+            "example": "35894f8567be43c1a564a1dc6a64e6d9",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.yun_crm.client.rest.request.PatchUserPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "mktActivityId": {
+                "description": "营销活动ID 由ISV提供 | 示例: 35894f8567be43c1a564a1dc6a64e6d0 | 必填",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d0",
+                "default": ""
+              },
+              "mktActivityInstId": {
+                "description": "营销活动实例ID 由ISV提供 | 示例: 35894f8567be43c1a564a1dc6a64e6d3 | 必填",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d3",
+                "default": ""
+              },
+              "taskId": {
+                "description": "任务ID 由ISV提供 | 示例: 35894f8567be43c1a564a1dc6a64e6d6 | 必填",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d6",
+                "default": ""
+              },
+              "taskInstId": {
+                "description": "任务实例ID 由ISV提供 | 示例: 35894f8567be43c1a564a1dc6a64e6d5 | 必填",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d5",
+                "default": ""
+              }
+            },
+            "required": [
+              "mktActivityId",
+              "mktActivityInstId",
+              "taskId",
+              "taskInstId"
+            ]
+          }
+        },
+        "required": [
+          "instanceId"
+        ]
+      },
+      "PatchUserPackageResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.yun_crm.client.rest.response.PatchUserPackageResponse",
+            "type": "object",
+            "properties": {
+              "instanceId": {
+                "description": "人群实例id | 示例: 35894f8567be43c1a564a1dc6a64e6d8",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d8",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001006",
+                "type": "string",
+                "example": "12203001006",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数instanceId不能为空",
+                "type": "string",
+                "example": "请求参数instanceId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数请求参数instanceId不能为空不能为空",
+                "type": "string",
+                "example": "请求参数请求参数instanceId不能为空不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PostUserPackageRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.userPackage.PostUserPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "strategyId": {
+                "description": "策略id | 示例: bf6a20dc68f442828dbc801d291d28c1 | 必填",
+                "type": "string",
+                "example": "bf6a20dc68f442828dbc801d291d28c1",
+                "default": ""
+              },
+              "mktActivityId": {
+                "description": "活动id，由ISV生成 | 示例: bf6a20dc68f442828dbc801d291d28c2 | 必填",
+                "type": "string",
+                "example": "bf6a20dc68f442828dbc801d291d28c2",
+                "default": ""
+              },
+              "mktActivityInstId": {
+                "description": "活动实例id，由ISV生成 | 示例: bf6a20dc68f442828dbc801d291d28c3 | 必填",
+                "type": "string",
+                "example": "bf6a20dc68f442828dbc801d291d28c3",
+                "default": ""
+              },
+              "taskId": {
+                "description": "任务id，由ISV生成 | 示例: bf6a20dc68f442828dbc801d291d28c4 | 必填",
+                "type": "string",
+                "example": "bf6a20dc68f442828dbc801d291d28c4",
+                "default": ""
+              },
+              "taskInstId": {
+                "description": "任务实例id，由ISV生成 | 示例: bf6a20dc68f442828dbc801d291d28c5 | 必填",
+                "type": "string",
+                "example": "bf6a20dc68f442828dbc801d291d28c5",
+                "default": ""
+              },
+              "strategyParam": {
+                "description": "策略参数 | 示例: 策略参数",
+                "type": "string",
+                "example": "策略参数",
+                "default": ""
+              },
+              "instancePackType": {
+                "description": "人群包类型（1：商家会员包，用于发短信实例包该值必须传1，否则短信活动无法创建）7-半公域 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "strategyOperateType": {
+                "description": "策略来源，如果是ISV创建的策略，无需传值。京麦侧官方策略：1；数坊侧粉丝人群策略：2；数坊侧会员重点人群策略：3；购买行为策略：4；店铺重点人群策略：5；店铺机会人群策略：6；行业人群策略：8 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              }
+            },
+            "required": [
+              "strategyId",
+              "mktActivityId",
+              "mktActivityInstId",
+              "taskId",
+              "taskInstId"
+            ]
+          }
+        }
+      },
+      "PostUserPackageResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.userPackage.PostUserPackageResponse",
+            "type": "object",
+            "properties": {
+              "instanceId": {
+                "description": "人群包实例id | 示例: bf6a20dc68f442820dbc801d291d28c3",
+                "type": "string",
+                "example": "bf6a20dc68f442820dbc801d291d28c3",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001001",
+                "type": "string",
+                "example": "12203001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "details | 示例: 请求参数strategyId不能为空",
+                "type": "string",
+                "example": "请求参数strategyId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "UploadPackageProcessOrEndRequest": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "description": "人群id，由于上传人群之前还未生成人群id，因此此处的人群id，固定为1，无实际意义 | 示例: 1 | 必填",
+            "type": "string",
+            "example": "1",
+            "default": ""
+          },
+          "uploadId": {
+            "description": "上传id，uploadId | 示例: A3A4CD968C791271 | 必填",
+            "type": "string",
+            "example": "A3A4CD968C791271",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.request.upload.PatchUploadPackageRequest",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "handleType": {
+                "description": "操作类型，1-上传分片，2-上传结束 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "partNumber": {
+                "description": "文件块编号，从1开始，handleType=1时必传 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "partFileBase64Str": {
+                "description": "文件内容，文件内容对应的base64字符串，handleType=1时必传 | 示例: base64",
+                "type": "string",
+                "example": "base64",
+                "default": ""
+              },
+              "length": {
+                "description": "文件块长度，handleType=1时必传 | 示例: 1000",
+                "type": "integer",
+                "example": 1000,
+                "default": 0
+              },
+              "md5": {
+                "description": "文件md5，handleType=1时必传 | 示例: 35894f8567be43c1a564a1dc6564e6d4",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6564e6d4",
+                "default": ""
+              },
+              "lastPartNumber": {
+                "description": "最后一个文件分片编号，handleType=2时必传 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "resultName": {
+                "description": "人群包名称，handleType=2时必传 | 示例: 人群包名称",
+                "type": "string",
+                "example": "人群包名称",
+                "default": ""
+              },
+              "resultDesc": {
+                "description": "人群包描述，handleType=2时必传 | 示例: 人群包描述",
+                "type": "string",
+                "example": "人群包描述",
+                "default": ""
+              },
+              "dataType": {
+                "description": "数据类型，2-手机号，3-订单号，8-新XID或OUID，handleType=2时必传 | 示例: 8",
+                "type": "string",
+                "example": "8",
+                "default": ""
+              }
+            },
+            "required": [
+              "handleType"
+            ]
+          }
+        },
+        "required": [
+          "instanceId",
+          "uploadId"
+        ]
+      },
+      "UploadPackageProcessOrEndResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "请求是否成功，true-是，false-否 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "请求结果",
+            "x-java-type": "com.jd.ecodd.marketing_data_isv.client.response.upload.PatchUploadPackageResponse",
+            "type": "object",
+            "properties": {
+              "uploadId": {
+                "description": "上传id | 示例: A3A4CD968C791271",
+                "type": "string",
+                "example": "A3A4CD968C791271",
+                "default": ""
+              },
+              "partNumber": {
+                "description": "分片编号 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "instanceId": {
+                "description": "人群实例id | 示例: 35894f8567be43c1a564a1dc6a64e6d5",
+                "type": "string",
+                "example": "35894f8567be43c1a564a1dc6a64e6d5",
+                "default": ""
+              },
+              "missPartList": {
+                "description": " 缺少的文件分片编号 | 示例: [1,2]",
+                "x-java-type": "java.lang.Integer[]",
+                "type": "object"
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 12203001005",
+                "type": "string",
+                "example": "12203001005",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 请求参数uploadId不能为空",
+                "type": "string",
+                "example": "请求参数uploadId不能为空",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: 请求参数uploadId不能为空",
+                "type": "string",
+                "example": "请求参数uploadId不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

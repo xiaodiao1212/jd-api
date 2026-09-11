@@ -1,0 +1,3336 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 C2M API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/deleteGiftCustomApplies": {
+      "delete": {
+        "operationId": "deleteGiftCustomApplies",
+        "summary": "撤回已提交的礼品定制信息审核申请",
+        "description": "用于服务绑定申请撤销\n\nJD method: DELETE.sp-c2m.v0.gift-custom-applies",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "DELETE.sp-c2m.v0.gift-custom-applies",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteGiftCustomAppliesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteGiftCustomAppliesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$无"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getCustomDetail": {
+      "get": {
+        "operationId": "getCustomDetail",
+        "summary": "获取定制价格等关键礼品定制信息用于定制器页面渲染 ",
+        "description": "获取定制价格等关键礼品定制信息用于定制器页面渲染 \n\nJD method: GET.sp-c2m.v0.custom-detail",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-detail",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCustomDetailRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCustomDetailResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$无"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getCustomInstances": {
+      "get": {
+        "operationId": "getCustomInstances",
+        "summary": "获取提交定制信息必要的定制凭证ID",
+        "description": "定制业务三方定制模式下，三方研发的定制器接入时，通过用户设备身份+sku获取唯一定制凭证ID接口\n\nJD method: GET.sp-c2m.v0.custom-instances",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-instances",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCustomInstancesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCustomInstancesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$无"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listCustomProjects": {
+      "get": {
+        "operationId": "listCustomProjects",
+        "summary": "获取礼品定制项目信息",
+        "description": "用于获取礼品定制项目信息\n\nJD method: GET.sp-c2m.v0.custom-projects",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-projects",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListCustomProjectsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCustomProjectsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$无"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listCustomSkus": {
+      "get": {
+        "operationId": "listCustomSkus",
+        "summary": "获取被授权的礼品定制SKU",
+        "description": "用于服务定制的商家，拉取采销在定制系统配置的，商家可售卖服务范围内的商品列表和商品详情，比如礼品定制商品，售卖过程中需要刻字工艺服务，采销提前签署的刻字合同由“服务商1”履行服务，则会在定制系统提前配\n\nJD method: GET.sp-c2m.v0.custom-skus",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-skus",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListCustomSkusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCustomSkusResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$无"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batchPostGiftCustomApplies": {
+      "post": {
+        "operationId": "batchPostGiftCustomApplies",
+        "summary": "提交礼品定制配置信息审核",
+        "description": "用于个性定制批量提交定制服务申请\n\nJD method: POST.sp-c2m.v0.gift-custom-applies",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "POST.sp-c2m.v0.gift-custom-applies",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchPostGiftCustomAppliesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchPostGiftCustomAppliesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "0": {
+                    "summary": "成功@#$成功"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batchGiftCustomApplies": {
+      "patch": {
+        "operationId": "batchGiftCustomApplies",
+        "summary": "获取提交礼品定制信息审核的申请进度状态",
+        "description": "用于和京东签订过个性定制商品的定制商品服务协议的定制商品服务商，查询已经提交过的定制商品服务申请的审核结果和服务状态\n\nJD method: PATCH.sp-c2m.v0.gift-custom-applies",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "PATCH.sp-c2m.v0.gift-custom-applies",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchGiftCustomAppliesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchGiftCustomAppliesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11803005032": {
+                    "summary": "请求参数不能为空@#$填写正确请求参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postCustomCart": {
+      "post": {
+        "operationId": "postCustomCart",
+        "summary": "添加用户的定制信息提交给定制平台",
+        "description": "添加用户的定制信息提交给定制平台\n\nJD method: POST.sp-c2m.v0.custom-cart",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "POST.sp-c2m.v0.custom-cart",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostCustomCartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostCustomCartResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1180600128": {
+                    "summary": "查询不到sku@#$填写正确sku"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getCartByCustomInfoIdJos": {
+      "get": {
+        "operationId": "getCartByCustomInfoIdJos",
+        "summary": "查询定制购物车详情",
+        "description": "通过定制id获取定制购物车详情\n\nJD method: GET.sp-c2m.v0.custom-cart._customCartId",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-cart._customCartId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCartByCustomInfoIdJosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCartByCustomInfoIdJosResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11806002160": {
+                    "summary": "未查询到购物车信息@#$填写正确的定制id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getOrderCustomInfos": {
+      "get": {
+        "operationId": "getOrderCustomInfos",
+        "summary": "定制订单查询定制内容详情",
+        "description": "查询客户的定制订单的定制内容详情\n\nJD method: GET.sp-c2m.v0.custom-order-details._orderId",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "GET.sp-c2m.v0.custom-order-details._orderId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetOrderCustomInfosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetOrderCustomInfosResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11806003000": {
+                    "summary": "订单号和商品编号不能为空@#$填写正确的定制id"
+                  },
+                  "11806003001": {
+                    "summary": "查询异常@#$重新查询"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateGiftCustomStatus": {
+      "patch": {
+        "operationId": "updateGiftCustomStatus",
+        "summary": "礼品定制批量启用/禁用",
+        "description": "当需要对一批SKU启用或禁用礼品定制功能时，商家可使用此接口，批量更新SKU礼品定制的状态。\n\nJD method: PATCH.sp-c2m.v0.custom-skus.batch",
+        "tags": [
+          "C2M API"
+        ],
+        "x-jd-method": "PATCH.sp-c2m.v0.custom-skus.batch",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGiftCustomStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateGiftCustomStatusResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "118030050305": {
+                    "summary": "商品定制服务不存在@#$请提审礼品定制信息"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DeleteGiftCustomAppliesRequest": {
+        "type": "object",
+        "properties": {
+          "param": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.DeleteGiftCustomAppliesRequest",
+            "type": "object",
+            "properties": {
+              "supplierId": {
+                "description": "服务商Id | 示例: shanding",
+                "type": "string",
+                "example": "shanding",
+                "default": ""
+              },
+              "systemCode": {
+                "description": "系统编码 | 示例: shanding",
+                "type": "string",
+                "example": "shanding",
+                "default": ""
+              },
+              "identityId": {
+                "description": "唯一标识码 | 示例: 79255521141",
+                "type": "string",
+                "example": "79255521141",
+                "default": ""
+              },
+              "auditType": {
+                "description": "绑定/解绑 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "DeleteGiftCustomAppliesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "响应码 | 示例: 0",
+            "type": "integer",
+            "example": 0,
+            "default": 0
+          },
+          "identityId": {
+            "description": "唯一标识码 | 示例: 79255521141",
+            "type": "string",
+            "example": "79255521141",
+            "default": ""
+          },
+          "requestId": {
+            "description": "请求ID | 示例: d0cadc40-0dfa-4d63-8f9c-ad4bf88fbdc7",
+            "type": "string",
+            "example": "d0cadc40-0dfa-4d63-8f9c-ad4bf88fbdc7",
+            "default": ""
+          },
+          "message": {
+            "description": "描述 | 示例: 成功",
+            "type": "string",
+            "example": "成功",
+            "default": ""
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "string",
+            "example": "true",
+            "default": ""
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误编码 | 示例: 500",
+                "type": "string",
+                "example": "500",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetCustomDetailRequest": {
+        "type": "object",
+        "properties": {
+          "param1": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.izao.customized.newOpen.request.GetCustomDetailRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 示例: bjylgxgs | 默认: bjylgxgs",
+                "type": "string",
+                "example": "bjylgxgs",
+                "default": "bjylgxgs"
+              },
+              "businessId": {
+                "description": "业务id | 示例: JD",
+                "type": "string",
+                "example": "JD",
+                "default": ""
+              },
+              "skuId": {
+                "description": "商品id | 示例: 100002809067",
+                "type": "string",
+                "example": "100002809067",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetCustomDetailResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "响应编码 | 示例: 0",
+            "type": "string",
+            "example": "0",
+            "default": ""
+          },
+          "data": {
+            "description": "响应参数",
+            "x-java-type": "com.jd.izao.customized.newOpen.entity.CustomInfoDTO",
+            "type": "object",
+            "properties": {
+              "customServiceInfo": {
+                "description": "绑定的定制信息",
+                "x-java-type": "com.jd.izao.customized.newOpen.entity.CustomServiceDTO",
+                "type": "object",
+                "properties": {
+                  "serviceDetailList": {
+                    "description": "商品定制服务详情",
+                    "x-java-type": "java.util.List",
+                    "type": "object",
+                    "properties": {
+                      "firstServiceName": {
+                        "description": "一级服务分类名称 | 示例: 图文定制",
+                        "type": "string",
+                        "example": "图文定制",
+                        "default": ""
+                      },
+                      "salePrice": {
+                        "description": "定制服务费 | 示例: 100.01",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "indexName": {
+                        "description": "定制对象名称 | 示例: 正面",
+                        "type": "string",
+                        "example": "正面",
+                        "default": ""
+                      },
+                      "techName": {
+                        "description": "工艺名称 | 示例: 激光刻字",
+                        "type": "string",
+                        "example": "激光刻字",
+                        "default": ""
+                      },
+                      "secondServiceId": {
+                        "description": "二级服务分类ID | 示例: 20012",
+                        "type": "string",
+                        "example": "20012",
+                        "default": ""
+                      },
+                      "secondServiceName": {
+                        "description": "二级服务分类名称 | 示例: 专属镌刻",
+                        "type": "string",
+                        "example": "专属镌刻",
+                        "default": ""
+                      },
+                      "required": {
+                        "description": "是否必选 | 示例: true",
+                        "type": "boolean",
+                        "example": true,
+                        "default": false
+                      },
+                      "indexId": {
+                        "description": "定制对象ID | 示例: 1",
+                        "type": "string",
+                        "example": "1",
+                        "default": ""
+                      },
+                      "firstServiceId": {
+                        "description": "一级服务分类ID | 示例: 10011",
+                        "type": "string",
+                        "example": "10011",
+                        "default": ""
+                      },
+                      "techId": {
+                        "description": "工艺ID | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      }
+                    }
+                  },
+                  "serviceName": {
+                    "description": "服务项目名称 | 示例: 定制服务项目",
+                    "type": "string",
+                    "example": "定制服务项目",
+                    "default": ""
+                  },
+                  "configId": {
+                    "description": "配置id | 示例: 192993",
+                    "type": "integer",
+                    "example": 192993,
+                    "default": 0
+                  },
+                  "supplier": {
+                    "description": "服务商 | 示例: fsdjzh",
+                    "type": "string",
+                    "example": "fsdjzh",
+                    "default": ""
+                  },
+                  "serviceId": {
+                    "description": "务项目ID | 示例: 10012",
+                    "type": "integer",
+                    "example": 10012,
+                    "default": 0
+                  },
+                  "skuId": {
+                    "description": "商品编号 | 示例: 100077054749",
+                    "type": "integer",
+                    "example": 100077054749,
+                    "default": 0
+                  },
+                  "customExt": {
+                    "description": "定制扩展信息 | 示例: 自定义定制信息字符串",
+                    "type": "string",
+                    "example": "自定义定制信息字符串",
+                    "default": ""
+                  },
+                  "productType": {
+                    "description": "\t\n生产类型：3-代表需上定制生产工作台进行生产。2-代表不进行生产定制行为 | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  }
+                }
+              },
+              "transparency": {
+                "description": "透传字段",
+                "x-java-type": "com.jd.izao.customized.newOpen.entity.TransparencyDTO",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "定制配置id | 示例: 192993",
+                    "type": "integer",
+                    "example": 192993,
+                    "default": 0
+                  },
+                  "customServiceVersion": {
+                    "description": "定制服务信息版本号 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  }
+                }
+              }
+            }
+          },
+          "errorList": {
+            "description": "异常信息集合",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 118100012345",
+                "type": "string",
+                "example": "118100012345",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 参数错误",
+                "type": "string",
+                "example": "参数错误",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 参数错误",
+                "type": "string",
+                "example": "参数错误",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "message": {
+            "description": "描述 | 示例: 成功",
+            "type": "string",
+            "example": "成功",
+            "default": ""
+          }
+        }
+      },
+      "GetCustomInstancesRequest": {
+        "type": "object",
+        "properties": {
+          "param": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.y.izao.api.newOpen.customInstance.request.GetCustomInstancesRequest",
+            "type": "object",
+            "properties": {
+              "rawUserKey": {
+                "description": "客户唯一ID | 示例: dsstest1",
+                "type": "string",
+                "example": "dsstest1",
+                "default": ""
+              },
+              "skuId": {
+                "description": "商品ID | 示例: 100013205885",
+                "type": "string",
+                "example": "100013205885",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetCustomInstancesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "total": {
+            "description": "总条数 | 示例: 10",
+            "type": "integer",
+            "example": 10,
+            "default": 0
+          },
+          "code": {
+            "description": "响应码 | 示例: 0",
+            "type": "string",
+            "example": "0",
+            "default": ""
+          },
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.y.izao.api.newOpen.customInstance.entity.CustomInstanceIdInfoDTO",
+            "type": "object",
+            "properties": {
+              "customInstanceId": {
+                "description": "生成的三方定制器本次定制行为的唯一定制ID | 示例: 9851c46309c675dfc626d57c9b8135dd",
+                "type": "string",
+                "example": "9851c46309c675dfc626d57c9b8135dd",
+                "default": ""
+              },
+              "rawUserKey": {
+                "description": "客户唯一ID | 示例: lyaGw",
+                "type": "string",
+                "example": "lyaGw",
+                "default": ""
+              },
+              "userId": {
+                "description": "用户ID | 示例: xxxxxx",
+                "type": "string",
+                "example": "xxxxxx",
+                "default": ""
+              },
+              "skuId": {
+                "description": "商品skuId | 示例: 100014699021",
+                "type": "string",
+                "example": "100014699021",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "message": {
+            "description": "描述信息 | 示例: 成功",
+            "type": "string",
+            "example": "成功",
+            "default": ""
+          },
+          "errorList": {
+            "description": "异常信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 11801001001",
+                "type": "string",
+                "example": "11801001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 参数错误",
+                "type": "string",
+                "example": "参数错误",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 参数错误",
+                "type": "string",
+                "example": "参数错误",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListCustomProjectsRequest": {
+        "type": "object",
+        "properties": {
+          "listCustomProjectsRequest": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.ListCustomProjectsRequest",
+            "type": "object",
+            "properties": {
+              "firstCategoryId": {
+                "description": "实物一级分类 | 示例: 35025",
+                "type": "integer",
+                "example": 35025,
+                "default": 0
+              },
+              "secondCategoryId": {
+                "description": "实物二级分类 | 示例: 35032",
+                "type": "integer",
+                "example": 35032,
+                "default": 0
+              },
+              "thirdCategoryId": {
+                "description": "实物三级分类 | 示例: 35083",
+                "type": "integer",
+                "example": 35083,
+                "default": 0
+              },
+              "skuId": {
+                "description": "实物商品ID | 示例: 100077533843",
+                "type": "string",
+                "example": "100077533843",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListCustomProjectsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "result": {
+            "description": "响应数据",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "modifiedTime": {
+                "description": "更新时间 | 示例: 1761644524000",
+                "type": "integer",
+                "example": 1761644524000,
+                "default": 0
+              },
+              "thirdCategoryName": {
+                "description": "商品三级分类名称 | 示例: 手机1",
+                "type": "string",
+                "example": "手机1",
+                "default": ""
+              },
+              "serviceCdInfos": {
+                "description": "服务分类信息",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "parent": {
+                    "description": "父级服务分类 | 示例: 0",
+                    "type": "integer",
+                    "example": 0,
+                    "default": 0
+                  },
+                  "level": {
+                    "description": "服务分类级别 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "children": {
+                    "description": "服务分类子节点信息",
+                    "x-java-type": "java.util.List",
+                    "type": "object",
+                    "properties": {
+                      "parent": {
+                        "description": "父级服务分类 | 示例: 0",
+                        "type": "integer",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "level": {
+                        "description": "服务分类级别 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "serviceCdId": {
+                        "description": "服务分类ID | 示例: 6179",
+                        "type": "integer",
+                        "example": 6179,
+                        "default": 0
+                      },
+                      "serviceCdName": {
+                        "description": "服务分类名称 | 示例: 图文定制",
+                        "type": "string",
+                        "example": "图文定制",
+                        "default": ""
+                      },
+                      "children": {
+                        "description": "服务分类子节点信息",
+                        "x-java-type": "java.util.List",
+                        "type": "object",
+                        "properties": {
+                          "parent": {
+                            "description": "父级服务分类 | 示例: 0",
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "level": {
+                            "description": "服务分类级别 | 示例: 1",
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "serviceCdId": {
+                            "description": "服务分类ID | 示例: 6179",
+                            "type": "integer",
+                            "example": 6179,
+                            "default": 0
+                          },
+                          "serviceCdName": {
+                            "description": "服务分类名称 | 示例: 图文定制",
+                            "type": "string",
+                            "example": "图文定制",
+                            "default": ""
+                          },
+                          "children": {
+                            "description": "服务分类子节点信息",
+                            "x-java-type": "java.util.List",
+                            "type": "object",
+                            "properties": {
+                              "parent": {
+                                "description": "父级服务分类 | 示例: 0",
+                                "type": "integer",
+                                "example": 0,
+                                "default": 0
+                              },
+                              "level": {
+                                "description": "服务分类级别 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "serviceCdId": {
+                                "description": "服务分类ID | 示例: 6179",
+                                "type": "integer",
+                                "example": 6179,
+                                "default": 0
+                              },
+                              "serviceCdName": {
+                                "description": "服务分类名称 | 示例: 图文定制",
+                                "type": "string",
+                                "example": "图文定制",
+                                "default": ""
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "serviceCdId": {
+                    "description": "服务分类ID | 示例: 6179",
+                    "type": "integer",
+                    "example": 6179,
+                    "default": 0
+                  },
+                  "serviceCdName": {
+                    "description": "服务分类名称 | 示例: 图文定制",
+                    "type": "string",
+                    "example": "图文定制",
+                    "default": ""
+                  }
+                }
+              },
+              "firstCategoryId": {
+                "description": "商品一级分类编码 | 示例: 9987",
+                "type": "integer",
+                "example": 9987,
+                "default": 0
+              },
+              "thirdCategoryId": {
+                "description": "商品三级分类编码 | 示例: 655",
+                "type": "integer",
+                "example": 655,
+                "default": 0
+              },
+              "serviceProjectName": {
+                "description": "服务项目名称 | 示例: 测试项目144120",
+                "type": "string",
+                "example": "测试项目144120",
+                "default": ""
+              },
+              "firstCategoryName": {
+                "description": "商品一级分类名称 | 示例: 手机",
+                "type": "string",
+                "example": "手机",
+                "default": ""
+              },
+              "serviceTechInfos": {
+                "description": "服务工艺信息",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "techCommonPrice": {
+                    "description": "采销设置的工艺统一价格 | 示例: 22.11",
+                    "type": "number",
+                    "example": 22.11,
+                    "default": 0
+                  },
+                  "techName": {
+                    "description": "服务工艺名称 | 示例: 刺绣",
+                    "type": "string",
+                    "example": "刺绣",
+                    "default": ""
+                  },
+                  "techId": {
+                    "description": "服务工艺ID | 示例: 3",
+                    "type": "integer",
+                    "example": 3,
+                    "default": 0
+                  }
+                }
+              },
+              "secondCategoryName": {
+                "description": "商品二级分类名称 | 示例: 手机通讯",
+                "type": "string",
+                "example": "手机通讯",
+                "default": ""
+              },
+              "serviceProjectId": {
+                "description": "服务项目ID | 示例: 3459",
+                "type": "integer",
+                "example": 3459,
+                "default": 0
+              },
+              "secondCategoryId": {
+                "description": "商品二级分类编码 | 示例: 653",
+                "type": "integer",
+                "example": 653,
+                "default": 0
+              }
+            }
+          },
+          "total": {
+            "description": "总条数 | 示例: 10",
+            "type": "integer",
+            "example": 10,
+            "default": 0
+          },
+          "code": {
+            "description": "成功 | 示例: 0",
+            "type": "integer",
+            "example": 0,
+            "default": 0
+          },
+          "success": {
+            "description": "成功标志 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "message": {
+            "description": "错误消息 | 示例: 失败",
+            "type": "string",
+            "example": "失败",
+            "default": ""
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 500",
+                "type": "string",
+                "example": "500",
+                "default": ""
+              },
+              "details": {
+                "description": "错误明细 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListCustomSkusRequest": {
+        "type": "object",
+        "properties": {
+          "param": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.BatchCustomSkuRequest",
+            "type": "object",
+            "properties": {
+              "skuList": {
+                "description": "商品列表，一次最多传入100个",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "pageSize": {
+                "description": "一页记录数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "page": {
+                "description": "y页码 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "type": {
+                "description": "类型，SERVICE代表服务，GOODS代表商品 | 示例: GOODS",
+                "type": "string",
+                "example": "GOODS",
+                "default": ""
+              },
+              "supplier": {
+                "description": "供应商/服务商/商家的编码 | 示例: xxxxx",
+                "type": "string",
+                "example": "xxxxx",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListCustomSkusResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "result": {
+            "description": "返回结构 | 示例: {         \"100000348786\": {             \"code\": 500,             \"message\": \"暂不支持厂直商品\",             \"success\": false,             \"class\": \"com.jd.customization.center.open.entity.newOpen.customService.entity.SupplierSkuInfoDTO\"         },         \"100002596251\": {             \"brandName\": \"思元本草\",             \"code\": 0,             \"skuState\": 1,             \"thirdCategoryName\": \"手机\",             \"message\": \"成功\",             \"firstCategoryId\": 9987,             \"thirdCategoryId\": 655,             \"vendorCode\": \"bjylgxgs\",             \"skuName\": \"自营--供应商-bjylgxgs-测试商品,请勿下单-wangxiaoyan100--82\",             \"firstCategoryName\": \"【测试环境】手机通讯\",             \"success\": true,             \"secondCategoryName\": \"手机\",             \"class\": \"com.jd.customization.center.open.entity.newOpen.customService.entity.SupplierSkuInfoDTO\",             \"secondCategoryId\": 653,             \"skuId\": 100002596251,             \"brandCode\": \"359751\"         }     }",
+            "x-java-type": "java.util.Map",
+            "type": "object"
+          },
+          "total": {
+            "description": "总条数 | 示例: 10",
+            "type": "integer",
+            "example": 10,
+            "default": 0
+          },
+          "code": {
+            "description": "响应编码 | 示例: 0",
+            "type": "integer",
+            "example": 0,
+            "default": 0
+          },
+          "message": {
+            "description": "错误描述 | 示例: 成功",
+            "type": "string",
+            "example": "成功",
+            "default": ""
+          },
+          "success": {
+            "description": "成功失败 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误集合",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 500",
+                "type": "string",
+                "example": "500",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              }
+            }
+          },
+          "requestId": {
+            "description": "请求ID | 示例: 49d6f52a-876b-4c7e-b0aa-f6921da99b83",
+            "type": "string",
+            "example": "49d6f52a-876b-4c7e-b0aa-f6921da99b83",
+            "default": ""
+          }
+        }
+      },
+      "BatchPostGiftCustomAppliesRequest": {
+        "type": "object",
+        "properties": {
+          "batchPostGiftCustomAppliesRequest": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.BatchPostGiftCustomAppliesRequest",
+            "type": "object",
+            "properties": {
+              "skuServiceApplyListDTO": {
+                "description": "请求参数",
+                "x-java-type": "java.util.List <SkuServiceApplyList>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "supplierId": {
+                      "description": "服务商 | 示例: shanding",
+                      "type": "string",
+                      "example": "shanding",
+                      "default": ""
+                    },
+                    "firstCategoryId": {
+                      "description": "商品一级分类编码 | 示例: 32",
+                      "type": "integer",
+                      "example": 32,
+                      "default": 0
+                    },
+                    "secondCategoryId": {
+                      "description": "商品二级分类编码 | 示例: 39",
+                      "type": "integer",
+                      "example": 39,
+                      "default": 0
+                    },
+                    "thirdCategoryId": {
+                      "description": "商品三级分类编码 | 示例: 40",
+                      "type": "integer",
+                      "example": 40,
+                      "default": 0
+                    },
+                    "skuName": {
+                      "description": "商品名称 | 示例: iPhone 13 Pro Max",
+                      "type": "string",
+                      "example": "iPhone 13 Pro Max",
+                      "default": ""
+                    },
+                    "venderCode": {
+                      "description": "供应商简码 | 示例: shanding",
+                      "type": "string",
+                      "example": "shanding",
+                      "default": ""
+                    },
+                    "systemCode": {
+                      "description": "系统编码 | 示例: shanding",
+                      "type": "string",
+                      "example": "shanding",
+                      "default": ""
+                    },
+                    "identityId": {
+                      "description": "唯一识别码 | 示例: ID123456781",
+                      "type": "string",
+                      "example": "ID123456781",
+                      "default": ""
+                    },
+                    "serviceProjectId": {
+                      "description": "服务项目ID | 示例: 158",
+                      "type": "integer",
+                      "example": 158,
+                      "default": 0
+                    },
+                    "skuId": {
+                      "description": "商品ID | 示例: 100014808675",
+                      "type": "string",
+                      "example": "100014808675",
+                      "default": ""
+                    },
+                    "customExt": {
+                      "description": "扩展信息 | 示例: \"{\"remark\":\"优先处理\",\"priority\":\"high\"}\"",
+                      "type": "string",
+                      "example": "\"{\"remark\":\"优先处理\",\"priority\":\"high\"}\"",
+                      "default": ""
+                    },
+                    "previewImageList": {
+                      "description": "预览图集合",
+                      "x-java-type": "java.util.List <java.lang.String>",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "serviceDetailList": {
+                      "description": "定制明细集合",
+                      "x-java-type": "java.util.List <com.jd.customization.center.open.entity.newOpen.customService.entity.SkuServiceApplyDetailDTO>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "customContents": {
+                            "description": "审核内容 | 示例: \"[{\"displayName\": \"颜色\",\"displayValue\": \"红\",\"text\":\"闪定定制6\"}]\"",
+                            "type": "string",
+                            "example": "\"[{\"displayName\": \"颜色\",\"displayValue\": \"红\",\"text\":\"闪定定制6\"}]\"",
+                            "default": ""
+                          },
+                          "indexType": {
+                            "description": "定制服务明细类型 | 示例: 1",
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "salePrice": {
+                            "description": "销售价 | 示例: 5.1",
+                            "x-java-type": "java.math.BigDecimal",
+                            "type": "object"
+                          },
+                          "indexName": {
+                            "description": "定制名称 | 示例: 屏幕保护",
+                            "type": "string",
+                            "example": "屏幕保护",
+                            "default": ""
+                          },
+                          "indexId": {
+                            "description": "定制下标 | 示例: detail001",
+                            "type": "string",
+                            "example": "detail001",
+                            "default": ""
+                          },
+                          "firstServiceId": {
+                            "description": "一级服务分类ID | 示例: 32",
+                            "type": "integer",
+                            "example": 32,
+                            "default": 0
+                          },
+                          "secondServiceId": {
+                            "description": "二级服务分类ID | 示例: 39",
+                            "type": "integer",
+                            "example": 39,
+                            "default": 0
+                          },
+                          "purchasePrice": {
+                            "description": "采购价 | 示例: 69.99",
+                            "x-java-type": "java.math.BigDecimal",
+                            "type": "object"
+                          },
+                          "techId": {
+                            "description": "工艺ID | 示例: 4",
+                            "type": "integer",
+                            "example": 4,
+                            "default": 0
+                          },
+                          "required": {
+                            "description": "是否必选项 | 示例: true",
+                            "type": "boolean",
+                            "example": true,
+                            "default": false
+                          },
+                          "serviceCate1Remark": {
+                            "description": "一级服务分类说明 | 示例: 定制服务",
+                            "type": "string",
+                            "example": "定制服务",
+                            "default": ""
+                          },
+                          "serviceCate2Remark": {
+                            "description": "二级服务分类说明 | 示例: 专属镌刻",
+                            "type": "string",
+                            "example": "专属镌刻",
+                            "default": ""
+                          }
+                        }
+                      }
+                    },
+                    "customShortImageUrl": {
+                      "description": "商品定制缩略图，定制完成后在我的订单商品定制楼层显示 | 示例: https://jd-ele.s3.cn-north-1.jdcloud-oss.com/user-file/2025/0525/9ae41d59-eda6-4eb1-9a76-cc1bf087c8cf.png",
+                      "type": "string",
+                      "example": "https://jd-ele.s3.cn-north-1.jdcloud-oss.com/user-file/2025/0525/9ae41d59-eda6-4eb1-9a76-cc1bf087c8cf.png",
+                      "default": ""
+                    },
+                    "showServicePrice": {
+                      "description": "商详是否展示定制费，1展示，0不展示，默认1 | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "giftServiceOrder": {
+                      "description": "礼品商详默认定制规则，商家提审时传入，枚举值1，0，可传空，0 和空代表不默认选中按钮，默认0 | 示例: 0",
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "custom7ToReturn": {
+                      "description": "0不支持7无，1跟随sku主数据七无规则，默认0 | 示例: 0",
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "customSampleImage": {
+                      "description": "商详定制楼层预览图 | 示例: https://jd-ele.s3.cn-north-1.jdcloud-oss.com/user-file/2025/0525/9ae41d59-eda6-4eb1-9a76-cc1bf087c8cf.png",
+                      "type": "string",
+                      "example": "https://jd-ele.s3.cn-north-1.jdcloud-oss.com/user-file/2025/0525/9ae41d59-eda6-4eb1-9a76-cc1bf087c8cf.png",
+                      "default": ""
+                    },
+                    "userCustomText": {
+                      "description": "商详自定义定制文案",
+                      "x-java-type": "com.jd.customization.center.open.entity.customService.UserCustomText",
+                      "type": "object",
+                      "properties": {
+                        "customTitle1": {
+                          "description": "自定义定制一级标题 | 示例: 定制服务",
+                          "type": "string",
+                          "example": "定制服务",
+                          "default": ""
+                        },
+                        "customTitle2": {
+                          "description": "自定义定制二级标题 | 示例: 高级定制",
+                          "type": "string",
+                          "example": "高级定制",
+                          "default": ""
+                        },
+                        "customTitle2Remark": {
+                          "description": "自定义定制二级标题说明 | 示例: 商家赠送",
+                          "type": "string",
+                          "example": "商家赠送",
+                          "default": ""
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BatchPostGiftCustomAppliesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "错误码 | 示例: 0",
+            "type": "integer",
+            "example": 0,
+            "default": 0
+          },
+          "skuValidErrorMap": {
+            "description": "处理结果描述 | 示例: {         \"100000348786\": {             \"code\": 500,             \"message\": \"暂不支持厂直商品\",             \"success\": false,             \"class\": \"com.jd.customization.center.open.entity.newOpen.customService.entity.SupplierSkuInfoDTO\"         }     }",
+            "x-java-type": "java.util.Map",
+            "type": "object"
+          },
+          "message": {
+            "description": "描述 | 示例: 成功",
+            "type": "string",
+            "example": "成功",
+            "default": ""
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误编码 | 示例: 500",
+                  "type": "string",
+                  "example": "500",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述 | 示例: 系统错误",
+                  "type": "string",
+                  "example": "系统错误",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: 系统错误",
+                  "type": "string",
+                  "example": "系统错误",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "applyRespListDTO": {
+            "description": "返回",
+            "x-java-type": "java.util.List <com.jd.customization.center.open.entity.newOpen.customService.entity.ApplyDetailDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 0",
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                },
+                "message": {
+                  "description": "描述 | 示例: 成功",
+                  "type": "string",
+                  "example": "成功",
+                  "default": ""
+                },
+                "requestId": {
+                  "description": "请求ID | 示例: xxxxxx",
+                  "type": "string",
+                  "example": "xxxxxx",
+                  "default": ""
+                },
+                "identityId": {
+                  "description": "唯一ID | 示例: ID123456781",
+                  "type": "string",
+                  "example": "ID123456781",
+                  "default": ""
+                },
+                "skuValidErrorMap": {
+                  "description": "处理结果描述 | 示例: {         \"100000348786\": {             \"code\": 500,             \"message\": \"暂不支持厂直商品\",             \"success\": false,             \"class\": \"com.jd.customization.center.open.entity.newOpen.customService.entity.SupplierSkuInfoDTO\"         }     }",
+                  "x-java-type": "java.util.Map",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BatchGiftCustomAppliesRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求入参 | 必填",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.BatchGiftCustomAppliesRequest",
+            "type": "object",
+            "properties": {
+              "skuServiceApplyResultList": {
+                "description": "请求参数集合 | 必填",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "skuServiceApplyResultList"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "BatchGiftCustomAppliesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "skuServiceApplyResultList": {
+            "description": "返回结果",
+            "x-java-type": "java.util.List <com.jd.customization.center.open.entity.newOpen.customService.entity.SkuServiceApplyResultDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "auditStatusDesc": {
+                  "description": "审核状态描述  1待审核2审核通过3审核驳回4撤销审核 | 示例: 待审核",
+                  "type": "string",
+                  "example": "待审核",
+                  "default": ""
+                },
+                "rejectReason": {
+                  "description": "驳回原因 | 示例: 驳回原因",
+                  "type": "string",
+                  "example": "驳回原因",
+                  "default": ""
+                },
+                "identityId": {
+                  "description": "唯一识别码 | 示例: ID123456781",
+                  "type": "string",
+                  "example": "ID123456781",
+                  "default": ""
+                },
+                "auditStatus": {
+                  "description": "审核状态 1待审核2审核通过3审核驳回4撤销审核 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "auditTaskName": {
+                  "description": "审核节点角色 | 示例: 服务采销经理审核",
+                  "type": "string",
+                  "example": "服务采销经理审核",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误编码 | 示例: 11803005032",
+                  "type": "string",
+                  "example": "11803005032",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述 | 示例: 根据错误提示修改参数",
+                  "type": "string",
+                  "example": "根据错误提示修改参数",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: 请求参数不能为空",
+                  "type": "string",
+                  "example": "请求参数不能为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostCustomCartRequest": {
+        "type": "object",
+        "properties": {
+          "postCustomCartRequest": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.y.tdp.cart.newOpen.request.PostCustomCartRequest",
+            "type": "object",
+            "properties": {
+              "displayMultimediaInfo": {
+                "description": " 音频视频其它图片(如贺卡图片、照片)信息",
+                "x-java-type": "java.util.List <DisplayMultimediaInfo>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "displayName": {
+                      "description": "在页面展示的名称 | 示例: 字体颜色",
+                      "type": "string",
+                      "example": "字体颜色",
+                      "default": ""
+                    },
+                    "type": {
+                      "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                      "type": "string",
+                      "example": "1",
+                      "default": ""
+                    },
+                    "url": {
+                      "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                      "type": "string",
+                      "example": "https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "customServiceInfo": {
+                "description": "定制服务信息",
+                "x-java-type": "java.util.List <CustomServiceInfo>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "customContent": {
+                      "description": "定制内容 用于购物车展示",
+                      "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.CustomContent",
+                      "type": "object",
+                      "properties": {
+                        "displayValue": {
+                          "description": "定制属性 | 示例: 无需定制",
+                          "type": "string",
+                          "example": "无需定制",
+                          "default": ""
+                        },
+                        "displayName": {
+                          "description": "定制名称 | 示例: 正面/右胸/文字",
+                          "type": "string",
+                          "example": "正面/右胸/文字",
+                          "default": ""
+                        },
+                        "indexName": {
+                          "description": "可代表面或区域，对详细定制内容进行分组，可重复命名 | 示例: 闪定区域1",
+                          "type": "string",
+                          "example": "闪定区域1",
+                          "default": ""
+                        },
+                        "indexId": {
+                          "description": "单SKU下不能重复 | 示例: 2",
+                          "type": "string",
+                          "example": "2",
+                          "default": ""
+                        },
+                        "url": {
+                          "description": "对应位置的缩略图 | 示例: https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                          "type": "string",
+                          "example": "https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                          "default": ""
+                        }
+                      }
+                    },
+                    "serviceCd2Id": {
+                      "description": "二级服务分类ID | 示例: 39",
+                      "type": "string",
+                      "example": "39",
+                      "default": ""
+                    },
+                    "positionId": {
+                      "description": "区域Id | 示例: 1",
+                      "type": "string",
+                      "example": "1",
+                      "default": ""
+                    },
+                    "serviceCd1Id": {
+                      "description": "一级服务分类ID | 示例: 40",
+                      "type": "string",
+                      "example": "40",
+                      "default": ""
+                    },
+                    "serviceCd1Name": {
+                      "description": "一级服务分类名称 | 示例: 个性定制",
+                      "type": "string",
+                      "example": "个性定制",
+                      "default": ""
+                    },
+                    "serviceCd2Name": {
+                      "description": "二级服务分类名称 | 示例: 图文定制",
+                      "type": "string",
+                      "example": "图文定制",
+                      "default": ""
+                    },
+                    "techName": {
+                      "description": "当前区域的工艺名称 | 示例: 热转印",
+                      "type": "string",
+                      "example": "热转印",
+                      "default": ""
+                    },
+                    "serviceId": {
+                      "description": "服务项目ID | 示例: 29",
+                      "type": "string",
+                      "example": "29",
+                      "default": ""
+                    },
+                    "serviceName": {
+                      "description": "服务项目名称 | 示例: 礼品定制",
+                      "type": "string",
+                      "example": "礼品定制",
+                      "default": ""
+                    },
+                    "techId": {
+                      "description": "当前区域的工艺Id | 示例: 31",
+                      "type": "string",
+                      "example": "31",
+                      "default": ""
+                    },
+                    "salePrice": {
+                      "description": "销售价格 | 示例: 10",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "customServiceType": {
+                      "description": "1:礼品定制2:工服3:标准 | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "required": {
+                      "description": "是否必选 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "orderId": {
+                "description": "订单ID，眼镜后置定制必选 | 示例: 10023456",
+                "type": "integer",
+                "example": 10023456,
+                "default": 0
+              },
+              "totalPrice": {
+                "description": "定制附加金额，根据定制商品是否在商品价格基础上加价传值，不加价则传0 | 示例: 10",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "businessId": {
+                "description": "第三方自定义业务代码，例如NIKE | 示例: Abcdef123456",
+                "type": "string",
+                "example": "Abcdef123456",
+                "default": ""
+              },
+              "suitInfo": {
+                "description": "涉及礼盒业务才需写入，礼盒组套信息，用户记录用户购买的商品组套信息",
+                "x-java-type": "java.util.List <SuitInfo>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "skuName": {
+                      "description": "商品名称 | 示例: 1212121",
+                      "type": "string",
+                      "example": "1212121",
+                      "default": ""
+                    },
+                    "skuNumRule": {
+                      "description": "礼盒必传-主品不传，透传查询组套返回的skuNumRule | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "suitSkuType": {
+                      "description": "1代表主品；2代表是礼盒服务的礼盒；3代表赠品 | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "skuId": {
+                      "description": "商品ID | 示例: 100118851913",
+                      "type": "integer",
+                      "example": 100118851913,
+                      "default": 0
+                    },
+                    "skuNum": {
+                      "description": "礼盒必传-主品不传，透传查询组套返回的skuNum | 示例: 2",
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    },
+                    "skuCount": {
+                      "description": "商品数量 | 示例: 2",
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    }
+                  }
+                }
+              },
+              "customInstanceId": {
+                "description": "唯一定制会话id | 示例: 3f95388e81ee0c6bb34a0993ad4121d2",
+                "type": "string",
+                "example": "3f95388e81ee0c6bb34a0993ad4121d2",
+                "default": ""
+              },
+              "rawJson": {
+                "description": "生产原始数据的JSON串 | 示例: \"生产原始数据的JSON串\"",
+                "type": "string",
+                "example": "\"生产原始数据的JSON串\"",
+                "default": ""
+              },
+              "customize": {
+                "description": "定制业务类型 | 示例: 101",
+                "type": "string",
+                "example": "101",
+                "default": ""
+              },
+              "displayPictureInfo": {
+                "description": "定制后图片效果图，建议使用比如：正面效果图、背面效果图",
+                "x-java-type": "java.util.List <DisplayPictureInfo>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "displayName": {
+                      "description": "在页面展示的名称 | 示例: 颜色",
+                      "type": "string",
+                      "example": "颜色",
+                      "default": ""
+                    },
+                    "type": {
+                      "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                      "type": "string",
+                      "example": "1",
+                      "default": ""
+                    },
+                    "url": {
+                      "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                      "type": "string",
+                      "example": "https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "displayCustomInfo": {
+                "description": "用于在定制详情页以 key-value 形式展示的内容，key和value仅支持String类型 | 示例: {         \"容量\": \"75ml\"     }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "skuId": {
+                "description": "京东商品SKU | 示例: 10110029722596",
+                "type": "integer",
+                "example": 10110029722596,
+                "default": 0
+              },
+              "productType": {
+                "description": "产品类型 1：定制上生产台 2：定制不上生产台，包括虚拟定制，未配置这个字段的null都处理为2 3：礼品仓增值服务定制。这样，宝洁null的就处理为了2 4：调色定制 6：眼镜定制 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "unitPrice": {
+                "description": "定制附加金额，根据定制商品是否在商品价格基础上加价传值，不加价则传0 | 示例: 10",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "customParams": {
+                "description": "扩展参数(原厂服务等), 从去定制url的customParams取值 | 示例: {         \"ycServiceId\": null,         \"ybServiceId\": null,         \"homeServiceId\": null,         \"skuUuid\": null,         \"customInfoId\": null,         \"suitInfoId\": null,         \"packSku\": null,         \"packSkuNum\": null,         \"area\": null,         \"authorId\": \"\",         \"liveId\": \"\",         \"supperRoomPromo\": \"\",         \"channelId\": \"\",         \"pt\": \"\",         \"liveActId\": \"\",         \"beginTime\": \"\",         \"endTime\": \"\"     }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "count": {
+                "description": "商品个数 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "autoProductInfo": {
+                "description": "自动产品信息映射，键为技术ID，值为产品信息 | 示例: {         \"1\":         {             \"areaName\": \"右胸\",             \"canvasImage\": \"https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png\",             \"faceName\": \"正面\",             \"positionUrl\": \"https://img11.360buyimg.com/cxxjwimg/jfs/t1/332484/25/25636/231088/68f8405cF0417cc75/0c99fe7662481c0a.png\",             \"productType\": \"1\",             \"remark\": \"195的一套\",             \"techId\": 32,             \"techName\": \"热转印\",             \"userInputList\":             [                 {                     \"alignment\": 1,                     \"attrValueName\": \"无需定制\",                     \"direction\": 0,                     \"fontColor\": \"#ffffff\",                     \"fontFamily\": \"HYHeiLiZhiTiJ\",                     \"fontSize\": 15                 }             ]         }     }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "userId": {
+                "description": "用户ID | 示例: 0a46899bea5793fb06142ce478d671e5",
+                "type": "string",
+                "example": "0a46899bea5793fb06142ce478d671e5",
+                "default": ""
+              },
+              "actionType": {
+                "description": "1:加入购物车 2:立即购买 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "customType": {
+                "description": "每一位代表一种类型,第一位是组件定制，第二位是图文定制 1表示已包含,0表示不包含 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "transparency": {
+                "description": "透明度配置信息",
+                "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.Transparency",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "配置ID | 示例: 999683123",
+                    "type": "string",
+                    "example": "999683123",
+                    "default": ""
+                  },
+                  "customServiceVersion": {
+                    "description": "自定义服务版本 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  }
+                }
+              },
+              "rawCustomInfo": {
+                "description": "原始定制串信息，定制平台会透传 | 示例: \"{\"customServiceIds\":\"0\",\"designId\":\"30257\",\"isPrint\":0,\"orderNumber\":\"319034\"}\"",
+                "type": "string",
+                "example": "\"{\"customServiceIds\":\"0\",\"designId\":\"30257\",\"isPrint\":0,\"orderNumber\":\"319034\"}\"",
+                "default": ""
+              },
+              "customDetailPageUrl": {
+                "description": "自建的定制信息页面URL，用于给客户展示订单的定制信息，不填写则使用默认页面展示 | 示例: https://img.jdtest.net/test/jfs/t1/12/6/226/1582675/69522d02F593c6e50/f302f16558a5f999.png",
+                "type": "string",
+                "example": "https://img.jdtest.net/test/jfs/t1/12/6/226/1582675/69522d02F593c6e50/f302f16558a5f999.png",
+                "default": ""
+              },
+              "audioDetectIds": {
+                "description": "京东红盾语音校验的语音唯一ID列表",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "attrValueNumRule": {
+                "description": "购物车展示的定制信息总数量是否需要乘以商品数量\ntrue：需要乘\nfalse：不需要乘 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              }
+            }
+          }
+        }
+      },
+      "PostCustomCartResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据",
+            "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.CustomCartResultInfo",
+            "type": "object",
+            "properties": {
+              "skuId": {
+                "description": "商品ID | 示例: 10110029722596",
+                "type": "integer",
+                "example": 10110029722596,
+                "default": 0
+              },
+              "num": {
+                "description": "商品数量 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "actionType": {
+                "description": "1:加入购物车 2:立即购买 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "newCustomInfoId": {
+                "description": "新定制信息ID | 示例: 0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "type": "string",
+                "example": "0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "default": ""
+              },
+              "newSuitInfoId": {
+                "description": "组套定制ID | 示例: 0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "type": "string",
+                "example": "0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "default": ""
+              },
+              "packSkuId": {
+                "description": "原组套礼盒skuId | 示例: 10110029722596",
+                "type": "integer",
+                "example": 10110029722596,
+                "default": 0
+              },
+              "packNum": {
+                "description": "原组套礼盒skuId的数量 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "skuUuid": {
+                "description": "购物车商品uuid,重新定制的时候该值会有值 | 示例: dJ2p4t1566874260239982592",
+                "type": "string",
+                "example": "dJ2p4t1566874260239982592",
+                "default": ""
+              },
+              "customInfoId": {
+                "description": "定制ID | 示例: 0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "type": "string",
+                "example": "0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "default": ""
+              },
+              "oldPackSkuId": {
+                "description": "旧套礼盒skuId | 示例: 10110029722597",
+                "type": "integer",
+                "example": 10110029722597,
+                "default": 0
+              },
+              "oldPackSkuNum": {
+                "description": "旧套礼盒skuId的数量 | 示例: 3",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "suitInfoId": {
+                "description": "组套对应的组套定制id,重新定制的时候该值会有值 | 示例: 0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "type": "string",
+                "example": "0001_f6bf48fd-d80e-4585-8b1f-0379027ccb50",
+                "default": ""
+              },
+              "ycServiceId": {
+                "description": "原厂服务id,从去定制url的customParams取值 | 示例: 30",
+                "type": "string",
+                "example": "30",
+                "default": ""
+              },
+              "ybServiceId": {
+                "description": "原厂服务id,从去定制url的customParams取值 | 示例: 32",
+                "type": "string",
+                "example": "32",
+                "default": ""
+              },
+              "homeServiceId": {
+                "description": "京东到家id,从去定制url的customParams取值 | 示例: 21",
+                "type": "string",
+                "example": "21",
+                "default": ""
+              },
+              "url": {
+                "description": "三方加车跳转地址 | 示例: https://izgw.jd.com/customizedAttr/app_jump?appid=izaocmade&skuId=100300810530&num=1&actionType=2&newCustomInfoId=0001_86ae9d23-5dba-40da-8819-322a42dceac7&productType=3",
+                "type": "string",
+                "example": "https://izgw.jd.com/customizedAttr/app_jump?appid=izaocmade&skuId=100300810530&num=1&actionType=2&newCustomInfoId=0001_86ae9d23-5dba-40da-8819-322a42dceac7&productType=3",
+                "default": ""
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "异常编码 | 示例: 11810005000",
+                  "type": "string",
+                  "example": "11810005000",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误明细 | 示例: 系统错误",
+                  "type": "string",
+                  "example": "系统错误",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: 系统错误",
+                  "type": "string",
+                  "example": "系统错误",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          }
+        }
+      },
+      "GetCartByCustomInfoIdJosRequest": {
+        "type": "object",
+        "properties": {
+          "customCartId": {
+            "description": "定制ID | 示例: 0001_c382e58e-32fb-4b1a-aa77-fdfc845182e2 | 必填",
+            "type": "string",
+            "example": "0001_c382e58e-32fb-4b1a-aa77-fdfc845182e2",
+            "default": ""
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.y.tdp.cart.newOpen.request.CartByCustomRequest",
+            "type": "object",
+            "properties": {
+              "cartType": {
+                "description": "购物车类型 重新定制:5 | 示例: 5",
+                "type": "integer",
+                "example": 5,
+                "default": 0
+              }
+            }
+          }
+        },
+        "required": [
+          "customCartId"
+        ]
+      },
+      "GetCartByCustomInfoIdJosResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "影响参数",
+            "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.ThirdPartyCartInfo",
+            "type": "object",
+            "properties": {
+              "displayMultimediaInfo": {
+                "description": "音频视频其它图片(如贺卡图片、照片)信息",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "displayMultimediaInfoItem": {
+                    "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.MultimediaInfo",
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "description": "在页面展示的名称 | 示例: 镌刻内容",
+                        "type": "string",
+                        "example": "镌刻内容",
+                        "default": ""
+                      },
+                      "type": {
+                        "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "url": {
+                        "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                        "type": "string",
+                        "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              },
+              "customServiceInfo": {
+                "description": "定制服务信息",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "customServiceInfoItem": {
+                    "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.CustomServiceInfo",
+                    "type": "object",
+                    "properties": {
+                      "customContent": {
+                        "description": "定制内容 用于购物车展示",
+                        "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.CustomContent",
+                        "type": "object",
+                        "properties": {
+                          "displayValue": {
+                            "description": "定制属性 | 示例: HJM",
+                            "type": "string",
+                            "example": "HJM",
+                            "default": ""
+                          },
+                          "displayName": {
+                            "description": "定制名称 | 示例: 效果图",
+                            "type": "string",
+                            "example": "效果图",
+                            "default": ""
+                          },
+                          "indexName": {
+                            "description": "可代表面或区域，对详细定制内容进行分组，可重复命名 | 示例: 文字雕刻",
+                            "type": "string",
+                            "example": "文字雕刻",
+                            "default": ""
+                          },
+                          "indexId": {
+                            "description": "单SKU下不能重复 | 示例: 0",
+                            "type": "string",
+                            "example": "0",
+                            "default": ""
+                          },
+                          "url": {
+                            "description": "对应位置的缩略图 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                            "type": "string",
+                            "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                            "default": ""
+                          }
+                        }
+                      },
+                      "serviceCd2Id": {
+                        "description": "二级服务分类ID | 示例: 47",
+                        "type": "string",
+                        "example": "47",
+                        "default": ""
+                      },
+                      "positionId": {
+                        "description": "区域Id | 示例: 正面",
+                        "type": "string",
+                        "example": "正面",
+                        "default": ""
+                      },
+                      "serviceCd1Id": {
+                        "description": "一级服务分类ID | 示例: 26",
+                        "type": "string",
+                        "example": "26",
+                        "default": ""
+                      },
+                      "serviceCd1Name": {
+                        "description": "一级服务分类名称 | 示例: 送礼服务",
+                        "type": "string",
+                        "example": "送礼服务",
+                        "default": ""
+                      },
+                      "serviceCd2Name": {
+                        "description": "二级服务分类名称 | 示例: 专属镌刻",
+                        "type": "string",
+                        "example": "专属镌刻",
+                        "default": ""
+                      },
+                      "techName": {
+                        "description": "当前区域的工艺名称 | 示例: 文字雕刻",
+                        "type": "string",
+                        "example": "文字雕刻",
+                        "default": ""
+                      },
+                      "serviceId": {
+                        "description": "一级服务分类ID | 示例: 24",
+                        "type": "string",
+                        "example": "24",
+                        "default": ""
+                      },
+                      "serviceName": {
+                        "description": "服务项目名称 | 示例: 礼品定制",
+                        "type": "string",
+                        "example": "礼品定制",
+                        "default": ""
+                      },
+                      "techId": {
+                        "description": "当前区域的工艺Id | 示例: 23",
+                        "type": "string",
+                        "example": "23",
+                        "default": ""
+                      },
+                      "salePrice": {
+                        "description": "销售价 | 示例: 10",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "customServiceType": {
+                        "description": "定制服务类型礼品:1 工服:2 标准定制器:3 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "required": {
+                        "description": "是否必选 | 示例: true",
+                        "type": "boolean",
+                        "example": true,
+                        "default": false
+                      }
+                    }
+                  }
+                }
+              },
+              "totalPrice": {
+                "description": "定制附加金额 | 示例: 10",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "businessId": {
+                "description": "第三方自定义业务代码 | 示例: Abcdef123456",
+                "type": "string",
+                "example": "Abcdef123456",
+                "default": ""
+              },
+              "suitInfo": {
+                "description": "涉及礼盒业务才需写入，礼盒组套信息，用户记录用户购买的商品组套信息",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "suitInfoItem": {
+                    "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.SuitInfo",
+                    "type": "object",
+                    "properties": {
+                      "skuName": {
+                        "description": "商品名称 | 示例: 苹果手机",
+                        "type": "string",
+                        "example": "苹果手机",
+                        "default": ""
+                      },
+                      "skuNumRule": {
+                        "description": "礼盒必传-主品不传，透传查询组套返回的skuNumRule | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "suitSkuType": {
+                        "description": "1代表主品；2代表是礼盒服务的礼盒；3代表赠品 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "skuId": {
+                        "description": "商品ID | 示例: 100096826387",
+                        "type": "integer",
+                        "example": 100096826387,
+                        "default": 0
+                      },
+                      "skuNum": {
+                        "description": "礼盒必传-主品不传，透传查询组套返回的skuNum | 示例: 3",
+                        "type": "integer",
+                        "example": 3,
+                        "default": 0
+                      },
+                      "skuCount": {
+                        "description": "商品数量 | 示例: 3",
+                        "type": "integer",
+                        "example": 3,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "customInstanceId": {
+                "description": "唯一定制会话id | 示例: 3f95388e81ee0c6bb34a0993ad4121d2",
+                "type": "string",
+                "example": "3f95388e81ee0c6bb34a0993ad4121d2",
+                "default": ""
+              },
+              "rawJson": {
+                "description": "生产原始数据的JSON串 | 示例: &quot;生产原始数据的JSON串&quot;",
+                "type": "string",
+                "example": "&quot;生产原始数据的JSON串&quot;",
+                "default": ""
+              },
+              "customize": {
+                "description": "定制业务类型，101：眼镜后置定制 服务d | 示例: 101",
+                "type": "string",
+                "example": "101",
+                "default": ""
+              },
+              "displayPictureInfo": {
+                "description": "定制后图片效果图，建议使用比如：正面效果图、背面效果图",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "displayPictureInfoItem": {
+                    "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.MultimediaInfo",
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "description": "在页面展示的名称 | 示例: 效果图",
+                        "type": "string",
+                        "example": "效果图",
+                        "default": ""
+                      },
+                      "type": {
+                        "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "url": {
+                        "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                        "type": "string",
+                        "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              },
+              "displayCustomInfo": {
+                "description": "用于在定制详情页以 key-value 形式展示的内容 | 示例: { &quot;容量&quot;: &quot;75ml&quot; }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "skuId": {
+                "description": "京东商品SKU | 示例: 100096826387",
+                "type": "integer",
+                "example": 100096826387,
+                "default": 0
+              },
+              "productType": {
+                "description": "产品类型 1：定制上生产台 2：定制不上生产台，包括虚拟定制，未配置这个字段的null都处理为2 3：礼品仓增值服务定制。这样，宝洁null的就处理为了2 4：调色定制 6：眼镜定制\n | 示例: 2",
+                "type": "string",
+                "example": "2",
+                "default": ""
+              },
+              "unitPrice": {
+                "description": "定制附加金额 | 示例: 10",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "customParams": {
+                "description": "扩展参数(原厂服务等), 从去定制url的customParams取值 | 示例: {             &quot;area&quot;: &quot;156_15_1280_1288_59468&quot;,             &quot;packSku&quot;: &quot;&quot;,             &quot;ybServiceId&quot;: &quot;&quot;,             &quot;skuUuid&quot;: &quot;&quot;,             &quot;suitInfoId&quot;: &quot;&quot;,             &quot;customInfoId&quot;: &quot;&quot;,             &quot;ycServiceId&quot;: &quot;&quot;,             &quot;packSkuNum&quot;: &quot;&quot;,             &quot;homeServiceId&quot;: &quot;&quot;         }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "count": {
+                "description": "商品个数 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "autoProductInfo": {
+                "description": "自动产品信息映射，键为技术ID，值为产品信息 | 示例: { &quot;1&quot;: { &quot;areaName&quot;: &quot;右胸&quot;, &quot;canvasImage&quot;: &quot;https://img11.360buyimg.com/cxxjwimg/jfs/t1/331147/35/25978/50088/68f8405eF653a5b11/c3197c649b02a2a7.png&quot;, &quot;faceName&quot;: &quot;正面&quot;, &quot;positionUrl&quot;: &quot;https://img11.360buyimg.com/cxxjwimg/jfs/t1/332484/25/25636/231088/68f8405cF0417cc75/0c99fe7662481c0a.png&quot;, &quot;productType&quot;: &quot;1&quot;, &quot;remark&quot;: &quot;195的一套&quot;, &quot;techId&quot;: 32, &quot;techName&quot;: &quot;热转印&quot;, &quot;userInputList&quot;: [ { &quot;alignment&quot;: 1, &quot;attrValueName&quot;: &quot;无需定制&quot;, &quot;direction&quot;: 0, &quot;fontColor&quot;: &quot;#ffffff&quot;, &quot;fontFamily&quot;: &quot;HYHeiLiZhiTiJ&quot;, &quot;fontSize&quot;: 15 } ] } }",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "userId": {
+                "description": "用户ID | 示例: f1bd9094170aa7f427b7cde0dfeed134",
+                "type": "string",
+                "example": "f1bd9094170aa7f427b7cde0dfeed134",
+                "default": ""
+              },
+              "actionType": {
+                "description": "1:加入购物车2:立即购买 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "customType": {
+                "description": "每一位代表一种类型,第一位是组件定制，第二位是图文定制 1表示已包含,0表示不包含 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "transparency": {
+                "description": "透明度配置信息",
+                "x-java-type": "com.jd.y.tdp.cart.newOpen.entity.Transparency",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "配置ID | 示例: 157331",
+                    "type": "string",
+                    "example": "157331",
+                    "default": ""
+                  },
+                  "customServiceVersion": {
+                    "description": "自定义服务版本 | 示例: 3",
+                    "type": "string",
+                    "example": "3",
+                    "default": ""
+                  }
+                }
+              },
+              "rawCustomInfo": {
+                "description": "原始定制串信息，定制平台会透传 | 示例: {&quot;customServiceIds&quot;:&quot;0&quot;,&quot;designId&quot;:&quot;30257&quot;,&quot;isPrint&quot;:0,&quot;orderNumber&quot;:&quot;319034&quot;}",
+                "type": "string",
+                "example": "{&quot;customServiceIds&quot;:&quot;0&quot;,&quot;designId&quot;:&quot;30257&quot;,&quot;isPrint&quot;:0,&quot;orderNumber&quot;:&quot;319034&quot;}",
+                "default": ""
+              },
+              "audioDetectIds": {
+                "description": "语音ID集合",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "语音ID | 示例: &quot;8d9ec0ed-46a6-4e25-811a-cfec4ef9ed7c__detect&quot;",
+                    "type": "string",
+                    "example": "&quot;8d9ec0ed-46a6-4e25-811a-cfec4ef9ed7c__detect&quot;",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功失败标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误编码 | 示例: 11806002160",
+                "type": "string",
+                "example": "11806002160",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 未查询到购物车信息",
+                "type": "string",
+                "example": "未查询到购物车信息",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 未查询到购物车信息",
+                "type": "string",
+                "example": "未查询到购物车信息",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetOrderCustomInfosRequest": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "description": "订单ID | 示例: 3365210001117442 | 必填",
+            "type": "integer",
+            "example": 3365210001117442,
+            "default": 0
+          },
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.y.tdp.datacenter.newOpen.request.CustomInfoRequest",
+            "type": "object",
+            "properties": {
+              "skuId": {
+                "description": "商品编码 | 示例: 100252433320",
+                "type": "integer",
+                "example": 100252433320,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "orderId"
+        ]
+      },
+      "GetOrderCustomInfosResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "影响参数",
+            "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.OrderSkuCustomInfo>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "orderId": {
+                  "description": "京东订单ID | 示例: 3002389493",
+                  "type": "integer",
+                  "example": 3002389493,
+                  "default": 0
+                },
+                "skuId": {
+                  "description": "商品编码 | 示例: 10029392882",
+                  "type": "integer",
+                  "example": 10029392882,
+                  "default": 0
+                },
+                "customInfoId": {
+                  "description": "定制信息ID，每个定制信息的唯一ID | 示例: sdkf-fjes-23jd-sdsd",
+                  "type": "string",
+                  "example": "sdkf-fjes-23jd-sdsd",
+                  "default": ""
+                },
+                "thirdPartyCartInfo": {
+                  "description": "客户定制信息详情实体",
+                  "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.ThirdPartyCartInfo",
+                  "type": "object",
+                  "properties": {
+                    "actionType": {
+                      "description": "1:加入购物车2:立即购买 | 示例: 2",
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    },
+                    "customInstanceId": {
+                      "description": "唯一定制会话id | 示例: 3f95388e81ee0c6bb34a0993ad4121d2",
+                      "type": "string",
+                      "example": "3f95388e81ee0c6bb34a0993ad4121d2",
+                      "default": ""
+                    },
+                    "userId": {
+                      "description": "用户ID | 示例: f1bd9094170aa7f427b7cde0dfeed134",
+                      "type": "string",
+                      "example": "f1bd9094170aa7f427b7cde0dfeed134",
+                      "default": ""
+                    },
+                    "customize": {
+                      "description": "定制业务类型，101：眼镜后置定制 服务d | 示例: 101",
+                      "type": "string",
+                      "example": "101",
+                      "default": ""
+                    },
+                    "orderId": {
+                      "description": "订单ID | 示例: 300292984893",
+                      "type": "integer",
+                      "example": 300292984893,
+                      "default": 0
+                    },
+                    "skuId": {
+                      "description": "商品编码 | 示例: 10029392882",
+                      "type": "integer",
+                      "example": 10029392882,
+                      "default": 0
+                    },
+                    "count": {
+                      "description": "商品个数 | 示例: 2",
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    },
+                    "customParams": {
+                      "description": "扩展参数(原厂服务等), 从去定制url的customParams取值 | 示例: {             \"area\": \"156_15_1280_1288_59468\",             \"packSku\": \"\",             \"ybServiceId\": \"\",             \"skuUuid\": \"\",             \"suitInfoId\": \"\",             \"customInfoId\": \"\",             \"ycServiceId\": \"\",             \"packSkuNum\": \"\",             \"homeServiceId\": \"\"         }",
+                      "x-java-type": "java.util.Map",
+                      "type": "object"
+                    },
+                    "totalPrice": {
+                      "description": "定制附加金额（单位：元） | 示例: 10",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "unitPrice": {
+                      "description": "定制附加金额（单位：元） | 示例: 10",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "customType": {
+                      "description": "每一位代表一种类型,第一位是组件定制，第二位是图文定制 1表示已包含,0表示不包含 | 示例: 1",
+                      "type": "string",
+                      "example": "1",
+                      "default": ""
+                    },
+                    "displayMultimediaInfo": {
+                      "description": "音频视频其它图片(如贺卡图片、照片)信息",
+                      "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.MultimediaInfo>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "displayMultimediaInfoItem": {
+                            "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.MultimediaInfo",
+                            "type": "object",
+                            "properties": {
+                              "displayName": {
+                                "description": "在页面展示的名称 | 示例: 镌刻内容",
+                                "type": "string",
+                                "example": "镌刻内容",
+                                "default": ""
+                              },
+                              "type": {
+                                "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "url": {
+                                "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                "type": "string",
+                                "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                "default": ""
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "displayPictureInfo": {
+                      "description": "定制后图片效果图，建议使用比如：正面效果图、背面效果图",
+                      "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.MultimediaInfo>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "displayPictureInfoItem": {
+                            "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.MultimediaInfo",
+                            "type": "object",
+                            "properties": {
+                              "displayName": {
+                                "description": "在页面展示的名称 | 示例: 效果图",
+                                "type": "string",
+                                "example": "效果图",
+                                "default": ""
+                              },
+                              "type": {
+                                "description": "1:图片 2:视频 3:音频 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "url": {
+                                "description": "图片/视频的URL,使用 urlencode编码 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                "type": "string",
+                                "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                "default": ""
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "displayCustomInfo": {
+                      "description": "用于在定制详情页以 key-value 形式展示的内容 | 示例: { \"容量\": \"75ml\" }",
+                      "x-java-type": "java.util.Map",
+                      "type": "object"
+                    },
+                    "suitInfo": {
+                      "description": "涉及礼盒业务才需写入，礼盒组套信息，用户记录用户购买的商品组套信息",
+                      "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.SuitInfo>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "suitInfoItem": {
+                            "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.SuitInfo",
+                            "type": "object",
+                            "properties": {
+                              "skuName": {
+                                "description": "商品名称 | 示例: 苹果手机",
+                                "type": "string",
+                                "example": "苹果手机",
+                                "default": ""
+                              },
+                              "skuNumRule": {
+                                "description": "礼盒必传-主品不传，透传查询组套返回的skuNumRule | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "suitSkuType": {
+                                "description": "1代表主品；2代表是礼盒服务的礼盒；3代表赠品 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "skuId": {
+                                "description": "商品ID | 示例: 100096826387",
+                                "type": "integer",
+                                "example": 100096826387,
+                                "default": 0
+                              },
+                              "skuNum": {
+                                "description": "礼盒必传-主品不传，透传查询组套返回的skuNum | 示例: 3",
+                                "type": "integer",
+                                "example": 3,
+                                "default": 0
+                              },
+                              "skuCount": {
+                                "description": "商品数量 | 示例: 3",
+                                "type": "integer",
+                                "example": 3,
+                                "default": 0
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "rawCustomInfo": {
+                      "description": "原始定制串信息，定制平台会透传 | 示例: {\"customServiceIds\":\"0\",\"designId\":\"30257\",\"isPrint\":0,\"orderNumber\":\"319034\"}",
+                      "type": "string",
+                      "example": "{\"customServiceIds\":\"0\",\"designId\":\"30257\",\"isPrint\":0,\"orderNumber\":\"319034\"}",
+                      "default": ""
+                    },
+                    "rawJson": {
+                      "description": "生产原始数据的JSON串 | 示例: \"生产原始数据的JSON串\"",
+                      "type": "string",
+                      "example": "\"生产原始数据的JSON串\"",
+                      "default": ""
+                    },
+                    "businessId": {
+                      "description": "第三方自定义业务代码 | 示例: Abcdef123456",
+                      "type": "string",
+                      "example": "Abcdef123456",
+                      "default": ""
+                    },
+                    "productType": {
+                      "description": "产品类型 1：定制上生产台 2：定制不上生产台，包括虚拟定制，未配置这个字段的null都处理为2 3：礼品仓增值服务定制。这样，宝洁null的就处理为了2 4：调色定制 6：眼镜定制\n | 示例: 2",
+                      "type": "string",
+                      "example": "2",
+                      "default": ""
+                    },
+                    "transparency": {
+                      "description": "透明度配置信息",
+                      "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.Transparency",
+                      "type": "object",
+                      "properties": {
+                        "configId": {
+                          "description": "配置ID | 示例: 157331",
+                          "type": "string",
+                          "example": "157331",
+                          "default": ""
+                        },
+                        "customServiceVersion": {
+                          "description": "自定义服务版本 | 示例: 3",
+                          "type": "string",
+                          "example": "3",
+                          "default": ""
+                        }
+                      }
+                    },
+                    "customServiceInfo": {
+                      "description": "定制服务信息",
+                      "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.CustomServiceInfo>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "customServiceInfoItem": {
+                            "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.CustomServiceInfo",
+                            "type": "object",
+                            "properties": {
+                              "customContent": {
+                                "description": "定制内容 用于购物车展示",
+                                "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.CustomContent",
+                                "type": "object",
+                                "properties": {
+                                  "displayValue": {
+                                    "description": "定制属性 | 示例: HJM",
+                                    "type": "string",
+                                    "example": "HJM",
+                                    "default": ""
+                                  },
+                                  "displayName": {
+                                    "description": "定制名称 | 示例: 效果图",
+                                    "type": "string",
+                                    "example": "效果图",
+                                    "default": ""
+                                  },
+                                  "indexName": {
+                                    "description": "可代表面或区域，对详细定制内容进行分组，可重复命名 | 示例: 文字雕刻",
+                                    "type": "string",
+                                    "example": "文字雕刻",
+                                    "default": ""
+                                  },
+                                  "indexId": {
+                                    "description": "单SKU下不能重复 | 示例: 0",
+                                    "type": "string",
+                                    "example": "0",
+                                    "default": ""
+                                  },
+                                  "url": {
+                                    "description": "对应位置的缩略图 | 示例: https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                    "type": "string",
+                                    "example": "https://img20.360buyimg.com/merchants/jfs/t1/383028/18/14407/130055/695664f5F3a3cd695/067e4927fbd65af3.png",
+                                    "default": ""
+                                  }
+                                }
+                              },
+                              "positionId": {
+                                "description": "区域Id | 示例: 前胸",
+                                "type": "string",
+                                "example": "前胸",
+                                "default": ""
+                              },
+                              "serviceCd1Id": {
+                                "description": "一级服务分类ID | 示例: 26",
+                                "type": "string",
+                                "example": "26",
+                                "default": ""
+                              },
+                              "serviceCd1Name": {
+                                "description": "一级服务分类名称 | 示例: 送礼服务",
+                                "type": "string",
+                                "example": "送礼服务",
+                                "default": ""
+                              },
+                              "serviceCd2Id": {
+                                "description": "二级服务分类ID | 示例: 47",
+                                "type": "string",
+                                "example": "47",
+                                "default": ""
+                              },
+                              "serviceCd2Name": {
+                                "description": "二级服务分类名称 | 示例: 专属镌刻",
+                                "type": "string",
+                                "example": "专属镌刻",
+                                "default": ""
+                              },
+                              "techId": {
+                                "description": "当前区域的工艺Id | 示例: 23",
+                                "type": "string",
+                                "example": "23",
+                                "default": ""
+                              },
+                              "techName": {
+                                "description": "当前区域的工艺名称 | 示例: 文字雕刻",
+                                "type": "string",
+                                "example": "文字雕刻",
+                                "default": ""
+                              },
+                              "serviceId": {
+                                "description": "一级服务分类ID | 示例: 24",
+                                "type": "string",
+                                "example": "24",
+                                "default": ""
+                              },
+                              "serviceName": {
+                                "description": "服务项目名称 | 示例: 礼品定制",
+                                "type": "string",
+                                "example": "礼品定制",
+                                "default": ""
+                              },
+                              "salePrice": {
+                                "description": "工艺销售价（单位：元） | 示例: 2",
+                                "x-java-type": "java.math.BigDecimal",
+                                "type": "object"
+                              },
+                              "customServiceType": {
+                                "description": "定制服务类型礼品:1 工服:2 标准定制器:3 | 示例: 1",
+                                "type": "integer",
+                                "example": 1,
+                                "default": 0
+                              },
+                              "required": {
+                                "description": "是否必选 | 示例: true",
+                                "type": "boolean",
+                                "example": true,
+                                "default": false
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "customerAudioResults": {
+                  "description": "定制信息的语音校验结果",
+                  "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.entity.CustomerAudioResult>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "customerAudioResultsItem": {
+                        "x-java-type": "com.jd.y.tdp.datacenter.newOpen.entity.CustomerAudioResult",
+                        "type": "object",
+                        "properties": {
+                          "detectId": {
+                            "description": "语音检测ID | 示例: abc123uuid",
+                            "type": "string",
+                            "example": "abc123uuid",
+                            "default": ""
+                          },
+                          "detectResult": {
+                            "description": "语音校验结果： -1,命中黑名单驳回\n1, 驳回\n2, 疑似\n3, 通过\n4, 降级通过\n5, 命中白名单通过\n6, 无权限调用\n7, 审核失败 | 示例: 1",
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "detectDetails": {
+                            "description": "语音结果详情 | 示例: 校验通过",
+                            "type": "string",
+                            "example": "校验通过",
+                            "default": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "skuUuids": {
+                  "description": "skuUuid列表",
+                  "x-java-type": "java.util.List <java.lang.String>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "masterSkuId": {
+                  "description": "影子商品关联的sku,只有影分身时返回 | 示例: 10029392882",
+                  "type": "integer",
+                  "example": 10029392882,
+                  "default": 0
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功失败标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.y.tdp.datacenter.newOpen.response.ResponseError>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误编码 | 示例: 11806003000",
+                  "type": "string",
+                  "example": "11806003000",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 订单号和商品编号不能为空",
+                  "type": "string",
+                  "example": "订单号和商品编号不能为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: 订单号和商品编号不能为空",
+                  "type": "string",
+                  "example": "订单号和商品编号不能为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateGiftCustomStatusRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求入参",
+            "x-java-type": "com.jd.customization.center.open.entity.newOpen.customService.request.UpdateGiftCustomStatusRequest",
+            "type": "object",
+            "properties": {
+              "supplierId": {
+                "description": "供应商ID | 示例: shanding",
+                "type": "string",
+                "example": "shanding",
+                "default": ""
+              },
+              "validStatus": {
+                "description": "1:启用2:禁用 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "skuIds": {
+                "description": "商品ID列表",
+                "x-java-type": "java.util.List <java.lang.Long>",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateGiftCustomStatusResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应结果 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.customization.center.open.entity.common.ApiResponse.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "异常码 | 示例: 118030050305",
+                  "type": "string",
+                  "example": "118030050305",
+                  "default": ""
+                },
+                "details": {
+                  "description": "异常明细 | 示例: 商品定制服务不存在",
+                  "type": "string",
+                  "example": "商品定制服务不存在",
+                  "default": ""
+                },
+                "message": {
+                  "description": "异常消息 | 示例: 商品定制服务不存在",
+                  "type": "string",
+                  "example": "商品定制服务不存在",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功失败标识 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1382 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 京麦API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/postJmAiTask": {
+      "post": {
+        "operationId": "postJmAiTask",
+        "summary": "创建京麦AI空间任务",
+        "description": "京麦AI空间实现了ISV任务的集中化接入与管理，ISV服务商可将自研任务同步至平台进行统一管理，从而为商家和供应商提供一个集中查看与展示任务的统一中心。\n\nJD method: POST.sp-jm.v0.jm-ai-tasks",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "POST.sp-jm.v0.jm-ai-tasks",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostJmAiTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostJmAiTaskResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401000020": {
+                    "summary": "任务状态不能为空@#$任务状态不能为空"
+                  },
+                  "12401000031": {
+                    "summary": "京麦AI空间任务已存在@#$京麦AI空间任务已存在"
+                  },
+                  "12401000010": {
+                    "summary": "请求参数不能为空@#$请求参数不能为空"
+                  },
+                  "12401000021": {
+                    "summary": "是否定时任务不能为空@#$是否定时任务不能为空，有效值为：0-单次任务，1-定时任务"
+                  },
+                  "12401000032": {
+                    "summary": "京麦AI空间任务创建失败@#$京麦AI空间任务创建失败"
+                  },
+                  "12401000030": {
+                    "summary": "京麦AI空间任务不存在@#$京麦AI空间任务不存在"
+                  },
+                  "12401000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  },
+                  "12401000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12401000011": {
+                    "summary": "来源不能为空@#$来源不能为空"
+                  },
+                  "12401000022": {
+                    "summary": "任务状态不合法@#$任务状态不合法，有效值为：10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成"
+                  },
+                  "12401000012": {
+                    "summary": "业务条线bizCode不能为空@#$在服务市场注册，获取服务市场的服务code"
+                  },
+                  "12401000001": {
+                    "summary": "京麦AI空间任务配置不存在@#$京麦AI空间任务配置不存在"
+                  },
+                  "12401000023": {
+                    "summary": "是否定时任务不合法@#$是否定时任务不合法，有效值为：0-单次任务，1-定时任务"
+                  },
+                  "12401000017": {
+                    "summary": "任务创建时间不能为空@#$任务创建时间不能为空"
+                  },
+                  "12401000018": {
+                    "summary": "任务更新时间不能为空@#$任务更新时间不能为空"
+                  },
+                  "12401000015": {
+                    "summary": "业务线任务ID不能为空@#$业务线任务ID不能为空"
+                  },
+                  "12401000016": {
+                    "summary": "任务名称不能为空@#$任务名称不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getJmAiTask": {
+      "get": {
+        "operationId": "getJmAiTask",
+        "summary": "获取京麦AI空间任务",
+        "description": "ISV服务商将自研任务同步至平台后，可通过唯一业务主键 jmAiTaskId 查询京麦AI空间任务，确认数据是否同步成功。\n\nJD method: GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetJmAiTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetJmAiTaskResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401000010": {
+                    "summary": "请求参数不能为空@#$请求参数不能为空"
+                  },
+                  "12401000030": {
+                    "summary": "京麦AI空间任务不存在@#$京麦AI空间任务不存在"
+                  },
+                  "12401000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  },
+                  "12401000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12401000001": {
+                    "summary": "京麦AI空间任务配置不存在@#$京麦AI空间任务配置不存在"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchJmAiTask": {
+      "patch": {
+        "operationId": "patchJmAiTask",
+        "summary": "更新京麦AI空间任务",
+        "description": "ISV同步任务后，系统会分配17位唯一主键 jmAiTaskId，请利用此ID进行后续的任务信息更新。\n\nJD method: PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchJmAiTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchJmAiTaskResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401000010": {
+                    "summary": "请求参数不能为空\n@#$请求参数不能为空"
+                  },
+                  "12401000030": {
+                    "summary": "京麦AI空间任务不存在@#$京麦AI空间任务不存在"
+                  },
+                  "12401000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  },
+                  "12401000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12401000033": {
+                    "summary": "京麦AI空间任务修改失败@#$京麦AI空间任务修改失败"
+                  },
+                  "12401000022": {
+                    "summary": "任务状态不合法@#$任务状态不合法，有效值为：10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成"
+                  },
+                  "12401000001": {
+                    "summary": "京麦AI空间任务配置不存在\n@#$京麦AI空间任务配置不存在"
+                  },
+                  "12401000012": {
+                    "summary": "业务条线bizCode不能为空@#$在服务市场注册，获取服务市场的服务code"
+                  },
+                  "12401000018": {
+                    "summary": "任务更新时间不能为空@#$任务更新时间不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postJmAiTaskRecord": {
+      "post": {
+        "operationId": "postJmAiTaskRecord",
+        "summary": "创建京麦AI空间定时任务执行记录",
+        "description": "京麦AI空间实现了ISV任务的集中化接入与管理，支持ISV服务商将自研定时任务的执行记录同步至平台进行统一维护；请注意，该API仅适用于定时任务运行记录的信息同步。\n\nJD method: POST.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "POST.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostJmAiTaskRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostJmAiTaskRecordResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401000001": {
+                    "summary": "京麦AI空间任务配置不存在@#$京麦AI空间任务配置不存在，请填写正确的服务code"
+                  },
+                  "12401000012": {
+                    "summary": "业务条线bizCode不能为空@#$业务条线bizCode不能为空"
+                  },
+                  "12401010030": {
+                    "summary": "京麦AI空间定时任务记录不存在@#$京麦AI空间定时任务记录不存在"
+                  },
+                  "12401010020": {
+                    "summary": "定时任务状态不能为空@#$定时任务状态不能为空"
+                  },
+                  "12401010031": {
+                    "summary": "京麦AI空间定时任务记录已存在@#$京麦AI空间定时任务记录已存在"
+                  },
+                  "12400000016": {
+                    "summary": "任务名称不能为空@#$任务名称不能为空"
+                  },
+                  "12401010010": {
+                    "summary": "请求参数不能为空@#$JmAITaskRecordOpenApi请求参数不能为空"
+                  },
+                  "12401010021": {
+                    "summary": "定时任务状态不合法@#$定时任务状态不合法"
+                  },
+                  "12401010032": {
+                    "summary": "京麦AI空间定时任务执行记录创建失败@#$京麦AI空间定时任务执行记录创建失败"
+                  },
+                  "12401010011": {
+                    "summary": "京麦AI空间定时任务执行记录ID不能为空@#$京麦AI空间定时任务执行记录ID不能为空"
+                  },
+                  "12401010033": {
+                    "summary": "京麦AI空间定时任务执行记录更新失败@#$京麦AI空间定时任务执行记录更新失败"
+                  },
+                  "12401010012": {
+                    "summary": "业务线任务执行记录ID不能为空@#$业务线任务执行记录ID不能为空"
+                  },
+                  "12401010013": {
+                    "summary": "定时任务执行记录ID不能为空@#$定时任务执行记录ID不能为空"
+                  },
+                  "12401010014": {
+                    "summary": "定时任务记录名称不能为空@#$定时任务记录名称不能为空"
+                  },
+                  "12400000015": {
+                    "summary": "业务线任务ID不能为空@#$业务线任务ID不能为空"
+                  },
+                  "12400000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12400000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getJmAiTaskRecord": {
+      "get": {
+        "operationId": "getJmAiTaskRecord",
+        "summary": "获取京麦AI空间定时任务执行记录",
+        "description": "ISV服务商将自研任务同步至平台后，可通过唯一业务主键 jmAiTaskRecordId 查询京麦AI空间任务，确认数据是否同步成功。\n\nJD method: GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetJmAiTaskRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetJmAiTaskRecordResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401010030": {
+                    "summary": "京麦AI空间定时任务记录不存在@#$京麦AI空间定时任务记录不存在"
+                  },
+                  "12401010010": {
+                    "summary": "请求参数不能为空@#$JmAITaskRecordOpenApi请求参数不能为空"
+                  },
+                  "12401010011": {
+                    "summary": "京麦AI空间定时任务执行记录ID不能为空@#$京麦AI空间定时任务执行记录ID不能为空"
+                  },
+                  "12400000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12400000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchJmAiTaskRecord": {
+      "patch": {
+        "operationId": "patchJmAiTaskRecord",
+        "summary": "更新京麦AI空间定时任务执行记录",
+        "description": "ISV服务商将自研定时任务的执行记录同步至平台后，根据自身需求更新京麦AI空间定时任务执行记录的相关信息。\n\nJD method: PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+        "tags": [
+          "京麦API"
+        ],
+        "x-jd-method": "PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchJmAiTaskRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchJmAiTaskRecordResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12401010030": {
+                    "summary": "京麦AI空间定时任务记录不存在@#$京麦AI空间定时任务记录不存在"
+                  },
+                  "12401010010": {
+                    "summary": "请求参数不能为空@#$JmAITaskRecordOpenApi请求参数不能为空"
+                  },
+                  "12401010021": {
+                    "summary": "定时任务状态不合法@#$定时任务状态不合法，有效值为：10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成"
+                  },
+                  "12401010011": {
+                    "summary": "京麦AI空间定时任务执行记录ID不能为空@#$京麦AI空间定时任务执行记录ID不能为空"
+                  },
+                  "12401010033": {
+                    "summary": "京麦AI空间定时任务执行记录更新失败@#$京麦AI空间定时任务执行记录更新失败"
+                  },
+                  "12401000001": {
+                    "summary": "京麦AI空间任务配置不存在@#$京麦AI空间任务配置不存在，请填写正确的服务code"
+                  },
+                  "12401000012": {
+                    "summary": "业务条线bizCode不能为空@#$业务条线bizCode不能为空"
+                  },
+                  "12400000014": {
+                    "summary": "京麦AI空间任务ID不能为空@#$京麦AI空间任务ID不能为空"
+                  },
+                  "12400000013": {
+                    "summary": "用户pin不能为空@#$用户pin不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostJmAiTaskRequest": {
+        "type": "object",
+        "properties": {
+          "postJmAiTaskRequest": {
+            "description": "创建请求",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.PostJmAiTaskRequest",
+            "type": "object",
+            "properties": {
+              "bizCode": {
+                "description": "业务条线bizCode | 示例: 服务市场分配的服务code | 必填",
+                "type": "string",
+                "example": "服务市场分配的服务code",
+                "default": ""
+              },
+              "scheduled": {
+                "description": "是否定时任务 - 0:单次任务 1:定时任务 | 示例: 0 | 必填",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "created": {
+                "description": "创建时间 | 示例: 1776070827158 | 必填",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "result": {
+                "description": "任务执行结果 | 示例: 任务执行结果示例1",
+                "type": "string",
+                "example": "任务执行结果示例1",
+                "default": ""
+              },
+              "editUrl": {
+                "description": "编辑页面URL | 示例: 1776081867366",
+                "type": "string",
+                "example": "1776081867366",
+                "default": ""
+              },
+              "name": {
+                "description": "任务名称 | 示例: 测试ai任务 | 必填",
+                "type": "string",
+                "example": "测试ai任务",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776070827158 | 必填",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "state": {
+                "description": "任务状态，10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成 | 示例: 20 | 必填",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              },
+              "detailUrl": {
+                "description": "详情页面URL | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "deadline": {
+                "description": "截止时间 | 示例: 1776070827158",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "taskId": {
+                "description": "业务条线ID | 示例: 测试ai任务taskId | 必填",
+                "type": "string",
+                "example": "测试ai任务taskId",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "bizCode",
+              "scheduled",
+              "created",
+              "name",
+              "modified",
+              "state",
+              "taskId"
+            ]
+          }
+        }
+      },
+      "PostJmAiTaskResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.dto.JmAiTaskSaveResultDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦ai空间任务id（17位） | 示例: 10467100000002001",
+                "type": "string",
+                "example": "10467100000002001",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List <com.jd.pop.jm.work.flow.client.common.response.restful.RestfulError>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "code码 | 示例: 200",
+                  "type": "string",
+                  "example": "200",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetJmAiTaskRequest": {
+        "type": "object",
+        "properties": {
+          "jmAiTaskId": {
+            "description": "京麦ai空间任务id | 示例: 10467100000002001 | 必填",
+            "type": "string",
+            "example": "10467100000002001",
+            "default": ""
+          },
+          "getJmAiTaskRequest": {
+            "description": "查询请求 | 必填",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.GetJmAiTaskRequest",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "jmAiTaskId",
+          "getJmAiTaskRequest"
+        ]
+      },
+      "GetJmAiTaskResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.response.dto.JmAiTaskDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦AI空间任务唯一业务ID(17位) | 示例: 10467100000002001",
+                "type": "string",
+                "example": "10467100000002001",
+                "default": ""
+              },
+              "bizCode": {
+                "description": "服务市场code | 示例: 001",
+                "type": "string",
+                "example": "001",
+                "default": ""
+              },
+              "taskId": {
+                "description": "taskId | 示例: 测试aitaskId",
+                "type": "string",
+                "example": "测试aitaskId",
+                "default": ""
+              },
+              "name": {
+                "description": "任务名称 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "scheduled": {
+                "description": "是否定时 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "scheduleExecutionNum": {
+                "description": "定时任务执行次数 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "state": {
+                "description": "任务状态 | 示例: 20",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              },
+              "stateName": {
+                "description": "任务状态名称 | 示例: 进行中",
+                "type": "string",
+                "example": "进行中",
+                "default": ""
+              },
+              "creator": {
+                "description": "创建人 | 示例: test_pop_ware",
+                "type": "string",
+                "example": "test_pop_ware",
+                "default": ""
+              },
+              "created": {
+                "description": "创建时间 | 示例: 1776070827158",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "modifier": {
+                "description": "修改人 | 示例: test_pop_ware",
+                "type": "string",
+                "example": "test_pop_ware",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776070827158",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "deadline": {
+                "description": "截止时间 | 示例: 1776070827158",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "detailUrl": {
+                "description": "任务详情url | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "editUrl": {
+                "description": "定时任务编辑url | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "result": {
+                "description": "任务结果 | 示例: 任务结果1",
+                "type": "string",
+                "example": "任务结果1",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "code码 | 示例: 200",
+                "type": "string",
+                "example": "200",
+                "default": ""
+              },
+              "details": {
+                "description": "详细描述与解决方案 | 示例: success",
+                "type": "string",
+                "example": "success",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: success",
+                "type": "string",
+                "example": "success",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PatchJmAiTaskRequest": {
+        "type": "object",
+        "properties": {
+          "jmAiTaskId": {
+            "description": "京麦AI经营空间定时任务唯一业务ID(17位) | 示例: 10467100000000001 | 必填",
+            "type": "string",
+            "example": "10467100000000001",
+            "default": ""
+          },
+          "patchJmAiTaskRequest": {
+            "description": "更新请求 | 必填",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.PatchJmAiTaskRequest",
+            "type": "object",
+            "properties": {
+              "result": {
+                "description": "任务执行结果 | 示例: 任务执行结果示例1修改",
+                "type": "string",
+                "example": "任务执行结果示例1修改",
+                "default": ""
+              },
+              "editUrl": {
+                "description": "编辑页面URL | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "description": "任务名称 | 示例: 测试ai任务修改",
+                "type": "string",
+                "example": "测试ai任务修改",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776081867366 | 必填",
+                "type": "integer",
+                "example": 1776081867366,
+                "default": 0
+              },
+              "state": {
+                "description": "任务状态，10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成 | 示例: 99 | 必填",
+                "type": "integer",
+                "example": 99,
+                "default": 0
+              },
+              "detailUrl": {
+                "description": "详情页面URL | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "deadline": {
+                "description": "截止时间 | 示例: 1776081867366",
+                "type": "integer",
+                "example": 1776081867366,
+                "default": 0
+              }
+            },
+            "required": [
+              "modified",
+              "state"
+            ]
+          }
+        },
+        "required": [
+          "jmAiTaskId",
+          "patchJmAiTaskRequest"
+        ]
+      },
+      "PatchJmAiTaskResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.dto.JmAiTaskSaveResultDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦空间AI任务唯一业务ID(17位) | 示例: 10467100000000001",
+                "type": "string",
+                "example": "10467100000000001",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List <com.jd.pop.jm.work.flow.client.common.response.restful.RestfulError>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "code码 | 示例: 200",
+                  "type": "string",
+                  "example": "200",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostJmAiTaskRecordRequest": {
+        "type": "object",
+        "properties": {
+          "jmAiTaskId": {
+            "description": "京麦AI空间定时任务唯一业务ID(17位) | 示例: 10467100000002001 | 必填",
+            "type": "string",
+            "example": "10467100000002001",
+            "default": ""
+          },
+          "postJmAiTaskRecordRequest": {
+            "description": "创建请求 | 必填",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.PostJmAiTaskRecordRequest",
+            "type": "object",
+            "properties": {
+              "taskRecordId": {
+                "description": "定时任务执行记录ID（业务方记录的唯一标识） | 示例: taskRecord001 | 必填",
+                "type": "string",
+                "example": "taskRecord001",
+                "default": ""
+              },
+              "taskRecordName": {
+                "description": "定时任务执行记录名称 | 示例: 测试ai定时任务taskRecordId | 必填",
+                "type": "string",
+                "example": "测试ai定时任务taskRecordId",
+                "default": ""
+              },
+              "bizCode": {
+                "description": "业务条线bizCode，这里取服务市场的服务code | 示例: 001 | 必填",
+                "type": "string",
+                "example": "001",
+                "default": ""
+              },
+              "created": {
+                "description": "创建时间 | 示例: 1776070827158 | 必填",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "result": {
+                "description": "任务执行结果 | 示例: 任务结果1",
+                "type": "string",
+                "example": "任务结果1",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "description": "定时任务配置名称 | 示例: 每天8点定时任务名称 | 必填",
+                "type": "string",
+                "example": "每天8点定时任务名称",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776070827158 | 必填",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "state": {
+                "description": "任务状态，定时任务状态不合法，有效值为：10-未开始，20-进行中，30-暂停，96-删除，97-已结束，98-异常，99-已完成 | 示例: 20 | 必填",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              },
+              "detailUrl": {
+                "description": "详情页面URL | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "deadline": {
+                "description": "截止时间 | 示例: 1776070827158",
+                "type": "integer",
+                "example": 1776070827158,
+                "default": 0
+              },
+              "taskId": {
+                "description": "定时任务配置的taskId | 示例: 测试ai定时任务taskId | 必填",
+                "type": "string",
+                "example": "测试ai定时任务taskId",
+                "default": ""
+              }
+            },
+            "required": [
+              "taskRecordId",
+              "taskRecordName",
+              "bizCode",
+              "created",
+              "name",
+              "modified",
+              "state",
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "jmAiTaskId",
+          "postJmAiTaskRecordRequest"
+        ]
+      },
+      "PostJmAiTaskRecordResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.dto.JmAiTaskSaveResultDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦AI空间定时任务唯一业务ID(17位) | 示例: 10467100000002001",
+                "type": "string",
+                "example": "10467100000002001",
+                "default": ""
+              },
+              "jmAiTaskRecordId": {
+                "description": "京麦AI空间定时任务执行记录的唯一业务ID(17位) | 示例: 10467110000001001",
+                "type": "string",
+                "example": "10467110000001001",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List <com.jd.pop.jm.work.flow.client.common.response.restful.RestfulError>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "code码 | 示例: 200",
+                  "type": "string",
+                  "example": "200",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetJmAiTaskRecordRequest": {
+        "type": "object",
+        "properties": {
+          "jmAiTaskId": {
+            "description": "京麦AI经营空间定时任务唯一业务ID(17位) | 示例: 10467100000000001 | 必填",
+            "type": "string",
+            "example": "10467100000000001",
+            "default": ""
+          },
+          "jmAiTaskRecordId": {
+            "description": "京麦AI经营空间定时任务执行记录唯一业务ID(17位) | 示例: 10467110000000001 | 必填",
+            "type": "string",
+            "example": "10467110000000001",
+            "default": ""
+          },
+          "getJmAiTaskRecordRequest": {
+            "description": "查询请求 | 必填",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.GetJmAiTaskRecordRequest",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "jmAiTaskId",
+          "jmAiTaskRecordId",
+          "getJmAiTaskRecordRequest"
+        ]
+      },
+      "GetJmAiTaskRecordResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.response.dto.JmAiTaskDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦AI空间定时任务唯一业务ID(17位) | 示例: 10467100000002001",
+                "type": "string",
+                "example": "10467100000002001",
+                "default": ""
+              },
+              "jmAiTaskRecordId": {
+                "description": "京麦AI空间定时任务执行记录唯一业务ID(17位) | 示例: 10467110000001001",
+                "type": "string",
+                "example": "10467110000001001",
+                "default": ""
+              },
+              "bizCode": {
+                "description": "服务市场code | 示例: 服务市场code001",
+                "type": "string",
+                "example": "服务市场code001",
+                "default": ""
+              },
+              "taskId": {
+                "description": "业务线taskId | 示例: 测试定时taskId",
+                "type": "string",
+                "example": "测试定时taskId",
+                "default": ""
+              },
+              "name": {
+                "description": "任务名称 | 示例: 测试任务名称01",
+                "type": "string",
+                "example": "测试任务名称01",
+                "default": ""
+              },
+              "scheduled": {
+                "description": "是否定时，0单次，1定时 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "state": {
+                "description": "任务状态 | 示例: 99",
+                "type": "string",
+                "example": "99",
+                "default": ""
+              },
+              "stateName": {
+                "description": "任务状态名称 | 示例: 已完成",
+                "type": "string",
+                "example": "已完成",
+                "default": ""
+              },
+              "creator": {
+                "description": "创建人 | 示例: test_pop_ware",
+                "type": "string",
+                "example": "test_pop_ware",
+                "default": ""
+              },
+              "created": {
+                "description": "创建时间 | 示例: 1776070827158",
+                "type": "string",
+                "example": "1776070827158",
+                "default": ""
+              },
+              "modifier": {
+                "description": "修改人 | 示例: test_pop_ware",
+                "type": "string",
+                "example": "test_pop_ware",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776070827158",
+                "type": "string",
+                "example": "1776070827158",
+                "default": ""
+              },
+              "deadline": {
+                "description": "1 | 示例: 1776070827158",
+                "type": "string",
+                "example": "1776070827158",
+                "default": ""
+              },
+              "detailUrl": {
+                "description": "截止时间 | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "result": {
+                "description": "任务结果 | 示例: 任务结果1",
+                "type": "string",
+                "example": "任务结果1",
+                "default": ""
+              },
+              "taskRecordId": {
+                "description": "定时任务执行记录id | 示例: 测试定时taskRecordId",
+                "type": "string",
+                "example": "测试定时taskRecordId",
+                "default": ""
+              },
+              "taskRecordName": {
+                "description": "定时任务执行记录名称 | 示例: 测试定时taskRecordName",
+                "type": "string",
+                "example": "测试定时taskRecordName",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "1",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "1 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "details": {
+                "description": "1 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "message": {
+                "description": "1 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PatchJmAiTaskRecordRequest": {
+        "type": "object",
+        "properties": {
+          "jmAiTaskId": {
+            "description": "京麦AI空间定时任务唯一业务ID(17位) | 示例: 10467100000002001 | 必填",
+            "type": "string",
+            "example": "10467100000002001",
+            "default": ""
+          },
+          "jmAiTaskRecordId": {
+            "description": "京麦AI空间定时任务执行记录的唯一业务ID(17位) | 示例: 10467110000000001 | 必填",
+            "type": "string",
+            "example": "10467110000000001",
+            "default": ""
+          },
+          "patchJmAiTaskRecordRequest": {
+            "description": "更新请求",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.openapi.service.request.PatchJmAiTaskRecordRequest",
+            "type": "object",
+            "properties": {
+              "result": {
+                "description": "任务执行结果 | 示例: 任务结果示例",
+                "type": "string",
+                "example": "任务结果示例",
+                "default": ""
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "taskRecordName": {
+                "description": "定时任务执行记录名称 | 示例: 定时任务taskRecordName1",
+                "type": "string",
+                "example": "定时任务taskRecordName1",
+                "default": ""
+              },
+              "modified": {
+                "description": "修改时间 | 示例: 1776081867366 | 必填",
+                "type": "integer",
+                "example": 1776081867366,
+                "default": 0
+              },
+              "state": {
+                "description": "任务状态 | 示例: 99 | 必填",
+                "type": "integer",
+                "example": 99,
+                "default": 0
+              },
+              "detailUrl": {
+                "description": "详情页面URL | 示例: https://www.jd.com/",
+                "type": "string",
+                "example": "https://www.jd.com/",
+                "default": ""
+              },
+              "deadline": {
+                "description": "截止时间 | 示例: 1776081867366",
+                "type": "integer",
+                "example": 1776081867366,
+                "default": 0
+              }
+            },
+            "required": [
+              "modified",
+              "state"
+            ]
+          }
+        },
+        "required": [
+          "jmAiTaskId",
+          "jmAiTaskRecordId"
+        ]
+      },
+      "PatchJmAiTaskRecordResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应数据",
+            "x-java-type": "com.jd.pop.jm.work.flow.client.jm.ai.task.dto.JmAiTaskSaveResultDTO",
+            "type": "object",
+            "properties": {
+              "jmAiTaskId": {
+                "description": "京麦AI空间定时任务唯一业务ID(17位) | 示例: 10467100000002001",
+                "type": "string",
+                "example": "10467100000002001",
+                "default": ""
+              },
+              "jmAiTaskRecordId": {
+                "description": "京麦AI空间定时任务执行记录的唯一业务ID(17位) | 示例: 10467110000001001",
+                "type": "string",
+                "example": "10467110000001001",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息列表",
+            "x-java-type": "java.util.List <com.jd.pop.jm.work.flow.client.common.response.restful.RestfulError>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "code码 | 示例: 200",
+                  "type": "string",
+                  "example": "200",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

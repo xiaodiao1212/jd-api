@@ -1,0 +1,1868 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 商家API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/listVenders": {
+      "get": {
+        "operationId": "listVenders",
+        "summary": "分页查询商家基本信息列表",
+        "description": "分页查询商家基本信息列表\n\nJD method: GET.sp-seller.v0.venders",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.venders",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVendersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVendersResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1041040005": {
+                    "summary": "账号类型不能为空@#$补充请求参数中的账号类型"
+                  },
+                  "1041040006": {
+                    "summary": "账号不能为空@#$确认用户是否授权成功"
+                  },
+                  "1041040008": {
+                    "summary": "页码小于1或者太大@#$确认请求参数中的页码，范围[1, 100]"
+                  },
+                  "1041040009": {
+                    "summary": "页大小小于1或者太大@#$确认请求参数中的页大小，范围[1, 100]"
+                  },
+                  "10401001001": {
+                    "summary": "**不能为空@#$检查提示中的字段并补充内容"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getVender": {
+      "get": {
+        "operationId": "getVender",
+        "summary": "获取商家基本信息",
+        "description": "查询商家基本信息，主要包含：店铺名称，商家状态，店铺编号，商家入驻类型\n\nJD method: GET.sp-seller.v0.venderinfo",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.venderinfo",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVenderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVenderResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1041040002": {
+                    "summary": "商家ID为空@#$检查授权token是否正确且在有效期内"
+                  },
+                  "10401001001": {
+                    "summary": "**不能为空@#$检查提示中的字段并补充内容"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listVenderAddresses": {
+      "get": {
+        "operationId": "listVenderAddresses",
+        "summary": "获取商家地址",
+        "description": "获取商家地址信息，包括发货地址、售后地址\n\nJD method: GET.sp-seller.v0.venders.self.addresses",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.venders.self.addresses",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVenderAddressesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVenderAddressesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10405001001": {
+                    "summary": "请求入参检查异常@#$根据提示，检查入参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listVenderCategories": {
+      "get": {
+        "operationId": "listVenderCategories",
+        "summary": "获取商家经营类目",
+        "description": "获取POP/自营商家发品时经营类目，包括可申请经营类目（仅支持POP）和可经营类目。\n\nJD method: GET.sp-seller.v0.vender-categories",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.vender-categories",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVenderCategoriesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVenderCategoriesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10402001001": {
+                    "summary": "请求入参检查异常@#$请根据错误提示，检查接口入参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listVenderBrands": {
+      "get": {
+        "operationId": "listVenderBrands",
+        "summary": "获取商家经营品牌",
+        "description": "获取商家品牌列表，由于品牌归一调整建议使用调用可选品牌进行发品，入参queryType=2\n\nJD method: GET.sp-seller.v0.vender-brands",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.vender-brands",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVenderBrandsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVenderBrandsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10403002501": {
+                    "summary": "品牌名称用于模糊搜素（支持输入10个字符以内）@#$检索品牌输入10个字符以内的字符串"
+                  },
+                  "10403003001": {
+                    "summary": "内部服务异常@#$内部服务异常，请稍后重试，或提工单咨询"
+                  },
+                  "10403001001": {
+                    "summary": "请求入参检查异常@#$请根据错误提示，检查接口入参"
+                  },
+                  "10403009999": {
+                    "summary": "系统异常@#$系统异常，请稍后重试，或提工单咨询"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postBrandCategoryValidation": {
+      "post": {
+        "operationId": "postBrandCategoryValidation",
+        "summary": "批量校验品牌类目发品权限",
+        "description": "批量校验品牌类目信息，校验商家传入的类目品牌是否具有发品权限。\n\nJD method: POST.sp-seller.v0.brand-categories.validations",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "POST.sp-seller.v0.brand-categories.validations",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostBrandCategoryValidationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostBrandCategoryValidationResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1041030003": {
+                    "summary": "校验品牌类目为空@#$根据提示，传入正确接口入参"
+                  },
+                  "10404001002": {
+                    "summary": "批量校验品类大小范围：1-20@#$根据提示，传入正确的校验品类个数"
+                  },
+                  "10404001001": {
+                    "summary": "请求入参检查异常@#$请根据错误提示，检查接口入参"
+                  },
+                  "10404003001": {
+                    "summary": "内部服务异常@#$内部服务异常，请稍后重试，或提工单咨询"
+                  },
+                  "10404009999": {
+                    "summary": "系统异常@#$系统异常，请稍后重试，或提工单咨询"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getShippingTemplate": {
+      "get": {
+        "operationId": "getShippingTemplate",
+        "summary": "获取运费模版详情",
+        "description": "根据模板Id获取模板规则（货到付款和在线支付）\n\nJD method: GET.sp-seller.v0.shipping-templates._templateId",
+        "tags": [
+          "商家API"
+        ],
+        "x-jd-method": "GET.sp-seller.v0.shipping-templates._templateId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetShippingTemplateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShippingTemplateResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10407001002": {
+                    "summary": "运费模板ID不能为空@#$运费模板ID不能为空"
+                  },
+                  "10407001001": {
+                    "summary": "必填参数为空@#$检查接口入参，按照要求填写"
+                  },
+                  "10407001003": {
+                    "summary": "运费模板请求参数不能为空@#$运费模板请求参数不能为空"
+                  },
+                  "10407001008": {
+                    "summary": "运费模板请求异常@#$联系平台人员处理"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListVendersRequest": {
+        "type": "object",
+        "properties": {
+          "listVendersRequest": {
+            "description": "分页查询请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.vender.model.request.ListVendersRequest",
+            "type": "object",
+            "properties": {
+              "accountType": {
+                "description": "账号类型（0：erp，1：pin） | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "page": {
+                "description": "页码(显示多少页，区间为1-200) | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "scopeSet": {
+                "description": "返回结果范围，传值可选范围：[baseInfo、venderBusiness、venderBindRelation、venderPayTimeLimitRules] | 必填",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "scopeSetItem": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "account": {
+                "description": "账号 | 示例: test_user | 必填",
+                "x-jd-public": true,
+                "type": "string",
+                "example": "test_user",
+                "default": ""
+              }
+            },
+            "required": [
+              "accountType",
+              "pageSize",
+              "page",
+              "scopeSet",
+              "account"
+            ]
+          }
+        },
+        "required": [
+          "listVendersRequest"
+        ]
+      },
+      "ListVendersResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页参数",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "商家分页列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.vender.model.dto.VenderDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "venderId": {
+                  "description": "商家id | 示例: 70277",
+                  "type": "integer",
+                  "example": 70277,
+                  "default": 0
+                },
+                "venderBaseInfo": {
+                  "description": "商家基本信息",
+                  "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderBaseDTO",
+                  "type": "object",
+                  "properties": {
+                    "venderStatus": {
+                      "description": "商家状态，（1.待审核；2.财务收费审核；4.待启用;8.已启用;16.审核未通过32.终止合作（预留）;18.自营提交审核;20.自营待经理审核;21.自营经理驳回;24.自营待总监审核;25.自营总监驳回） | 示例: 8",
+                      "type": "integer",
+                      "example": 8,
+                      "default": 0
+                    },
+                    "colType": {
+                      "description": "合作方式，（0:SOP;1:FBP;2:LBP;4:LVB;5:SOPL;6:虚卡;7:手机充值;8:机票;9:彩票;10:团队开发平台;11:酒店;12:火车票;13:电影票;14:景点;15:旅游线路;16:租车;17:票务;20:域名;21:拍卖;22:页面游戏;23:即开型彩票;24:车险商家;25:非车险商家;26:京东帮;27:网页游戏（技术服务）;28:缴费;29:O2O;30:团购商家;31:EPT商家;32:机票开放平台;33:汽车票;55:测试商家;775:全球购） | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "companyId": {
+                      "description": "公司id | 示例: 13889",
+                      "type": "integer",
+                      "example": 13889,
+                      "default": 0
+                    },
+                    "companyName": {
+                      "description": "公司名称 | 示例: XXX公司",
+                      "type": "string",
+                      "example": "XXX公司",
+                      "default": ""
+                    }
+                  }
+                },
+                "shopBaseInfo": {
+                  "description": "店铺信息",
+                  "x-java-type": "com.jd.open.rest.client.vender.model.dto.ShopBaseDTO",
+                  "type": "object",
+                  "properties": {
+                    "shopId": {
+                      "description": "店铺编号 | 示例: 16799558",
+                      "type": "integer",
+                      "example": 16799558,
+                      "default": 0
+                    },
+                    "shopName": {
+                      "description": "店铺名称 | 示例: 艺江南商厨旗舰店",
+                      "type": "string",
+                      "example": "艺江南商厨旗舰店",
+                      "default": ""
+                    },
+                    "mainFirstCategoryId": {
+                      "description": "主营一级类目id | 示例: 737",
+                      "type": "integer",
+                      "example": 737,
+                      "default": 0
+                    },
+                    "mainFirstCategoryName": {
+                      "description": "主营一级类目名称 | 示例: 家用电器",
+                      "type": "string",
+                      "example": "家用电器",
+                      "default": ""
+                    },
+                    "type": {
+                      "description": "店铺类型，（0:pop, 1，自营） | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "接口是否调用成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "异常信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1041040005",
+                  "type": "string",
+                  "example": "1041040005",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 补充请求参数中的账号类型",
+                  "type": "string",
+                  "example": "补充请求参数中的账号类型",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 账号类型不能为空",
+                  "type": "string",
+                  "example": "账号类型不能为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetVenderRequest": {
+        "type": "object",
+        "properties": {
+          "getVenderRequest": {
+            "description": "获取商家基本信息请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.vender.model.request.GetVenderRequest",
+            "type": "object",
+            "properties": {
+              "scopeSet": {
+                "description": "需要返回的属性列表,传值可选范围：[baseInfo、venderBusiness、venderBindRelation、venderPayTimeLimitRules] | 必填",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "scopeSetItem": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "venderId": {
+                "description": "商家id | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              }
+            },
+            "required": [
+              "scopeSet",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "getVenderRequest"
+        ]
+      },
+      "GetVenderResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "商家明细信息",
+            "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderDTO",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 示例: 70277",
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "venderBaseInfo": {
+                "description": "商家基本信息",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderBaseDTO",
+                "type": "object",
+                "properties": {
+                  "companyId": {
+                    "description": "公司id | 示例: 53248627",
+                    "type": "integer",
+                    "example": 53248627,
+                    "default": 0
+                  },
+                  "venderName": {
+                    "description": "商家名称 | 示例: 丹阳市美怡厨房设备有限公司",
+                    "type": "string",
+                    "example": "丹阳市美怡厨房设备有限公司",
+                    "default": ""
+                  },
+                  "companyType": {
+                    "description": "公司类型 | 示例: 0",
+                    "type": "integer",
+                    "example": 0,
+                    "default": 0
+                  },
+                  "companyName": {
+                    "description": "公司名称 | 示例: 丹阳市美怡厨房设备有限公司",
+                    "type": "string",
+                    "example": "丹阳市美怡厨房设备有限公司",
+                    "default": ""
+                  },
+                  "venderStatus": {
+                    "description": "商家状态，（1.待审核；2.财务收费审核；4.待启用;8.已启用;16.审核未通过32.终止合作（预留）;18.自营提交审核;20.自营待经理审核;21.自营经理驳回;24.自营待总监审核;25.自营总监驳回） | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "colType": {
+                    "description": "合作方式，（0:SOP;1:FBP;2:LBP;4:LVB;5:SOPL;6:虚卡;7:手机充值;8:机票;9:彩票;10:团队开发平台;11:酒店;12:火车票;13:电影票;14:景点;15:旅游线路;16:租车;17:票务;20:域名;21:拍卖;22:页面游戏;23:即开型彩票;24:车险商家;25:非车险商家;26:京东帮;27:网页游戏（技术服务）;28:缴费;29:O2O;30:团购商家;31:EPT商家;32:机票开放平台;33:汽车票;55:测试商家;775:全球购） | 示例: 5",
+                    "type": "integer",
+                    "example": 5,
+                    "default": 0
+                  }
+                }
+              },
+              "shopBaseInfo": {
+                "description": "店铺基本信息",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.ShopBaseDTO",
+                "type": "object",
+                "properties": {
+                  "shopId": {
+                    "description": "店铺id | 示例: 16799558",
+                    "type": "integer",
+                    "example": 16799558,
+                    "default": 0
+                  },
+                  "shopName": {
+                    "description": "店铺名称 | 示例: 艺江南商厨旗舰店",
+                    "type": "string",
+                    "example": "艺江南商厨旗舰店",
+                    "default": ""
+                  },
+                  "openTime": {
+                    "description": "开店时间 | 示例: 1747805984440",
+                    "type": "integer",
+                    "example": 1747805984440,
+                    "default": 0
+                  },
+                  "logoUrl": {
+                    "description": "店铺logo | 示例: https://img30.360buyimg.com/popshop/jfs/t1/169093/10/35043/4321/63f77b5fF5f632321/88e74a6db3b1a3d4.png",
+                    "type": "string",
+                    "example": "https://img30.360buyimg.com/popshop/jfs/t1/169093/10/35043/4321/63f77b5fF5f632321/88e74a6db3b1a3d4.png",
+                    "default": ""
+                  },
+                  "introduction": {
+                    "description": "店铺简介 | 示例: 店铺介绍的文案",
+                    "type": "string",
+                    "example": "店铺介绍的文案",
+                    "default": ""
+                  },
+                  "mainFirstCategoryId": {
+                    "description": "主营一级类目id | 示例: 737",
+                    "type": "integer",
+                    "example": 737,
+                    "default": 0
+                  },
+                  "mainFirstCategoryName": {
+                    "description": "主营一级类目名称 | 示例: 家用电器",
+                    "type": "string",
+                    "example": "家用电器",
+                    "default": ""
+                  },
+                  "mainSecondCategoryId": {
+                    "description": "主营二级类目编号 | 示例: 14857",
+                    "type": "integer",
+                    "example": 14857,
+                    "default": 0
+                  },
+                  "mainSecondCategoryName": {
+                    "description": "主营二级类目名称 | 示例: 商用电器",
+                    "type": "string",
+                    "example": "商用电器",
+                    "default": ""
+                  },
+                  "validPeriodStartTime": {
+                    "description": "店铺有效期开始时间 | 示例: 1747805984440",
+                    "type": "integer",
+                    "example": 1747805984440,
+                    "default": 0
+                  },
+                  "validPeriodEndTime": {
+                    "description": "店铺有效期结束时间 | 示例: 1747805984440",
+                    "type": "integer",
+                    "example": 1747805984440,
+                    "default": 0
+                  },
+                  "principal": {
+                    "description": "合同商务负责人 | 示例: lile57",
+                    "type": "string",
+                    "example": "lile57",
+                    "default": ""
+                  },
+                  "saleDeptId": {
+                    "description": "采销部门对应id | 示例: 15566",
+                    "type": "integer",
+                    "example": 15566,
+                    "default": 0
+                  },
+                  "vendorCode": {
+                    "description": "供应商简码 | 示例: cegys",
+                    "type": "string",
+                    "example": "cegys",
+                    "default": ""
+                  },
+                  "type": {
+                    "description": "店铺类型，0:pop, 1，自营 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "status": {
+                    "description": "店铺状态 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  }
+                }
+              },
+              "venderBusinessInfo": {
+                "description": "商家业务模式",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderBusinessDTO",
+                "type": "object",
+                "properties": {
+                  "businessModelKey": {
+                    "description": "业务模式key | 示例: popsop",
+                    "type": "string",
+                    "example": "popsop",
+                    "default": ""
+                  },
+                  "businessModelName": {
+                    "description": "业务模式名称 | 示例: POP-SOP",
+                    "type": "string",
+                    "example": "POP-SOP",
+                    "default": ""
+                  },
+                  "businessExtAttribute": {
+                    "description": "店铺的业务模式的扩展属性 | 示例: {\"key\":\"value\"}",
+                    "x-java-type": "java.util.Map",
+                    "type": "object"
+                  },
+                  "businessIdMap": {
+                    "description": "业务模式值说明 | 示例: { \t\t\t\"settledSource\":{ \t\t\t\t\"businessKeyName\":\"招商渠道\", \t\t\t\t\"businessValueName\":\"平台入驻\", \t\t\t\t\"businessValueType\":1 \t\t\t}, \t\t\t\"colType\":{ \t\t\t\t\"businessKeyName\":\"基础模式\",\t\"businessValueName\":\"SOP\", \t\t\t\t\"businessValueType\":1 \t\t\t}}",
+                    "x-java-type": "java.util.Map",
+                    "type": "object"
+                  }
+                }
+              },
+              "venderExtInfo": {
+                "description": "商家扩展信息",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderExtDTO",
+                "type": "object",
+                "properties": {
+                  "productCount": {
+                    "description": "商品数量 | 示例: 100",
+                    "type": "integer",
+                    "example": 100,
+                    "default": 0
+                  },
+                  "afsStatus": {
+                    "description": "自主售后状态（默认为0，1为商家所有商品使用自主售后，2为商家委托京东售后） | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "businessGroupCode": {
+                    "description": "事业群编码 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  }
+                }
+              },
+              "venderBindRelationInfo": {
+                "description": "商家绑定关系",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderBindRelationDTO",
+                "type": "object",
+                "properties": {
+                  "bindRelationType": {
+                    "description": "业务类型（300 供应商 200 店铺） | 示例: 200",
+                    "type": "integer",
+                    "example": 200,
+                    "default": 0
+                  },
+                  "bindRelationId": {
+                    "description": "供应商简码/商家ID | 示例: 70277",
+                    "type": "string",
+                    "example": "70277",
+                    "default": ""
+                  }
+                }
+              },
+              "venderPayTimeLimitRuleList": {
+                "description": "支付时效规则",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.vender.model.dto.VenderPayTimeLimitRuleDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "venderPayTimeLimitRuleListItem": {
+                      "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderPayTimeLimitRuleDTO",
+                      "type": "object",
+                      "properties": {
+                        "ruleType": {
+                          "description": "规则类别（1：全店支付时效 2：商品可选支付时效） | 示例: 1",
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "timeLimit": {
+                          "description": "时效（1：0.5小时、3：2小时、6：6小时、A：3分钟、D：10分钟） | 示例: D,A,1,3,6",
+                          "type": "string",
+                          "example": "D,A,1,3,6",
+                          "default": ""
+                        },
+                        "startTime": {
+                          "description": "开始时间 | 示例: 1747805984440",
+                          "type": "integer",
+                          "example": 1747805984440,
+                          "default": 0
+                        },
+                        "endTime": {
+                          "description": "结束时间 | 示例: 1747805984440",
+                          "type": "integer",
+                          "example": 1747805984440,
+                          "default": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "venderBelongInfo": {
+                "description": "商家归属信息",
+                "x-java-type": "com.jd.open.rest.client.vender.model.dto.VenderBelongDTO",
+                "type": "object",
+                "properties": {
+                  "venderBelongType": {
+                    "description": "商家归属的类型（1:店铺、2:供应商） | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "venderBelongValue": {
+                    "description": "商家归属类型所属的编号（商家id，供应商简码） | 示例: 70277",
+                    "type": "string",
+                    "example": "70277",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "调用接口是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "异常信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1041040002",
+                  "type": "string",
+                  "example": "1041040002",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 检查授权token是否正确且在有效期内",
+                  "type": "string",
+                  "example": "检查授权token是否正确且在有效期内",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 商家ID为空",
+                  "type": "string",
+                  "example": "商家ID为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListVenderAddressesRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "商家地址入参",
+            "x-java-type": "com.jd.open.rest.client.vender.address.model.request.ListVenderAddressesRequest",
+            "type": "object",
+            "properties": {
+              "addressType": {
+                "description": "商家地址类型：1-发货地址\n      ，2-退货地址 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "venderId": {
+                "description": "商家ID",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "addressType"
+            ]
+          }
+        }
+      },
+      "ListVenderAddressesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.vender.address.model.dto.VenderAddressDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "addressType": {
+                  "description": "\t\n退货地址类型：0.备件库退货地址 1.自主售后退货地址 6.集运地址",
+                  "type": "integer",
+                  "default": 0
+                },
+                "addressId": {
+                  "description": "末级地址id",
+                  "type": "integer",
+                  "default": 0
+                },
+                "contact": {
+                  "description": "联系人",
+                  "type": "string",
+                  "default": ""
+                },
+                "mobile": {
+                  "description": "联系电话",
+                  "type": "string",
+                  "default": ""
+                },
+                "zipCode": {
+                  "description": "邮编",
+                  "type": "string",
+                  "default": ""
+                },
+                "fullAddress": {
+                  "description": "地址",
+                  "type": "string",
+                  "default": ""
+                },
+                "defaultAddressFlag": {
+                  "description": "是否默认地址",
+                  "type": "boolean",
+                  "default": false
+                },
+                "createdTime": {
+                  "description": "创建时间，单位：毫秒",
+                  "type": "integer",
+                  "default": 0
+                },
+                "modifiedTime": {
+                  "description": "创建时间，单位：毫秒",
+                  "type": "integer",
+                  "default": 0
+                },
+                "fullAreaIdList": {
+                  "description": "省市县等地区Id列表，省、市、县按顺序返回，格式如： fullAreaIdList: [2, 2833, 51954]",
+                  "x-java-type": "java.util.List <java.lang.Long>",
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误描述",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "解决方案",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListVenderCategoriesRequest": {
+        "type": "object",
+        "properties": {
+          "param1": {
+            "description": "入参请求对象",
+            "x-java-type": "com.jd.open.rest.client.vender.category.model.request.ListVenderCategoriesRequest",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "description": "用户pin",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "description": "商家ID",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "categoryIdList": {
+                "description": "类目ID列表",
+                "x-java-type": "java.util.List <java.lang.Long>",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "sceneType": {
+                "description": "接口场景：1 - 类目校验 - 输入类目ID列表，返回是否可用\n2- 选择类目 - 输入类目ID列表，返回下级类目ID列表\n3- 返回输入的类目到末级，类目树 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "sceneType"
+            ]
+          }
+        }
+      },
+      "ListVenderCategoriesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.VenderCategoryDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "description": "类目ID",
+                  "type": "integer",
+                  "default": 0
+                },
+                "parentCategoryId": {
+                  "description": "父类目ID",
+                  "type": "integer",
+                  "default": 0
+                },
+                "categoryName": {
+                  "description": "类目名称",
+                  "type": "string",
+                  "default": ""
+                },
+                "categoryLevel": {
+                  "description": "类目层级",
+                  "type": "integer",
+                  "default": 0
+                },
+                "leafFlag": {
+                  "description": "是否叶子节点",
+                  "type": "boolean",
+                  "default": false
+                },
+                "selectableFlag": {
+                  "description": "是否可选",
+                  "type": "boolean",
+                  "default": false
+                },
+                "nonSelectableCode": {
+                  "description": "不可选原因code",
+                  "type": "string",
+                  "default": ""
+                },
+                "nonSelectableCodeDesc": {
+                  "description": "不可选原因描述",
+                  "type": "string",
+                  "default": ""
+                },
+                "subCategories": {
+                  "description": "子类目列表",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.VenderCategoryDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "categoryId": {
+                        "description": "类目ID",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "parentCategoryId": {
+                        "description": "父类目ID",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "categoryName": {
+                        "description": "类目名称",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "categoryLevel": {
+                        "description": "类目层级",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "leafFlag": {
+                        "description": "是否叶子节点",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "selectableFlag": {
+                        "description": "是否可选",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "nonSelectableCode": {
+                        "description": "不可选原因code",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "nonSelectableCodeDesc": {
+                        "description": "不可选原因描述",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "subCategories": {
+                        "description": "子类目列表",
+                        "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.VenderCategoryDTO>",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "categoryId": {
+                              "description": "父类目ID",
+                              "type": "integer",
+                              "default": 0
+                            },
+                            "categoryName": {
+                              "description": "类目名称",
+                              "type": "string",
+                              "default": ""
+                            },
+                            "categoryLevel": {
+                              "description": "类目层级",
+                              "type": "integer",
+                              "default": 0
+                            },
+                            "leafFlag": {
+                              "description": "是否叶子节点",
+                              "type": "boolean",
+                              "default": false
+                            },
+                            "selectableFlag": {
+                              "description": "是否可选",
+                              "type": "boolean",
+                              "default": false
+                            },
+                            "nonSelectableCode": {
+                              "description": "不可选原因code",
+                              "type": "string",
+                              "default": ""
+                            },
+                            "nonSelectableCodeDesc": {
+                              "description": "不可选原因描述",
+                              "type": "string",
+                              "default": ""
+                            },
+                            "subCategories": {
+                              "description": "子类目列表",
+                              "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.VenderCategoryDTO>",
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "categoryId": {
+                                    "description": "父类目ID",
+                                    "type": "integer",
+                                    "default": 0
+                                  },
+                                  "categoryName": {
+                                    "description": "类目名称",
+                                    "type": "string",
+                                    "default": ""
+                                  },
+                                  "categoryLevel": {
+                                    "description": "类目层级",
+                                    "type": "integer",
+                                    "default": 0
+                                  },
+                                  "leafFlag": {
+                                    "description": "是否叶子节点",
+                                    "type": "boolean",
+                                    "default": false
+                                  },
+                                  "selectableFlag": {
+                                    "description": "是否可选",
+                                    "type": "boolean",
+                                    "default": false
+                                  },
+                                  "nonSelectableCode": {
+                                    "description": "不可选原因code",
+                                    "type": "string",
+                                    "default": ""
+                                  },
+                                  "nonSelectableCodeDesc": {
+                                    "description": "不可选原因描述",
+                                    "type": "string",
+                                    "default": ""
+                                  },
+                                  "subCategories": {
+                                    "description": "子类目列表",
+                                    "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.VenderCategoryDTO>",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "categoryId": {
+                                          "description": "父类目ID",
+                                          "type": "integer",
+                                          "default": 0
+                                        },
+                                        "categoryName": {
+                                          "description": "类目名称",
+                                          "type": "string",
+                                          "default": ""
+                                        },
+                                        "categoryLevel": {
+                                          "description": "类目层级",
+                                          "type": "integer",
+                                          "default": 0
+                                        },
+                                        "leafFlag": {
+                                          "description": "是否叶子节点",
+                                          "type": "boolean",
+                                          "default": false
+                                        },
+                                        "selectableFlag": {
+                                          "description": "是否可选",
+                                          "type": "boolean",
+                                          "default": false
+                                        },
+                                        "nonSelectableCode": {
+                                          "description": "不可选原因code",
+                                          "type": "string",
+                                          "default": ""
+                                        },
+                                        "nonSelectableCodeDesc": {
+                                          "description": "不可选原因描述",
+                                          "type": "string",
+                                          "default": ""
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误代码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListVenderBrandsRequest": {
+        "type": "object",
+        "properties": {
+          "param1": {
+            "description": "请求入参对象 | 必填",
+            "x-java-type": "com.jd.open.rest.client.vender.brand.model.request.ListVenderBrandsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家ID | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "pin": {
+                "description": "用户pin | 示例: test_pop_123 | 必填",
+                "x-jd-public": true,
+                "type": "string",
+                "example": "test_pop_123",
+                "default": ""
+              },
+              "categoryId": {
+                "description": "三级类目ID，查询自营时，必须传入。POP查询可选时，必须传入。 | 示例: 12301",
+                "type": "integer",
+                "example": 12301,
+                "default": 0
+              },
+              "queryType": {
+                "description": "查询类型：1，返回查询已授权（可直接发品）的品牌；\n2，表示查询可选品牌，包含已授权+未授权的品牌； | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "page": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "brandName": {
+                "description": "品牌名称 | 示例: 京造",
+                "type": "string",
+                "example": "京造",
+                "default": ""
+              },
+              "authStatus": {
+                "description": "品牌授权状态，查询已授权品牌时生效，不传返回所有状态。1：授权未通过，2：已授权，3：已停用。 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "pin",
+              "queryType",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "param1"
+        ]
+      },
+      "ListVenderBrandsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "data": {
+            "description": "返回对象",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.vender.brand.model.dto.VenderBrandDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "brandName": {
+                  "description": "品牌名称 | 示例: 京造",
+                  "type": "string",
+                  "example": "京造",
+                  "default": ""
+                },
+                "brandId": {
+                  "description": "品牌ID，品牌唯一标识 | 示例: 1288263",
+                  "type": "integer",
+                  "example": 1288263,
+                  "default": 0
+                },
+                "brandEnName": {
+                  "description": "品牌英文名称 | 示例: jingzao",
+                  "type": "string",
+                  "example": "jingzao",
+                  "default": ""
+                },
+                "brandZhName": {
+                  "description": "品牌中文名称 | 示例: 京造",
+                  "type": "string",
+                  "example": "京造",
+                  "default": ""
+                },
+                "authStatus": {
+                  "description": "品牌授权状态，查询已授权品牌时返回。1：授权未通过，2：已授权，3：已停用。 | 示例: 2",
+                  "type": "integer",
+                  "example": 2,
+                  "default": 0
+                }
+              }
+            }
+          },
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 10403001001",
+                  "type": "string",
+                  "example": "10403001001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误描述 | 示例: 请求入参检查异常",
+                  "type": "string",
+                  "example": "请求入参检查异常",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 请根据错误提示，检查接口入参",
+                  "type": "string",
+                  "example": "请根据错误提示，检查接口入参",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostBrandCategoryValidationRequest": {
+        "type": "object",
+        "properties": {
+          "param1": {
+            "description": "请求对象入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.vender.category.model.request.PostBrandCategoryValidationRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家ID | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "appKey": {
+                "description": "应用appkey | 必填",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "brandCategoryValidationList": {
+                "description": "校验品牌类目类别 | 必填",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.BrandCategoryValidationDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "categoryId": {
+                      "description": "类目ID",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "brandId": {
+                      "description": "品牌ID",
+                      "type": "integer",
+                      "default": 0
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "venderId",
+              "appKey",
+              "brandCategoryValidationList"
+            ]
+          }
+        },
+        "required": [
+          "param1"
+        ]
+      },
+      "PostBrandCategoryValidationResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "data": {
+            "description": "返回对象出参",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.vender.category.model.dto.BrandCategoryValidationDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "description": "类目ID",
+                  "type": "integer",
+                  "default": 0
+                },
+                "brandId": {
+                  "description": "品牌ID",
+                  "type": "integer",
+                  "default": 0
+                },
+                "passed": {
+                  "description": "是否可以发品",
+                  "type": "boolean",
+                  "default": false
+                },
+                "reason": {
+                  "description": "不可选原因",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetShippingTemplateRequest": {
+        "type": "object",
+        "properties": {
+          "templateId": {
+            "description": "运费模板ID | 示例: 9154440 | 必填",
+            "type": "integer",
+            "example": 9154440,
+            "default": 0
+          },
+          "request": {
+            "description": "获取运费模板请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.shipping.model.request.GetShippingTemplateRequest",
+            "type": "object",
+            "properties": {
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "templateId",
+          "request"
+        ]
+      },
+      "GetShippingTemplateResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "com.jd.open.rest.client.shipping.model.dto.ShippingTemplateDTO",
+            "type": "object",
+            "properties": {
+              "types": {
+                "description": "运费模板规则类型列表",
+                "x-java-type": "java.util.List <ShippingTemplateRuleTypeDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "typesItem": {
+                      "x-java-type": "ShippingTemplateRuleTypeDTO",
+                      "type": "object",
+                      "properties": {
+                        "typeCode": {
+                          "description": "运费模板规则类型 | 示例: 1",
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "typeDesc": {
+                          "description": "运费模板规则类型名称，示例值: 1-普通快递，2-货到付款 | 示例: 普通快递",
+                          "type": "string",
+                          "example": "普通快递",
+                          "default": ""
+                        },
+                        "rules": {
+                          "description": "运费模板规则列表",
+                          "x-java-type": "java.util.List <ShippingTemplateRuleDTO>",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "rulesItem": {
+                                "x-java-type": "ShippingTemplateRuleDTO",
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "description": "规则编号 | 示例: 87533861",
+                                    "type": "integer",
+                                    "example": 87533861,
+                                    "default": 0
+                                  },
+                                  "defaultFlag": {
+                                    "description": "true：默认规则，false：非默认规则 | 示例: true",
+                                    "type": "boolean",
+                                    "example": true,
+                                    "default": false
+                                  },
+                                  "areas": {
+                                    "description": "区域 | 示例: 全国",
+                                    "type": "string",
+                                    "example": "全国",
+                                    "default": ""
+                                  },
+                                  "firstNum": {
+                                    "description": "首件 | 示例: 1",
+                                    "x-java-type": "java.math.BigDecimal",
+                                    "type": "object"
+                                  },
+                                  "firstPrice": {
+                                    "description": "首价，单位：元 | 示例: 1",
+                                    "x-java-type": "java.math.BigDecimal",
+                                    "type": "object"
+                                  },
+                                  "addNum": {
+                                    "description": "加件 | 示例: 1",
+                                    "x-java-type": "java.math.BigDecimal",
+                                    "type": "object"
+                                  },
+                                  "addPrice": {
+                                    "description": "加价，单位：元 | 示例: 1",
+                                    "x-java-type": "java.math.BigDecimal",
+                                    "type": "object"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 10407001001",
+                  "type": "string",
+                  "example": "10407001001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 检查接口入参，按照要求填写",
+                  "type": "string",
+                  "example": "检查接口入参，按照要求填写",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误描述 | 示例: 必填参数为空",
+                  "type": "string",
+                  "example": "必填参数为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

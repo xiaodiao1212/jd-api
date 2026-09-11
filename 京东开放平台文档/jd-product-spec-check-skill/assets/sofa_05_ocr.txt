@@ -1,0 +1,71 @@
+图片：012b780e647821a2.jpeg
+内容：README.md 引用的第5张图，05销售属性、06商品详情信息规范（自营服务模块）。本文件为 Cursor Read 打开原图后人工逐字转写；未使用 OCR 引擎、脚本或第三方 OCR API。
+
+05 { 销售属性 } SPECIFICATION
+
+款式：
+
+销售属性命名结构：面料材质-真皮工艺-颜色-功能
+
+例如：真皮-半青皮-摔纹-拿铁咖-零重力
+
+尺寸：
+
+销售属性命名结构：产品人数规格+长度+电动位数量
+
+例如：
+小三人位2.2m双电动
+三人位2.8m双电动
+四人位3.5m双电动
+
+（右侧界面示意区文字）
+
+更多系列
+
+[口碑之选]30269【进口头层皮】
+[豪华进阶]30269【升级半青皮】
+
+款式
+
+真皮-半青皮-摔纹-拿铁咖-零重力
+
+尺寸
+
+小三人位双电动 2.38m
+三人位双电动 2.81m
+小四人位双电动 2.98m
+大四人位双电动 3.56m
+
+颜色/ - 三人位双电动 2.81m
+
+06 { 商品详情信息规范 } SPECIFICATION
+
+置顶模块1：服务/权益，自营使用【京东自营家具homecare+】
+
+注：【什么是京东自营家具】内容不可变更；服务项可根据商家实际情况展示
+
+什么是京东自营家具?
+
+京东自营家具是京东采销严选的具备好设计、好价格、好服务的家具产品；购买京东自营家具产品，我们将免费送您 HOMECARE+服务，确保您购物全链路的优质体验。
+
+JD Self-operated Furniture comprises items rigorously selected by JD's procurement team, featuring excellent design, competitive pricing, and premium services. With every purchase of JD Self-operated Furniture, we offer complimentary HomeCare+ service to ensure a superior experience throughout your entire shopping journey.
+
+自营家具好服务HomeCare+
+
+服务保障 无忧体验
+
+免费送装
+免费退换
+100天免费试睡
+
+¥ 100天价保
+100 100天无理由退货
+
+5年质保
+绿色环保
+破损包退换
+家具现货
+
+* 每个ID享有一次「100天免费试睡」权益，退货后同一地址不支持再次下单。
+
+* 同一商品换货不再享有「100天免费试睡」权益。不同商品换货，享有「30天免费试睡」权益。

@@ -1,0 +1,2106 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 门店API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/getStore": {
+      "get": {
+        "operationId": "getStore",
+        "summary": "获取门店信息",
+        "description": "获取指定门店的详细信息，已创建的门店，包含从京麦端或API开放创建的门店，通过该接口进行门店信息查询。\n\nJD method: GET.sp-store.v0.stores._storeId",
+        "tags": [
+          "门店API"
+        ],
+        "x-jd-method": "GET.sp-store.v0.stores._storeId",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetStoreRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetStoreResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "50000": {
+                    "summary": "成功@#$成功"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/createStore": {
+      "post": {
+        "operationId": "createStore",
+        "summary": "门店创建",
+        "description": "商家在POP店铺基础上，开展门店业务（门店发货、门店自提，LOC）时，需要进行门店信息的维护。\n\nJD method: POST.sp-store.v0.stores",
+        "tags": [
+          "门店API"
+        ],
+        "x-jd-method": "POST.sp-store.v0.stores",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStoreRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateStoreResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11901001001": {
+                    "summary": "请求参数不能为空@#$请按照接口文档，补全请求参数"
+                  },
+                  "11901001000": {
+                    "summary": "成功@#$成功"
+                  },
+                  "11901001003": {
+                    "summary": "门店信息不能为空@#$请按照接口文档，补全门店信息"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateStore": {
+      "patch": {
+        "operationId": "updateStore",
+        "summary": "更新门店信息",
+        "description": "已创建的门店，通过该接口进行门店信息修改，包含基本信息，门店状态。\n\nJD method: PATCH.sp-store.v0.stores._storeId",
+        "tags": [
+          "门店API"
+        ],
+        "x-jd-method": "PATCH.sp-store.v0.stores._storeId",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStoreRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateStoreResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11901001002": {
+                    "summary": "门店ID不能为空@#$请填写门店 id 后重新请求"
+                  },
+                  "11901001000": {
+                    "summary": "成功@#$成功"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchStoreFence": {
+      "patch": {
+        "operationId": "patchStoreFence",
+        "summary": "修改门店围栏",
+        "description": "POP、自营商家，在开展门店/仓业务时，可以通过该接口配置围栏信息，该接口支持一店发全国的快递运输围栏配置、同城配送的围栏配置，及类自营业务的围栏。参见接口字段描述入参调用。\n\nJD method: PATCH.sp-store.v0.stores._storeId.fences",
+        "tags": [
+          "门店API"
+        ],
+        "x-jd-method": "PATCH.sp-store.v0.stores._storeId.fences",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchStoreFenceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchStoreFenceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11901012506": {
+                    "summary": "业务异常@#$业务异常，请修改后重试，或提工单咨询"
+                  },
+                  "11901012503": {
+                    "summary": "当前商家下未查询到此门店@#$当前商家下未查询到此门店，请检查参数"
+                  },
+                  "11901012502": {
+                    "summary": "RPC异常@#$内部服务异常，请稍后重试，或提工单咨询"
+                  },
+                  "11901012505": {
+                    "summary": "参数异常，请校验参数@#$参数异常，请校验参数"
+                  },
+                  "11901012504": {
+                    "summary": "即时配送围栏功能暂未开放，敬请期待@#$即时配送围栏功能暂未开放，敬请期待"
+                  },
+                  "11901011003": {
+                    "summary": "基础入参校验异常@#$围栏类型无效"
+                  },
+                  "11901012004": {
+                    "summary": "业务校验异常@#$围栏类型为2时，即时配送围栏信息不能为空"
+                  },
+                  "11901011002": {
+                    "summary": "基础入参校验异常@#$门店围栏信息不能为空"
+                  },
+                  "11901012003": {
+                    "summary": "业务校验异常@#$快递发货围栏类型为2时，快递发货区域明细不能为空"
+                  },
+                  "11901012501": {
+                    "summary": "参数错误@#$入参错误，请检查入参是否符合规范"
+                  },
+                  "11901011005": {
+                    "summary": "基础入参校验异常@#$门店编号无效"
+                  },
+                  "11901012005": {
+                    "summary": "业务校验异常@#$即时配送围栏类型无效"
+                  },
+                  "11901011004": {
+                    "summary": "基础入参校验异常@#$门店类型值无效"
+                  },
+                  "11901011001": {
+                    "summary": "基础入参校验异常@#$门店编号不能为空"
+                  },
+                  "11901012002": {
+                    "summary": "业务校验异常@#$快递发货围栏类型无效"
+                  },
+                  "11901013001": {
+                    "summary": "内部服务异常@#$内部服务异常，请稍后重试，或提工单咨询"
+                  },
+                  "11901012001": {
+                    "summary": "业务校验异常@#$围栏类型为1时，快递发货围栏信息不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getStoreFence": {
+      "get": {
+        "operationId": "getStoreFence",
+        "summary": "查询门店围栏",
+        "description": "通过京东门店ID或外部商家门店，查询已配置的门店/仓的围栏数据，支持POP、自营业务。\n围栏类型覆盖快递运输围栏，同城配送的围烂，类自营业务的围栏。\n\nJD method: GET.sp-store.v0.stores._storeId.fences",
+        "tags": [
+          "门店API"
+        ],
+        "x-jd-method": "GET.sp-store.v0.stores._storeId.fences",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetStoreFenceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetStoreFenceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11901012008": {
+                    "summary": "业务校验@#$类自营门店围栏，authVenderAccount不能为空"
+                  },
+                  "11901012502": {
+                    "summary": "参数错误@#$参数异常，请校验参数"
+                  },
+                  "11901012007": {
+                    "summary": "业务校验@#$类自营门店围栏，authKey不能为空"
+                  },
+                  "11901012009": {
+                    "summary": "业务校验@#$类自营门店围栏，区域集合不能为空"
+                  },
+                  "11901011003": {
+                    "summary": "基础入参校验@#$围栏类型无效"
+                  },
+                  "11901011002": {
+                    "summary": "基础入参校验@#$门店围栏信息不能为空"
+                  },
+                  "11901012501": {
+                    "summary": "业务异常@#$业务异常，请修改后重试，或提工单咨询"
+                  },
+                  "11901011005": {
+                    "summary": "基础入参校验@#$门店编号无效"
+                  },
+                  "11901011004": {
+                    "summary": "基础入参校验@#$门店类型值无效"
+                  },
+                  "11901012005": {
+                    "summary": "业务校验@#$即时配送围栏类型无效"
+                  },
+                  "11901011001": {
+                    "summary": "基础入参校验@#$门店编号不能为空"
+                  },
+                  "11901012002": {
+                    "summary": "业务校验@#$快递发货围栏类型无效"
+                  },
+                  "11901013001": {
+                    "summary": "内部服务异常@#$内部服务异常，请稍后重试，或提工单咨询"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetStoreRequest": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "description": "storeId | 示例: 1 | 必填",
+            "type": "string",
+            "example": "1",
+            "default": ""
+          },
+          "request": {
+            "description": "请求",
+            "x-java-type": "com.jd.open.rest.client.store.model.request.GetStoreRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "type": {
+                "description": "storeId 类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "categoryName": {
+                "description": "扩展属性类目名称，用于查询特定类目的门店信息 | 示例: pop",
+                "type": "string",
+                "example": "pop",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "storeId"
+        ]
+      },
+      "GetStoreResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据",
+            "x-java-type": "com.jd.open.rest.client.store.model.dto.StoreDTO",
+            "type": "object",
+            "properties": {
+              "storeId": {
+                "description": "店铺 id | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "extStoreId": {
+                "description": "外部店铺 id | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "storeName": {
+                "description": "门店名称 | 示例: 邓伦门店4",
+                "type": "string",
+                "example": "邓伦门店4",
+                "default": ""
+              },
+              "status": {
+                "description": "门店有效状态（1：有效；-1：无效） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "addressInfo": {
+                "description": "地址",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.AddressInfoDTO",
+                "type": "object",
+                "properties": {
+                  "coordinate": {
+                    "description": "门店经纬度（纬度+\",\"+经度） | 示例: 39.915309,116.366794",
+                    "type": "string",
+                    "example": "39.915309,116.366794",
+                    "default": ""
+                  },
+                  "addName": {
+                    "description": "地址名称 | 示例: 中关村",
+                    "type": "string",
+                    "example": "中关村",
+                    "default": ""
+                  },
+                  "addCode": {
+                    "description": "门店三级标准地址编码(京东) | 示例: 51081",
+                    "type": "integer",
+                    "example": 51081,
+                    "default": 0
+                  },
+                  "addCode4": {
+                    "description": "门店四级标准地址编码(京东) | 示例: 112233",
+                    "type": "integer",
+                    "example": 112233,
+                    "default": 0
+                  },
+                  "sameCity": {
+                    "description": "是否同城\t | 示例: false",
+                    "type": "boolean",
+                    "example": false,
+                    "default": false
+                  },
+                  "fullAddress": {
+                    "description": "省市区+@!+详细地址 | 示例: 河南平顶山市舞钢市@!北京通州区京东大厦",
+                    "type": "string",
+                    "example": "河南平顶山市舞钢市@!北京通州区京东大厦",
+                    "default": ""
+                  }
+                }
+              },
+              "contactInfo": {
+                "description": "联系方式",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ContactInfoDTO",
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "description": "门店座机 | 示例: 01088888888",
+                    "type": "string",
+                    "example": "01088888888",
+                    "default": ""
+                  },
+                  "mobile": {
+                    "description": "手机号 | 示例: 13800138000",
+                    "type": "string",
+                    "example": "13800138000",
+                    "default": ""
+                  }
+                }
+              },
+              "categoryInfo": {
+                "description": "分类信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.CategoryInfoDTO",
+                "type": "object",
+                "properties": {
+                  "categoryId2": {
+                    "description": "京东门店类目 | 示例: 4",
+                    "type": "string",
+                    "example": "4",
+                    "default": ""
+                  },
+                  "categoryName": {
+                    "description": "门店扩展属性类目名称固pop-mendian-Selfdelivery | 示例: POP",
+                    "type": "string",
+                    "example": "POP",
+                    "default": ""
+                  }
+                }
+              },
+              "displayInfo": {
+                "description": "展示信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.DisplayInfoDTO",
+                "type": "object",
+                "properties": {
+                  "imageFile": {
+                    "description": "门店图片",
+                    "x-java-type": "java.util.List <String>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "image": {
+                          "description": "门店图片 | 示例: https://x",
+                          "type": "string",
+                          "example": "https://x",
+                          "default": ""
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "extendInfo": {
+                "description": "拓展信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ShopExtendInfoDTO",
+                "type": "object",
+                "properties": {
+                  "storeOpenTimeDaySt": {
+                    "description": "分段营业时间对象JSON结构 | 示例: []",
+                    "type": "string",
+                    "example": "[]",
+                    "default": ""
+                  },
+                  "storeOpenTimeDayJSONArrayString": {
+                    "description": "分段营业时间对象JSONArray结构 | 示例: []",
+                    "type": "string",
+                    "example": "[]",
+                    "default": ""
+                  },
+                  "groupIdList": {
+                    "description": "门店组ID，最多100个",
+                    "x-java-type": "java.util.List <java.lang.Integer>",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "qualificationInfo": {
+                "description": "资质信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.StoreQualificationInfoDTO",
+                "type": "object",
+                "properties": {
+                  "qualificationId": {
+                    "description": "资质id | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "imgUrl": {
+                    "description": "图片 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  }
+                }
+              },
+              "auditInfo": {
+                "description": "审核信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.AuditInfoDTO",
+                "type": "object",
+                "properties": {
+                  "auditStatus": {
+                    "description": "门店审核状态（2：待审核；3：审核通过；4：审核驳回） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "reason": {
+                    "description": "审核驳回原因 | 示例: 不符合规范",
+                    "type": "string",
+                    "example": "不符合规范",
+                    "default": ""
+                  }
+                }
+              },
+              "storeStatus": {
+                "description": "门店营业状态（1：营业，2：停业，6：歇业） | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "operateStatus": {
+                "description": "经营状态 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "created": {
+                "description": "创建时间（毫秒时间戳） | 示例: 1727423230000",
+                "type": "integer",
+                "example": 1727423230000,
+                "default": 0
+              },
+              "modified": {
+                "description": "修改时间（毫秒时间戳） | 示例: 1727423230000",
+                "type": "integer",
+                "example": 1727423230000,
+                "default": 0
+              },
+              "testType": {
+                "description": "测试类型 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "bizType": {
+                "description": "业务类型 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "请求是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "返回码 | 示例: 1",
+                  "type": "string",
+                  "example": "1",
+                  "default": ""
+                },
+                "details": {
+                  "description": "信息 | 示例: 成功",
+                  "type": "string",
+                  "example": "成功",
+                  "default": ""
+                },
+                "message": {
+                  "description": "描述 | 示例: 成功",
+                  "type": "string",
+                  "example": "成功",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateStoreRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "创建门店请求参数\n包含门店的所有必要信息，用于创建新的门店",
+            "x-java-type": "com.jd.open.rest.client.store.model.request.StoreCreateRequest",
+            "type": "object",
+            "properties": {
+              "addressInfo": {
+                "description": "门店地址信息\n包含坐标、详细地址、地址编码等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.AddressInfoDTO",
+                "type": "object",
+                "properties": {
+                  "coordinate": {
+                    "description": "腾讯GCJ-02坐标系门店坐标，纬度在前，经度在后\n示例值: 39.786289,116.563599 | 示例: 39.786289,116.563599",
+                    "type": "string",
+                    "example": "39.786289,116.563599",
+                    "default": ""
+                  },
+                  "address": {
+                    "description": "门店的详细地址信息 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "fullAddress": {
+                    "description": "门店的完整地址信息，包括省市区和详细地址。 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "addName": {
+                    "description": "详细地址，标准地址加扩展地址以@!分隔\n示例值: 北京大兴区亦庄经济开发区@!京东大厦 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "addCode": {
+                    "description": "门店三级标准地址编码(京东)\n【与coordinate二选一必填】\n示例值: 51081 | 示例: 51081",
+                    "type": "integer",
+                    "example": 51081,
+                    "default": 0
+                  },
+                  "addCode4": {
+                    "description": "门店四级标准地址编码(京东)\n示例值: 123456 | 示例: 123456",
+                    "type": "integer",
+                    "example": 123456,
+                    "default": 0
+                  }
+                }
+              },
+              "contactInfo": {
+                "description": "门店联系信息\n包含座机、手机号等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ContactInfoDTO",
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "description": "门店座机\n【与mobile二选一必填】\n长度限制：20个字符\n示例值: 01088888888 | 示例: 01088888888",
+                    "type": "string",
+                    "example": "01088888888",
+                    "default": ""
+                  },
+                  "mobile": {
+                    "description": "手机号\n【与phone二选一必填】\n长度限制：20个字符\n示例值: 13800138000 | 示例: 13800138000",
+                    "type": "string",
+                    "example": "13800138000",
+                    "default": ""
+                  }
+                }
+              },
+              "extStoreId": {
+                "description": "商家唯一门店Id\n【建议填写】商家维度不可重复\n长度限制：50个字符\n示例值: 123456 | 示例: 123456",
+                "type": "string",
+                "example": "123456",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "extendInfo": {
+                "description": "门店扩展信息\n包含营业时间、门店组等扩展信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ShopExtendInfoDTO",
+                "type": "object",
+                "properties": {
+                  "storeOpenTimeDaySt": {
+                    "description": "分段营业时间对象JSON结构\n【与storeOpenTimeDayJSONArrayString二选一必填】\nJSON格式，包含以下字段：\n- weekDays: 营业日期数组，如[1,2,3,4,5]表示周一至周五营业\n- timeNodes: 营业时间段数组，支持一天多个时间段\n长度限制：500个字符\n示例值: \n{\n\"weekDays\": [1,2,3,4,5],\n\"timeNodes\": [{\n\"openTime\": \"09:00\",\n\"closeTime\": \"14:00\"\n}]\n} | 示例: {weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00}]}",
+                    "type": "string",
+                    "example": "{weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00}]}",
+                    "default": ""
+                  },
+                  "groupIdList": {
+                    "description": "门店组ID列表\n用于将门店归类到不同的门店组中，便于管理和运营\n支持一个门店同时属于多个门店组\n限制：最多支持100个门店组ID\n示例值: [1123, 1124]",
+                    "x-java-type": "java.util.List <java.lang.Long>",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "extendJson": {
+                    "description": "扩展信息JSON字符串\n用于存储其他扩展配置，如普通营业时间等\n格式：{businessBeginTime: \"09:00\", businessEndTime: \"22:00\"}\n示例值: \n{\n\"businessBeginTime\": \"09:00\",\n\"businessEndTime\": \"22:00\"\n} | 示例: {}",
+                    "type": "string",
+                    "example": "{}",
+                    "default": ""
+                  },
+                  "storeOpenTimeDayJSONArrayString": {
+                    "description": "分段营业时间对象JSONArray结构\n【与storeOpenTimeDaySt二选一必填】\nJSON数组格式，每个元素包含weekDays和timeNodes\n适用于不同时间段有不同营业时间的情况\n长度限制：1000个字符\n示例值: \n[{\n\"weekDays\": [1,2,3],\n\"timeNodes\": [{\n\"openTime\": \"09:00\",\n\"closeTime\": \"22:00\"\n}]\n}] | 示例: [{weekDays: [1,2,3],timeNodes: [{openTime: 09:00,closeTime: 22:00}]}]",
+                    "type": "string",
+                    "example": "[{weekDays: [1,2,3],timeNodes: [{openTime: 09:00,closeTime: 22:00}]}]",
+                    "default": ""
+                  }
+                }
+              },
+              "categoryInfo": {
+                "description": "门店类目信息\n包含京东门店类目、类目名称等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.CategoryInfoDTO",
+                "type": "object",
+                "properties": {
+                  "categoryId2": {
+                    "description": "京东门店类目\n【建议填写】\n示例值: 4 | 示例: 4",
+                    "type": "integer",
+                    "example": 4,
+                    "default": 0
+                  },
+                  "categoryName": {
+                    "description": "门店扩展属性类目名称\n固定填为：pop-mendian-Selfdelivery\n长度限制：50个字符\n示例值: pop-mendian-Selfdelivery | 示例: pop-mendian-Selfdelivery",
+                    "type": "string",
+                    "example": "pop-mendian-Selfdelivery",
+                    "default": ""
+                  }
+                }
+              },
+              "qualificationInfo": {
+                "description": "门店资质信息列表\n门店类目资质信息列表，最多100个",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.store.model.dto.data.StoreQualificationInfoDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "imgUrl": {
+                      "description": "【建议填写】资质图片url | 示例: jsf/t1/xxx",
+                      "type": "string",
+                      "example": "jsf/t1/xxx",
+                      "default": ""
+                    },
+                    "isPermanent": {
+                      "description": "资质有效期是否是永久 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    },
+                    "qualificationId": {
+                      "description": "【建议填写】资质id | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "qualificationBusType": {
+                      "description": "资质类型 | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "startingTime": {
+                      "description": "【建议填写】资质有效开始时间 | 示例: 17635259370006",
+                      "type": "integer",
+                      "example": 17635259370006,
+                      "default": 0
+                    },
+                    "qualificationBusName": {
+                      "description": "资质名称 | 示例: 1",
+                      "type": "string",
+                      "example": "1",
+                      "default": ""
+                    },
+                    "endingTime": {
+                      "description": "【建议填写】资质有效截止时间 | 示例: 17635259370006",
+                      "type": "integer",
+                      "example": 17635259370006,
+                      "default": 0
+                    },
+                    "qualificationName": {
+                      "description": "资质名称 | 示例: 电子商品",
+                      "type": "string",
+                      "example": "电子商品",
+                      "default": ""
+                    },
+                    "qualificationNo": {
+                      "description": "资质编码 | 示例: 1111",
+                      "type": "string",
+                      "example": "1111",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "displayInfo": {
+                "description": "门店展示信息\n包含门店图片、LOGO、广告语等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.DisplayInfoDTO",
+                "type": "object",
+                "properties": {
+                  "imageFile": {
+                    "description": "门店图片\n【必填，仅SCF门店非必填】二进制文件流，1M以内，16:9长方形，建议1125x630, base64 string\n示例值:",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "slogan": {
+                    "description": "广告语\n会在频道页等展示\n长度限制：100个字符\n示例值: 欢迎 | 示例: 欢迎",
+                    "type": "string",
+                    "example": "欢迎",
+                    "default": ""
+                  },
+                  "logoUrl": {
+                    "description": "门店LOGO图片url\n【到店类型业务建议填写】正方形，建议300*300\n长度限制：200个字符\n示例值: jfs/t1/... | 示例: jfs/t1/...",
+                    "type": "string",
+                    "example": "jfs/t1/...",
+                    "default": ""
+                  }
+                }
+              },
+              "storeName": {
+                "description": "门店名称\n长度限制：100个字符\n示例值: 七鲜超市（亦城景园店） | 示例: 七鲜超市（亦城景园店）",
+                "type": "string",
+                "example": "七鲜超市（亦城景园店）",
+                "default": ""
+              },
+              "storeSource": {
+                "description": "创建方渠道\n新增字段，创建方渠道：POP、自营、秒送\n示例值: POP | 示例: POP",
+                "type": "string",
+                "example": "POP",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "CreateStoreResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "com.jd.open.rest.client.store.model.dto.StoreDTO",
+            "type": "object",
+            "properties": {
+              "storeId": {
+                "description": "门店ID | 示例: 1111",
+                "type": "integer",
+                "example": 1111,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1000",
+                  "type": "string",
+                  "example": "1000",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 名称长度请保持长度为 1-100",
+                  "type": "string",
+                  "example": "名称长度请保持长度为 1-100",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 名称长度不正确",
+                  "type": "string",
+                  "example": "名称长度不正确",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateStoreRequest": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "description": "京东门店 id | 示例: 1 | 必填",
+            "type": "string",
+            "example": "1",
+            "default": ""
+          },
+          "storeUpdateRequest": {
+            "description": "更新门店请求参数",
+            "x-java-type": "com.jd.open.rest.client.store.model.request.StoreUpdateRequest",
+            "type": "object",
+            "properties": {
+              "addressInfo": {
+                "description": "门店地址信息\n包含坐标、详细地址、地址编码等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.AddressInfoDTO",
+                "type": "object",
+                "properties": {
+                  "coordinate": {
+                    "description": "腾讯GCJ-02坐标系门店坐标，纬度在前，经度在后\n示例值: 39.786289,116.563599 | 示例: 39.786289,116.563599",
+                    "type": "string",
+                    "example": "39.786289,116.563599",
+                    "default": ""
+                  },
+                  "address": {
+                    "description": "门店的详细地址信息 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "fullAddress": {
+                    "description": "门店的完整地址信息，包括省市区和详细地址。 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "addName": {
+                    "description": "详细地址，标准地址加扩展地址以@!分隔\n示例值: 北京大兴区亦庄经济开发区@!京东大厦 | 示例: 北京大兴区亦庄经济开发区@!京东大厦",
+                    "type": "string",
+                    "example": "北京大兴区亦庄经济开发区@!京东大厦",
+                    "default": ""
+                  },
+                  "addCode": {
+                    "description": "门店三级标准地址编码(京东)\n【与coordinate二选一必填】\n示例值: 51081 | 示例: 51081",
+                    "type": "integer",
+                    "example": 51081,
+                    "default": 0
+                  },
+                  "addCode4": {
+                    "description": "门店四级标准地址编码(京东)\n示例值: 123456 | 示例: 112233",
+                    "type": "integer",
+                    "example": 112233,
+                    "default": 0
+                  }
+                }
+              },
+              "contactInfo": {
+                "description": "门店联系信息\n包含座机、手机号等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ContactInfoDTO",
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "description": "门店座机\n【与mobile二选一必填】\n长度限制：20个字符\n示例值: 01088888888 | 示例: 01088888888",
+                    "type": "string",
+                    "example": "01088888888",
+                    "default": ""
+                  },
+                  "mobile": {
+                    "description": "手机号\n【与phone二选一必填】\n长度限制：20个字符\n示例值: 13800138000 | 示例: 13800138000",
+                    "type": "string",
+                    "example": "13800138000",
+                    "default": ""
+                  }
+                }
+              },
+              "extStoreId": {
+                "description": "商家门店ID，建议填写，商家维度不可重复\n【建议填写】商家维度不可重复\n长度限制：50个字符\n示例值: 123456 | 示例: 12",
+                "type": "string",
+                "example": "12",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "type": {
+                "description": "修改类型：1、门店基础信息；2、修改门店状态 storeStatus; | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "extendInfo": {
+                "description": "门店扩展信息\n包含营业时间、门店组等扩展信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.ShopExtendInfoDTO",
+                "type": "object",
+                "properties": {
+                  "storeOpenTimeDaySt": {
+                    "description": "分段营业时间对象JSON结构\n【与storeOpenTimeDayJSONArrayString二选一必填】\nJSON格式，包含以下字段：\n- weekDays: 营业日期数组，如[1,2,3,4,5]表示周一至周五营业\n- timeNodes: 营业时间段数组，支持一天多个时间段\n长度限制：500个字符\n示例值: \n{\n\"weekDays\": [1,2,3,4,5],\n\"timeNodes\": [{\n\"openTime\": \"09:00\",\n\"closeTime\": \"14:00\"\n}]\n} | 示例: {weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00},{openTime: 15:00,closeTime: 22:00}]}",
+                    "type": "string",
+                    "example": "{weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00},{openTime: 15:00,closeTime: 22:00}]}",
+                    "default": ""
+                  },
+                  "groupIdList": {
+                    "description": "门店组ID列表\n用于将门店归类到不同的门店组中，便于管理和运营\n支持一个门店同时属于多个门店组\n限制：最多支持100个门店组ID\n示例值: [1123, 1124]",
+                    "x-java-type": "java.util.List <java.lang.Long>",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "extendJson": {
+                    "description": "扩展信息JSON字符串\n用于存储其他扩展配置，如普通营业时间等\n格式：{businessBeginTime: \"09:00\", businessEndTime: \"22:00\"}\n示例值: \n{\n\"businessBeginTime\": \"09:00\",\n\"businessEndTime\": \"22:00\"\n} | 示例: {}",
+                    "type": "string",
+                    "example": "{}",
+                    "default": ""
+                  },
+                  "storeOpenTimeDayJSONArrayString": {
+                    "description": "分段营业时间对象JSONArray结构\n【与storeOpenTimeDaySt二选一必填】\nJSON数组格式，每个元素包含weekDays和timeNodes\n适用于不同时间段有不同营业时间的情况\n长度限制：1000个字符\n示例值: \n[{\n\"weekDays\": [1,2,3],\n\"timeNodes\": [{\n\"openTime\": \"09:00\",\n\"closeTime\": \"22:00\"\n}]\n}] | 示例: [{weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00},{openTime: 15:00,closeTime: 22:00}]}]",
+                    "type": "string",
+                    "example": "[{weekDays: [1,2,3,4,5],timeNodes: [{openTime: 09:00,closeTime: 14:00},{openTime: 15:00,closeTime: 22:00}]}]",
+                    "default": ""
+                  }
+                }
+              },
+              "storeStatus": {
+                "description": "门店状态，1 启用，2停用 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "categoryInfo": {
+                "description": "门店类目信息\n包含京东门店类目、类目名称等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.CategoryInfoDTO",
+                "type": "object",
+                "properties": {
+                  "categoryId2": {
+                    "description": "京东门店类目\n【建议填写】\n示例值: 4 | 示例: 4",
+                    "type": "integer",
+                    "example": 4,
+                    "default": 0
+                  },
+                  "categoryName": {
+                    "description": "门店扩展属性类目名称\n固定填为：pop-mendian-Selfdelivery\n长度限制：50个字符\n示例值: pop-mendian-Selfdelivery | 示例: pop-mendian-Selfdelivery",
+                    "type": "string",
+                    "example": "pop-mendian-Selfdelivery",
+                    "default": ""
+                  }
+                }
+              },
+              "qualificationInfo": {
+                "description": "门店资质信息列表\n门店类目资质信息列表，最多100个",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.store.model.dto.data.StoreQualificationInfoDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "imgUrl": {
+                      "description": "【建议填写】资质图片url | 示例: jfs/t1/...",
+                      "type": "string",
+                      "example": "jfs/t1/...",
+                      "default": ""
+                    },
+                    "isPermanent": {
+                      "description": "资质有效期是否是永久 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    },
+                    "qualificationId": {
+                      "description": "【建议填写】资质id | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "startingTime": {
+                      "description": "【建议填写】资质有效开始时间 | 示例: 17635259370006",
+                      "type": "integer",
+                      "example": 17635259370006,
+                      "default": 0
+                    },
+                    "endingTime": {
+                      "description": "【建议填写】资质有效截止时间 | 示例: 17635259370006",
+                      "type": "integer",
+                      "example": 17635259370006,
+                      "default": 0
+                    }
+                  }
+                }
+              },
+              "displayInfo": {
+                "description": "门店展示信息\n包含门店图片、LOGO、广告语等信息",
+                "x-java-type": "com.jd.open.rest.client.store.model.dto.data.DisplayInfoDTO",
+                "type": "object",
+                "properties": {
+                  "imageFile": {
+                    "description": "门店图片\n【必填，仅SCF门店非必填】二进制文件流，1M以内，16:9长方形，建议1125x630, base64 string\n示例值:",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "slogan": {
+                    "description": "广告语\n会在频道页等展示\n长度限制：100个字符\n示例值: 欢迎 | 示例: 欢迎",
+                    "type": "string",
+                    "example": "欢迎",
+                    "default": ""
+                  },
+                  "logoUrl": {
+                    "description": "门店LOGO图片url\n【到店类型业务建议填写】正方形，建议300*300\n长度限制：200个字符\n示例值: jfs/t1/... | 示例: jfs/t1/...",
+                    "type": "string",
+                    "example": "jfs/t1/...",
+                    "default": ""
+                  }
+                }
+              },
+              "storeName": {
+                "description": "门店名称\n长度限制：100个字符\n示例值: 七鲜超市（亦城景园店） | 示例: 七鲜超市（亦城景园店）",
+                "type": "string",
+                "example": "七鲜超市（亦城景园店）",
+                "default": ""
+              },
+              "storeSource": {
+                "description": "创建方渠道\n新增字段，创建方渠道：POP、自营、秒送\n示例值: POP | 示例: POP",
+                "type": "string",
+                "example": "POP",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "storeId"
+        ]
+      },
+      "UpdateStoreResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "com.jd.open.rest.client.store.model.dto.StoreDTO",
+            "type": "object",
+            "properties": {
+              "storeId": {
+                "description": "门店ID | 示例: 20000",
+                "type": "integer",
+                "example": 20000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1000001",
+                  "type": "string",
+                  "example": "1000001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 请填写完整信息，重新请求",
+                  "type": "string",
+                  "example": "请填写完整信息，重新请求",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 请填写请求信息",
+                  "type": "string",
+                  "example": "请填写请求信息",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PatchStoreFenceRequest": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "description": "门店编码 | 示例: 1032000178 | 必填",
+            "type": "string",
+            "example": "1032000178",
+            "default": ""
+          },
+          "patchStoreFenceRequest": {
+            "description": "门店围栏修改请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.store.fence.model.request.PatchStoreFenceRequest",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "门店编码类型（默认为1），1为京东内部商家门店编码（Long），2为外部商家门店编码（String） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "fenceDTO": {
+                "description": "门店资源实体 | 必填",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.FenceDTO",
+                "type": "object",
+                "properties": {
+                  "fenceType": {
+                    "description": "围栏类型（1:快递发货围栏；2:即时配送围栏，暂时不支持；3:类自营围栏） | 示例: 1 | 必填",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "deliveryFenceDTO": {
+                    "description": "快递发货围栏实体，围栏类型为1时必填",
+                    "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceDTO",
+                    "type": "object",
+                    "properties": {
+                      "deliveryFenceType": {
+                        "description": "快递发货区域类型（1:全国不含港澳台, 2:区域明细） | 示例: 2",
+                        "type": "integer",
+                        "example": 2,
+                        "default": 0
+                      },
+                      "deliveryFenceAreaDTOList": {
+                        "description": "快递发货区域明细（仅当快递发货区域类型为2时有效）",
+                        "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO>",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "deliveryFenceAreaDTOListItem": {
+                              "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO",
+                              "type": "object",
+                              "properties": {
+                                "countyId": {
+                                  "description": "区县编码 | 示例: 4139",
+                                  "type": "integer",
+                                  "example": 4139,
+                                  "default": 0
+                                },
+                                "cityId": {
+                                  "description": "市编码 | 示例: 72",
+                                  "type": "integer",
+                                  "example": 72,
+                                  "default": 0
+                                },
+                                "provinceId": {
+                                  "description": "省编码 | 示例: 1",
+                                  "type": "integer",
+                                  "example": 1,
+                                  "default": 0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "instantDeliveryFenceDTO": {
+                    "description": "即时配送围栏实体，围栏类型为2时必填",
+                    "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.InstantDeliveryFenceDTO",
+                    "type": "object",
+                    "properties": {
+                      "instantDeliveryFenceType": {
+                        "description": "即时配送围栏类型（1:圆形, 2:多边形） | 示例: 2",
+                        "type": "integer",
+                        "example": 2,
+                        "default": 0
+                      },
+                      "instantDeliveryFenceCoordinates": {
+                        "description": "即时配送围栏：多边形围栏坐标信息（WKT格式单围栏，仅当围栏形状类型为2时有效） | 示例: POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))",
+                        "type": "string",
+                        "example": "POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))",
+                        "default": ""
+                      },
+                      "instantDeliveryFenceRadius": {
+                        "description": "即时配送围栏：圆形围栏半径（仅当围栏形状类型为1时有效），单位：米 | 示例: 1500",
+                        "type": "integer",
+                        "example": 1500,
+                        "default": 0
+                      }
+                    }
+                  },
+                  "cityFenceDTO": {
+                    "description": "类自营围栏实体，围栏类型为3时必填",
+                    "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.CityFenceDTO",
+                    "type": "object",
+                    "properties": {
+                      "authKey": {
+                        "description": "商家authKey，来源于[全渠道履约系统]，联系系统产品获取（CityFenceDTO下必填） | 示例: TEST001",
+                        "type": "string",
+                        "example": "TEST001",
+                        "default": ""
+                      },
+                      "authVenderAccount": {
+                        "description": "商家账号（https://open.jd.com/v2/#/doc/scene?listId=1000572,参见4.4章节 用户pin的获取方式）（CityFenceDTO下必填） | 示例: test_pop",
+                        "type": "string",
+                        "example": "test_pop",
+                        "default": ""
+                      },
+                      "scopeType": {
+                        "description": "1-圆形电子围栏;2-多边形电子 | 示例: 1",
+                        "type": "string",
+                        "example": "1",
+                        "default": ""
+                      },
+                      "storeToCAddressList": {
+                        "description": "商仓类型面向用户覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                        "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "storeToCAddressListItem": {
+                              "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                              "type": "object",
+                              "properties": {
+                                "provinceId": {
+                                  "description": "省一级地址编码 | 示例: 17",
+                                  "type": "integer",
+                                  "example": 17,
+                                  "default": 0
+                                },
+                                "provinceName": {
+                                  "description": "省级地址名称 | 示例: 湖北",
+                                  "type": "string",
+                                  "example": "湖北",
+                                  "default": ""
+                                },
+                                "cityId": {
+                                  "description": "市二级地址编码 | 示例: 1381",
+                                  "type": "integer",
+                                  "example": 1381,
+                                  "default": 0
+                                },
+                                "cityName": {
+                                  "description": "市级地址名称 | 示例: 武汉市",
+                                  "type": "string",
+                                  "example": "武汉市",
+                                  "default": ""
+                                },
+                                "countyId": {
+                                  "description": "县三级地址编码 | 示例: 3079",
+                                  "type": "integer",
+                                  "example": 3079,
+                                  "default": 0
+                                },
+                                "countyName": {
+                                  "description": "县级地址名称 | 示例: 武昌区",
+                                  "type": "string",
+                                  "example": "武昌区",
+                                  "default": ""
+                                },
+                                "storeAddress": {
+                                  "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                                  "type": "string",
+                                  "example": "幸福小区3栋",
+                                  "default": ""
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "storeToBAddressList": {
+                        "description": "商仓类型面向商家覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                        "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "storeToBAddressListItem": {
+                              "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                              "type": "object",
+                              "properties": {
+                                "provinceId": {
+                                  "description": "省一级地址编码 | 示例: 17",
+                                  "type": "integer",
+                                  "example": 17,
+                                  "default": 0
+                                },
+                                "provinceName": {
+                                  "description": "省级地址名称 | 示例: 湖北",
+                                  "type": "string",
+                                  "example": "湖北",
+                                  "default": ""
+                                },
+                                "cityId": {
+                                  "description": "市二级地址编码 | 示例: 1381",
+                                  "type": "integer",
+                                  "example": 1381,
+                                  "default": 0
+                                },
+                                "cityName": {
+                                  "description": "市级地址名称 | 示例: 武汉市",
+                                  "type": "string",
+                                  "example": "武汉市",
+                                  "default": ""
+                                },
+                                "countyId": {
+                                  "description": "县三级地址编码 | 示例: 3079",
+                                  "type": "integer",
+                                  "example": 3079,
+                                  "default": 0
+                                },
+                                "countyName": {
+                                  "description": "县级地址名称 | 示例: 武昌区",
+                                  "type": "string",
+                                  "example": "武昌区",
+                                  "default": ""
+                                },
+                                "storeAddress": {
+                                  "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                                  "type": "string",
+                                  "example": "幸福小区3栋",
+                                  "default": ""
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "fenceType"
+                ]
+              }
+            },
+            "required": [
+              "fenceDTO"
+            ]
+          }
+        },
+        "required": [
+          "storeId",
+          "patchStoreFenceRequest"
+        ]
+      },
+      "PatchStoreFenceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "门店资源实体",
+            "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.FenceDTO",
+            "type": "object",
+            "properties": {
+              "deliveryFenceDTO": {
+                "description": "快递发货围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceDTO",
+                "type": "object",
+                "properties": {
+                  "deliveryFenceType": {
+                    "description": "快递发货区域类型（1:全国不含港澳台, 2:区域明细） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "deliveryFenceAreaDTOList": {
+                    "description": "快递发货区域明细（仅当快递发货区域类型为2时有效）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "deliveryFenceAreaDTOListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO",
+                          "type": "object",
+                          "properties": {
+                            "countyId": {
+                              "description": "区县编码 | 示例: 4139",
+                              "type": "integer",
+                              "example": 4139,
+                              "default": 0
+                            },
+                            "cityId": {
+                              "description": "市编码 | 示例: 72",
+                              "type": "integer",
+                              "example": 72,
+                              "default": 0
+                            },
+                            "provinceId": {
+                              "description": "省编码 | 示例: 1",
+                              "type": "integer",
+                              "example": 1,
+                              "default": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "fenceType": {
+                "description": "围栏类型（1:快递发货围栏；2:即时配送围栏，暂时不支持；3:类自营围栏） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "instantDeliveryFenceDTO": {
+                "description": "即时配送围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.InstantDeliveryFenceDTO",
+                "type": "object",
+                "properties": {
+                  "instantDeliveryFenceType": {
+                    "description": "即时配送围栏类型（1:圆形, 2:多边形） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "instantDeliveryFenceCoordinates": {
+                    "description": "即时配送围栏：多边形围栏坐标信息（WKT格式单围栏，仅当围栏形状类型为2时有效） | 示例: \"POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))\"",
+                    "type": "string",
+                    "example": "\"POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))\"",
+                    "default": ""
+                  },
+                  "instantDeliveryFenceRadius": {
+                    "description": "即时配送围栏：圆形围栏半径（仅当围栏形状类型为1时有效），单位：米 | 示例: 1500",
+                    "type": "integer",
+                    "example": 1500,
+                    "default": 0
+                  }
+                }
+              },
+              "cityFenceDTO": {
+                "description": "类自营围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.CityFenceDTO",
+                "type": "object",
+                "properties": {
+                  "authKey": {
+                    "description": "商家authKey，来源于[全渠道履约系统]，联系系统产品获取（CityFenceDTO下必填） | 示例: TEST001",
+                    "type": "string",
+                    "example": "TEST001",
+                    "default": ""
+                  },
+                  "authVenderAccount": {
+                    "description": "商家账号（https://open.jd.com/v2/#/doc/scene?listId=1000572,参见4.4章节 用户pin的获取方式）（CityFenceDTO下必填） | 示例: test_pop",
+                    "type": "string",
+                    "example": "test_pop",
+                    "default": ""
+                  },
+                  "scopeType": {
+                    "description": "1-圆形电子围栏;2-多边形电子 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  },
+                  "storeToCAddressList": {
+                    "description": "商仓类型面向用户覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "storeToCAddressListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                          "type": "object",
+                          "properties": {
+                            "provinceId": {
+                              "description": "省一级地址编码 | 示例: 17",
+                              "type": "integer",
+                              "example": 17,
+                              "default": 0
+                            },
+                            "provinceName": {
+                              "description": "省级地址名称 | 示例: 湖北",
+                              "type": "string",
+                              "example": "湖北",
+                              "default": ""
+                            },
+                            "cityId": {
+                              "description": "市二级地址编码 | 示例: 1381",
+                              "type": "integer",
+                              "example": 1381,
+                              "default": 0
+                            },
+                            "cityName": {
+                              "description": "市级地址名称 | 示例: 武汉市",
+                              "type": "string",
+                              "example": "武汉市",
+                              "default": ""
+                            },
+                            "countyId": {
+                              "description": "县三级地址编码 | 示例: 3079",
+                              "type": "integer",
+                              "example": 3079,
+                              "default": 0
+                            },
+                            "countyName": {
+                              "description": "县级地址名称 | 示例: 武昌区",
+                              "type": "string",
+                              "example": "武昌区",
+                              "default": ""
+                            },
+                            "storeAddress": {
+                              "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                              "type": "string",
+                              "example": "幸福小区3栋",
+                              "default": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "storeToBAddressList": {
+                    "description": "商仓类型面向商家覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "storeToBAddressListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                          "type": "object",
+                          "properties": {
+                            "provinceId": {
+                              "description": "省一级地址编码 | 示例: 17",
+                              "type": "integer",
+                              "example": 17,
+                              "default": 0
+                            },
+                            "provinceName": {
+                              "description": "省级地址名称 | 示例: 湖北",
+                              "type": "string",
+                              "example": "湖北",
+                              "default": ""
+                            },
+                            "cityId": {
+                              "description": "市二级地址编码 | 示例: 1381",
+                              "type": "integer",
+                              "example": 1381,
+                              "default": 0
+                            },
+                            "cityName": {
+                              "description": "市级地址名称 | 示例: 武汉市",
+                              "type": "string",
+                              "example": "武汉市",
+                              "default": ""
+                            },
+                            "countyId": {
+                              "description": "县三级地址编码 | 示例: 3079",
+                              "type": "integer",
+                              "example": 3079,
+                              "default": 0
+                            },
+                            "countyName": {
+                              "description": "县级地址名称 | 示例: 武昌区",
+                              "type": "string",
+                              "example": "武昌区",
+                              "default": ""
+                            },
+                            "storeAddress": {
+                              "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                              "type": "string",
+                              "example": "幸福小区3栋",
+                              "default": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "接口调用是否成功，true=成功, false=失败 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "全局性错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11901011001",
+                  "type": "string",
+                  "example": "11901011001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 调用接口时请检查入参，storeId为必填",
+                  "type": "string",
+                  "example": "调用接口时请检查入参，storeId为必填",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 入参错误，storeId必填",
+                  "type": "string",
+                  "example": "入参错误，storeId必填",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetStoreFenceRequest": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "description": "门店编码 | 示例: 1032000178 | 必填",
+            "type": "string",
+            "example": "1032000178",
+            "default": ""
+          },
+          "getStoreFenceRequest": {
+            "description": "门店围栏查询请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.store.fence.model.request.GetStoreFenceRequest",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "门店编码类型（默认为1），1为京东内部商家门店编码（Long），2为外部商家门店编码（String） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "fenceType": {
+                "description": "围栏类型（1:快递发货围栏，2:即时配送围栏， 3:类自营围栏。目前只支持查3） | 示例: 3 | 必填",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "authVenderAccount": {
+                "description": "商家账号（https://open.jd.com/v2/#/doc/scene?listId=1000572,参见4.4章节 用户pin的获取方式），fenceType=3时，必填 | 示例: test_pop",
+                "type": "string",
+                "example": "test_pop",
+                "default": ""
+              },
+              "authKey": {
+                "description": "商家authKey，来源于[全渠道履约系统]，联系系统产品获取，fenceType=3时，必填 | 示例: TEST001",
+                "type": "string",
+                "example": "TEST001",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "fenceType"
+            ]
+          }
+        },
+        "required": [
+          "storeId",
+          "getStoreFenceRequest"
+        ]
+      },
+      "GetStoreFenceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "门店资源实体",
+            "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.FenceDTO",
+            "type": "object",
+            "properties": {
+              "fenceType": {
+                "description": "围栏类型（1:快递发货围栏；2:即时配送围栏，暂时不支持；3:类自营围栏） | 示例: 3",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "deliveryFenceDTO": {
+                "description": "快递发货围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceDTO",
+                "type": "object",
+                "properties": {
+                  "deliveryFenceType": {
+                    "description": "快递发货区域类型（1:全国不含港澳台, 2:区域明细） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "deliveryFenceAreaDTOList": {
+                    "description": "快递发货区域明细（仅当快递发货区域类型为2时有效）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "deliveryFenceAreaDTOListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.DeliveryFenceAreaDTO",
+                          "type": "object",
+                          "properties": {
+                            "countyId": {
+                              "description": "区县编码 | 示例: 4139",
+                              "type": "integer",
+                              "example": 4139,
+                              "default": 0
+                            },
+                            "cityId": {
+                              "description": "市编码 | 示例: 72",
+                              "type": "integer",
+                              "example": 72,
+                              "default": 0
+                            },
+                            "provinceId": {
+                              "description": "省编码 | 示例: 1",
+                              "type": "integer",
+                              "example": 1,
+                              "default": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "instantDeliveryFenceDTO": {
+                "description": "即时配送围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.InstantDeliveryFenceDTO",
+                "type": "object",
+                "properties": {
+                  "instantDeliveryFenceType": {
+                    "description": "即时配送围栏类型（1:圆形, 2:多边形） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "instantDeliveryFenceCoordinates": {
+                    "description": "即时配送围栏：多边形围栏坐标信息（WKT格式单围栏，仅当围栏形状类型为2时有效） | 示例: \"POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))\"",
+                    "type": "string",
+                    "example": "\"POLYGON ((15.02164 2.68884, 15.032037 2.687519, 15.041415 2.68285, 15.048855 2.677715, 15.0523 2.670193, 15.055273 2.661855, 15.05224 2.653519, 15.048844 2.645999, 15.041403 2.640031, 15.03203 2.622, 15.02164 2.63488, 15.01125 2.622, 15.001877 2.640031, 16.99442 2.645999, 16.989656 2.653519, 16.988007 2.661855, 16.98965 2.670193, 16.994425 2.677715, 15.001865 2.68285, 15.011243 2.687519, 15.02164 2.68884))\"",
+                    "default": ""
+                  },
+                  "instantDeliveryFenceRadius": {
+                    "description": "即时配送围栏：圆形围栏半径（仅当围栏形状类型为1时有效），单位：米 | 示例: 1500",
+                    "type": "integer",
+                    "example": 1500,
+                    "default": 0
+                  }
+                }
+              },
+              "cityFenceDTO": {
+                "description": "类自营围栏实体",
+                "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.CityFenceDTO",
+                "type": "object",
+                "properties": {
+                  "authKey": {
+                    "description": "商家authKey，来源于[全渠道履约系统]，联系系统产品获取（CityFenceDTO下必填） | 示例: TEST001",
+                    "type": "string",
+                    "example": "TEST001",
+                    "default": ""
+                  },
+                  "authVenderAccount": {
+                    "description": "商家账号（https://open.jd.com/v2/#/doc/scene?listId=1000572,参见4.4章节 用户pin的获取方式）（CityFenceDTO下必填） | 示例: test_pop",
+                    "type": "string",
+                    "example": "test_pop",
+                    "default": ""
+                  },
+                  "scopeType": {
+                    "description": "1-圆形电子围栏;2-多边形电子 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  },
+                  "storeToCAddressList": {
+                    "description": "商仓类型面向用户覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "storeToCAddressListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                          "type": "object",
+                          "properties": {
+                            "provinceId": {
+                              "description": "省一级地址编码 | 示例: 17",
+                              "type": "integer",
+                              "example": 17,
+                              "default": 0
+                            },
+                            "provinceName": {
+                              "description": "省级地址名称 | 示例: 湖北",
+                              "type": "string",
+                              "example": "湖北",
+                              "default": ""
+                            },
+                            "cityId": {
+                              "description": "市二级地址编码 | 示例: 1381",
+                              "type": "integer",
+                              "example": 1381,
+                              "default": 0
+                            },
+                            "cityName": {
+                              "description": "市级地址名称 | 示例: 武汉市",
+                              "type": "string",
+                              "example": "武汉市",
+                              "default": ""
+                            },
+                            "countyId": {
+                              "description": "县三级地址编码 | 示例: 3079",
+                              "type": "integer",
+                              "example": 3079,
+                              "default": 0
+                            },
+                            "countyName": {
+                              "description": "县级地址名称 | 示例: 武昌区",
+                              "type": "string",
+                              "example": "武昌区",
+                              "default": ""
+                            },
+                            "storeAddress": {
+                              "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                              "type": "string",
+                              "example": "幸福小区3栋",
+                              "default": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "storeToBAddressList": {
+                    "description": "商仓类型面向商家覆盖区域集合（CityFenceDTO必须填一个区域集合）",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "storeToBAddressListItem": {
+                          "x-java-type": "com.jd.open.rest.client.store.fence.model.dto.data.AddressDTO",
+                          "type": "object",
+                          "properties": {
+                            "provinceId": {
+                              "description": "省一级地址编码 | 示例: 17",
+                              "type": "integer",
+                              "example": 17,
+                              "default": 0
+                            },
+                            "provinceName": {
+                              "description": "省级地址名称 | 示例: 湖北",
+                              "type": "string",
+                              "example": "湖北",
+                              "default": ""
+                            },
+                            "cityId": {
+                              "description": "市二级地址编码 | 示例: 1381",
+                              "type": "integer",
+                              "example": 1381,
+                              "default": 0
+                            },
+                            "cityName": {
+                              "description": "市级地址名称 | 示例: 武汉市",
+                              "type": "string",
+                              "example": "武汉市",
+                              "default": ""
+                            },
+                            "countyId": {
+                              "description": "县三级地址编码 | 示例: 3079",
+                              "type": "integer",
+                              "example": 3079,
+                              "default": 0
+                            },
+                            "countyName": {
+                              "description": "县级地址名称 | 示例: 武昌区",
+                              "type": "string",
+                              "example": "武昌区",
+                              "default": ""
+                            },
+                            "storeAddress": {
+                              "description": "门店详细地址(末级地址) | 示例: 幸福小区3栋",
+                              "type": "string",
+                              "example": "幸福小区3栋",
+                              "default": ""
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "接口调用是否成功，true=成功, false=失败 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "全局性错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11901012502",
+                  "type": "string",
+                  "example": "11901012502",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 参数错误",
+                  "type": "string",
+                  "example": "参数错误",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 参数异常，请校验参数",
+                  "type": "string",
+                  "example": "参数异常，请校验参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
