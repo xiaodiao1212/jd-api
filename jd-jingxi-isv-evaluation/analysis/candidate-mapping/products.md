@@ -1,0 +1,138 @@
+# 需求与API候选映射（已完成范围审核）
+
+只使用本模块需求、已有能力事实与相关API索引。平台接口覆盖不包括我方生成/算法能力，也不默认扩展为自动回写。核心无需京东接口时，“直接支持”仅表示不需要新增平台接口；产品能力以最终矩阵为准。
+
+## R001
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listProductOpportunities |
+| support | 部分支持 |
+| read_data | 商机名称/编码、类目、热度、供需比、saleSkuNum/saleShopNum、价格区间；非本店SKU口径未证实 |
+| write_action | 无候选写入接口；推荐结果需我方算法/页面产出 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 商机接口已有类目热度与供需候选，但机会版本、行业覆盖和可经营条件决定推荐质量。 提供可解释机会清单，不把热度直接等同盈利机会。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L9；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API001 listProductOpportunities references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5839-L5902；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q04 |
+
+审核边界：提供可解释机会清单，不把热度直接等同盈利机会。
+
+## R002
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postProductApply；patchProductApply；listProductPublishTemplates；postProductValidation；listSkus；listProducts；getProduct |
+| support | 部分支持 |
+| read_data | 类目schema、商品详情、SKU、标题/属性等字段及合规检测结果 |
+| write_action | 可提交productApplyDTO创建申请，可能按applyId部分更新；有限字段不证明标题/属性/卖点/图片/详情全写 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 内容生成有基础，完整创建还取决于类目模板、申请字段与发布结果确认。 商品创建申请不等于已上架；补齐校验、审核状态和失败处理。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L10；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC02,EC03；API002 postProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1304-L1338；API003 patchProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1094-L1144；API004 listProductPublishTemplates references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1023-L1050；API005 postProductValidation references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L2937-L2974；API038 listSkus references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L7-L117；API039 listProducts references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L118-L315；API040 getProduct references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L316-L995；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q02 |
+
+审核边界：商品创建申请不等于已上架；补齐校验、审核状态和失败处理。
+
+## R003
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postProductValidation；getHealthScore；listHealthScores；listSkus；listProducts；getProduct |
+| support | 直接支持 |
+| read_data | 商品标题/属性/状态、违规字段/原因、健康分改进项 |
+| write_action | 原文核心交付为生成/计算结果，不需要修改京东状态；自动上传、发布或发送按另行明确的扩展范围评估。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | 不适用：核心交付不需要京东API；这里的直接支持仅指无需补京东接口，不代表产品已完成。 |
+| gaps | 可复用巡检优化基础，标题规范与真实商品事实决定推荐是否可用。 以商家提供商品资料输出推荐标题；自动回写为另行确认的扩展。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L11；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC03；API005 postProductValidation references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L2937-L2974；API006 getHealthScore references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5745-L5787；API007 listHealthScores references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5788-L5838；API038 listSkus references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L7-L117；API039 listProducts references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L118-L315；API040 getProduct references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L316-L995；INFERENCE_TECHNICAL: 主审产品边界；问题Q03 |
+
+审核边界：以商家提供商品资料输出推荐标题；自动回写为另行确认的扩展。
+
+## R004
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | getHealthScore；listHealthScores |
+| support | 直接支持 |
+| read_data | 商品内容、健康分及改进项 |
+| write_action | 原文核心交付为生成/计算结果，不需要修改京东状态；自动上传、发布或发送按另行明确的扩展范围评估。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | 不适用：核心交付不需要京东API；这里的直接支持仅指无需补京东接口，不代表产品已完成。 |
+| gaps | 短标题与卖点需适配京喜字段限制并避免虚构商品事实。 生成文本；平台回写不在原文明确承诺内。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L12；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC03；API006 getHealthScore references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5745-L5787；API007 listHealthScores references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5788-L5838；INFERENCE_TECHNICAL: 主审产品边界；问题Q03 |
+
+审核边界：生成文本；平台回写不在原文明确承诺内。
+
+## R005
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postProductApply；patchProductApply；listProductPublishTemplates；postProductValidation；listSkus；listProducts；getProduct |
+| support | 部分支持 |
+| read_data | 类目属性模板、商品属性、校验缺陷 |
+| write_action | 可候选创建或部分更新；有限productApplyDTO不证明所有属性可写或自动补全 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 缺失属性能识别不代表能够推断真实值，需类目模板与可验证商品资料。 未知属性交商家补充；实际补齐与写入范围需确认。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L13；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC03；API002 postProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1304-L1338；API003 patchProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1094-L1144；API004 listProductPublishTemplates references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1023-L1050；API005 postProductValidation references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L2937-L2974；API038 listSkus references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L7-L117；API039 listProducts references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L118-L315；API040 getProduct references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L316-L995；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q02,Q03 |
+
+审核边界：未知属性交商家补充；实际补齐与写入范围需确认。
+
+## R006
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postProductApply；patchProductApply；postProductValidation；getHealthScore；listHealthScores；listSkus；listProducts；getProduct |
+| support | 部分支持 |
+| read_data | 信息分、扣分/改进项、商品详情、合规检测结果 |
+| write_action | 可候选提交部分application更新；未证实标题/图片/属性/详情四类完整写回 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 信息分优化方向已有基础，京喜扣分项、优化字段与生效后分数须逐项对应。 诊断、修改与重新计分分开核验，不承诺每次改动必然涨分。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L14；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC02,EC03；API002 postProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1304-L1338；API003 patchProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1094-L1144；API005 postProductValidation references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L2937-L2974；API006 getHealthScore references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5745-L5787；API007 listHealthScores references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5788-L5838；API038 listSkus references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L7-L117；API039 listProducts references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L118-L315；API040 getProduct references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L316-L995；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q02,Q03 |
+
+审核边界：诊断、修改与重新计分分开核验，不承诺每次改动必然涨分。
+
+## R007
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postProductApply |
+| support | 部分支持 |
+| read_data | 可读取京喜类目模板；无多平台链接解析或外部平台读取候选接口 |
+| write_action | 可候选创建商品申请；跨平台导入、映射及素材写入未证实 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 跨平台链接解析、素材使用依据和属性映射未被现有能力事实覆盖。 京东创建仅覆盖目标端；来源平台获取与合规迁移需另行确定。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L15；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC02,EC03；API002 postProductApply references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L1304-L1338；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q02,Q06 |
+
+审核边界：京东创建仅覆盖目标端；来源平台获取与合规迁移需另行确定。
+
+## R008
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listProductOpportunities；getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | 商机热度/供需/销售规模及本店SKU/商品列表；商机销售规模是市场维度，不能直接视为本店SKU表现 |
+| write_action | 无候选写入接口；潜力评分/重点清单需我方算法产出 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 行业商机不能替代本店SKU利润、库存和经营表现的联合评分。 保留独立于流量潜力SKU的综合投入价值标准。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L16；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API001 listProductOpportunities references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5839-L5902；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q04,Q05,Q07 |
+
+审核边界：保留独立于流量潜力SKU的综合投入价值标准。
+
+## R009
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | 仅可候选读取商品详情、健康分/改进项；未发现完整经营方案所需经营数据组合 |
+| write_action | 生成完整经营方案不要求平台策略写入或自动执行；需要的是经营事实、约束及方案生成能力。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 完整经营方案需要跨价格、流量、活动和广告约束，不只是生成文字。 输出有依据的经营建议；方案自动落地由自动执行模块承接。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L17；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC03；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05,Q07,Q08,Q09 |
+
+审核边界：输出有依据的经营建议；方案自动落地由自动执行模块承接。

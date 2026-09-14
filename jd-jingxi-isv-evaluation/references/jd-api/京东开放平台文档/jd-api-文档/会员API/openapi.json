@@ -1,0 +1,3154 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 会员API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/getMemberSystem": {
+      "get": {
+        "operationId": "getMemberSystem",
+        "summary": "获取会员体系详情",
+        "description": "获取会员体系配置的会员卡信息、等级规则、积分规则。\n\nJD method: GET.sp-marketing.v0.member-systems._memberSystemId",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.member-systems._memberSystemId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMemberSystemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMemberSystemResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10504001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10504001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查memberSystemId是否为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listMemberSystems": {
+      "get": {
+        "operationId": "listMemberSystems",
+        "summary": "查询会员体系列表",
+        "description": "查询当前商家所属的的会员体系信息\n\nJD method: GET.sp-marketing.v0.member-systems",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.member-systems",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListMemberSystemsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMemberSystemsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10504001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10504001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查入参omid"
+                  },
+                  "10504001003": {
+                    "summary": "必传参数不能为空@#$请检查必传参数是否为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listVenderMemberRights": {
+      "get": {
+        "operationId": "listVenderMemberRights",
+        "summary": "查询商家会员权益列表",
+        "description": "查询当前商家所属的会员体系，配置的会员等级和规则数据\n\nJD method: GET.sp-marketing.v0.vender-member-rights",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.vender-member-rights",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVenderMemberRightsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVenderMemberRightsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10503001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10503001003": {
+                    "summary": "必传参数不能为空@#$请检查必传入参是否为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postMemberPoint": {
+      "post": {
+        "operationId": "postMemberPoint",
+        "summary": "变更会员积分",
+        "description": "线下商家会员积分发生变更时，通过该接口同步给平台会员积分系统。\n\n\nJD method: POST.sp-marketing.v0.members._omid.points",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "POST.sp-marketing.v0.members._omid.points",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostMemberPointRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostMemberPointResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501012505": {
+                    "summary": "用户风控等级不符合@#$该用户被平台识别为风险用户，暂时无法进行积分变更"
+                  },
+                  "10501012506": {
+                    "summary": "线下积分不足@#$请检查扣减积分值"
+                  },
+                  "10501013001": {
+                    "summary": "内部服务异常@#$请稍后再试"
+                  },
+                  "10501011001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10501011002": {
+                    "summary": "请求参数实体id不能为空@#$检查入参omid和businessId是否为空"
+                  },
+                  "10501012503": {
+                    "summary": "线下积分扣减失败@#$请稍后重试"
+                  },
+                  "10501012504": {
+                    "summary": "包含敏感词汇@#$请确认comment字段是否包含敏感字段，修改后重新调用"
+                  },
+                  "10501012501": {
+                    "summary": "积分变更失败@#$请关注具体返回错误信息"
+                  },
+                  "10501012502": {
+                    "summary": "已达到单次积分操作上限@#$请稍后重试"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listMemberPoints": {
+      "get": {
+        "operationId": "listMemberPoints",
+        "summary": "查询会员积分变更列表",
+        "description": "查询指定会员的积分增、减变更明细记录。\n\nJD method: GET.sp-marketing.v0.members._omid.points",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.members._omid.points",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListMemberPointsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMemberPointsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501011003": {
+                    "summary": "必传参数不能为空@#$检查入参必传参数是否为空"
+                  },
+                  "10501011001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10501011002": {
+                    "summary": "请求参数实体id不能为空@#$检查omid是否传入"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getMemberAggStatistic": {
+      "get": {
+        "operationId": "getMemberAggStatistic",
+        "summary": "查询会员详情及统计信息",
+        "description": "通过该接口，查询指定会员基本信息及交易类统计信息\n\nJD method: GET.sp-marketing.v0.member-agg-statistics._omid",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.member-agg-statistics._omid",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMemberAggStatisticRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMemberAggStatisticResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10502001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10502001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查入参omid是否为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deleteMember": {
+      "delete": {
+        "operationId": "deleteMember",
+        "summary": "解绑会籍",
+        "description": "解绑用户在当家商家下的会员身份，24小时内不可再次入会。\n\nJD method: DELETE.sp-marketing.v0.members._omid",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "DELETE.sp-marketing.v0.members._omid",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteMemberResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查omid是否为空"
+                  },
+                  "10501001003": {
+                    "summary": "必传参数不能为空@#$请检查必传参数是否为空"
+                  },
+                  "10501001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getMember": {
+      "get": {
+        "operationId": "getMember",
+        "summary": "查询会员详情",
+        "description": "通过会员ID指定会员详情信息\n\nJD method: GET.sp-marketing.v0.members._omid",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.members._omid",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMemberResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查入参omid"
+                  },
+                  "10501001003": {
+                    "summary": "必传参数不能为空@#$请检查必传入参是否为空"
+                  },
+                  "10501001001": {
+                    "summary": "请求参数为空@#$请检查请求参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listOmids": {
+      "get": {
+        "operationId": "listOmids",
+        "summary": "XID和会员ID批量互转接口",
+        "description": "跨店铺：同一会员体系下有多个店铺时，同一用户，查询到omid相同\n跨应用：同一会员体系下店铺订购不同应用，可通过xid转化为omid，将不同应用下的用户识别为同一人。\n\nJD method: GET.sp-marketing.v0.omids",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.omids",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListOmidsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOmidsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10505001006": {
+                    "summary": "入参xidList个数超出限制@#$请检查入参xid列表，一次最多传10个"
+                  },
+                  "10505001001": {
+                    "summary": "请求参数为空@#$检查入参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patchMember": {
+      "patch": {
+        "operationId": "patchMember",
+        "summary": "更新会员信息",
+        "description": "修改会员的基本信息\n\nJD method: PATCH.sp-marketing.v0.members._omid",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "PATCH.sp-marketing.v0.members._omid",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchMemberResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501001002": {
+                    "summary": "请求参数实体id不能为空@#$请检查入参omid是否为空"
+                  },
+                  "10501001003": {
+                    "summary": "必传参数不能为空@#$请检查入参必传字段是否为空"
+                  },
+                  "10501001001": {
+                    "summary": "请求参数为空，如operationList未传入数据@#$检查请求参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listMemberAggStatistics": {
+      "get": {
+        "operationId": "listMemberAggStatistics",
+        "summary": "查询会员详情及统计数据列表",
+        "description": "查询指定条件下的会员列表及交易统计类数据列表，不包含LV0会员数据\n\nJD method: GET.sp-marketing.v0.member-agg-statistics",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.member-agg-statistics",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListMemberAggStatisticsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMemberAggStatisticsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10502001003": {
+                    "summary": "必传参数不能为空@#$请检查必传参数是否为空"
+                  },
+                  "10502001001": {
+                    "summary": "请求参数为空@#$检查请求必传入参"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listMembers": {
+      "get": {
+        "operationId": "listMembers",
+        "summary": "查询会员列表",
+        "description": "查询指定条件下的会员列表数据，不包含LV0会员数据\n\nJD method: GET.sp-marketing.v0.members",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "GET.sp-marketing.v0.members",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListMembersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMembersResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10501001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "10501001005": {
+                    "summary": "pageSize必须大于0@#$检查分页参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listOuids": {
+      "put": {
+        "operationId": "listOuids",
+        "summary": "omid和ouid互转",
+        "description": "omid和ouid互转接口\n\nJD method: PUT.sp-marketing.v0.omid-ouids.batch",
+        "tags": [
+          "会员API"
+        ],
+        "x-jd-method": "PUT.sp-marketing.v0.omid-ouids.batch",
+        "x-jd-level": "R3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListOuidsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOuidsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10506001002": {
+                    "summary": "请求参数不规范@#$检查请求参数"
+                  },
+                  "10506001001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetMemberSystemRequest": {
+        "type": "object",
+        "properties": {
+          "memberSystemId": {
+            "description": "会员体系ID | 示例: 10005 | 必填",
+            "type": "integer",
+            "example": 10005,
+            "default": 0
+          },
+          "request": {
+            "description": "请求入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.GetMemberSystemRequest",
+            "type": "object",
+            "properties": {
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "返回结果可选字段（memberSystemId、memberSystemState、memberSystemType、memberSystemPointsFlag、memberSystemPointsRule、memberSystemLevelRule） | 示例: memberSystemPointsFlag",
+                    "type": "string",
+                    "example": "memberSystemPointsFlag",
+                    "default": ""
+                  }
+                }
+              },
+              "venderId": {
+                "description": "venderId | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "memberSystemId",
+          "request"
+        ]
+      },
+      "GetMemberSystemResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "会员体系信息",
+            "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberSystemDTO",
+            "type": "object",
+            "properties": {
+              "memberSystemId": {
+                "description": "会员体系id | 示例: 222222333",
+                "type": "integer",
+                "example": 222222333,
+                "default": 0
+              },
+              "memberSystemState": {
+                "description": "会员体系状态 | 示例: 3",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "memberSystemType": {
+                "description": "商家会员体系类型：0-未开启 1-已购即会员 2-商家开卡 3-品牌开卡 4-购买ISV服务 5-纯开卡 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "memberSystemTypeDesc": {
+                "description": "商家会员体系类型描述 | 示例: 商家开卡",
+                "type": "string",
+                "example": "商家开卡",
+                "default": ""
+              },
+              "memberSystemPointsFlag": {
+                "description": "积分开启状态 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "memberSystemPointsRuleList": {
+                "description": "积分规则列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberSystemDTO.PointsRuleDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ruleId": {
+                      "description": "积分规则ID | 示例: dddd11111",
+                      "type": "string",
+                      "example": "dddd11111",
+                      "default": ""
+                    },
+                    "type": {
+                      "description": "类型：0-倍数 1-积分 | 示例: 0",
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "typeDesc": {
+                      "description": "规则类型描述 | 示例: 倍数",
+                      "type": "string",
+                      "example": "倍数",
+                      "default": ""
+                    },
+                    "exchangeMultiplier": {
+                      "description": "兑换倍数 | 示例: 1.2",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "points": {
+                      "description": "积分值 | 示例: 111",
+                      "type": "integer",
+                      "example": 111,
+                      "default": 0
+                    }
+                  }
+                }
+              },
+              "memberSystemLevelRuleList": {
+                "description": "等级规则列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberSystemDTO.LevelRuleDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "memberLevel": {
+                      "description": "会员等级 | 示例: 1",
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "memberLevelName": {
+                      "description": "等级名称 | 示例: 黄金会员",
+                      "type": "string",
+                      "example": "黄金会员",
+                      "default": ""
+                    },
+                    "minOrderAmount": {
+                      "description": "最低订单金额，单位元 | 示例: 111.02",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "maxOrderAmount": {
+                      "description": "最高订单金额，单位元 | 示例: 1233.33",
+                      "x-java-type": "java.math.BigDecimal",
+                      "type": "object"
+                    },
+                    "minOrderCount": {
+                      "description": "最低订单数量 | 示例: 11",
+                      "type": "integer",
+                      "example": 11,
+                      "default": 0
+                    },
+                    "maxOrderCount": {
+                      "description": "最高订单数量 | 示例: 22",
+                      "type": "integer",
+                      "example": 22,
+                      "default": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050050001",
+                  "type": "string",
+                  "example": "1050050001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误明细 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListMemberSystemsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListMembershipSystemsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 示例: 70277",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "返回结果可选字段（memberSystemId、memberSystemState、memberSystemType、memberSystemPointsFlag、memberSystemPointsRule、memberSystemLevelRule） | 示例: memberSystemType",
+                    "type": "string",
+                    "example": "memberSystemType",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListMemberSystemsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "会员体系列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberSystemDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberSystemId": {
+                  "description": "会员体系id | 示例: 10055",
+                  "type": "integer",
+                  "example": 10055,
+                  "default": 0
+                },
+                "memberSystemState": {
+                  "description": "会员体系状态 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "memberSystemType": {
+                  "description": "商家会员体系类型：0-未开启 1-已购即会员 2-商家开卡 3-品牌开卡 4-购买ISV服务 5-纯开卡 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "memberSystemTypeDesc": {
+                  "description": "商家会员体系类型描述 | 示例: 购买ISV服务",
+                  "type": "string",
+                  "example": "购买ISV服务",
+                  "default": ""
+                },
+                "memberSystemPointsFlag": {
+                  "description": "积分开启状态 | 示例: true",
+                  "type": "boolean",
+                  "example": true,
+                  "default": false
+                },
+                "memberSystemPointsRuleList": {
+                  "description": "积分规则列表",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberSystemDTO.PointsRuleDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ruleId": {
+                        "description": "积分规则ID | 示例: 123",
+                        "type": "string",
+                        "example": "123",
+                        "default": ""
+                      },
+                      "type": {
+                        "description": "类型：0-倍数 1-积分 | 示例: 0",
+                        "type": "integer",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "typeDesc": {
+                        "description": "规则类型描述 | 示例: 倍数",
+                        "type": "string",
+                        "example": "倍数",
+                        "default": ""
+                      },
+                      "exchangeMultiplier": {
+                        "description": "兑换倍数 | 示例: 2.2",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "points": {
+                        "description": "积分值 | 示例: 123",
+                        "type": "integer",
+                        "example": 123,
+                        "default": 0
+                      }
+                    }
+                  }
+                },
+                "memberSystemLevelRuleList": {
+                  "description": "等级规则列表",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberSystemDTO.LevelRuleDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "memberLevel": {
+                        "description": "会员等级 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      },
+                      "memberLevelName": {
+                        "description": "等级名称 | 示例: 金牌会员",
+                        "type": "string",
+                        "example": "金牌会员",
+                        "default": ""
+                      },
+                      "minOrderAmount": {
+                        "description": "最低订单金额，单位元 | 示例: 11.11",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "maxOrderAmount": {
+                        "description": "最高订单金额，单位元 | 示例: 23.33",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "minOrderCount": {
+                        "description": "最低订单数量 | 示例: 111",
+                        "type": "integer",
+                        "example": 111,
+                        "default": 0
+                      },
+                      "maxOrderCount": {
+                        "description": "最高订单数量 | 示例: 222",
+                        "type": "integer",
+                        "example": 222,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050050002",
+                  "type": "string",
+                  "example": "1050050002",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 分页参数信息异常",
+                  "type": "string",
+                  "example": "分页参数信息异常",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 检查分页参数",
+                  "type": "string",
+                  "example": "检查分页参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListVenderMemberRightsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListVenderMemberRightRequest",
+            "type": "object",
+            "properties": {
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "返回结果范围 | 示例: venderMemberGradeName",
+                    "type": "string",
+                    "example": "venderMemberGradeName",
+                    "default": ""
+                  }
+                }
+              },
+              "venderId": {
+                "description": "商家id | 示例: 70277",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              }
+            }
+          }
+        }
+      },
+      "ListVenderMemberRightsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.VenderMemberRightDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberDiscountList": {
+                  "description": "会员折扣列表",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.data.VenderMemberRightDiscountDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "discount": {
+                        "description": "会员折扣(1-9.9),为空表示未设置折扣 | 示例: 2.2",
+                        "type": "string",
+                        "example": "2.2",
+                        "default": ""
+                      },
+                      "venderMemberGradeName": {
+                        "description": "商家会员等级名称 | 示例: 白金会员",
+                        "type": "string",
+                        "example": "白金会员",
+                        "default": ""
+                      },
+                      "venderMemberGrade": {
+                        "description": "商家会员等级(1、2、3、4、5)，最少1个等级，最多5个等级 | 示例: 3",
+                        "type": "string",
+                        "example": "3",
+                        "default": ""
+                      },
+                      "memberSystemId": {
+                        "description": "会员体系id | 示例: 10056",
+                        "type": "integer",
+                        "example": 10056,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050040001",
+                  "type": "string",
+                  "example": "1050040001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostMemberPointRequest": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "description": "会员id | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs= | 必填",
+            "type": "string",
+            "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+            "default": ""
+          },
+          "request": {
+            "description": "操作信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.PostMemberPointRequest",
+            "type": "object",
+            "properties": {
+              "memberPointDTO": {
+                "description": "积分信息",
+                "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberPointDTO",
+                "type": "object",
+                "properties": {
+                  "pointsOperationType": {
+                    "description": "操作类型，26， \"开放接口消费积分\"；27, \"开放接口发放积分\" | 示例: 1 | 必填",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "businessId": {
+                    "description": "更新唯一id | 示例: dfdfd23434dsdrereer | 必填",
+                    "type": "string",
+                    "example": "dfdfd23434dsdrereer",
+                    "default": ""
+                  },
+                  "comment": {
+                    "description": "积分备注，最大50个字符 | 示例: 消费100块",
+                    "type": "string",
+                    "example": "消费100块",
+                    "default": ""
+                  },
+                  "points": {
+                    "description": "积分 | 示例: 100 | 必填",
+                    "type": "integer",
+                    "example": 100,
+                    "default": 0
+                  },
+                  "venderId": {
+                    "description": "venderId | 示例: 70277 | 必填",
+                    "x-jd-public": true,
+                    "type": "integer",
+                    "example": 70277,
+                    "default": 0
+                  }
+                },
+                "required": [
+                  "pointsOperationType",
+                  "businessId",
+                  "points",
+                  "venderId"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "memberId",
+          "request"
+        ]
+      },
+      "PostMemberPointResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "积分DTO",
+            "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberPointDTO",
+            "type": "object",
+            "properties": {
+              "memberSystemId": {
+                "description": "会员体系ID | 示例: 1001",
+                "type": "integer",
+                "example": 1001,
+                "default": 0
+              },
+              "points": {
+                "description": "积分值 | 示例: 10086",
+                "type": "integer",
+                "example": 10086,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050030001",
+                  "type": "string",
+                  "example": "1050030001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListMemberPointsRequest": {
+        "type": "object",
+        "properties": {
+          "omid": {
+            "description": "会员id | 示例: xxxddxx33ccx | 必填",
+            "type": "string",
+            "example": "xxxddxx33ccx",
+            "default": ""
+          },
+          "request": {
+            "description": "请求",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListMemberPointsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "description": "返回结果字段 | 示例:  name",
+                    "type": "string",
+                    "example": " name",
+                    "default": ""
+                  }
+                }
+              },
+              "startTime": {
+                "description": "查询开始时间，格式时间戳 | 示例: 1751967890396",
+                "type": "integer",
+                "example": 1751967890396,
+                "default": 0
+              },
+              "endTime": {
+                "description": "查询结束时间，格式时间戳 | 示例: 1751967890396",
+                "type": "integer",
+                "example": 1751967890396,
+                "default": 0
+              },
+              "cursor": {
+                "description": "上次查询返回的游标nextCursor，如果是第一页查询，则不传 | 示例: xxxdfe3343dfdfd",
+                "type": "string",
+                "example": "xxxdfe3343dfdfd",
+                "default": ""
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "omid"
+        ]
+      },
+      "ListMemberPointsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "积分明细列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.MemberPointDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "businessId": {
+                  "description": "业务唯一流水号 | 示例: xxxde333",
+                  "type": "string",
+                  "example": "xxxde333",
+                  "default": ""
+                },
+                "orderId": {
+                  "description": "主要记录订单号，其他发放积分规则无用 | 示例: 4152522335",
+                  "type": "string",
+                  "example": "4152522335",
+                  "default": ""
+                },
+                "memberSystemId": {
+                  "description": "会员体系id | 示例: 10058",
+                  "type": "integer",
+                  "example": 10058,
+                  "default": 0
+                },
+                "customerPin": {
+                  "description": "会员在京东的PIN | 示例: xx333",
+                  "type": "string",
+                  "example": "xx333",
+                  "default": ""
+                },
+                "xidBuyer": {
+                  "description": "会员pin对应xid | 示例: xxxx333dsddd",
+                  "type": "string",
+                  "example": "xxxx333dsddd",
+                  "default": ""
+                },
+                "occurTime": {
+                  "description": "发放积分时间 | 示例: 1748506618000",
+                  "type": "integer",
+                  "example": 1748506618000,
+                  "default": 0
+                },
+                "points": {
+                  "description": "积分 | 示例: 22",
+                  "type": "integer",
+                  "example": 22,
+                  "default": 0
+                },
+                "pointsChangeRemark": {
+                  "description": "积分变更备注 | 示例: 下单",
+                  "type": "string",
+                  "example": "下单",
+                  "default": ""
+                },
+                "currentRemainPoints": {
+                  "description": "当前剩余积分 | 示例: 10008611",
+                  "type": "integer",
+                  "example": 10008611,
+                  "default": 0
+                },
+                "pointsOperationType": {
+                  "description": "积分操作类型 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "pointsOperationTypeDesc": {
+                  "description": "积分操作类型名称 | 示例: 下单",
+                  "type": "string",
+                  "example": "下单",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "nextCursor": {
+                "description": "后续记录的startRowkey，可以作为下次查询startRowkey的条件,如果为空代表后续没有记录 | 示例: xxxdfe3343dfdfd",
+                "type": "string",
+                "example": "xxxdfe3343dfdfd",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050030001",
+                  "type": "string",
+                  "example": "1050030001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetMemberAggStatisticRequest": {
+        "type": "object",
+        "properties": {
+          "omid": {
+            "description": "会员ID（会员体系纬度会员唯一标识） | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs= | 必填",
+            "type": "string",
+            "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+            "default": ""
+          },
+          "request": {
+            "description": "请求入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.GetMemberRequest",
+            "type": "object",
+            "properties": {
+              "scopeSet": {
+                "description": "返回结果范围 | 必填",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "description": "返回结果可选字段（points、pcFlag、paidUpMember、phoneFlag、joinOrigin） | 示例: points | 必填",
+                    "type": "string",
+                    "example": "points",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "field"
+                ]
+              },
+              "venderId": {
+                "description": "venderId | 示例: 100256 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 100256,
+                "default": 0
+              }
+            },
+            "required": [
+              "scopeSet",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "omid",
+          "request"
+        ]
+      },
+      "GetMemberAggStatisticResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回结果",
+            "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberAggStatisticDTO",
+            "type": "object",
+            "properties": {
+              "member": {
+                "description": "会员信息",
+                "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberDTO",
+                "type": "object",
+                "properties": {
+                  "omid": {
+                    "description": "会员id | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                    "type": "string",
+                    "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                    "default": ""
+                  },
+                  "customerPin": {
+                    "description": "会员在京东的PIN | 示例: 752819243_m",
+                    "type": "string",
+                    "example": "752819243_m",
+                    "default": ""
+                  },
+                  "xidBuyer": {
+                    "description": "会员pin对应xid | 示例: xxxx333dsddd",
+                    "type": "string",
+                    "example": "xxxx333dsddd",
+                    "default": ""
+                  },
+                  "memberSystemId": {
+                    "description": "会员体系id | 示例: 233333",
+                    "type": "integer",
+                    "example": 233333,
+                    "default": 0
+                  },
+                  "memberLevel": {
+                    "description": "会员等级（1-一等级；2-二等级；3-三等级；4-四等级；5-五等级） | 示例: 2",
+                    "type": "integer",
+                    "example": 2,
+                    "default": 0
+                  },
+                  "offlineMemberCardNo": {
+                    "description": "线下会员卡号 | 示例: dddxxx",
+                    "type": "string",
+                    "example": "dddxxx",
+                    "default": ""
+                  },
+                  "gender": {
+                    "description": "性别（0-女，1-男，3-未知） | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  },
+                  "birthday": {
+                    "description": "出生日期（yyyy-MM-dd） | 示例: 1996-05-10",
+                    "type": "string",
+                    "example": "1996-05-10",
+                    "default": ""
+                  },
+                  "openCardChannelId": {
+                    "description": "渠道码 | 示例: 102",
+                    "type": "integer",
+                    "example": 102,
+                    "default": 0
+                  },
+                  "bindTime": {
+                    "description": "绑卡时间 | 示例: 1749551945000",
+                    "type": "integer",
+                    "example": 1749551945000,
+                    "default": 0
+                  },
+                  "phoneFlag": {
+                    "description": "是否手机下单 | 示例: false",
+                    "type": "boolean",
+                    "example": false,
+                    "default": false
+                  },
+                  "wechatFlag": {
+                    "description": "是否微信下单 | 示例: false",
+                    "type": "boolean",
+                    "example": false,
+                    "default": false
+                  },
+                  "pcFlag": {
+                    "description": "是否pc下单 | 示例: false",
+                    "type": "boolean",
+                    "example": false,
+                    "default": false
+                  },
+                  "joinOrigin": {
+                    "description": "会员标识1-下单 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "paidUpMember": {
+                    "description": "付费会员标识1付费会员；不返回表示非付费会员 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "points": {
+                    "description": "points | 示例: 223",
+                    "type": "integer",
+                    "example": 223,
+                    "default": 0
+                  },
+                  "originVenderId": {
+                    "description": "来源商家ID | 示例: 75064",
+                    "type": "integer",
+                    "example": 75064,
+                    "default": 0
+                  },
+                  "latestJoinTime": {
+                    "description": "最新入会时间 | 示例: 1749551945000",
+                    "type": "integer",
+                    "example": 1749551945000,
+                    "default": 0
+                  }
+                }
+              },
+              "totalOrderAmount": {
+                "description": "订单总金额，单位元 | 示例: 2333.12",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "totalOrderCount": {
+                "description": "订单总数 | 示例: 222",
+                "type": "integer",
+                "example": 222,
+                "default": 0
+              },
+              "avgOrderPrice": {
+                "description": "平均客单价，单位元 | 示例: 2.22",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "lastOrderTime": {
+                "description": "上次订单时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "firstOrderTime": {
+                "description": "首次订单时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050020001",
+                  "type": "string",
+                  "example": "1050020001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "DeleteMemberRequest": {
+        "type": "object",
+        "properties": {
+          "omid": {
+            "description": "会员id | 示例: ddfdfd222 | 必填",
+            "type": "string",
+            "example": "ddfdfd222",
+            "default": ""
+          },
+          "request": {
+            "description": "请求入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.DeleteMemberRequest",
+            "type": "object",
+            "properties": {
+              "memberSystemId": {
+                "description": "会员体系id | 示例: 122234 | 必填",
+                "type": "integer",
+                "example": 122234,
+                "default": 0
+              },
+              "venderId": {
+                "description": "商家id | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              }
+            },
+            "required": [
+              "memberSystemId",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "omid",
+          "request"
+        ]
+      },
+      "DeleteMemberResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回信息 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误码列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 5000000",
+                  "type": "string",
+                  "example": "5000000",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 检查参数",
+                  "type": "string",
+                  "example": "检查参数",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetMemberRequest": {
+        "type": "object",
+        "properties": {
+          "omid": {
+            "description": "会员ID（会员体系纬度会员唯一标识） | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs= | 必填",
+            "type": "string",
+            "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+            "default": ""
+          },
+          "request": {
+            "description": "请求入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.GetMemberRequest",
+            "type": "object",
+            "properties": {
+              "scopeSet": {
+                "description": "返回结果范围 | 必填",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "description": "返回结果可选字段（points、pcFlag、paidUpMember、phoneFlag、joinOrigin） | 示例: points | 必填",
+                    "type": "string",
+                    "example": "points",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "field"
+                ]
+              },
+              "venderId": {
+                "description": "venderId | 示例: 100256 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 100256,
+                "default": 0
+              }
+            },
+            "required": [
+              "scopeSet",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "omid",
+          "request"
+        ]
+      },
+      "GetMemberResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回结果",
+            "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberDTO",
+            "type": "object",
+            "properties": {
+              "omid": {
+                "description": "会员ID | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                "type": "string",
+                "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                "default": ""
+              },
+              "memberSystemId": {
+                "description": "会员体系id | 示例: 100000000034041",
+                "type": "integer",
+                "example": 100000000034041,
+                "default": 0
+              },
+              "customerPin": {
+                "description": "会员在京东的PIN | 示例: 752819243_m",
+                "type": "string",
+                "example": "752819243_m",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "会员pin衍生xid | 示例: xxxdfsdwdwex122",
+                "type": "string",
+                "example": "xxxdfsdwdwex122",
+                "default": ""
+              },
+              "gender": {
+                "description": "性别（女，男，未知） | 示例: 男",
+                "type": "string",
+                "example": "男",
+                "default": ""
+              },
+              "birthday": {
+                "description": "出生日期（yyyy-MM-dd） | 示例: 1994-02-25",
+                "type": "string",
+                "example": "1994-02-25",
+                "default": ""
+              },
+              "openCardChannelId": {
+                "description": "渠道码 | 示例: 141",
+                "type": "integer",
+                "example": 141,
+                "default": 0
+              },
+              "offlineMemberCardNo": {
+                "description": "线下会员卡号 | 示例: xxxddd333",
+                "type": "string",
+                "example": "xxxddd333",
+                "default": ""
+              },
+              "memberLevel": {
+                "description": "会员等级（1-一等级；2-二等级；3-三等级；4-四等级；5-五等级） | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "bindTime": {
+                "description": "绑卡时间 | 示例: 1750747284782",
+                "type": "integer",
+                "example": 1750747284782,
+                "default": 0
+              },
+              "phoneFlag": {
+                "description": "是否手机下单 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "wechatFlag": {
+                "description": "是否微信下单 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "pcFlag": {
+                "description": "是否pc下单 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "joinOrigin": {
+                "description": "会员标识1-下单 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "paidUpMember": {
+                "description": "付费会员标识1付费会员；不返回表示非付费会员 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "points": {
+                "description": "积分 | 示例: 23",
+                "type": "integer",
+                "example": 23,
+                "default": 0
+              },
+              "originVenderId": {
+                "description": "来源商家ID | 示例: 75064",
+                "type": "integer",
+                "example": 75064,
+                "default": 0
+              },
+              "latestJoinTime": {
+                "description": "最新入会时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050010001",
+                  "type": "string",
+                  "example": "1050010001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListOmidsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListOmidRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "xidList": {
+                "description": "xid列表，一次最多传10个",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "omidList": {
+                "description": "omid列表，最多传10个",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sceneType": {
+                "description": "转换类型（0或者不传：xid转omid； 1：omid转xid） | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              }
+            }
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListOmidsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回信息",
+            "x-java-type": "java.util.List <Data>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "omid": {
+                  "description": "会员id | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                  "type": "string",
+                  "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                  "default": ""
+                },
+                "xid": {
+                  "description": "xid | 示例: o*AASLl3G-YpzHDzoMPs8sxTyGYjk0YXhqckj_PTT1UQqpmiUrzto",
+                  "type": "string",
+                  "example": "o*AASLl3G-YpzHDzoMPs8sxTyGYjk0YXhqckj_PTT1UQqpmiUrzto",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误码列表",
+            "x-java-type": "java.util.List <ErrorList>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050060001",
+                  "type": "string",
+                  "example": "1050060001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "详细描述与解决方案 | 示例: 检查参数",
+                  "type": "string",
+                  "example": "检查参数",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PatchMemberRequest": {
+        "type": "object",
+        "properties": {
+          "omid": {
+            "description": "会员id | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs= | 必填",
+            "type": "string",
+            "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+            "default": ""
+          },
+          "request": {
+            "description": "更新信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.PatchMemberRequest",
+            "type": "object",
+            "properties": {
+              "version": {
+                "description": "线下更新版本，，取当前时间，格式参考：2025-07-10 18:38:18 | 示例: 2025-07-10 18:38:18 | 必填",
+                "type": "string",
+                "example": "2025-07-10 18:38:18",
+                "default": ""
+              },
+              "operationList": {
+                "description": "更新字段列表, \n当operationType=1时 key仅支持( memberLevel ) ； \noperationType=2时 key 仅支持( memberCode | 必填",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.member.model.dto.data.OperationDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "description": "更新字段名称\nmemberLevel: 会员等级;\nmemberCode：会员卡号； | 示例: memberLevel | 必填",
+                      "type": "string",
+                      "example": "memberLevel",
+                      "default": ""
+                    },
+                    "value": {
+                      "description": "更新字段值（基础类型） | 示例: 2 | 必填",
+                      "type": "string",
+                      "example": "2",
+                      "default": ""
+                    },
+                    "operation": {
+                      "description": "更新操作类型（当前只支持UPDATE）\n | 示例: UPDATE | 必填",
+                      "type": "string",
+                      "example": "UPDATE",
+                      "default": ""
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "value",
+                    "operation"
+                  ]
+                }
+              },
+              "venderId": {
+                "description": "venderId | 示例: 12222 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 12222,
+                "default": 0
+              },
+              "operationType": {
+                "description": "会员操作类型，默认1、普通会员操作，2、付费会员操作(预发联调阶段未上线) | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            },
+            "required": [
+              "version",
+              "operationList",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "omid",
+          "request"
+        ]
+      },
+      "PatchMemberResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回结果",
+            "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberDTO",
+            "type": "object",
+            "properties": {
+              "omid": {
+                "description": "会员id | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                "type": "string",
+                "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                "default": ""
+              },
+              "memberSystemId": {
+                "description": "会员体系id | 示例: 100000000034041",
+                "type": "integer",
+                "example": 100000000034041,
+                "default": 0
+              },
+              "memberLevel": {
+                "description": "会员等级（1-一等级；2-二等级；3-三等级；4-四等级；5-五等级） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "memberCode": {
+                "description": "会员卡号 | 示例: 2324123234",
+                "type": "string",
+                "example": "2324123234",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "调用结果 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1050010001",
+                  "type": "string",
+                  "example": "1050010001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: operationList未传入数据",
+                  "type": "string",
+                  "example": "operationList未传入数据",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 检查请求参数",
+                  "type": "string",
+                  "example": "检查请求参数",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListMemberAggStatisticsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "分页查询入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListMemberRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "venderId | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "memberLevel": {
+                "description": "会员等级；1表示一级会员，2表示二级会员，以此类推 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "memberLevels": {
+                "description": "会员等级列表",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "memberLevel": {
+                    "description": "会员等级；1表示一级会员，2表示二级会员，以此类推 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  }
+                }
+              },
+              "mobile": {
+                "description": "手机号 | 示例: 18720635630",
+                "type": "string",
+                "example": "18720635630",
+                "default": ""
+              },
+              "customerPin": {
+                "description": "会员在京东的PIN | 示例: ddd_ddd",
+                "type": "string",
+                "example": "ddd_ddd",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "type": "string",
+                "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "default": ""
+              },
+              "ouid": {
+                "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "type": "string",
+                "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "default": ""
+              },
+              "orderStartTime": {
+                "description": "最小交易时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "orderEndTime": {
+                "description": "最大交易时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "bindingStartTime": {
+                "description": "最小入会时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "bindingEndTime": {
+                "description": "最大入会时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "latestOrderStartTime": {
+                "description": "上次交易开始时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "latestOrderEndTime": {
+                "description": "上次交易结束时间，时间戳格式 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "minOrderAmount": {
+                "description": "最小交易金额，单位元 | 示例: 1.23",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "maxOrderAmount": {
+                "description": "最大交易金额，单位元 | 示例: 1.23",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "minOrderCount": {
+                "description": "最小交易数 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "maxOrderCount": {
+                "description": "最大交易数 | 示例: 233",
+                "type": "integer",
+                "example": 233,
+                "default": 0
+              },
+              "minAvgOrderPrice": {
+                "description": "最小平均客单价，单位元 | 示例: 1.23",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "maxAvgOrderPrice": {
+                "description": "最大平均客单价，单位元 | 示例: 1.23",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "返回结果可选字段（points、pcFlag、paidUpMember、phoneFlag、joinOrigin） | 示例: points",
+                    "type": "string",
+                    "example": "points",
+                    "default": ""
+                  }
+                }
+              },
+              "page": {
+                "description": "目标页 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListMemberAggStatisticsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 1000",
+                "type": "integer",
+                "example": 1000,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页条数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "会员统计信息列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "member": {
+                "description": "会员信息",
+                "x-java-type": "com.jd.open.rest.client.member.model.dto.MemberDTO",
+                "type": "object",
+                "properties": {
+                  "omid": {
+                    "description": "会员ID（店铺纬度唯一标识），需要尽快切换xid/ouid | 示例: T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                    "type": "string",
+                    "example": "T3IsvyfObi39BDHGZG6tZupTZW7iUtWo78Qa8BFSPUs=",
+                    "default": ""
+                  },
+                  "customerPin": {
+                    "description": "明文pin，尽快使用xid/ouid，即将下线 | 示例: 222ddd",
+                    "type": "string",
+                    "example": "222ddd",
+                    "default": ""
+                  },
+                  "xidBuyer": {
+                    "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                    "type": "string",
+                    "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                    "default": ""
+                  },
+                  "ouid": {
+                    "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                    "type": "string",
+                    "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                    "default": ""
+                  },
+                  "memberSystemId": {
+                    "description": "会员体系id | 示例: 100000000034041",
+                    "type": "integer",
+                    "example": 100000000034041,
+                    "default": 0
+                  },
+                  "memberLevel": {
+                    "description": "会员等级（1-一等级；2-二等级；3-三等级；4-四等级；5-五等级） | 示例: 3",
+                    "type": "integer",
+                    "example": 3,
+                    "default": 0
+                  },
+                  "offlineMemberCardNo": {
+                    "description": "线下会员卡号 | 示例: ddd222",
+                    "type": "string",
+                    "example": "ddd222",
+                    "default": ""
+                  },
+                  "bindTime": {
+                    "description": "绑卡时间，时间戳格式 | 示例: 1748506618000",
+                    "type": "integer",
+                    "example": 1748506618000,
+                    "default": 0
+                  },
+                  "phoneFlag": {
+                    "description": "是否手机下单 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "wechatFlag": {
+                    "description": "是否微信下单 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "pcFlag": {
+                    "description": "是否pc下单 | 示例: false",
+                    "type": "boolean",
+                    "example": false,
+                    "default": false
+                  },
+                  "joinOrigin": {
+                    "description": "会员标识1-下单 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "paidUpMember": {
+                    "description": "付费会员标识1付费会员；不返回表示非付费会员 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "points": {
+                    "description": "积分 | 示例: 2222",
+                    "type": "integer",
+                    "example": 2222,
+                    "default": 0
+                  },
+                  "originVenderId": {
+                    "description": "来源商家ID | 示例: 75064",
+                    "type": "integer",
+                    "example": 75064,
+                    "default": 0
+                  },
+                  "latestJoinTime": {
+                    "description": "最新入会时间 | 示例: 1749551945000",
+                    "type": "integer",
+                    "example": 1749551945000,
+                    "default": 0
+                  }
+                }
+              },
+              "totalOrderAmount": {
+                "description": "订单总金额，单位元 | 示例: 111.11",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "totalOrderCount": {
+                "description": "订单总数 | 示例: 12",
+                "type": "integer",
+                "example": 12,
+                "default": 0
+              },
+              "avgOrderPrice": {
+                "description": "平均客单价，单位元 | 示例: 33.42",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "lastOrderTime": {
+                "description": "上次订单时间，时间戳格式 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "firstOrderTime": {
+                "description": "首次订单时间，时间戳格式 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 1050020002",
+                "type": "string",
+                "example": "1050020002",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 分页参数信息异常",
+                "type": "string",
+                "example": "分页参数信息异常",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 检查分页信息",
+                "type": "string",
+                "example": "检查分页信息",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListMembersRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "查询入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListMemberRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "customerPin": {
+                "description": "会员在京东的PIN | 示例: xxx232",
+                "type": "string",
+                "example": "xxx232",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "type": "string",
+                "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "default": ""
+              },
+              "ouid": {
+                "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "type": "string",
+                "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "default": ""
+              },
+              "memberLevel": {
+                "description": "会员等级，1表示一级会员，2表示二级会员，以此类推 | 示例: 1",
+                "type": "string",
+                "example": "1",
+                "default": ""
+              },
+              "memberLevels": {
+                "description": "会员等级列表",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "memberLevel": {
+                    "description": "会员等级，1表示一级会员，2表示二级会员，以此类推 | 示例: 1",
+                    "type": "string",
+                    "example": "1",
+                    "default": ""
+                  }
+                }
+              },
+              "mobile": {
+                "description": "手机号 | 示例: 18772102563",
+                "type": "string",
+                "example": "18772102563",
+                "default": ""
+              },
+              "orderStartTime": {
+                "description": "最小交易时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "orderEndTime": {
+                "description": "最大交易时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "bindingStartTime": {
+                "description": "最小入会时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "bindingEndTime": {
+                "description": "最大入会时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "latestOrderStartTime": {
+                "description": "上次交易开始时间，格式时间戳 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "latestOrderEndTime": {
+                "description": "上次交易结束时间，格式时间戳 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "minOrderCount": {
+                "description": "最小交易数 | 示例: 22",
+                "type": "integer",
+                "example": 22,
+                "default": 0
+              },
+              "maxOrderCount": {
+                "description": "最大交易数 | 示例: 23",
+                "type": "integer",
+                "example": 23,
+                "default": 0
+              },
+              "minOrderAmount": {
+                "description": "最小交易金额，单位元 | 示例: 12.12",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "maxOrderAmount": {
+                "description": "最大交易金额，单位元 | 示例: 12.12",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "minAvgOrderPrice": {
+                "description": "最小平均客单价，单位元 | 示例: 12.02",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "maxAvgOrderPrice": {
+                "description": "最大平均客单价，单位元 | 示例: 12.02",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "scopeSet": {
+                "description": "返回结果范围",
+                "x-java-type": "java.util.Set",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "返回结果可选字段（points、pcFlag、paidUpMember、phoneFlag、joinOrigin） | 示例: name",
+                    "type": "string",
+                    "example": "name",
+                    "default": ""
+                  }
+                }
+              },
+              "page": {
+                "description": "目标页 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListMembersResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页条数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "会员列表信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "omid": {
+                "description": "会员ID，需要尽快切到xid/ouid | 示例: xxxx1111",
+                "type": "string",
+                "example": "xxxx1111",
+                "default": ""
+              },
+              "customerPin": {
+                "description": "会员在京东的PIN | 示例: 752819232_m",
+                "type": "string",
+                "example": "752819232_m",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "type": "string",
+                "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "default": ""
+              },
+              "ouid": {
+                "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "type": "string",
+                "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "default": ""
+              },
+              "memberSystemId": {
+                "description": "会员体系id | 示例: 2323211",
+                "type": "integer",
+                "example": 2323211,
+                "default": 0
+              },
+              "memberLevel": {
+                "description": "会员等级（1-一等级；2-二等级；3-三等级；4-四等级；5-五等级） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "offlineMemberCardNo": {
+                "description": "线下会员卡号 | 示例: xxx22",
+                "type": "string",
+                "example": "xxx22",
+                "default": ""
+              },
+              "bindTime": {
+                "description": "绑卡时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              },
+              "phoneFlag": {
+                "description": "是否手机下单 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "wechatFlag": {
+                "description": "是否微信下单 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "pcFlag": {
+                "description": "是否pc下单 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "joinOrigin": {
+                "description": "会员标识1-下单 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "paidUpMember": {
+                "description": "付费会员标识1付费会员；不返回表示非付费会员 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "points": {
+                "description": "积分 | 示例: 1111",
+                "type": "integer",
+                "example": 1111,
+                "default": 0
+              },
+              "originVenderId": {
+                "description": "来源商家ID | 示例: 75064",
+                "type": "integer",
+                "example": 75064,
+                "default": 0
+              },
+              "latestJoinTime": {
+                "description": "最新入会时间 | 示例: 1749551945000",
+                "type": "integer",
+                "example": 1749551945000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 1050010002",
+                "type": "string",
+                "example": "1050010002",
+                "default": ""
+              },
+              "details": {
+                "description": "错误明细 | 示例: 分页参数信息异常",
+                "type": "string",
+                "example": "分页参数信息异常",
+                "default": ""
+              },
+              "message": {
+                "description": "错误标题 | 示例: 检查分页参数",
+                "type": "string",
+                "example": "检查分页参数",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListOuidsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "入参 | 必填",
+            "x-java-type": "com.jd.open.rest.client.member.model.request.ListOuidRequest",
+            "type": "object",
+            "properties": {
+              "sceneType": {
+                "description": "转换类型（0或者null：ouid转omid； 1：omid转ouid） | 示例: 0 | 必填",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "ouidList": {
+                "description": "ouid列表，最多传10个",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "ouidDTO": {
+                    "description": "ouid信息",
+                    "x-java-type": "com.jd.open.rest.client.member.model.dto.OuidDTO",
+                    "type": "object",
+                    "properties": {
+                      "ouid": {
+                        "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                        "type": "string",
+                        "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              },
+              "omidList": {
+                "description": "omid列表，最多传10个",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "omid": {
+                    "description": "omid值 | 示例: gfageohfnasfnasffas",
+                    "type": "string",
+                    "example": "gfageohfnasfnasffas",
+                    "default": ""
+                  }
+                }
+              }
+            },
+            "required": [
+              "sceneType"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListOuidsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "success": {
+            "description": "成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "errorList列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10506001001",
+                "type": "string",
+                "example": "10506001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误描述 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              },
+              "details": {
+                "description": "错误描述 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              }
+            }
+          },
+          "data": {
+            "description": "结果列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "ouidDTO": {
+                "description": "结果",
+                "x-java-type": "com.jd.open.rest.client.member.model.dto.OuidDTO",
+                "type": "object",
+                "properties": {
+                  "ouid": {
+                    "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                    "type": "string",
+                    "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                    "default": ""
+                  },
+                  "omid": {
+                    "description": "omid | 示例: gfageohfnasfnasffas",
+                    "type": "string",
+                    "example": "gfageohfnasfnasffas",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

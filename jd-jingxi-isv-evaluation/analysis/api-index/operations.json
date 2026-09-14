@@ -1,0 +1,1255 @@
+{
+  "phase": "Phase2",
+  "scope_categories": [
+    "数据API",
+    "订单API",
+    "售后API",
+    "客服API",
+    "商家API",
+    "会员API",
+    "门店API",
+    "财务API",
+    "京麦API",
+    "通用API",
+    "虎符",
+    "变更说明"
+  ],
+  "source_policy": "仅扫描 jd-apis.d.ts；未读取 openapi.json",
+  "summary": {
+    "total_operations_scanned": 103,
+    "candidate_operations": 46,
+    "excluded_operations": 57,
+    "action_types": {
+      "READ": 38,
+      "WRITE": 8,
+      "ACTION": 0,
+      "CALLBACK": 0
+    }
+  },
+  "category_scan": {
+    "数据API": {
+      "interfaces_scanned": 5,
+      "candidates": 5,
+      "excluded": 0
+    },
+    "订单API": {
+      "interfaces_scanned": 27,
+      "candidates": 5,
+      "excluded": 22
+    },
+    "售后API": {
+      "interfaces_scanned": 10,
+      "candidates": 5,
+      "excluded": 5
+    },
+    "客服API": {
+      "interfaces_scanned": 12,
+      "candidates": 11,
+      "excluded": 1
+    },
+    "商家API": {
+      "interfaces_scanned": 7,
+      "candidates": 0,
+      "excluded": 7
+    },
+    "会员API": {
+      "interfaces_scanned": 13,
+      "candidates": 12,
+      "excluded": 1
+    },
+    "门店API": {
+      "interfaces_scanned": 5,
+      "candidates": 0,
+      "excluded": 5
+    },
+    "财务API": {
+      "interfaces_scanned": 6,
+      "candidates": 2,
+      "excluded": 4
+    },
+    "京麦API": {
+      "interfaces_scanned": 6,
+      "candidates": 6,
+      "excluded": 0
+    },
+    "通用API": {
+      "interfaces_scanned": 8,
+      "candidates": 0,
+      "excluded": 8
+    },
+    "虎符": {
+      "interfaces_scanned": 4,
+      "candidates": 0,
+      "excluded": 4
+    },
+    "变更说明": {
+      "interfaces_scanned": 0,
+      "candidates": 0,
+      "excluded": 0
+    }
+  },
+  "exclusion_reasons": {
+    "scope_outside_phase2": "商品API、营销API、推广API、内容API、C2M API未扫描",
+    "weak_requirement_relation": "名称/描述与需求清单业务目标无直接关系的订单/通用接口排除",
+    "change_log": "变更说明无接口定义"
+  },
+  "scene_evidence": [
+    {
+      "source_file": "references/jd-api/京东开放平台文档/POP模式对接方案.md",
+      "lines": "12,31,37,55-82,116-129,153-189,225-232,278-282",
+      "finding": "POP含SOP及门店发货/自提/到店模式；订单、售后、财务、会员、客服属于开放场景。文档说明的是场景范围/适用模式，不等于具体接口权限。"
+    },
+    {
+      "source_file": "references/jd-api/京东开放平台文档/客服场景文档/客服开放场景概述.md",
+      "lines": "12-18,40-46",
+      "finding": "客服域覆盖机器人、会话聊天、绩效、质检；适用POP与厂直。"
+    },
+    {
+      "source_file": "references/jd-api/京东开放平台文档/售后场景文档/退换补修场景方案.md",
+      "lines": "157-205",
+      "finding": "售后列表/详情用于历史同步与增量获取；操作接口为PATCH，消息推送可用于增量但需定向开通。"
+    }
+  ],
+  "phase4_targeted_validation": [
+    "逐接口确认 request/response 完整字段、枚举、分页与错误码",
+    "核实数据API报表的商品/店铺/渠道/广告/时间粒度指标语义，避免由 report 名称推断",
+    "核实通用订单接口对京喜店铺/订单类型的适用范围",
+    "核实每个候选接口的 ISV 应用权限、商家授权、数据脱敏和写操作前置条件",
+    "京麦任务 API：确认任务状态机、回调/轮询、幂等及自动执行边界",
+    "虎符/通用安全 API：确认接入场景、路由权限与秘钥生命周期"
+  ],
+  "operations": [
+    {
+      "category": "数据API",
+      "name": "getReportSchema",
+      "title": "报表定义查询",
+      "method": "GET",
+      "endpoint": "sp-data.v0.report-schemas._reportSchemaId",
+      "description": "获取报表定义查询",
+      "request_fields": [
+        "reportSchemaId",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "line": 7,
+      "operation_type": "READ",
+      "requirement_id": "R024,R025,R035,R044,R048,R057（指标语义待确认）",
+      "requirement_names": "AI经营复盘、CTR/CVR/活动/广告诊断（指标语义待确认）",
+      "confidence": "medium",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "数据API",
+      "name": "postReport",
+      "title": "数据报表查询",
+      "method": "POST",
+      "endpoint": "sp-data.v0.reports",
+      "description": "创建数据报表查询，获取查询数据",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "line": 81,
+      "operation_type": "READ",
+      "requirement_id": "R024,R025,R035,R044,R048,R057（指标语义待确认）",
+      "requirement_names": "AI经营复盘、CTR/CVR/活动/广告诊断（指标语义待确认）",
+      "confidence": "medium",
+      "reason": "请求 reportSchemaId、筛选条件与时间范围；返回报表数据或下载任务（指标语义待定点确认）",
+      "evidence_fields": "请求 reportSchemaId、筛选条件与时间范围；返回报表数据或下载任务（指标语义待定点确认）"
+    },
+    {
+      "category": "数据API",
+      "name": "getSensitiveReportSchema",
+      "title": "报表定义查询",
+      "method": "GET",
+      "endpoint": "sp-data.v0.yd-report-schemas._reportSchemaId",
+      "description": "获取报表定义查询",
+      "request_fields": [
+        "reportSchemaId",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "line": 141,
+      "operation_type": "READ",
+      "requirement_id": "R024,R025,R035,R044,R048,R057（敏感数据范围待确认）",
+      "requirement_names": "AI经营复盘、CTR/CVR/活动/广告诊断（指标语义待确认）",
+      "confidence": "medium",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "数据API",
+      "name": "postSensitiveReport",
+      "title": "数据报表查询",
+      "method": "POST",
+      "endpoint": "sp-data.v0.yd-reports",
+      "description": "创建数据报表查询，获取查询数据",
+      "request_fields": [
+        "postReportRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "line": 215,
+      "operation_type": "READ",
+      "requirement_id": "R024,R025,R035,R044,R048,R057（敏感数据范围待确认）",
+      "requirement_names": "AI经营复盘、CTR/CVR/活动/广告诊断（指标语义待确认）",
+      "confidence": "medium",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "数据API",
+      "name": "getReportDownloadTask",
+      "title": "查询报表下载任务",
+      "method": "GET",
+      "endpoint": "sp-data.v0.report-download-tasks._reportDownloadTaskId",
+      "description": "获取报表下载任务详情",
+      "request_fields": [
+        "reportDownloadTaskId",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "line": 267,
+      "operation_type": "READ",
+      "requirement_id": "R057（报表下载语义待确认）",
+      "requirement_names": "AI经营复盘、CTR/CVR/活动/广告诊断（指标语义待确认）",
+      "confidence": "medium",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "订单API",
+      "name": "getOrder",
+      "title": "订单详情查询",
+      "method": "GET",
+      "endpoint": "sp-order.v0.orders._orderId",
+      "description": "本API提供多渠道订单详情查询功能，支持SOP/FBP/FCS/预售/厂直等多种订单类型。采用字段可选机制，调用方需明确指定需要返回的字段名。",
+      "request_fields": [
+        "orderId",
+        "getOrderRequest"
+      ],
+      "response_fields": [
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\订单API\\jd-apis.d.ts",
+      "line": 103,
+      "operation_type": "READ",
+      "requirement_id": "R048",
+      "requirement_names": "履约诊断、售后诊断、AI自动执行（订单工具）",
+      "confidence": "high",
+      "reason": "请求 orderId、venderId、scopeSet.fieldName；返回 orderId/orderStatus/createdTime/modifiedTime 等订单详情（其余嵌套字段待定点确认）",
+      "evidence_fields": "请求 orderId、venderId、scopeSet.fieldName；返回 orderId/orderStatus/createdTime/modifiedTime 等订单详情（其余嵌套字段待定点确认）"
+    },
+    {
+      "category": "订单API",
+      "name": "listOrders",
+      "title": "订单列表查询",
+      "method": "GET",
+      "endpoint": "sp-order.v0.orders",
+      "description": "本API提供多渠道订单列表查询功能，支持SOP/FBP/FCS/预售/厂直等多种订单类型。采用字段可选机制，调用方需明确指定需要返回的字段名。",
+      "request_fields": [
+        "listOrdersRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\订单API\\jd-apis.d.ts",
+      "line": 422,
+      "operation_type": "READ",
+      "requirement_id": "R048",
+      "requirement_names": "履约诊断、售后诊断、AI自动执行（订单工具）",
+      "confidence": "high",
+      "reason": "请求 venderId、查询时间/状态/分页与 scopeSet；返回订单列表及分页状态（完整字段待定点确认）",
+      "evidence_fields": "请求 venderId、查询时间/状态/分页与 scopeSet；返回订单列表及分页状态（完整字段待定点确认）"
+    },
+    {
+      "category": "订单API",
+      "name": "listWaybillTraces",
+      "title": "物流轨迹查询",
+      "method": "GET",
+      "endpoint": "sp-order.v0.waybill-traces",
+      "description": "物流轨迹查询，根据订单号或运单号，查询物流轨迹。",
+      "request_fields": [
+        "param1"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\订单API\\jd-apis.d.ts",
+      "line": 1447,
+      "operation_type": "READ",
+      "requirement_id": "R048",
+      "requirement_names": "履约诊断、售后诊断、AI自动执行（订单工具）",
+      "confidence": "high",
+      "reason": "请求运单号/订单标识；返回轨迹节点与时间（字段待定点确认）",
+      "evidence_fields": "请求运单号/订单标识；返回轨迹节点与时间（字段待定点确认）"
+    },
+    {
+      "category": "订单API",
+      "name": "listBasicOrders",
+      "title": "订单列表查询",
+      "method": "GET",
+      "endpoint": "sp-order.v0.crm-orders",
+      "description": "本API提供多渠道订单列表查询功能，支持SOP/FBP/FCS/预售/厂直等多种订单类型。采用字段可选机制，调用方需明确指定需要返回的字段名。",
+      "request_fields": [
+        "listOrdersRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\订单API\\jd-apis.d.ts",
+      "line": 1832,
+      "operation_type": "READ",
+      "requirement_id": "R048",
+      "requirement_names": "履约诊断、售后诊断、AI自动执行（订单工具）",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "订单API",
+      "name": "getBasicOrder",
+      "title": "订单详情查询",
+      "method": "GET",
+      "endpoint": "sp-order.v0.crm-orders._orderId",
+      "description": "本API提供多渠道订单详情查询功能，支持SOP/FBP/FCS/预售/厂直等多种订单类型。采用字段可选机制，调用方需明确指定需要返回的字段名。",
+      "request_fields": [
+        "orderId",
+        "getOrderRequest"
+      ],
+      "response_fields": [
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\订单API\\jd-apis.d.ts",
+      "line": 2007,
+      "operation_type": "READ",
+      "requirement_id": "R048",
+      "requirement_names": "履约诊断、售后诊断、AI自动执行（订单工具）",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "售后API",
+      "name": "listAfsOrderLogs",
+      "title": "查询服务单日志列表",
+      "method": "GET",
+      "endpoint": "sp-aftercare.v0.afs-orders._afsOrderId.logs",
+      "description": "查询服务单日志列表，用于展示某服务单下的操作日志信息",
+      "request_fields": [
+        "afsOrderId",
+        "listAfsOrderLogsRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\售后API\\jd-apis.d.ts",
+      "line": 108,
+      "operation_type": "READ",
+      "requirement_id": "R049",
+      "requirement_names": "售后诊断、售后沟通话术、AI自动执行（售后工具）",
+      "confidence": "high",
+      "reason": "请求 afsOrderId；返回服务单操作日志（字段待定点确认）",
+      "evidence_fields": "请求 afsOrderId；返回服务单操作日志（字段待定点确认）"
+    },
+    {
+      "category": "售后API",
+      "name": "listAfsOrders",
+      "title": "分页查询售后服务单列表",
+      "method": "GET",
+      "endpoint": "sp-aftercare.v0.afs-orders",
+      "description": "按不同条件查询京东售后服务单列表，包含取消订单和自主售后两种单据，支持POP、厂直等模式",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\售后API\\jd-apis.d.ts",
+      "line": 396,
+      "operation_type": "READ",
+      "requirement_id": "R049",
+      "requirement_names": "售后诊断、售后沟通话术、AI自动执行（售后工具）",
+      "confidence": "high",
+      "reason": "请求商家、时间、状态和分页；返回售后单列表（完整字段待定点确认）",
+      "evidence_fields": "请求商家、时间、状态和分页；返回售后单列表（完整字段待定点确认）"
+    },
+    {
+      "category": "售后API",
+      "name": "getAfsOrder",
+      "title": "查询售后服务单详情",
+      "method": "GET",
+      "endpoint": "sp-aftercare.v0.afs-orders._afsOrderId",
+      "description": "根据服务单号查询服务单，包含取消订单和自主售后两种单据",
+      "request_fields": [
+        "afsOrderId",
+        "getAfsOrderRequest"
+      ],
+      "response_fields": [
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\售后API\\jd-apis.d.ts",
+      "line": 571,
+      "operation_type": "READ",
+      "requirement_id": "R049",
+      "requirement_names": "售后诊断、售后沟通话术、AI自动执行（售后工具）",
+      "confidence": "high",
+      "reason": "请求 afsOrderId；返回售后原因、状态、金额及商品信息（字段待定点确认）",
+      "evidence_fields": "请求 afsOrderId；返回售后原因、状态、金额及商品信息（字段待定点确认）"
+    },
+    {
+      "category": "售后API",
+      "name": "listPriceProtectOrders",
+      "title": "分页查询价保服务单列表",
+      "method": "GET",
+      "endpoint": "sp-aftercare.v0.price-protect-orders",
+      "description": "分页查询价保服务单列表",
+      "request_fields": [
+        "listPriceProtectOrdersRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\售后API\\jd-apis.d.ts",
+      "line": 973,
+      "operation_type": "READ",
+      "requirement_id": "R049",
+      "requirement_names": "售后诊断、售后沟通话术、AI自动执行（售后工具）",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "售后API",
+      "name": "getPriceProtectOrder",
+      "title": "查询价保详情",
+      "method": "GET",
+      "endpoint": "sp-aftercare.v0.price-protect-orders._priceProtectOrderId",
+      "description": "通过价保uuid和价保类型，获取价保详情",
+      "request_fields": [
+        "priceProtectOrderId",
+        "getPriceProtectOrderRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\售后API\\jd-apis.d.ts",
+      "line": 1039,
+      "operation_type": "READ",
+      "requirement_id": "R049",
+      "requirement_names": "售后诊断、售后沟通话术、AI自动执行（售后工具）",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "queryWaiterStatus",
+      "title": "查询客服在线状态",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-waiter-status",
+      "description": "支持批量查询指定客服在线状态",
+      "request_fields": [
+        "queryWaiterStatusRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 7,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listChatbotEvaluations",
+      "title": "查询机器人评价明细",
+      "method": "GET",
+      "endpoint": "sp-support.v0.chatbots._robotCode.evaluations",
+      "description": "查询客服机器人评价记录列表接口",
+      "request_fields": [
+        "robotCode",
+        "listChatbotEvaluationsRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 36,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "getChatbotPerformance",
+      "title": "获取聊天机器人绩效数据",
+      "method": "GET",
+      "endpoint": "sp-support.v0.chatbot-performance._robotCode",
+      "description": "用于获取聊天机器人绩效数据",
+      "request_fields": [
+        "robotCode",
+        "getChatbotPerformanceRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 85,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongSessionChatLogs",
+      "title": "查询会话下的聊天记录",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-sessions._sid.chat-logs",
+      "description": "查询会话下的聊天记录，包含客服与顾客的对话信息，会话ID需要从listDongdongSessions获取",
+      "request_fields": [
+        "sid",
+        "listChatLogsRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 121,
+      "operation_type": "READ",
+      "requirement_id": "R046,R050",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongSessions",
+      "title": "获取咚咚会话列表",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-sessions",
+      "description": "用于查询顾客咨询的会话列表，不包含聊天记录，如需获取聊天记录，需配合listChatLogs接口使用",
+      "request_fields": [
+        "listDongdongSessionsRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 159,
+      "operation_type": "READ",
+      "requirement_id": "R046,R050",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongChatDetails",
+      "title": "获取咚咚会话详情",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-chat-details",
+      "description": "用于获取咚咚会话详情，包含会话列表和聊天记录，少量数据场景下可通过该接口快速获取聊天信息",
+      "request_fields": [
+        "listDongdongChatDetailsRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 241,
+      "operation_type": "READ",
+      "requirement_id": "R046,R050",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongWaiters",
+      "title": "查询商家客服列表",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-waiters",
+      "description": "查询商家下，客服列表信息，包括客服总量，每个客服的level（是否是主账号）",
+      "request_fields": [
+        "listDongdongWaitersRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 340,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongWaiterPerformance",
+      "title": "查询客服绩效列表",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-waiter-performance",
+      "description": "查询客服绩效接口，用于获取客服人员的绩效数据",
+      "request_fields": [
+        "listWaiterPerformanceRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 376,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "listDongdongWaiterEvaluations",
+      "title": "查询客服评价列表",
+      "method": "GET",
+      "endpoint": "sp-support.v0.dongdong-waiter-evaluations",
+      "description": "客服评价列表接口，用于获取用户对客服的评价信息。",
+      "request_fields": [
+        "listWaiterEvaluationsRequest"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 414,
+      "operation_type": "READ",
+      "requirement_id": "R046",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "客服API",
+      "name": "postDongdongMessage",
+      "title": "发送京东客服消息",
+      "method": "POST",
+      "endpoint": "sp-support.v0.dongdong-messages",
+      "description": "发送京东客服消息接口，用于向用户发送客服消息。",
+      "request_fields": [
+        "postDongdongMessageRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 464,
+      "operation_type": "WRITE",
+      "requirement_id": "R050",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "请求会话/接收方与消息内容；返回发送结果（字段待定点确认）",
+      "evidence_fields": "请求会话/接收方与消息内容；返回发送结果（字段待定点确认）"
+    },
+    {
+      "category": "客服API",
+      "name": "postDongdongMessageV1",
+      "title": "发送场景化消息",
+      "method": "POST",
+      "endpoint": "sp-support.v1.dongdong-messages",
+      "description": "支持场景化消息发送",
+      "request_fields": [
+        "postDongdongMessageRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\客服API\\jd-apis.d.ts",
+      "line": 541,
+      "operation_type": "WRITE",
+      "requirement_id": "R050",
+      "requirement_names": "客服诊断、AI客服回复、异常预警",
+      "confidence": "high",
+      "reason": "请求会话/接收方与消息内容；返回发送结果（字段待定点确认）",
+      "evidence_fields": "请求会话/接收方与消息内容；返回发送结果（字段待定点确认）"
+    },
+    {
+      "category": "会员API",
+      "name": "getMemberSystem",
+      "title": "获取会员体系详情",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.member-systems._memberSystemId",
+      "description": "获取会员体系配置的会员卡信息、等级规则、积分规则。",
+      "request_fields": [
+        "memberSystemId",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 7,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listMemberSystems",
+      "title": "查询会员体系列表",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.member-systems",
+      "description": "查询当前商家所属的的会员体系信息",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 53,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listVenderMemberRights",
+      "title": "查询商家会员权益列表",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.vender-member-rights",
+      "description": "查询当前商家所属的会员体系，配置的会员等级和规则数据",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 98,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "postMemberPoint",
+      "title": "变更会员积分",
+      "method": "POST",
+      "endpoint": "sp-marketing.v0.members._omid.points",
+      "description": "线下商家会员积分发生变更时，通过该接口同步给平台会员积分系统。",
+      "request_fields": [
+        "memberId",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 129,
+      "operation_type": "WRITE",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listMemberPoints",
+      "title": "查询会员积分变更列表",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.members._omid.points",
+      "description": "查询指定会员的积分增、减变更明细记录。",
+      "request_fields": [
+        "omid",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "paginationData",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 161,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "getMemberAggStatistic",
+      "title": "查询会员详情及统计信息",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.member-agg-statistics._omid",
+      "description": "通过该接口，查询指定会员基本信息及交易类统计信息",
+      "request_fields": [
+        "omid",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 207,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "getMember",
+      "title": "查询会员详情",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.members._omid",
+      "description": "通过会员ID指定会员详情信息",
+      "request_fields": [
+        "omid",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 281,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listOmids",
+      "title": "XID和会员ID批量互转接口",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.omids",
+      "description": "跨店铺：同一会员体系下有多个店铺时，同一用户，查询到omid相同",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 325,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "patchMember",
+      "title": "更新会员信息",
+      "method": "PATCH",
+      "endpoint": "sp-marketing.v0.members._omid",
+      "description": "修改会员的基本信息",
+      "request_fields": [
+        "omid",
+        "request"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 353,
+      "operation_type": "WRITE",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listMemberAggStatistics",
+      "title": "查询会员详情及统计数据列表",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.member-agg-statistics",
+      "description": "查询指定条件下的会员列表及交易统计类数据列表，不包含LV0会员数据",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 387,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listMembers",
+      "title": "查询会员列表",
+      "method": "GET",
+      "endpoint": "sp-marketing.v0.members",
+      "description": "查询指定条件下的会员列表数据，不包含LV0会员数据",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 462,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "会员API",
+      "name": "listOuids",
+      "title": "omid和ouid互转",
+      "method": "PUT",
+      "endpoint": "sp-marketing.v0.omid-ouids.batch",
+      "description": "omid和ouid互转接口",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "success",
+        "errorList",
+        "data"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\会员API\\jd-apis.d.ts",
+      "line": 530,
+      "operation_type": "READ",
+      "requirement_id": "R053",
+      "requirement_names": "会员运营、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "财务API",
+      "name": "listAccountRecords",
+      "title": "查询钱包流水明细",
+      "method": "GET",
+      "endpoint": "sp-finance.v0.accounts._memberId.records",
+      "description": "查询钱包流水明细请于上午8点以后调取接口，以保证能够取到当天完整数据，所有数据为接口开通之日起的数据，未包含历史数据",
+      "request_fields": [
+        "memberId",
+        "request"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "line": 7,
+      "operation_type": "READ",
+      "requirement_id": "R021,R032,R057",
+      "requirement_names": "毛利测算、活动收益测算、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "财务API",
+      "name": "listBills",
+      "title": "查询商家账单明细",
+      "method": "GET",
+      "endpoint": "sp-finance.v0.bills",
+      "description": "查询商家账单明细（订单结算明细），支持近一年的数据查询。查询时间范围仅支持1个月，时间范围不支持跨月查询。",
+      "request_fields": [
+        "request"
+      ],
+      "response_fields": [
+        "paginationData",
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "line": 57,
+      "operation_type": "READ",
+      "requirement_id": "R021,R032,R057",
+      "requirement_names": "毛利测算、活动收益测算、AI经营复盘",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "postJmAiTask",
+      "title": "创建京麦AI空间任务",
+      "method": "POST",
+      "endpoint": "sp-jm.v0.jm-ai-tasks",
+      "description": "京麦AI空间实现了ISV任务的集中化接入与管理，ISV服务商可将自研任务同步至平台进行统一管理，从而为商家和供应商提供一个集中查看与展示任务的统一中心。",
+      "request_fields": [
+        "postJmAiTaskRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 7,
+      "operation_type": "WRITE",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "getJmAiTask",
+      "title": "获取京麦AI空间任务",
+      "method": "GET",
+      "endpoint": "sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+      "description": "ISV服务商将自研任务同步至平台后，可通过唯一业务主键 jmAiTaskId 查询京麦AI空间任务，确认数据是否同步成功。",
+      "request_fields": [
+        "jmAiTaskId",
+        "getJmAiTaskRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 41,
+      "operation_type": "READ",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "patchJmAiTask",
+      "title": "更新京麦AI空间任务",
+      "method": "PATCH",
+      "endpoint": "sp-jm.v0.jm-ai-tasks._jmAiTaskId",
+      "description": "ISV同步任务后，系统会分配17位唯一主键 jmAiTaskId，请利用此ID进行后续的任务信息更新。",
+      "request_fields": [
+        "jmAiTaskId",
+        "patchJmAiTaskRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 80,
+      "operation_type": "WRITE",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "postJmAiTaskRecord",
+      "title": "创建京麦AI空间定时任务执行记录",
+      "method": "POST",
+      "endpoint": "sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records",
+      "description": "京麦AI空间实现了ISV任务的集中化接入与管理，支持ISV服务商将自研定时任务的执行记录同步至平台进行统一维护；请注意，该API仅适用于定时任务运行记录的信息同步。",
+      "request_fields": [
+        "jmAiTaskId",
+        "postJmAiTaskRecordRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 111,
+      "operation_type": "WRITE",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "getJmAiTaskRecord",
+      "title": "获取京麦AI空间定时任务执行记录",
+      "method": "GET",
+      "endpoint": "sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+      "description": "ISV服务商将自研任务同步至平台后，可通过唯一业务主键 jmAiTaskRecordId 查询京麦AI空间任务，确认数据是否同步成功。",
+      "request_fields": [
+        "jmAiTaskId",
+        "jmAiTaskRecordId",
+        "getJmAiTaskRecordRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 147,
+      "operation_type": "READ",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    },
+    {
+      "category": "京麦API",
+      "name": "patchJmAiTaskRecord",
+      "title": "更新京麦AI空间定时任务执行记录",
+      "method": "PATCH",
+      "endpoint": "sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId",
+      "description": "ISV服务商将自研定时任务的执行记录同步至平台后，根据自身需求更新京麦AI空间定时任务执行记录的相关信息。",
+      "request_fields": [
+        "jmAiTaskId",
+        "jmAiTaskRecordId",
+        "patchJmAiTaskRecordRequest"
+      ],
+      "response_fields": [
+        "data",
+        "success",
+        "errorList"
+      ],
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "line": 188,
+      "operation_type": "WRITE",
+      "requirement_id": "R054,R055,R056,R060",
+      "requirement_names": "AI任务编排、AI自动执行、自动复检、异常预警",
+      "confidence": "high",
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "evidence_fields": "完整嵌套输入/输出字段待 Phase4 定点确认。"
+    }
+  ]
+}

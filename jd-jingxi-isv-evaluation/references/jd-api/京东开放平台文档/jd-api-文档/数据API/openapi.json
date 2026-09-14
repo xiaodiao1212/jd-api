@@ -1,0 +1,1609 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 数据API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/getReportSchema": {
+      "get": {
+        "operationId": "getReportSchema",
+        "summary": "报表定义查询",
+        "description": "获取报表定义查询\n1、必须明确指定需要返回的 reportId；\n2、根据需要提交参数 subjectInfo，而且该参数必须是 JSON 字符串；\n\nJD method: GET.sp-data.v0.report-schemas._reportSchemaId",
+        "tags": [
+          "数据API"
+        ],
+        "x-jd-method": "GET.sp-data.v0.report-schemas._reportSchemaId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportSchemaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetReportSchemaResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11201000004": {
+                    "summary": "reportID 不能为空@#$请传入有效的 reportID 参数"
+                  },
+                  "11201000002": {
+                    "summary": "请求参数不合法@#$请确认参数格式、类型及取值范围符合 API 要求"
+                  },
+                  "11201000101": {
+                    "summary": "报表不存在或无权限@#$请确认报表ID正确且当前账号具备访问权限"
+                  },
+                  "11201000001": {
+                    "summary": "请求参数为空或缺少必填参数@#$请检查并补全所有必填字段后重试"
+                  },
+                  "11201000012": {
+                    "summary": "SubjectInfo 长度不能超过5000字符@#$请使用正确的 subjectInfo，使长度≤5000字符"
+                  },
+                  "11201000011": {
+                    "summary": "SubjectInfo 格式错误，必须是有效的JSON字符串@#$请传入标准 JSON 格式的字符串"
+                  },
+                  "11201000010": {
+                    "summary": "reportID长度异常@#$请使用正确的 reportID"
+                  },
+                  "11201000151": {
+                    "summary": "数据查询异常@#$请稍后重试"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postReport": {
+      "post": {
+        "operationId": "postReport",
+        "summary": "数据报表查询",
+        "description": "创建数据报表查询，获取查询数据\n1、必须明确指定需要返回的字段名；\n2、必须明确指定需要数据的查询条件；\n\nJD method: POST.sp-data.v0.reports",
+        "tags": [
+          "数据API"
+        ],
+        "x-jd-method": "POST.sp-data.v0.reports",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostReportResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11202001003": {
+                    "summary": "排序内容无效@#$请检查排序字段名及方向是否正确"
+                  },
+                  "11202000101": {
+                    "summary": "报表不存在或无权限@#$请确认报表ID正确且当前账号具备访问权限"
+                  },
+                  "11202000003": {
+                    "summary": "维度字段列表包含无效字段@#$请核对维度字段是否在报表 schema 中定义且拼写正确"
+                  },
+                  "11202000001": {
+                    "summary": "指标字段列表包含无效字段@#$请核对指标字段是否在报表 schema 中定义且拼写正确"
+                  },
+                  "11202000007": {
+                    "summary": "指标和维度不能全部为空@#$请至少选择一个指标或维度字段"
+                  },
+                  "11202000004": {
+                    "summary": "返回字段列表包含无效字段@#$请检查排序字段名及方向是否正确"
+                  },
+                  "11202000005": {
+                    "summary": "分页参数不合法@#$请确保返回字段均在报表 schema 中定义"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getSensitiveReportSchema": {
+      "get": {
+        "operationId": "getSensitiveReportSchema",
+        "summary": "报表定义查询",
+        "description": "获取报表定义查询\n1、必须明确指定需要返回的 reportId；\n2、根据需要提交参数 subjectInfo，而且该参数必须是 JSON 字符串；\n\nJD method: GET.sp-data.v0.yd-report-schemas._reportSchemaId",
+        "tags": [
+          "数据API"
+        ],
+        "x-jd-method": "GET.sp-data.v0.yd-report-schemas._reportSchemaId",
+        "x-jd-level": "R3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSensitiveReportSchemaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSensitiveReportSchemaResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11204000151": {
+                    "summary": "数据查询异常@#$请稍后重试"
+                  },
+                  "11204000011": {
+                    "summary": "SubjectInfo 格式错误，必须是有效的JSON字符串@#$请传入标准 JSON 格式的字符串"
+                  },
+                  "11204000001": {
+                    "summary": "请求参数为空或缺少必填参数@#$请检查并补全所有必填字段后重试"
+                  },
+                  "11204000012": {
+                    "summary": "SubjectInfo 长度不能超过5000字符@#$请使用正确的 subjectInfo，使长度≤5000字符"
+                  },
+                  "11204000010": {
+                    "summary": "reportID长度异常@#$请使用正确的 reportID"
+                  },
+                  "11204000004": {
+                    "summary": "reportID 不能为空@#$请传入有效的 reportID 参数"
+                  },
+                  "11204000002": {
+                    "summary": "请求参数不合法@#$请确认参数格式、类型及取值范围符合 API 要求"
+                  },
+                  "11204000101": {
+                    "summary": "报表不存在或无权限@#$请确认报表ID正确且当前账号具备访问权限"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postSensitiveReport": {
+      "post": {
+        "operationId": "postSensitiveReport",
+        "summary": "数据报表查询",
+        "description": "创建数据报表查询，获取查询数据\n1、必须明确指定需要返回的字段名；\n2、必须明确指定需要数据的查询条件；\n\nJD method: POST.sp-data.v0.yd-reports",
+        "tags": [
+          "数据API"
+        ],
+        "x-jd-method": "POST.sp-data.v0.yd-reports",
+        "x-jd-level": "R3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostSensitiveReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostSensitiveReportResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "11203000001": {
+                    "summary": "成功@#$成功"
+                  },
+                  "11203001003": {
+                    "summary": "排序内容无效@#$请检查排序字段名及方向是否正确"
+                  },
+                  "11203000004": {
+                    "summary": "返回字段列表包含无效字段@#$返回字段列表包含无效字段"
+                  },
+                  "11203000005": {
+                    "summary": "分页参数不合法@#$检查分页参数，使用正常值"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getReportDownloadTask": {
+      "get": {
+        "operationId": "getReportDownloadTask",
+        "summary": "查询报表下载任务",
+        "description": "获取报表下载任务详情\n\nJD method: GET.sp-data.v0.report-download-tasks._reportDownloadTaskId",
+        "tags": [
+          "数据API"
+        ],
+        "x-jd-method": "GET.sp-data.v0.report-download-tasks._reportDownloadTaskId",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportDownloadTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetReportDownloadTaskResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "50000": {
+                    "summary": "成功@#$成功"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetReportSchemaRequest": {
+        "type": "object",
+        "properties": {
+          "reportSchemaId": {
+            "description": "报表定义 reportSchemaId | 必填",
+            "type": "string",
+            "default": ""
+          },
+          "request": {
+            "description": "报表 id | 必填",
+            "x-java-type": "com.jd.open.rest.client.report.model.request.GetReportSchemaRequest",
+            "type": "object",
+            "properties": {
+              "subjectInfo": {
+                "description": "额外参数",
+                "type": "string",
+                "default": ""
+              },
+              "pin": {
+                "description": "身份信息pin | 必填",
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "pin"
+            ]
+          }
+        },
+        "required": [
+          "reportSchemaId",
+          "request"
+        ]
+      },
+      "GetReportSchemaResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据报表 Schema",
+            "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportSchemaDTO",
+            "type": "object",
+            "properties": {
+              "reportSchemaId": {
+                "description": "报表SchemaId",
+                "type": "string",
+                "default": ""
+              },
+              "reportSchemaName": {
+                "description": "报表名字",
+                "type": "string",
+                "default": ""
+              },
+              "description": {
+                "description": "报表描述",
+                "type": "string",
+                "default": ""
+              },
+              "availableIndicators": {
+                "description": "指标列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "id",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "可排序",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "availableAttributes": {
+                "description": "维度列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "ID",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "可排序",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "availableCriteria": {
+                "description": "查询条件列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.CriterionDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "property": {
+                      "description": "字段属性",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "required": {
+                      "description": "是否必须",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "supportedOperators": {
+                      "description": "支持操作列表",
+                      "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.OperatorInfoDTO>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "description": "操作名称",
+                            "type": "string",
+                            "default": ""
+                          },
+                          "cardinality": {
+                            "description": "操作符所需的值的数量类型",
+                            "type": "string",
+                            "default": ""
+                          }
+                        }
+                      }
+                    },
+                    "allowedValues": {
+                      "description": "支持设置的值列表",
+                      "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.AllowedValueDTO>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "允许的值",
+                            "type": "string",
+                            "default": ""
+                          }
+                        }
+                      }
+                    },
+                    "description": {
+                      "description": "描述",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "类型",
+                      "type": "string",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "responseFields": {
+                "description": "返回字段列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "ID",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "排序",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "defaultSettings": {
+                "description": "默认设置，翻页，排序",
+                "x-java-type": "com.jd.open.rest.client.report.model.dto.schema.DefaultSettingsDTO",
+                "type": "object",
+                "properties": {
+                  "pagination": {
+                    "description": "翻页",
+                    "x-java-type": "com.jd.open.rest.client.report.model.dto.PaginationDTO",
+                    "type": "object",
+                    "properties": {
+                      "pageSize": {
+                        "description": "默认翻页数量",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "pageNumber": {
+                        "description": "默认翻页开始",
+                        "type": "integer",
+                        "default": 0
+                      }
+                    }
+                  },
+                  "ordering": {
+                    "description": "默认排序",
+                    "x-java-type": "com.jd.open.rest.client.report.model.dto.OrderingDTO",
+                    "type": "object",
+                    "properties": {
+                      "propertyName": {
+                        "description": "字段",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "direction": {
+                        "description": "默认方向",
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "状态",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostReportRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "获取报表数据请求 | 必填",
+            "x-java-type": "com.jd.open.rest.client.report.model.request.PostReportRequest",
+            "type": "object",
+            "properties": {
+              "reportSchemaId": {
+                "description": "报表定义 Id | 示例: 300-jztdatacenter-customreport-effect",
+                "type": "string",
+                "example": "300-jztdatacenter-customreport-effect",
+                "default": ""
+              },
+              "reportDTO": {
+                "description": "报表信息",
+                "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportDTO",
+                "type": "object",
+                "properties": {
+                  "criterionList": {
+                    "description": "过滤条件",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.CriterionDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "property": {
+                          "description": "属性 | 示例: startTime",
+                          "type": "string",
+                          "example": "startTime",
+                          "default": ""
+                        },
+                        "operatorName": {
+                          "description": "操作 | 示例: EQ",
+                          "type": "string",
+                          "example": "EQ",
+                          "default": ""
+                        },
+                        "values": {
+                          "description": "过滤列表",
+                          "x-java-type": "java.util.List <java.lang.String>",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "fieldList": {
+                    "description": "字段",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "page": {
+                "description": "页码 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pin": {
+                "description": "身份 Pin | 示例: xxx",
+                "x-jd-public": true,
+                "type": "string",
+                "example": "xxx",
+                "default": ""
+              },
+              "subjectInfo": {
+                "description": "目标对象信息 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "sortBy": {
+                "description": "排序",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.OrderingDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "propertyName": {
+                      "description": "排序字段名 | 示例: clicks",
+                      "type": "string",
+                      "example": "clicks",
+                      "default": ""
+                    },
+                    "direction": {
+                      "description": "排序方向:ASC,DESC | 示例: DESC",
+                      "type": "string",
+                      "example": "DESC",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "isAsync": {
+                "description": "是否是异步任务下载文件 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "requestUUID": {
+                "description": "请求uuid | 示例: 0901-11-11-1",
+                "type": "string",
+                "example": "0901-11-11-1",
+                "default": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "PostReportResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "com.jd.open.rest.client.report.model.response.PostReportResponse",
+            "type": "object",
+            "properties": {
+              "dataRowList": {
+                "description": "报表数据记录列表",
+                "x-java-type": "java.util.List <java.util.List>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "row": {
+                      "description": "行记录",
+                      "x-java-type": "java.util.List <java.lang.String>",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "columnHeaderList": {
+                "description": "报表列头信息列表",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "paginationData": {
+                "description": "翻页",
+                "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+                "type": "object",
+                "properties": {
+                  "currentPage": {
+                    "description": "页 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "nextCursor": {
+                    "description": "下一个游标 | 示例: xx",
+                    "type": "string",
+                    "example": "xx",
+                    "default": ""
+                  },
+                  "pageSize": {
+                    "description": "每页大小 | 示例: 10",
+                    "type": "integer",
+                    "example": 10,
+                    "default": 0
+                  },
+                  "totalItems": {
+                    "description": "总条数 | 示例: 1000",
+                    "type": "integer",
+                    "example": 1000,
+                    "default": 0
+                  },
+                  "hasNextPage": {
+                    "description": "是否有下一页 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "totalPages": {
+                    "description": "总页数 | 示例: 10",
+                    "type": "integer",
+                    "example": 10,
+                    "default": 0
+                  }
+                }
+              },
+              "isAsync": {
+                "description": "是否是异步 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "reportDownloadTask": {
+                "description": "async 状态下的下载信息",
+                "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportDownloadTaskDTO",
+                "type": "object",
+                "properties": {
+                  "reportDownloadTaskId": {
+                    "description": "下载任务 id | 示例: 581",
+                    "type": "string",
+                    "example": "581",
+                    "default": ""
+                  },
+                  "reportSchemaId": {
+                    "description": "报表 id | 示例: 001-jzt-account-info",
+                    "type": "string",
+                    "example": "001-jzt-account-info",
+                    "default": ""
+                  },
+                  "extraInfo": {
+                    "description": "extra 信息 | 示例: {}",
+                    "type": "string",
+                    "example": "{}",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1",
+                  "type": "string",
+                  "example": "1",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: name 名称无效",
+                  "type": "string",
+                  "example": "name 名称无效",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 名称无效",
+                  "type": "string",
+                  "example": "名称无效",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetSensitiveReportSchemaRequest": {
+        "type": "object",
+        "properties": {
+          "reportSchemaId": {
+            "description": "报表定义 reportSchemaId | 示例: 09-jd-xxx | 必填",
+            "type": "string",
+            "example": "09-jd-xxx",
+            "default": ""
+          },
+          "request": {
+            "description": "报表 id | 必填",
+            "x-java-type": "com.jd.open.rest.client.report.model.request.GetReportSchemaRequest",
+            "type": "object",
+            "properties": {
+              "subjectInfo": {
+                "description": "额外参数 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "pin": {
+                "description": "身份信息pin | 示例: pin | 必填",
+                "x-jd-public": true,
+                "type": "string",
+                "example": "pin",
+                "default": ""
+              }
+            },
+            "required": [
+              "pin"
+            ]
+          }
+        },
+        "required": [
+          "reportSchemaId",
+          "request"
+        ]
+      },
+      "GetSensitiveReportSchemaResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据报表 Schema",
+            "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportSchemaDTO",
+            "type": "object",
+            "properties": {
+              "reportSchemaId": {
+                "description": "报表SchemaId | 示例: J01-test",
+                "type": "string",
+                "example": "J01-test",
+                "default": ""
+              },
+              "reportSchemaName": {
+                "description": "报表名字 | 示例: 统计",
+                "type": "string",
+                "example": "统计",
+                "default": ""
+              },
+              "description": {
+                "description": "报表描述 | 示例: 用户统计使用数据",
+                "type": "string",
+                "example": "用户统计使用数据",
+                "default": ""
+              },
+              "availableIndicators": {
+                "description": "指标列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "id | 示例: name",
+                      "type": "string",
+                      "example": "name",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称 | 示例: name",
+                      "type": "string",
+                      "example": "name",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述 | 示例: 名称",
+                      "type": "string",
+                      "example": "名称",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型 | 示例: String",
+                      "type": "string",
+                      "example": "String",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "可排序 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "availableAttributes": {
+                "description": "维度列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "ID | 示例: dataId",
+                      "type": "string",
+                      "example": "dataId",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称 | 示例: 报表 ID",
+                      "type": "string",
+                      "example": "报表 ID",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述 | 示例: 报表 ID",
+                      "type": "string",
+                      "example": "报表 ID",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型 | 示例: String",
+                      "type": "string",
+                      "example": "String",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "可排序 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "availableCriteria": {
+                "description": "查询条件列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.CriterionDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "property": {
+                      "description": "字段属性 | 示例: date",
+                      "type": "string",
+                      "example": "date",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称 | 示例: 日期",
+                      "type": "string",
+                      "example": "日期",
+                      "default": ""
+                    },
+                    "required": {
+                      "description": "是否必须 | 示例: false",
+                      "type": "boolean",
+                      "example": false,
+                      "default": false
+                    },
+                    "supportedOperators": {
+                      "description": "支持操作列表",
+                      "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.OperatorInfoDTO>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operatorId": {
+                            "description": "操作名称 | 示例: EQ",
+                            "type": "string",
+                            "example": "EQ",
+                            "default": ""
+                          },
+                          "cardinality": {
+                            "description": "操作符所需的值的数量类型 | 示例: SINGLE",
+                            "type": "string",
+                            "example": "SINGLE",
+                            "default": ""
+                          }
+                        }
+                      }
+                    },
+                    "allowedValues": {
+                      "description": "支持设置的值列表",
+                      "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.AllowedValueDTO>",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "允许的值 | 示例: female",
+                            "type": "string",
+                            "example": "female",
+                            "default": ""
+                          }
+                        }
+                      }
+                    },
+                    "description": {
+                      "description": "描述 | 示例: 描述信息",
+                      "type": "string",
+                      "example": "描述信息",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "类型 | 示例: String",
+                      "type": "string",
+                      "example": "String",
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "responseFields": {
+                "description": "返回字段列表",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.FieldDefinitionDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "ID | 示例: name",
+                      "type": "string",
+                      "example": "name",
+                      "default": ""
+                    },
+                    "name": {
+                      "description": "名称 | 示例: name",
+                      "type": "string",
+                      "example": "name",
+                      "default": ""
+                    },
+                    "description": {
+                      "description": "描述 | 示例: 名称",
+                      "type": "string",
+                      "example": "名称",
+                      "default": ""
+                    },
+                    "dataType": {
+                      "description": "数据类型 | 示例: String",
+                      "type": "string",
+                      "example": "String",
+                      "default": ""
+                    },
+                    "sortable": {
+                      "description": "排序 | 示例: true",
+                      "type": "boolean",
+                      "example": true,
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "defaultSettings": {
+                "description": "默认设置，翻页，排序",
+                "x-java-type": "com.jd.open.rest.client.report.model.dto.schema.DefaultSettingsDTO",
+                "type": "object",
+                "properties": {
+                  "pagination": {
+                    "description": "翻页",
+                    "x-java-type": "com.jd.open.rest.client.report.model.dto.PaginationDTO",
+                    "type": "object",
+                    "properties": {
+                      "pageSize": {
+                        "description": "默认翻页数量 | 示例: 10",
+                        "type": "integer",
+                        "example": 10,
+                        "default": 0
+                      },
+                      "pageNumber": {
+                        "description": "默认翻页开始 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      }
+                    }
+                  },
+                  "ordering": {
+                    "description": "默认排序",
+                    "x-java-type": "com.jd.open.rest.client.report.model.dto.OrderingDTO",
+                    "type": "object",
+                    "properties": {
+                      "propertyName": {
+                        "description": "字段 | 示例: total",
+                        "type": "string",
+                        "example": "total",
+                        "default": ""
+                      },
+                      "direction": {
+                        "description": "默认方向 | 示例: ASC",
+                        "type": "string",
+                        "example": "ASC",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "状态 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1",
+                  "type": "string",
+                  "example": "1",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: success",
+                  "type": "string",
+                  "example": "success",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostSensitiveReportRequest": {
+        "type": "object",
+        "properties": {
+          "postReportRequest": {
+            "description": "请求",
+            "x-java-type": "com.jd.open.rest.client.report.model.request.PostReportRequest",
+            "type": "object",
+            "properties": {
+              "reportSchemaId": {
+                "description": "报表 Id | 示例: 100-live-user-report",
+                "type": "string",
+                "example": "100-live-user-report",
+                "default": ""
+              },
+              "reportDTO": {
+                "description": "查询数据",
+                "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportDTO",
+                "type": "object",
+                "properties": {
+                  "criterionList": {
+                    "description": "条件列表",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.CriterionDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "values": {
+                          "description": "条件",
+                          "x-java-type": "java.util.List <java.lang.String>",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "property": {
+                          "description": "条件属性 | 示例: name",
+                          "type": "string",
+                          "example": "name",
+                          "default": ""
+                        },
+                        "operatorName": {
+                          "description": "操作符号 | 示例: EQ",
+                          "type": "string",
+                          "example": "EQ",
+                          "default": ""
+                        }
+                      }
+                    }
+                  },
+                  "fieldList": {
+                    "description": "字段",
+                    "x-java-type": "java.util.List <java.lang.String>",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "page": {
+                "description": "页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "页 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "pin": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              },
+              "subjectInfo": {
+                "description": "附近 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "sortBy": {
+                "description": "排序",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.OrderingDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "propertyName": {
+                      "description": "排序属性 | 示例: total",
+                      "type": "string",
+                      "example": "total",
+                      "default": ""
+                    },
+                    "direction": {
+                      "description": "顺序 | 示例: ASC",
+                      "type": "string",
+                      "example": "ASC",
+                      "default": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostSensitiveReportResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回报表数据",
+            "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportDataDTO",
+            "type": "object",
+            "properties": {
+              "dataRowList": {
+                "description": "数据行",
+                "x-java-type": "java.util.List <java.util.List>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "row": {
+                      "description": "行",
+                      "x-java-type": "java.util.List <java.lang.String>",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "columnHeaderList": {
+                "description": "表头标题",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "paginationData": {
+                "description": "翻页信息",
+                "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+                "type": "object",
+                "properties": {
+                  "currentPage": {
+                    "description": "页 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "pageSize": {
+                    "description": "数据 | 示例: 100",
+                    "type": "integer",
+                    "example": 100,
+                    "default": 0
+                  },
+                  "nextCursor": {
+                    "description": "下一个游标 | 示例: 200",
+                    "type": "string",
+                    "example": "200",
+                    "default": ""
+                  },
+                  "totalItems": {
+                    "description": "总条数 | 示例: 1000",
+                    "type": "integer",
+                    "example": 1000,
+                    "default": 0
+                  },
+                  "hasNextPage": {
+                    "description": "是否有下一页 | 示例: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": false
+                  },
+                  "totalPages": {
+                    "description": "总页数 | 示例: 100",
+                    "type": "integer",
+                    "example": 100,
+                    "default": 0
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 11203001000",
+                  "type": "string",
+                  "example": "11203001000",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误信息 | 示例: 参数异常",
+                  "type": "string",
+                  "example": "参数异常",
+                  "default": ""
+                },
+                "message": {
+                  "description": "解决方案 | 示例: 调整参数重试",
+                  "type": "string",
+                  "example": "调整参数重试",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetReportDownloadTaskRequest": {
+        "type": "object",
+        "properties": {
+          "reportDownloadTaskId": {
+            "description": "下载 | 示例: 526080 | 必填",
+            "type": "string",
+            "example": "526080",
+            "default": ""
+          },
+          "request": {
+            "description": "请求",
+            "x-java-type": "com.jd.open.rest.client.report.model.request.GetReportDownloadTaskRequest",
+            "type": "object",
+            "properties": {
+              "reportSchemaId": {
+                "description": "报表 id | 示例: 300-jztdatacenter-customreport-effect",
+                "type": "string",
+                "example": "300-jztdatacenter-customreport-effect",
+                "default": ""
+              },
+              "reportDownloadTaskId": {
+                "description": "下载 Id | 示例: 526080 | 必填",
+                "type": "string",
+                "example": "526080",
+                "default": ""
+              },
+              "subjectInfo": {
+                "description": "身份信息 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "reportDownloadTaskId"
+            ]
+          }
+        },
+        "required": [
+          "reportDownloadTaskId"
+        ]
+      },
+      "GetReportDownloadTaskResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "数据",
+            "x-java-type": "com.jd.open.rest.client.report.model.dto.ReportDownloadTaskDTO",
+            "type": "object",
+            "properties": {
+              "status": {
+                "description": "任务状态 | 示例: COMPLETED",
+                "type": "string",
+                "example": "COMPLETED",
+                "default": ""
+              },
+              "downloadFileInfoList": {
+                "description": "下载信息",
+                "x-java-type": "java.util.List <com.jd.open.rest.client.report.model.dto.DownloadFileInfoDTO>",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "downloadUrl": {
+                      "description": "链接 | 示例: https://dl.jd.com/xxx.csv",
+                      "type": "string",
+                      "example": "https://dl.jd.com/xxx.csv",
+                      "default": ""
+                    },
+                    "fileType": {
+                      "description": "下载类型 | 示例: CSV",
+                      "type": "string",
+                      "example": "CSV",
+                      "default": ""
+                    },
+                    "fileSize": {
+                      "description": "文件大小 | 示例: 1000",
+                      "type": "integer",
+                      "example": 1000,
+                      "default": 0
+                    }
+                  }
+                }
+              },
+              "extraInfo": {
+                "description": "额外信息 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "请求状态 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 01",
+                  "type": "string",
+                  "example": "01",
+                  "default": ""
+                },
+                "details": {
+                  "description": "解决方案 | 示例: reportDownloadTaskId不能为空",
+                  "type": "string",
+                  "example": "reportDownloadTaskId不能为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误消息 | 示例: 请求参数异常",
+                  "type": "string",
+                  "example": "请求参数异常",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

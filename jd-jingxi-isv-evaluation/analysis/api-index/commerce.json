@@ -1,0 +1,720 @@
+{
+  "scope": [
+    "商品API",
+    "营销API",
+    "推广API",
+    "内容API",
+    "C2M API"
+  ],
+  "requirement_id_basis": "inputs/京东京喜-ISV-需求清单.md rows in original order, R001-R053",
+  "permission": "unknown",
+  "counts": {
+    "商品API": {
+      "scanned": 94,
+      "candidates": 21
+    },
+    "营销API": {
+      "scanned": 15,
+      "candidates": 8
+    },
+    "推广API": {
+      "scanned": 15,
+      "candidates": 13
+    },
+    "内容API": {
+      "scanned": 5,
+      "candidates": 5
+    },
+    "C2M API": {
+      "scanned": 11,
+      "candidates": 0
+    }
+  },
+  "evidence_boundary": "Names, JD method, HTTP method, and declared request/response fields come from jd-apis.d.ts. Nested Record<string, unknown>, enums, permissions, and business binding are unconfirmed.",
+  "phase4": [
+    "确认商品申请可写字段和必填条件",
+    "确认媒体/内容与商品或广告绑定",
+    "确认素材AB效果及优胜版本字段",
+    "确认推广非标准 method、operateType、关键词/创意 DTO、指标单位和权限",
+    "确认活动上报是否可查询复盘效果",
+    "全量核实 ISV 权限与适用店铺/站点"
+  ],
+  "entries": [
+    {
+      "api_category": "商品API",
+      "api_name": "listProductOpportunities",
+      "method": "GET.sp-product.v0.product-opportunities   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "opportunityType/opportunityVersion, page/pageSize/scrollId -> opportunity name/code, categories, popularity, supplyDemandRatio, saleSkuNum/saleShopNum, price range",
+      "可能需求ID": [
+        "R001",
+        "R008",
+        "R027",
+        "R028"
+      ],
+      "匹配原因": "商机与热度/供需数据明确；潜力定义需业务映射",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5839-L5902",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "postProductApply",
+      "method": "POST.sp-product.v0.product-applies   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "productApplyDTO (product/category/attributes etc.) -> apply result/applyId",
+      "可能需求ID": [
+        "R002",
+        "R005",
+        "R006",
+        "R007"
+      ],
+      "匹配原因": "创建或整版编辑申请；自动生成与跨平台导入未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1304-L1338",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "patchProductApply",
+      "method": "PATCH.sp-product.v0.product-applies._applyId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "主要输入输出": "applyId and partial product application fields -> update result",
+      "可能需求ID": [
+        "R002",
+        "R005",
+        "R006"
+      ],
+      "匹配原因": "承接生成后的商品字段写回；可修改范围待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1094-L1144",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listProductPublishTemplates",
+      "method": "GET.sp-product.v0.product-schemas   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "category -> product schema template",
+      "可能需求ID": [
+        "R002",
+        "R005"
+      ],
+      "匹配原因": "为发品和属性补全提供类目模板",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1023-L1050",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "postProductValidation",
+      "method": "POST.sp-product.v0.product-schemas.validations   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "schema/productApplyDTO including title/category/brand/main image/attributes -> violation fields/reasons",
+      "可能需求ID": [
+        "R002",
+        "R003",
+        "R005",
+        "R006"
+      ],
+      "匹配原因": "明确商品信息合规检测；规则检测不等于 AI 优化",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2937-L2974",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "getHealthScore",
+      "method": "GET.sp-product.v0.health-infos._healthInfoId   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "healthScoreId/detectFactor -> healthScore, level, improvement troubleCode/name/desc",
+      "可能需求ID": [
+        "R003",
+        "R004",
+        "R006"
+      ],
+      "匹配原因": "直接提供健康分和改进项",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5745-L5787",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listHealthScores",
+      "method": "GET.sp-product.v0.health-infos   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "product/SKU, score range, pagination -> health scores and improvement list",
+      "可能需求ID": [
+        "R003",
+        "R004",
+        "R006"
+      ],
+      "匹配原因": "批量发现信息分问题",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5788-L5838",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "batchCreateSkuMaterial",
+      "method": "POST.sp-product.v0.sku-materials.batch   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "batch SKU materials (透图/白底图/场景图/卖点图/定时主图) -> item results",
+      "可能需求ID": [
+        "R010",
+        "R011",
+        "R014"
+      ],
+      "匹配原因": "明确多类 SKU 素材绑定",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2089-L2201",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listSkuMaterials",
+      "method": "GET.sp-product.v0.sku-materials   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "SKU/material filters -> SKU material information",
+      "可能需求ID": [
+        "R010",
+        "R011",
+        "R014"
+      ],
+      "匹配原因": "读取现有素材用于替换/审计",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2203-L2288",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "postMediaZoneImage",
+      "method": "POST.sp-product.v0.media-zones._zoneId.images   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "zoneId, imgBase64 or fileUrl, metadata -> imageId/URL",
+      "可能需求ID": [
+        "R010",
+        "R011",
+        "R014"
+      ],
+      "匹配原因": "上传图片到商品图片空间；SKU绑定待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2481-L2517",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "getMediaZoneVideoUploadUrl",
+      "method": "GET.sp-product.v0.media-zones._zoneId.upload-urls   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "zoneId/video info -> upload URL",
+      "可能需求ID": [
+        "R013",
+        "R014"
+      ],
+      "匹配原因": "提供视频上传地址，不证明视频生成",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2683-L2721",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "postMediaZoneVideo",
+      "method": "POST.sp-product.v0.media-zones._zoneId.videos   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "zoneId, video metadata, jdVideoId -> videoId",
+      "可能需求ID": [
+        "R013",
+        "R014"
+      ],
+      "匹配原因": "明确保存商家主图视频",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2722-L2758",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "postMaterialExperiment",
+      "method": "POST.sp-product.v0.material-experiments   HTTP: POST",
+      "operation_type": "ACTION",
+      "主要输入输出": "SKU/product, experiment period/type, material versions, routeRatio -> experimentId/status",
+      "可能需求ID": [
+        "R015"
+      ],
+      "匹配原因": "明确创建素材 AB 实验",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L3926-L4135",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "patchMaterialExperiment",
+      "method": "PATCH.sp-product.v0.material-experiments._experimentId   HTTP: PATCH",
+      "operation_type": "ACTION",
+      "主要输入输出": "experimentId, experiment DTO, updateType -> update status",
+      "可能需求ID": [
+        "R015"
+      ],
+      "匹配原因": "更新实验配置/状态；优胜版本未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L4136-L4348",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listMaterialExperiments",
+      "method": "GET.sp-product.v0.material-experiments   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "SKU/product/status/scene/page -> experiment status, period, versions, audit time",
+      "可能需求ID": [
+        "R015"
+      ],
+      "匹配原因": "读取实验状态；效果指标待验证",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L4349-L4617",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listSuggestedPrices",
+      "method": "GET.sp-order.v0.suggested-prices   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "SKU list -> targetPrice/advicePrice/benefitPoint",
+      "可能需求ID": [
+        "R020"
+      ],
+      "匹配原因": "直接提供建议价格；竞品/毛利来源未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5141-L5190",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listPriceStars",
+      "method": "GET.sp-product.v0.price-stars   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "SKU/SPU, competitiveness filters -> priceStar/competitivePower/handPrice",
+      "可能需求ID": [
+        "R020"
+      ],
+      "匹配原因": "价格竞争力辅助字段；不是实时竞品历史",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5660-L5744",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listSkuStocks",
+      "method": "GET.sp-product.v0.sku-stocks   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "SKU list -> stockNum and reserved/transfer/not-for-sale stock",
+      "可能需求ID": [
+        "R031",
+        "R032"
+      ],
+      "匹配原因": "活动推荐/测算库存事实；不含活动利润",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L3278-L3312",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "postActivityReport",
+      "method": "POST.sp-marketing.v0.marketingactivities   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "activity id/type/name/time, PV, historical PV, member count, filing status -> success",
+      "可能需求ID": [
+        "R035"
+      ],
+      "匹配原因": "可能用于活动复盘上报；无效果查询/利润输出",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L7-L44",
+      "confidence": "low"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "listAdsCampaigns",
+      "method": "listAdsCampaigns   HTTP: LISTADSCAMPAIGNS",
+      "operation_type": "READ",
+      "主要输入输出": "campaign/time/status/pagination/metrics filters -> budget, ROI, GMV, CTR, impressions, clicks, cost, orders/carts",
+      "可能需求ID": [
+        "R036",
+        "R037",
+        "R039",
+        "R040",
+        "R041",
+        "R044"
+      ],
+      "匹配原因": "计划与指标读取最直接",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L598-L693",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "getAdsCampaign",
+      "method": "GET.ads-bidding.v0.ads-campaigns._adsCampaignId   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "campaignId -> status, budget, time, bidding, premium, targeting, groups",
+      "可能需求ID": [
+        "R037",
+        "R039",
+        "R041"
+      ],
+      "匹配原因": "读取单计划配置状态",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L478-L597",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "listAdsGroups",
+      "method": "GET.ads-bidding.v0.ads-groups   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "campaign/group/status filters -> groups and ROI/CTR/impressions/clicks/cost/orders",
+      "可能需求ID": [
+        "R036",
+        "R039",
+        "R040",
+        "R041",
+        "R044"
+      ],
+      "匹配原因": "按单元读取投放表现",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L108-L193",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "postAdsCampaign",
+      "method": "postAdsCampaign   HTTP: POSTADSCAMPAIGN",
+      "operation_type": "WRITE",
+      "主要输入输出": "campaign type/name/time/budget/bidding/targeting -> campaignId",
+      "可能需求ID": [
+        "R037",
+        "R038"
+      ],
+      "匹配原因": "明确新建广告计划",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L269-L384",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "patchAdsCampaign",
+      "method": "PATCH.ads-bidding.v0.ads-campaigns._adsCampaignId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "主要输入输出": "campaignId, bidding control, premium, name -> update result",
+      "可能需求ID": [
+        "R037",
+        "R039"
+      ],
+      "匹配原因": "支持单计划出价/溢价调整",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L232-L268",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "batchPatchAdsCampaign",
+      "method": "PATCH.ads-bidding.v0.ads-campaigns.batch   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "主要输入输出": "campaign list, time/budget/strategy/targeting -> item results",
+      "可能需求ID": [
+        "R037",
+        "R039",
+        "R040",
+        "R041"
+      ],
+      "匹配原因": "支持批量预算/策略调整",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L385-L477",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "batchPutAdsCampaignState",
+      "method": "PUT.ads-bidding.v0.ads-campaign-states.batch   HTTP: PUT",
+      "operation_type": "ACTION",
+      "主要输入输出": "campaignId list, operateType -> per-item success/error",
+      "可能需求ID": [
+        "R041"
+      ],
+      "匹配原因": "支持批量启停计划",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L42-L76",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "postAdsGroup",
+      "method": "POST.ads-bidding.v0.ads-groups   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "campaignId, group name/target/bidding, keyword automation/ad list -> group result",
+      "可能需求ID": [
+        "R038",
+        "R042",
+        "R043"
+      ],
+      "匹配原因": "可创建广告单元；关键词/创意语义待验证",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L694-L794",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "batchPostAdsGroup",
+      "method": "POST.ads-bidding.v0.ads-groups.batch   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "campaignId, group list, budget/fee -> per-item results",
+      "可能需求ID": [
+        "R038"
+      ],
+      "匹配原因": "批量建单元",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L194-L231",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "batchPatchAdsGroup",
+      "method": "PATCH.ads-bidding.v0.ads-groups.batch   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "主要输入输出": "group list, budget/fee/bidding/targeting -> per-item results",
+      "可能需求ID": [
+        "R039",
+        "R040",
+        "R041",
+        "R043"
+      ],
+      "匹配原因": "批量调整单元投放参数",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L826-L878",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "batchPutAdsGroupState",
+      "method": "PUT.ads-group-states.batch   HTTP: PUT",
+      "operation_type": "ACTION",
+      "主要输入输出": "adGroupId list, operateType -> per-item success/error",
+      "可能需求ID": [
+        "R041"
+      ],
+      "匹配原因": "支持批量启停单元",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L7-L41",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "getAccountBalance",
+      "method": "GET.ads-billing.v0.ads-accounts.self.ads-balances   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "account/site identity -> cash/red packet/commission balances",
+      "可能需求ID": [
+        "R037",
+        "R039"
+      ],
+      "匹配原因": "提供广告预算约束事实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L879-L917",
+      "confidence": "high"
+    },
+    {
+      "api_category": "推广API",
+      "api_name": "getAdsAccount",
+      "method": "GET.ads-billing.v0.ads-accounts.self   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "login/site identity -> advertising account information/id",
+      "可能需求ID": [
+        "R036",
+        "R037"
+      ],
+      "匹配原因": "发现投放账户并作为其他 API 入参",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L918-L946",
+      "confidence": "high"
+    },
+    {
+      "api_category": "内容API",
+      "api_name": "postContentImages",
+      "method": "POST.sp-content.v0.public-domain-content-images   HTTP: POST",
+      "operation_type": "READ",
+      "主要输入输出": "image upload params -> asset result",
+      "可能需求ID": [
+        "R012",
+        "R016"
+      ],
+      "匹配原因": "公域内容图片上传底座；商品/广告绑定未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L7-L32",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "内容API",
+      "api_name": "postContentVideos",
+      "method": "POST.sp-content.v0.public-domain-content-videos   HTTP: POST",
+      "operation_type": "READ",
+      "主要输入输出": "video upload params -> upload URL/asset",
+      "可能需求ID": [
+        "R013",
+        "R016"
+      ],
+      "匹配原因": "公域视频上传底座；不证明自动生成",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L33-L61",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "内容API",
+      "api_name": "postContents",
+      "method": "POST.sp-content.v0.public-domain-contents   HTTP: POST",
+      "operation_type": "READ",
+      "主要输入输出": "public content object with text/images/videos -> contentId/result",
+      "可能需求ID": [
+        "R012",
+        "R016"
+      ],
+      "匹配原因": "保存发布内容；目标场景待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L63-L163",
+      "confidence": "low"
+    },
+    {
+      "api_category": "内容API",
+      "api_name": "putContents",
+      "method": "PUT.sp-content.v0.public-domain-contents._contentId   HTTP: PUT",
+      "operation_type": "READ",
+      "主要输入输出": "contentId and content fields -> update result",
+      "可能需求ID": [
+        "R012",
+        "R016"
+      ],
+      "匹配原因": "支持内容修改；商品详情关联未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L164-L265",
+      "confidence": "low"
+    },
+    {
+      "api_category": "内容API",
+      "api_name": "listContents",
+      "method": "GET.sp-content.v0.public-domain-contents   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "pagination/filters -> content list",
+      "可能需求ID": [
+        "R012",
+        "R016"
+      ],
+      "匹配原因": "查询已发布公域内容",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L266-L292",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listSkus",
+      "method": "GET.sp-product.v0.skus   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "分页/状态/商品筛选 -> skuId、skuName、sku状态/商品关联",
+      "可能需求ID": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "匹配原因": "读取 SKU 是发品、素材批处理和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L7-L117",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "listProducts",
+      "method": "GET.sp-product.v0.products   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "分页/状态/类目筛选 -> productId、商品名称、SKU/状态等列表字段",
+      "可能需求ID": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "匹配原因": "读取商品标题/属性/状态作为优化和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L118-L315",
+      "confidence": "high"
+    },
+    {
+      "api_category": "商品API",
+      "api_name": "getProduct",
+      "method": "GET.sp-product.v0.products._productId   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "productId -> 商品详情、SKU、属性/详情字段",
+      "可能需求ID": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "匹配原因": "读取单商品详情用于字段补全、优化、素材关联和写后核验",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L316-L995",
+      "confidence": "high"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "postStrategy",
+      "method": "POST.sp-marketing.v0.strategies   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "策略定义/人群条件 -> strategyId/结果",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "创建人群策略，可作会员分层规则底座",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L77-L106",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "getStrategy",
+      "method": "GET.sp-marketing.v0.strategies._strategyId   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "strategyId -> 策略详情",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "读取人群分层策略",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L107-L138",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "listStrategies",
+      "method": "GET.sp-marketing.v0.strategies   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "分页/筛选 -> 策略列表",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "读取会员分层策略集合",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L187-L233",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "patchStrategy",
+      "method": "PATCH.sp-marketing.v0.strategies._strategyId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "主要输入输出": "strategyId/策略字段 -> 更新结果",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "更新会员分层策略",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L234-L264",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "listTags",
+      "method": "GET.sp-marketing.v0.tags   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "标签查询条件 -> 标签列表",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "标签列表可作为会员分层输入；会员权益/复购未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L265-L305",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "listUserPackage",
+      "method": "GET.sp-marketing.v0.userpackages   HTTP: GET",
+      "operation_type": "READ",
+      "主要输入输出": "分页/筛选 -> 人群包列表",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "读取人群包用于会员运营分层",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L331-L363",
+      "confidence": "medium"
+    },
+    {
+      "api_category": "营销API",
+      "api_name": "postUserPackage",
+      "method": "POST.sp-marketing.v0.userpackages   HTTP: POST",
+      "operation_type": "WRITE",
+      "主要输入输出": "人群包定义 -> instanceId/结果",
+      "可能需求ID": [
+        "R053"
+      ],
+      "匹配原因": "创建人群包是会员招募/分层的部分底座；权益和复购未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\营销API\\jd-apis.d.ts:L420-L452",
+      "confidence": "medium"
+    }
+  ]
+}

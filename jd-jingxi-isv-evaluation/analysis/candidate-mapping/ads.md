@@ -1,0 +1,138 @@
+# 需求与API候选映射（已完成范围审核）
+
+只使用本模块需求、已有能力事实与相关API索引。平台接口覆盖不包括我方生成/算法能力，也不默认扩展为自动回写。核心无需京东接口时，“直接支持”仅表示不需要新增平台接口；产品能力以最终矩阵为准。
+
+## R036
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；getAdsAccount |
+| support | 部分支持 |
+| read_data | 计划/单元投放指标、状态、时间筛选及广告账户信息；SKU商品池、商品成本/毛利和商品级资格未证明 |
+| write_action | 无 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 广告选品需SKU历史表现、毛利和库存，计划报表不能完整代表SKU潜力。 输出选品依据与约束，不以历史高ROI保证未来表现。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L73；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API032 getAdsAccount references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L918-L946；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05,Q07,Q09 |
+
+审核边界：输出选品依据与约束，不以历史高ROI保证未来表现。
+
+## R037
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；getAdsCampaign；postAdsCampaign；patchAdsCampaign；batchPatchAdsCampaign；getAccountBalance；getAdsAccount |
+| support | 部分支持 |
+| read_data | 既有计划配置/状态、预算、出价、定向、账户余额及历史指标候选 |
+| write_action | 创建计划；更新计划出价/溢价/名称；预算与ROI目标写入语义待确认 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 预算、出价和ROI目标必须与成本、投放场景及账户约束一致。 方案先形成可审核参数，创建动作另行承接。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L74；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API021 getAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L478-L597；API023 postAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L269-L384；API024 patchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L232-L268；API025 batchPatchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L385-L477；API031 getAccountBalance references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L879-L917；API032 getAdsAccount references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L918-L946；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q07,Q09 |
+
+审核边界：方案先形成可审核参数，创建动作另行承接。
+
+## R038
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postAdsCampaign；postAdsGroup；batchPostAdsGroup |
+| support | 部分支持 |
+| read_data | 创建所需计划、单元及配置由流程收集；完整SKU/素材输入读取未证明 |
+| write_action | 创建计划、单元及批量单元 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 已有创建候选，但非标准接口合同、必填配置和京喜广告产品适用性需确认。 创建结果与启投状态分开验证，不推断接口名即代表可直接调用。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L75；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API023 postAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L269-L384；API027 postAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L694-L794；API028 batchPostAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L194-L231；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09 |
+
+审核边界：创建结果与启投状态分开验证，不推断接口名即代表可直接调用。
+
+## R039
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；getAdsCampaign；listAdsGroups；patchAdsCampaign；batchPatchAdsCampaign；batchPatchAdsGroup；getAccountBalance |
+| support | 部分支持 |
+| read_data | 计划/单元指标、状态、预算、出价、定向、账户余额 |
+| write_action | 单个/批量调整计划预算策略和单元预算费用出价定向 |
+| callback_event | 需可靠获得触发/结果数据；先确认轮询频率、配额与可接受延迟，再判断是否必须Callback/Event。京麦任务记录不等同业务事件交付。 |
+| public_api_closed_loop | False |
+| gaps | 带延迟归因的实时反馈下调整预算、出价与ROI，需优化约束和稳定性控制。 T4为授权自动模式目标；实时性与ROI可写参数尚待确认。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L76；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API021 getAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L478-L597；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API024 patchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L232-L268；API025 batchPatchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L385-L477；API029 batchPatchAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L826-L878；API031 getAccountBalance references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L879-L917；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09,Q17 |
+
+审核边界：T4为授权自动模式目标；实时性与ROI可写参数尚待确认。
+
+## R040
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；batchPatchAdsCampaign；batchPatchAdsGroup |
+| support | 部分支持 |
+| read_data | 计划/单元ROI、GMV、CTR、曝光、点击、成本、订单等候选字段及状态/时间 |
+| write_action | 批量更新计划预算/策略及单元预算费用出价定向 |
+| callback_event | 需可靠获得触发/结果数据；先确认轮询频率、配额与可接受延迟，再判断是否必须Callback/Event。京麦任务记录不等同业务事件交付。 |
+| public_api_closed_loop | False |
+| gaps | 高ROI不保证扩量后边际收益，必须限制预算增幅并监测回落。 扩大预算是原文动作，是否无人值守由授权策略确认。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L77；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API025 batchPatchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L385-L477；API029 batchPatchAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L826-L878；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09,Q17 |
+
+审核边界：扩大预算是原文动作，是否无人值守由授权策略确认。
+
+## R041
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；getAdsCampaign；listAdsGroups；batchPatchAdsCampaign；batchPutAdsCampaignState；batchPatchAdsGroup；batchPutAdsGroupState |
+| support | 部分支持 |
+| read_data | 计划/单元状态、预算、投放指标及时间/状态筛选 |
+| write_action | 降预算/调参数；按operateType批量启停计划或单元；停止是状态动作，不是删除 |
+| callback_event | 需可靠获得触发/结果数据；先确认轮询频率、配额与可接受延迟，再判断是否必须Callback/Event。京麦任务记录不等同业务事件交付。 |
+| public_api_closed_loop | False |
+| gaps | 止损需兼顾归因延迟与误停风险，并确认降预算或暂停的生效回执。 以暂停/降预算为动作，不扩展为删除广告计划。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L78；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API021 getAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L478-L597；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API025 batchPatchAdsCampaign references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L385-L477；API026 batchPutAdsCampaignState references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L42-L76；API029 batchPatchAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L826-L878；API030 batchPutAdsGroupState references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L7-L41；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09,Q17 |
+
+审核边界：以暂停/降预算为动作，不扩展为删除广告计划。
+
+## R042
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postAdsGroup |
+| support | 直接支持 |
+| read_data | 用户单次输入资料即可启动创意生成，不依赖广告效果数据；创意关联读取字段待确认 |
+| write_action | 原文核心交付为生成/计算结果，不需要修改京东状态；自动上传、发布或发送按另行明确的扩展范围评估。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | 不适用：核心交付不需要京东API；这里的直接支持仅指无需补京东接口，不代表产品已完成。 |
+| gaps | 已有素材能力可扩展广告图片与卖点，广告规格和商品事实需适配。 单次生成不强制依赖广告效果；区别于R016的效果驱动创意。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L79；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC02,EC03；API027 postAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L694-L794；INFERENCE_TECHNICAL: 主审产品边界；问题Q03 |
+
+审核边界：单次生成不强制依赖广告效果；区别于R016的效果驱动创意。
+
+## R043
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | postAdsGroup；batchPatchAdsGroup |
+| support | 部分支持 |
+| read_data | 单元及投放指标候选；关键词清单/匹配/质量字段未明确 |
+| write_action | 创建单元及批量更新预算/费用/出价/定向；keywordList不等于增词/删词语义 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 出现关键词列表不证明支持既有关键词增删及词级效果读取。 先确认词级数据与增删动作合同，再实施关键词优化。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L80；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API027 postAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L694-L794；API029 batchPatchAdsGroup references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L826-L878；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09 |
+
+审核边界：先确认词级数据与增删动作合同，再实施关键词优化。
+
+## R044
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；getReportSchema；postReport；getSensitiveReportSchema；postSensitiveReport |
+| support | 部分支持 |
+| read_data | 计划/单元指标；schema字段；报表行列头分页或异步下载任务 |
+| write_action | 无业务写入；postReport/postSensitiveReport为报表读取查询 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 计划曝光点击已有字段，GMV、ROI、消耗仍需明确类型、单位和归因规则。 按统一广告口径复盘，不把广告成交等同全店成交。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L81；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；API050 getSensitiveReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L141；API051 postSensitiveReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L215；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q09 |
+
+审核边界：按统一广告口径复盘，不把广告成交等同全店成交。

@@ -1,0 +1,3287 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 客服API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/queryWaiterStatus": {
+      "get": {
+        "operationId": "queryWaiterStatus",
+        "summary": "查询客服在线状态",
+        "description": "支持批量查询指定客服在线状态\n\nJD method: GET.sp-support.v0.dongdong-waiter-status",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-waiter-status",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryWaiterStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryWaiterStatusResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10610001004": {
+                    "summary": "应用标识不能为空@#$应用标识参数不能为空"
+                  },
+                  "10610001003": {
+                    "summary": "客服PIN不能为空@#$补充客服账号列表参数"
+                  },
+                  "10610001002": {
+                    "summary": "客服PIN列表长度不能超过10@#$检查列表长度"
+                  },
+                  "10610001001": {
+                    "summary": "在线状态查询参数为空@#$检查必填参数是否为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listChatbotEvaluations": {
+      "get": {
+        "operationId": "listChatbotEvaluations",
+        "summary": "查询机器人评价明细",
+        "description": "查询客服机器人评价记录列表接口\n\nJD method: GET.sp-support.v0.chatbots._robotCode.evaluations",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.chatbots._robotCode.evaluations",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListChatbotEvaluationsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListChatbotEvaluationsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10606011002": {
+                    "summary": "robotCode不能为空@#$robotCode不能为空"
+                  },
+                  "10606011001": {
+                    "summary": "查询时间范围不能超过7天@#$查询时间范围不能超过7天"
+                  },
+                  "10606011004": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10606011003": {
+                    "summary": "不支持查询1年以前的数据@#$不支持查询1年以前的数据"
+                  },
+                  "10606011006": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  },
+                  "10606011005": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getChatbotPerformance": {
+      "get": {
+        "operationId": "getChatbotPerformance",
+        "summary": "获取聊天机器人绩效数据",
+        "description": "用于获取聊天机器人绩效数据\n\nJD method: GET.sp-support.v0.chatbot-performance._robotCode",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.chatbot-performance._robotCode",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetChatbotPerformanceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChatbotPerformanceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10607001001": {
+                    "summary": "robotCode不能为空@#$robotCode不能为空"
+                  },
+                  "10607001002": {
+                    "summary": "查询时间范围不能超过1天@#$查询时间范围不能超过1天"
+                  },
+                  "10607001005": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  },
+                  "10607001003": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10607001004": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongSessionChatLogs": {
+      "get": {
+        "operationId": "listDongdongSessionChatLogs",
+        "summary": "查询会话下的聊天记录",
+        "description": "查询会话下的聊天记录，包含客服与顾客的对话信息，会话ID需要从listDongdongSessions获取\n\nJD method: GET.sp-support.v0.dongdong-sessions._sid.chat-logs",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-sessions._sid.chat-logs",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongSessionChatLogsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongSessionChatLogsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10604011001": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongSessions": {
+      "get": {
+        "operationId": "listDongdongSessions",
+        "summary": "获取咚咚会话列表",
+        "description": "用于查询顾客咨询的会话列表，不包含聊天记录，如需获取聊天记录，需配合listChatLogs接口使用\n\nJD method: GET.sp-support.v0.dongdong-sessions",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-sessions",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongSessionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongSessionsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10604001001": {
+                    "summary": "会话类型不正确@#$会话类型不正确"
+                  },
+                  "10604001005": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10604002501": {
+                    "summary": "内部服务业务异常（参考具体错误信息）@#$请稍后重试，或提工单咨询"
+                  },
+                  "10604001004": {
+                    "summary": "页size小于1或者太大@#$页size小于1或者太大"
+                  },
+                  "10604001003": {
+                    "summary": "页码小于1或者太大@#$页码小于1或者太大"
+                  },
+                  "10604001002": {
+                    "summary": "排序字段不正确@#$排序字段不正确"
+                  },
+                  "10604001007": {
+                    "summary": "请求参数为空@#$request不能为空"
+                  },
+                  "10604001006": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongChatDetails": {
+      "get": {
+        "operationId": "listDongdongChatDetails",
+        "summary": "获取咚咚会话详情",
+        "description": "用于获取咚咚会话详情，包含会话列表和聊天记录，少量数据场景下可通过该接口快速获取聊天信息\n\nJD method: GET.sp-support.v0.dongdong-chat-details",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-chat-details",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongChatDetailsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongChatDetailsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10605001006": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  },
+                  "10605001005": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10605001008": {
+                    "summary": "排序字段不正确@#$排序字段不正确"
+                  },
+                  "10605001007": {
+                    "summary": "会话类型不正确@#$会话类型不正确"
+                  },
+                  "10605001009": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  },
+                  "10605001002": {
+                    "summary": "开始时间不能是3个月以前的时间@#$开始时间不能是3个月以前的时间"
+                  },
+                  "10605001001": {
+                    "summary": "查询时间范围不能超过1天@#$查询时间范围不能超过1天"
+                  },
+                  "10605001004": {
+                    "summary": "页size小于1或者太大@#$页size小于1或者太大"
+                  },
+                  "10605001003": {
+                    "summary": "页码小于1或者太大@#$页码小于1或者太大"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongWaiters": {
+      "get": {
+        "operationId": "listDongdongWaiters",
+        "summary": "查询商家客服列表",
+        "description": "查询商家下，客服列表信息，包括客服总量，每个客服的level（是否是主账号）\n\nJD method: GET.sp-support.v0.dongdong-waiters",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-waiters",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongWaitersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongWaitersResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10601001001": {
+                    "summary": "页码小于1或者太大@#$页码小于1或者太大"
+                  },
+                  "10601001002": {
+                    "summary": "页size小于1或者太大@#$页size小于1或者太大"
+                  },
+                  "10601001003": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongWaiterPerformance": {
+      "get": {
+        "operationId": "listDongdongWaiterPerformance",
+        "summary": "查询客服绩效列表",
+        "description": "查询客服绩效接口，用于获取客服人员的绩效数据\n\nJD method: GET.sp-support.v0.dongdong-waiter-performance",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-waiter-performance",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongWaiterPerformanceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongWaiterPerformanceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10603001004": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10603001003": {
+                    "summary": "客服账号列表不能为空@#$客服账号列表不能为空"
+                  },
+                  "10603001006": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  },
+                  "10603001005": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  },
+                  "10603001002": {
+                    "summary": "开始时间不能是3个月以前的时间@#$开始时间不能是3个月以前的时间"
+                  },
+                  "10603001001": {
+                    "summary": "查询时间范围不能超过7天@#$查询时间范围不能超过7天"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listDongdongWaiterEvaluations": {
+      "get": {
+        "operationId": "listDongdongWaiterEvaluations",
+        "summary": "查询客服评价列表",
+        "description": "客服评价列表接口，用于获取用户对客服的评价信息。\n\nJD method: GET.sp-support.v0.dongdong-waiter-evaluations",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "GET.sp-support.v0.dongdong-waiter-evaluations",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListDongdongWaiterEvaluationsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDongdongWaiterEvaluationsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10602001006": {
+                    "summary": "结束时间不能为空@#$结束时间不能为空"
+                  },
+                  "10602001007": {
+                    "summary": "请求参数为空@#$request不能为空"
+                  },
+                  "10602001004": {
+                    "summary": "页size小于1或者太大@#$页size小于1或者太大"
+                  },
+                  "10602001005": {
+                    "summary": "开始时间不能为空@#$开始时间不能为空"
+                  },
+                  "10602001002": {
+                    "summary": "开始时间不能是3个月以前的时间@#$开始时间不能是3个月以前的时间"
+                  },
+                  "10602001003": {
+                    "summary": "页码小于1或者太大@#$页码小于1或者太大"
+                  },
+                  "10602001001": {
+                    "summary": "查询时间范围不能超过7天@#$查询时间范围不能超过7天"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postDongdongMessage": {
+      "post": {
+        "operationId": "postDongdongMessage",
+        "summary": "发送京东客服消息",
+        "description": "发送京东客服消息接口，用于向用户发送客服消息。\n\nJD method: POST.sp-support.v0.dongdong-messages",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "POST.sp-support.v0.dongdong-messages",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostDongdongMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDongdongMessageResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10608001002": {
+                    "summary": "必填参数为空@#$必填参数不能为空"
+                  },
+                  "10608001001": {
+                    "summary": "请求参数为空@#$accessSignature、dongdongMessage不能为空"
+                  },
+                  "10608002501": {
+                    "summary": "请参考具体信息@#$消息发送失败，请稍后重试"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postDongdongNotice": {
+      "post": {
+        "operationId": "postDongdongNotice",
+        "summary": "发送客服通知",
+        "description": "发送客服通知接口，用于向客户发送消息通知。\n\nJD method: POST.sp-support.v0.dongdong-notices",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "POST.sp-support.v0.dongdong-notices",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostDongdongNoticeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDongdongNoticeResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10609001001": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  },
+                  "10609001002": {
+                    "summary": "必填参数为空@#$必填参数为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postDongdongMessageV1": {
+      "post": {
+        "operationId": "postDongdongMessageV1",
+        "summary": "发送场景化消息",
+        "description": "支持场景化消息发送\n\nJD method: POST.sp-support.v1.dongdong-messages",
+        "tags": [
+          "客服API"
+        ],
+        "x-jd-method": "POST.sp-support.v1.dongdong-messages",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostDongdongMessageV1Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDongdongMessageV1Response"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10611001003": {
+                    "summary": "是否需要接收者为true时，接受者信息不能为空@#$需要接收者时，接收者信息不能为空"
+                  },
+                  "10611001002": {
+                    "summary": "是否需要发送者为true时，发送者信息不能为空@#$需要发送者时，发送者信息不能为空"
+                  },
+                  "10611001001": {
+                    "summary": "必填参数为空@#$检查必填的参数"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "QueryWaiterStatusRequest": {
+        "type": "object",
+        "properties": {
+          "queryWaiterStatusRequest": {
+            "description": "请求参数实体 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.waiterstatus.model.request.QueryWaiterStatusRequest",
+            "type": "object",
+            "properties": {
+              "app": {
+                "description": "应用标识 | 示例: im.waiter | 必填",
+                "type": "string",
+                "example": "im.waiter",
+                "default": ""
+              },
+              "waiters": {
+                "description": "客服账号，唯一标识查询目标客服，最大数量不超过10 | 必填",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "description": "客服账号 | 示例: dd_test1",
+                    "type": "string",
+                    "example": "dd_test1",
+                    "default": ""
+                  }
+                }
+              },
+              "venderId": {
+                "x-jd-public": true,
+                "type": "string",
+                "default": ""
+              }
+            },
+            "required": [
+              "app",
+              "waiters"
+            ]
+          }
+        },
+        "required": [
+          "queryWaiterStatusRequest"
+        ]
+      },
+      "QueryWaiterStatusResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "客服在线状态列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "presences": {
+                "description": "各端在线状态，Key 为终端类型（如 pc、mobile），Value 为状态值。1 表示在线，其他值表示非在线 | 示例: {&quot;pc&quot;:1}",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "workingSts": {
+                "description": "各端工作状态描述，常见值：online / offline / busy | 示例: {&quot;pc&quot;:&quot;online&quot;}",
+                "x-java-type": "java.util.Map",
+                "type": "object"
+              },
+              "waiter": {
+                "description": "客服唯一标识符 | 示例: dd_test1",
+                "type": "string",
+                "example": "dd_test1",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "请求是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息集合",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10610001001",
+                "type": "string",
+                "example": "10610001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 在线状态查询参数为空",
+                "type": "string",
+                "example": "在线状态查询参数为空",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 在线状态查询参数为空",
+                "type": "string",
+                "example": "在线状态查询参数为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListChatbotEvaluationsRequest": {
+        "type": "object",
+        "properties": {
+          "robotCode": {
+            "description": "注册应用市场的机器人code | 示例: FW_GOODS-1234 | 必填",
+            "type": "string",
+            "example": "FW_GOODS-1234",
+            "default": ""
+          },
+          "listChatbotEvaluationsRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.chatbot.evaluation.model.request.ListChatbotEvaluationsRequest",
+            "type": "object",
+            "properties": {
+              "sortOrder": {
+                "description": "排序类型，支持ASC、DESC | 示例: DESC",
+                "type": "string",
+                "example": "DESC",
+                "default": ""
+              },
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 71932458",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 71932458,
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "endTime": {
+                "description": "结束时间 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "page": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 20 | 必填",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              }
+            },
+            "required": [
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "robotCode",
+          "listChatbotEvaluationsRequest"
+        ]
+      },
+      "ListChatbotEvaluationsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "hasNextPage": {
+                "description": "是否有下一页 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "robotCode": {
+                "description": "注册应用市场的机器人code | 示例: FW_GOODS-1775810",
+                "type": "string",
+                "example": "FW_GOODS-1775810",
+                "default": ""
+              },
+              "waiter": {
+                "description": "客服账号 | 示例: waiter_test",
+                "type": "string",
+                "example": "waiter_test",
+                "default": ""
+              },
+              "customer": {
+                "description": "用户pin | 示例: test_pin",
+                "type": "string",
+                "example": "test_pin",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "type": "string",
+                "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "default": ""
+              },
+              "ouid": {
+                "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "type": "string",
+                "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "default": ""
+              },
+              "sessionTime": {
+                "description": "会话时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "evaluationTime": {
+                "description": "评价时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "degree": {
+                "description": "评价分数，枚举值：100-非常满意，75-满意，50-一般，25-不满意，0-非常不满意 | 示例: 5",
+                "type": "integer",
+                "example": 5,
+                "default": 0
+              },
+              "solveOption": {
+                "description": "是否已解决，枚举值：未解决，已解决，用户未选择 | 示例: 已解决",
+                "type": "string",
+                "example": "已解决",
+                "default": ""
+              },
+              "evaluationLabel": {
+                "description": "评价标签 | 示例: []",
+                "type": "string",
+                "example": "[]",
+                "default": ""
+              },
+              "evaluation": {
+                "description": "用户输入的其它评价内容 | 示例: 其它",
+                "type": "string",
+                "example": "其它",
+                "default": ""
+              },
+              "sid": {
+                "description": "会话ID | 示例: 3b34ee9497fda03182fa90bc987a253b",
+                "type": "string",
+                "example": "3b34ee9497fda03182fa90bc987a253b",
+                "default": ""
+              },
+              "inviteTime": {
+                "description": "邀评时间，如果评价非客服主动，则有邀评时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "inviteType": {
+                "description": "邀评类型，枚举值：系统邀评，客服邀评，用户主动 | 示例: 用户主动",
+                "type": "string",
+                "example": "用户主动",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10606011001",
+                "type": "string",
+                "example": "10606011001",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 查询时间范围不能超过7天",
+                "type": "string",
+                "example": "查询时间范围不能超过7天",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 查询时间范围不能超过7天",
+                "type": "string",
+                "example": "查询时间范围不能超过7天",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "GetChatbotPerformanceRequest": {
+        "type": "object",
+        "properties": {
+          "robotCode": {
+            "description": "注册应用市场的机器人code | 必填",
+            "type": "string",
+            "default": ""
+          },
+          "getChatbotPerformanceRequest": {
+            "description": "请求对象 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.chatbotperf.model.request.GetChatbotPerformanceRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "系统隐式传参",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "endTime": {
+                "description": "结束时间 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "startTime",
+              "endTime"
+            ]
+          }
+        },
+        "required": [
+          "robotCode",
+          "getChatbotPerformanceRequest"
+        ]
+      },
+      "GetChatbotPerformanceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "机器人指标DTO",
+            "x-java-type": "com.jd.open.rest.client.cs.chatbotperf.model.dto.ChatbotPerformanceDTO",
+            "type": "object",
+            "properties": {
+              "consultCount": {
+                "description": "咨询量",
+                "type": "integer",
+                "default": 0
+              },
+              "replyCount": {
+                "description": "已回复会话量统计",
+                "type": "integer",
+                "default": 0
+              },
+              "unReplyCount": {
+                "description": "未回复会话量统计",
+                "type": "integer",
+                "default": 0
+              },
+              "evaluationCount": {
+                "description": "评价量统计",
+                "type": "integer",
+                "default": 0
+              },
+              "verySatisfiedCount": {
+                "description": "非常满意量",
+                "type": "integer",
+                "default": 0
+              },
+              "satisfiedCount": {
+                "description": "满意量",
+                "type": "integer",
+                "default": 0
+              },
+              "middleSatisfiedCount": {
+                "description": "一般满意量",
+                "type": "integer",
+                "default": 0
+              },
+              "unsatisfiedCount": {
+                "description": "不满意量",
+                "type": "integer",
+                "default": 0
+              },
+              "veryUnsatisfiedCount": {
+                "description": "非常不满意量",
+                "type": "integer",
+                "default": 0
+              },
+              "solvedCount": {
+                "description": "已解决量",
+                "type": "integer",
+                "default": 0
+              },
+              "unSolvedCount": {
+                "description": "未解决量",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongSessionChatLogsRequest": {
+        "type": "object",
+        "properties": {
+          "sid": {
+            "description": "会话ID | 示例: 739fe1989a899710149ec6370464ba12 | 必填",
+            "type": "string",
+            "example": "739fe1989a899710149ec6370464ba12",
+            "default": ""
+          },
+          "listChatLogsRequest": {
+            "description": "请求参数，传空或不传",
+            "x-java-type": "com.jd.open.rest.client.cs.chatsession.chatlog.model.request.ListChatLogsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 71932458",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 71932458,
+                "default": 0
+              }
+            }
+          }
+        },
+        "required": [
+          "sid"
+        ]
+      },
+      "ListDongdongSessionChatLogsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "waiter": {
+                "description": "客服账号 | 示例: waiter_test",
+                "type": "string",
+                "example": "waiter_test",
+                "default": ""
+              },
+              "customer": {
+                "description": "客户pin | 示例: jd_test",
+                "type": "string",
+                "example": "jd_test",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "客户pin | 示例: o*AASkOg_bu7lLvzxPsUs5mi8FNmRkMF_9r5zn4LTCHNl5Z24dLfDjw_Cfcl5pZDQSs1yV12og",
+                "type": "string",
+                "example": "o*AASkOg_bu7lLvzxPsUs5mi8FNmRkMF_9r5zn4LTCHNl5Z24dLfDjw_Cfcl5pZDQSs1yV12og",
+                "default": ""
+              },
+              "waiterSend": {
+                "description": "枚举：1-Waiter发送消息、0-顾客发送消息 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "createdTime": {
+                "description": "消息发送时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "content": {
+                "description": "消息内容 | 示例: 聊天记录内容",
+                "type": "string",
+                "example": "聊天记录内容",
+                "default": ""
+              },
+              "msgType": {
+                "description": "消息类型，枚举值：1-在线回复， 2-欢迎语，3-自动回复，4-快捷回复，5-离线回复，6-系统提示 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "imgUrl": {
+                "description": "图片或者视频链接 | 示例: http://example.com/image.jpg",
+                "type": "string",
+                "example": "http://example.com/image.jpg",
+                "default": ""
+              },
+              "contentType": {
+                "description": "内容类型，枚举值：text-文本，template2-模版，image-图片，sys-系统消息，video-视屏，file-文件 | 示例: image",
+                "type": "string",
+                "example": "image",
+                "default": ""
+              },
+              "sid": {
+                "description": "会话ID | 示例: 739fe1989a899710149ec6370464ba12",
+                "type": "string",
+                "example": "739fe1989a899710149ec6370464ba12",
+                "default": ""
+              },
+              "uuid": {
+                "description": "消息uuid，md5值 | 示例: 2107516F-5340-43A6-9167-59E9CE984B10",
+                "type": "string",
+                "example": "2107516F-5340-43A6-9167-59E9CE984B10",
+                "default": ""
+              },
+              "revokeFlag": {
+                "description": "聊天消息撤回，1-已撤回，不存在该字段或者其他值则为非撤回 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "revokeTime": {
+                "description": "撤回时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "skuId": {
+                "description": "商品SKU ID | 示例: 100223712781",
+                "type": "integer",
+                "example": 100223712781,
+                "default": 0
+              },
+              "msgAssistFlag": {
+                "description": "消息辅助标识，1-辅助消息、null-正常消息 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10604011001",
+                "type": "string",
+                "example": "10604011001",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 会话ID不能为空",
+                "type": "string",
+                "example": "会话ID不能为空",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 会话ID不能为空",
+                "type": "string",
+                "example": "会话ID不能为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongSessionsRequest": {
+        "type": "object",
+        "properties": {
+          "listDongdongSessionsRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.chatsession.model.request.ListDongdongSessionsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 71932458",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 71932458,
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间 | 示例: 1643723400000 | 必填",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "endTime": {
+                "description": "结束时间 | 示例: 1643819800000 | 必填",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "sortBy": {
+                "description": "排序字段，枚举值：createdTime、closeTime | 示例: createdTime",
+                "type": "string",
+                "example": "createdTime",
+                "default": ""
+              },
+              "sortOrder": {
+                "description": "排序类型，枚举值：ASC、DESC | 示例: DESC",
+                "type": "string",
+                "example": "DESC",
+                "default": ""
+              },
+              "sessionType": {
+                "description": "会话类型，枚举值：1-在线、2-留言、3-机器人，如果会话类型为空，则查询所有会话 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "entryList": {
+                "description": "咨询入口列表",
+                "x-java-type": "java.util.Set",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "咨询入口 | 示例: entry123",
+                    "type": "string",
+                    "example": "entry123",
+                    "default": ""
+                  }
+                }
+              },
+              "waiterList": {
+                "description": "客服列表",
+                "x-java-type": "java.util.Set",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "客服账号 | 示例: waiter123",
+                    "type": "string",
+                    "example": "waiter123",
+                    "default": ""
+                  }
+                }
+              },
+              "customerList": {
+                "description": "客户列表",
+                "x-java-type": "java.util.Set",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "客户pin | 示例: customer123",
+                    "type": "string",
+                    "example": "customer123",
+                    "default": ""
+                  }
+                }
+              },
+              "page": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            },
+            "required": [
+              "startTime",
+              "endTime",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "listDongdongSessionsRequest"
+        ]
+      },
+      "ListDongdongSessionsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "hasNextPage": {
+                "description": "是否有下一页 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "appId": {
+                "description": "接待工作台标记 | 示例: im.waiter",
+                "type": "string",
+                "example": "im.waiter",
+                "default": ""
+              },
+              "cAppId": {
+                "description": "用户App标识 | 示例: im.customer",
+                "type": "string",
+                "example": "im.customer",
+                "default": ""
+              },
+              "customer": {
+                "description": "用户pin | 示例: jd_test",
+                "type": "string",
+                "example": "jd_test",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "用户pin | 示例: o*AASkOg_bu7lLvzxPsUs5mi8FNmRkMF_9r5zn4LTCHNl5Z24dLfDjw_Cfcl5pZDQSs1yV12og",
+                "type": "string",
+                "example": "o*AASkOg_bu7lLvzxPsUs5mi8FNmRkMF_9r5zn4LTCHNl5Z24dLfDjw_Cfcl5pZDQSs1yV12og",
+                "default": ""
+              },
+              "waiter": {
+                "description": "客服账号 | 示例: waiter_test",
+                "type": "string",
+                "example": "waiter_test",
+                "default": ""
+              },
+              "createdTime": {
+                "description": "会话创建时间 | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "replyTime": {
+                "description": "会话响应时间 | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "closeTime": {
+                "description": "会话关闭时间 | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "closeReason": {
+                "description": "会话关闭原因 | 示例: 系统自动关闭",
+                "type": "string",
+                "example": "系统自动关闭",
+                "default": ""
+              },
+              "sessionType": {
+                "description": "会话类型，枚举值：1-在线会话、2-留言会话、3-机器人会话 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "transfer": {
+                "description": "是否发生转接 | 示例: false",
+                "type": "boolean",
+                "example": false,
+                "default": false
+              },
+              "sid": {
+                "description": "会话id | 示例: 739fe1989a899710149ec6370464ba12",
+                "type": "string",
+                "example": "739fe1989a899710149ec6370464ba12",
+                "default": ""
+              },
+              "skuId": {
+                "description": "咨询进线带的skuId | 示例: 100223712781",
+                "type": "integer",
+                "example": 100223712781,
+                "default": 0
+              },
+              "orderId": {
+                "description": "咨询进线带的orderId | 示例: 319905051171",
+                "type": "integer",
+                "example": 319905051171,
+                "default": 0
+              },
+              "groupId": {
+                "description": "进线后接待的技能组 | 示例: 105022311",
+                "type": "integer",
+                "example": 105022311,
+                "default": 0
+              },
+              "lastCustomerMsgTime": {
+                "description": "最后一条用户消息时间 | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "lastWaiterMsgTime": {
+                "description": "最后一条客服消息时间 | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "customerMsgNum": {
+                "description": "用户发送的消息数 | 示例: 3",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "waiterMsgNum": {
+                "description": "客服发送的消息数 | 示例: 3",
+                "type": "integer",
+                "example": 3,
+                "default": 0
+              },
+              "responseAvgSpeed": {
+                "description": "会话平均响应时长，保留两位小数 | 示例: 10",
+                "type": "number",
+                "example": 10,
+                "default": 0
+              },
+              "entry": {
+                "description": "咨询入口 | 示例: sdk_item",
+                "type": "string",
+                "example": "sdk_item",
+                "default": ""
+              },
+              "inviteTime": {
+                "description": "会话邀评时间（如果会话发生了邀评，则存在此字段） | 示例: 1643819800000",
+                "type": "integer",
+                "example": 1643819800000,
+                "default": 0
+              },
+              "inviteType": {
+                "description": "邀请类型，枚举值：系统邀评、客服邀评、用户主动 | 示例: 客服邀评",
+                "type": "string",
+                "example": "客服邀评",
+                "default": ""
+              },
+              "evaluationTime": {
+                "description": "评价时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "degree": {
+                "description": "评价分数，5档分数：100、75、50、25、0 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "solveOption": {
+                "description": "是否已解决，枚举值：未解决、已解决、用户未选择 | 示例: 已解决",
+                "type": "string",
+                "example": "已解决",
+                "default": ""
+              },
+              "evaluationLabel": {
+                "description": "评价标签 | 示例: 评价标签示例",
+                "type": "string",
+                "example": "评价标签示例",
+                "default": ""
+              },
+              "evaluation": {
+                "description": "用户输入的其它评价内容 | 示例: 用户评价内容",
+                "type": "string",
+                "example": "用户评价内容",
+                "default": ""
+              },
+              "robotCode": {
+                "description": "如果是机器人的评价，且机器人有code，则返回code | 示例: FW_CODE_1234",
+                "type": "string",
+                "example": "FW_CODE_1234",
+                "default": ""
+              },
+              "fromRobotSid": {
+                "description": "如果当前会话来自机器人转接，则存在此字段 | 示例: 739fe1989a899710149ec6370464ba12",
+                "type": "string",
+                "example": "739fe1989a899710149ec6370464ba12",
+                "default": ""
+              },
+              "robotToImSid": {
+                "description": "如果当前会话发生了转接，且转接到了机器人，则存在此字段 | 示例: 739fe1989a899710149ec6370464ba12",
+                "type": "string",
+                "example": "739fe1989a899710149ec6370464ba12",
+                "default": ""
+              },
+              "extInfo": {
+                "description": "扩展字段 | 示例: {}",
+                "type": "string",
+                "example": "{}",
+                "default": ""
+              },
+              "toSid": {
+                "description": "转接的会话id | 示例: 739fe1989a899710149ec6370464ba12",
+                "type": "string",
+                "example": "739fe1989a899710149ec6370464ba12",
+                "default": ""
+              },
+              "toGroupId": {
+                "description": "转接的技能组 | 示例: 105022311",
+                "type": "integer",
+                "example": 105022311,
+                "default": 0
+              },
+              "toWaiter": {
+                "description": "转接的客服 | 示例: test_waiter",
+                "type": "string",
+                "example": "test_waiter",
+                "default": ""
+              },
+              "transferTime": {
+                "description": "转接的时间 | 示例: 1633046400000",
+                "type": "integer",
+                "example": 1633046400000,
+                "default": 0
+              },
+              "transferReason": {
+                "description": "转接原因 | 示例: 转接原因示例",
+                "type": "string",
+                "example": "转接原因示例",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10604001001",
+                "type": "string",
+                "example": "10604001001",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 会话类型不正确",
+                "type": "string",
+                "example": "会话类型不正确",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 会话类型不正确",
+                "type": "string",
+                "example": "会话类型不正确",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongChatDetailsRequest": {
+        "type": "object",
+        "properties": {
+          "listDongdongChatDetailsRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.chatdetail.model.request.ListDongdongChatDetailsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "系统隐式传参",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "endTime": {
+                "description": "结束时间 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "sortBy": {
+                "description": "排序字段，枚举值：createdTime、closeTime",
+                "type": "string",
+                "default": ""
+              },
+              "sortOrder": {
+                "description": "排序类型，枚举值：ASC、DESC",
+                "type": "string",
+                "default": ""
+              },
+              "sessionType": {
+                "description": "会话类型，枚举值：1-在线、2-留言、3-机器人，如果会话类型为空，则查询所有会话",
+                "type": "integer",
+                "default": 0
+              },
+              "entryList": {
+                "description": "咨询入口列表",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "咨询入口",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "waiterList": {
+                "description": "客服列表",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "客服账号",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "customerList": {
+                "description": "客户列表",
+                "x-java-type": "java.util.Set <java.lang.String>",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "客户账号",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "page": {
+                "description": "页码 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "startTime",
+              "endTime",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "listDongdongChatDetailsRequest"
+        ]
+      },
+      "ListDongdongChatDetailsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数",
+                "type": "integer",
+                "default": 0
+              },
+              "hasNextPage": {
+                "description": "是否有下一页",
+                "type": "boolean",
+                "default": false
+              },
+              "totalPages": {
+                "description": "总页数",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小",
+                "type": "integer",
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.cs.chatdetail.model.dto.DongdongChatDetailDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dongdongSession": {
+                  "description": "会话信息",
+                  "x-java-type": "com.jd.open.rest.client.cs.chatsession.model.dto.DongdongSessionDTO",
+                  "type": "object",
+                  "properties": {
+                    "appId": {
+                      "description": "接待工作台标记",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "cAppId": {
+                      "description": "用户App标识",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "customer": {
+                      "description": "用户pin",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "waiter": {
+                      "description": "客服账号",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "createdTime": {
+                      "description": "会话创建时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "replyTime": {
+                      "description": "会话响应时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "closeTime": {
+                      "description": "会话关闭时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "closeReason": {
+                      "description": "会话关闭原因",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "sessionType": {
+                      "description": "会话类型，枚举值：1-在线会话、2-留言会话、3-机器人会话",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "transfer": {
+                      "description": "是否发生转接",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "sid": {
+                      "description": "会话id",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "skuId": {
+                      "description": "咨询进线带的skuId",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "orderId": {
+                      "description": "咨询进线带的orderId",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "groupId": {
+                      "description": "进线后接待的技能组",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "lastCustomerMsgTime": {
+                      "description": "最后一条用户消息时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "lastWaiterMsgTime": {
+                      "description": "最后一条客服消息时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "customerMsgNum": {
+                      "description": "用户发送的消息数",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "waiterMsgNum": {
+                      "description": "客服发送的消息数",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "responseAvgSpeed": {
+                      "description": "会话平均响应时长，保留两位小数",
+                      "type": "number",
+                      "default": 0
+                    },
+                    "entry": {
+                      "description": "咨询入口",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "inviteTime": {
+                      "description": "会话邀评时间（如果会话发生了邀评，则存在此字段）",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "inviteType": {
+                      "description": "邀请类型，枚举值：系统邀评、客服邀评、用户主动",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "evaluationTime": {
+                      "description": "评价时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "degree": {
+                      "description": "评价分数，5档分数：100、75、50、25、0",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "solveOption": {
+                      "description": "是否已解决，枚举值：未解决、已解决、用户未选择",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "evaluationLabel": {
+                      "description": "评价标签",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "evaluation": {
+                      "description": "用户输入的其它评价内容",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "robotCode": {
+                      "description": "如果是机器人的评价，且机器人有code，则返回code",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "fromRobotSid": {
+                      "description": "如果当前会话来自机器人转接，则存在此字段",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "robotToImSid": {
+                      "description": "如果当前会话发生了转接，且转接到了机器人，则存在此字段",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "extInfo": {
+                      "description": "扩展字段",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "toSid": {
+                      "description": "转接的会话id",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "toGroupId": {
+                      "description": "转接的技能组",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "toWaiter": {
+                      "description": "转接的客服",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "transferTime": {
+                      "description": "转接的时间",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "transferReason": {
+                      "description": "转接原因",
+                      "type": "string",
+                      "default": ""
+                    }
+                  }
+                },
+                "dongdongChatLogList": {
+                  "description": "聊天记录列表",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.cs.chatsession.chatlog.model.dto.ChatLogDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "waiter": {
+                        "description": "客服",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "customer": {
+                        "description": "客户",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "waiterSend": {
+                        "description": "客服发送标志",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "createdTime": {
+                        "description": "创建时间",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "content": {
+                        "description": "内容",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "msgType": {
+                        "description": "消息类型，枚举值：1-在线回复， 2-欢迎语，3-自动回复，4-快捷回复，5-离线回复，6-系统提示",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "imgUrl": {
+                        "description": "图片URL",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "contentType": {
+                        "description": "内容类型，枚举值：text-文本，template2-模版，image-图片，sys-系统消息，video-视屏，file-文件",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "sid": {
+                        "description": "会话ID",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "uuid": {
+                        "description": "UUID",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "revokeFlag": {
+                        "description": "撤回标志",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "revokeTime": {
+                        "description": "撤回时间",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "skuId": {
+                        "description": "SKU ID",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "msgAssistFlag": {
+                        "description": "消息辅助标志",
+                        "type": "integer",
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongWaitersRequest": {
+        "type": "object",
+        "properties": {
+          "listDongdongWaitersRequest": {
+            "description": "查询客服列表请求参数",
+            "x-java-type": "com.jd.open.rest.client.cs.waiter.model.request.ListDongdongWaitersRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 71932458",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 71932458,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "page": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            },
+            "required": [
+              "pageSize",
+              "page"
+            ]
+          }
+        }
+      },
+      "ListDongdongWaitersResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "hasNextPage": {
+                "description": "是否有下一页 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "shopName": {
+                "description": "店铺名字 | 示例: 测试店铺",
+                "type": "string",
+                "example": "测试店铺",
+                "default": ""
+              },
+              "waiter": {
+                "description": "客服账号 | 示例: test_pin",
+                "type": "string",
+                "example": "test_pin",
+                "default": ""
+              },
+              "yn": {
+                "description": "是否授权。1-授权、0-已取消授权 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "leader": {
+                "description": "是否为管理员。1-是(主账号和客服组长)、0-否 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "level": {
+                "description": "客服等级。枚举：主账号、客服组长、接待客服 | 示例: 接待客服",
+                "type": "string",
+                "example": "接待客服",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10601001003",
+                "type": "string",
+                "example": "10601001003",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongWaiterPerformanceRequest": {
+        "type": "object",
+        "properties": {
+          "listWaiterPerformanceRequest": {
+            "description": "请求数据 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.performance.model.request.ListWaiterPerformanceRequest",
+            "type": "object",
+            "properties": {
+              "waiterList": {
+                "description": "需要查询的客服账号列表 | 必填",
+                "x-java-type": "java.util.List <java.lang.String>",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "venderId": {
+                "description": "系统隐式传参",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "startTime": {
+                "description": "查询开始时间 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "endTime": {
+                "description": "查询结束时间 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "waiterList",
+              "startTime",
+              "endTime"
+            ]
+          }
+        },
+        "required": [
+          "listWaiterPerformanceRequest"
+        ]
+      },
+      "ListDongdongWaiterPerformanceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.cs.performance.model.dto.DongdongWaiterPerformanceDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "waiter": {
+                  "description": "客服账号",
+                  "type": "string",
+                  "default": ""
+                },
+                "avgWaitTime": {
+                  "description": "平均等待时间（秒），即平均响应时长指标，保留2位小数",
+                  "type": "number",
+                  "default": 0
+                },
+                "onlineTotalTime": {
+                  "description": "在线时长，单位：小时，保留2位小数",
+                  "type": "number",
+                  "default": 0
+                },
+                "serviceTotalTime": {
+                  "description": "服务时长，单位：小时，保留2位小数",
+                  "type": "number",
+                  "default": 0
+                },
+                "consultCount": {
+                  "description": "咨询会话量统计",
+                  "type": "integer",
+                  "default": 0
+                },
+                "replyCount": {
+                  "description": "已回复会话量统计",
+                  "type": "integer",
+                  "default": 0
+                },
+                "unReplyCount": {
+                  "description": "未回复会话量统计",
+                  "type": "integer",
+                  "default": 0
+                },
+                "evaluationCount": {
+                  "description": "评价量统计",
+                  "type": "integer",
+                  "default": 0
+                },
+                "verySatisfiedCount": {
+                  "description": "非常满意次数",
+                  "type": "integer",
+                  "default": 0
+                },
+                "satisfiedCount": {
+                  "description": "满意次数",
+                  "type": "integer",
+                  "default": 0
+                },
+                "middleSatisfiedCount": {
+                  "description": "一般次数",
+                  "type": "integer",
+                  "default": 0
+                },
+                "unsatisfiedCount": {
+                  "description": "不满意次数",
+                  "type": "integer",
+                  "default": 0
+                },
+                "veryUnSatisfiedCount": {
+                  "description": "非常不满意次数",
+                  "type": "integer",
+                  "default": 0
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListDongdongWaiterEvaluationsRequest": {
+        "type": "object",
+        "properties": {
+          "listWaiterEvaluationsRequest": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.evaluation.model.request.ListWaiterEvaluationsRequest",
+            "type": "object",
+            "properties": {
+              "waiterList": {
+                "description": "客服列表",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "element": {
+                    "description": "客服账号 | 示例: waiter123",
+                    "type": "string",
+                    "example": "waiter123",
+                    "default": ""
+                  }
+                }
+              },
+              "sortOrder": {
+                "description": "排序类型。支持DESC/ASC | 示例: DESC",
+                "type": "string",
+                "example": "DESC",
+                "default": ""
+              },
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 70277",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间戳（按会话时间查询） | 示例: 1643723400000 | 必填",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "endTime": {
+                "description": "结束时间戳（按会话时间查询） | 示例: 1643723400000 | 必填",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              },
+              "page": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 20 | 必填",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              }
+            },
+            "required": [
+              "startTime",
+              "endTime",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "listWaiterEvaluationsRequest"
+        ]
+      },
+      "ListDongdongWaiterEvaluationsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "hasNextPage": {
+                "description": "是否有下一页 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              },
+              "totalPages": {
+                "description": "总页数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "waiter": {
+                "description": "客服账号 | 示例: waiter_test",
+                "type": "string",
+                "example": "waiter_test",
+                "default": ""
+              },
+              "customer": {
+                "description": "用户pin | 示例: jd_test",
+                "type": "string",
+                "example": "jd_test",
+                "default": ""
+              },
+              "xidBuyer": {
+                "description": "买家pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "type": "string",
+                "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                "default": ""
+              },
+              "ouid": {
+                "description": "买家pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "type": "string",
+                "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                "default": ""
+              },
+              "sessionTime": {
+                "description": "会话时间 | 示例: 1749112829000",
+                "type": "integer",
+                "example": 1749112829000,
+                "default": 0
+              },
+              "evaluationTime": {
+                "description": "评价时间 | 示例: 1749114458669",
+                "type": "integer",
+                "example": 1749114458669,
+                "default": 0
+              },
+              "degree": {
+                "description": "评价分数，枚举值：100-非常满意、75-满意、50-一般、25-不满意、0-非常不满意 | 示例: 100",
+                "type": "integer",
+                "example": 100,
+                "default": 0
+              },
+              "solveOption": {
+                "description": "是否已解决，枚举值：未解决、已解决、用户未选择 | 示例: 已解决",
+                "type": "string",
+                "example": "已解决",
+                "default": ""
+              },
+              "evaluationLabel": {
+                "description": "评价标签 | 示例: []",
+                "type": "string",
+                "example": "[]",
+                "default": ""
+              },
+              "evaluation": {
+                "description": "用户输入的其它评价内容 | 示例: 其它",
+                "type": "string",
+                "example": "其它",
+                "default": ""
+              },
+              "sid": {
+                "description": "会话ID | 示例: dccfbd1b52210dc8753acf7488689311",
+                "type": "string",
+                "example": "dccfbd1b52210dc8753acf7488689311",
+                "default": ""
+              },
+              "inviteType": {
+                "description": "邀请类型，枚举值：系统邀评、客服邀评、用户主动 | 示例: 客服邀评",
+                "type": "string",
+                "example": "客服邀评",
+                "default": ""
+              },
+              "inviteTime": {
+                "description": "邀评时间，客服主动邀请评价才有值 | 示例: 1749114458669",
+                "type": "integer",
+                "example": 1749114458669,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10602001001",
+                "type": "string",
+                "example": "10602001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 查询时间范围不能超过7天",
+                "type": "string",
+                "example": "查询时间范围不能超过7天",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 查询时间范围不能超过7天",
+                "type": "string",
+                "example": "查询时间范围不能超过7天",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PostDongdongMessageRequest": {
+        "type": "object",
+        "properties": {
+          "postDongdongMessageRequest": {
+            "description": "推送聊天消息请求对象 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.message.model.request.PostDongdongMessageRequest",
+            "type": "object",
+            "properties": {
+              "dongdongMessage": {
+                "description": "咚咚消息体 | 必填",
+                "x-java-type": "com.jd.open.rest.client.cs.message.model.dto.DongdongMessageDTO",
+                "type": "object",
+                "properties": {
+                  "accessSignature": {
+                    "description": "咚咚认证鉴权DTO | 必填",
+                    "x-java-type": "com.jd.open.rest.client.cs.message.model.dto.AccessSignatureDTO",
+                    "type": "object",
+                    "properties": {
+                      "accessId": {
+                        "description": "访问ID，可用于请求去重，在3分钟之内同一accessId的请求咚咚视为相同请求，只会处理第一个成功接收到的，通过uuid.toString()生成 | 示例: 22DBE2FC-07B0-4A98-993C-EFF434651363 | 必填",
+                        "type": "string",
+                        "example": "22DBE2FC-07B0-4A98-993C-EFF434651363",
+                        "default": ""
+                      },
+                      "aspId": {
+                        "description": "咚咚注册的应用服务租户ID | 示例: P0000001 | 必填",
+                        "type": "string",
+                        "example": "P0000001",
+                        "default": ""
+                      },
+                      "accessToken": {
+                        "description": "咚咚服务器动态分配的访问Token，宇aspid配置使用 | 示例: 8c7d270b8a176031d472dcf45e849e61 | 必填",
+                        "type": "string",
+                        "example": "8c7d270b8a176031d472dcf45e849e61",
+                        "default": ""
+                      },
+                      "venderId": {
+                        "description": "系统隐式传参 | 示例: 70277 | 必填",
+                        "x-jd-public": true,
+                        "type": "integer",
+                        "example": 70277,
+                        "default": 0
+                      },
+                      "source": {
+                        "description": "咚咚注册的应用服务发消息场景source | 示例: dd_msg_7953683d4eb74607a18f049c8ca50c47_f55b87dab92f492f80bc2004fd12515713 | 必填",
+                        "type": "string",
+                        "example": "dd_msg_7953683d4eb74607a18f049c8ca50c47_f55b87dab92f492f80bc2004fd12515713",
+                        "default": ""
+                      },
+                      "version": {
+                        "description": "API版本 | 示例: 3.0 | 必填",
+                        "type": "string",
+                        "example": "3.0",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "accessId",
+                      "aspId",
+                      "accessToken",
+                      "venderId",
+                      "source",
+                      "version"
+                    ]
+                  },
+                  "upId": {
+                    "description": "上一条消息id | 示例: B970B6B7-7905-45F3-B5CE-C3C10953CC85 | 必填",
+                    "type": "string",
+                    "example": "B970B6B7-7905-45F3-B5CE-C3C10953CC85",
+                    "default": ""
+                  },
+                  "ver": {
+                    "description": "协议版本 | 示例: 4.2 | 必填",
+                    "type": "string",
+                    "example": "4.2",
+                    "default": ""
+                  },
+                  "fromApp": {
+                    "description": "发送者app标识 | 示例: im.waiter | 必填",
+                    "type": "string",
+                    "example": "im.waiter",
+                    "default": ""
+                  },
+                  "fromPin": {
+                    "description": "发送者Pin | 示例: test_pop_ware | 必填",
+                    "type": "string",
+                    "example": "test_pop_ware",
+                    "default": ""
+                  },
+                  "toApp": {
+                    "description": "接收者app标识 | 示例: im.customer | 必填",
+                    "type": "string",
+                    "example": "im.customer",
+                    "default": ""
+                  },
+                  "toPinPlainText": {
+                    "description": "接受者Pin | 示例: jd_test | 必填",
+                    "type": "string",
+                    "example": "jd_test",
+                    "default": ""
+                  },
+                  "xidBuyer": {
+                    "description": "接受者Pin，请传xid密文 | 示例: o*AASiHE24w6IUhOMAbb-WGn6AOGY2ZU6THrbMC2d8b9NyACAQVVA | 必填",
+                    "type": "string",
+                    "example": "o*AASiHE24w6IUhOMAbb-WGn6AOGY2ZU6THrbMC2d8b9NyACAQVVA",
+                    "default": ""
+                  },
+                  "body": {
+                    "description": "消息内容，json格式，不同协议消息体不一样，具体参考咚咚协议文档：<a href=\"https://joyspace.jd.com/pages/uIvyzty3hr16eIpfh6sC\">消息协议</a> | 示例: 测试内容 | 必填",
+                    "type": "string",
+                    "example": "测试内容",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "accessSignature",
+                  "upId",
+                  "ver",
+                  "fromApp",
+                  "fromPin",
+                  "toApp",
+                  "toPinPlainText",
+                  "xidBuyer",
+                  "body"
+                ]
+              }
+            },
+            "required": [
+              "dongdongMessage"
+            ]
+          }
+        },
+        "required": [
+          "postDongdongMessageRequest"
+        ]
+      },
+      "PostDongdongMessageResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "咚咚消息",
+            "x-java-type": "com.jd.open.rest.client.cs.message.model.dto.DongdongMessageDTO",
+            "type": "object",
+            "properties": {
+              "accessId": {
+                "description": "访问ID | 示例: 685a71b844068479ab85e21b",
+                "type": "string",
+                "example": "685a71b844068479ab85e21b",
+                "default": ""
+              },
+              "msgId": {
+                "description": "消息id | 示例: a50a6406739049d08c5e921b53263932",
+                "type": "string",
+                "example": "a50a6406739049d08c5e921b53263932",
+                "default": ""
+              },
+              "sendTime": {
+                "description": "咚咚收到接入方消息时间戳毫秒数 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 10608001001",
+                  "type": "string",
+                  "example": "10608001001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: accessSignature、dongdongMessage不能为空",
+                  "type": "string",
+                  "example": "accessSignature、dongdongMessage不能为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误信息 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostDongdongNoticeRequest": {
+        "type": "object",
+        "properties": {
+          "postDongdongNoticeRequest": {
+            "description": "咚咚通知请求对象，包含推送的目标、内容等信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.notice.model.request.PostDongdongNoticeRequest",
+            "type": "object",
+            "properties": {
+              "dongdongNotice": {
+                "description": "咚咚客户端发送通知DTO | 必填",
+                "x-java-type": "com.jd.open.rest.client.cs.notice.model.dto.DongdongNoticeDTO",
+                "type": "object",
+                "properties": {
+                  "sender": {
+                    "description": "隐形系统参数 | 示例: jd_test",
+                    "x-jd-public": true,
+                    "type": "string",
+                    "example": "jd_test",
+                    "default": ""
+                  },
+                  "receivers": {
+                    "description": "接收者账号 | 必填",
+                    "x-java-type": "java.util.Set",
+                    "type": "object",
+                    "properties": {
+                      "element": {
+                        "description": "接收者账号 | 示例: waiter_test | 必填",
+                        "type": "string",
+                        "example": "waiter_test",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "element"
+                    ]
+                  },
+                  "appId": {
+                    "description": "工作台标识 | 示例: im.waiter | 必填",
+                    "type": "string",
+                    "example": "im.waiter",
+                    "default": ""
+                  },
+                  "sendTime": {
+                    "description": "发送时间 | 示例: 1633046400000 | 必填",
+                    "type": "integer",
+                    "example": 1633046400000,
+                    "default": 0
+                  },
+                  "accessToken": {
+                    "description": "向咚咚申请的接口使用Token | 示例: bac4919c4bede56ce19576b418171f5c | 必填",
+                    "type": "string",
+                    "example": "bac4919c4bede56ce19576b418171f5c",
+                    "default": ""
+                  },
+                  "title": {
+                    "description": "通知标题 | 示例: 通知标题示例 | 必填",
+                    "type": "string",
+                    "example": "通知标题示例",
+                    "default": ""
+                  },
+                  "content": {
+                    "description": "通知内容 | 示例: 通知内容示例 | 必填",
+                    "type": "string",
+                    "example": "通知内容示例",
+                    "default": ""
+                  },
+                  "url": {
+                    "description": "接收者点击通知跳转的Url | 示例: https://example.com",
+                    "type": "string",
+                    "example": "https://example.com",
+                    "default": ""
+                  },
+                  "noticeId": {
+                    "description": "通知id | 示例: 7a53d52f-b428-48ea-97b1-c035a614ae44 | 必填",
+                    "type": "string",
+                    "example": "7a53d52f-b428-48ea-97b1-c035a614ae44",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "receivers",
+                  "appId",
+                  "sendTime",
+                  "accessToken",
+                  "title",
+                  "content",
+                  "noticeId"
+                ]
+              }
+            },
+            "required": [
+              "dongdongNotice"
+            ]
+          }
+        },
+        "required": [
+          "postDongdongNoticeRequest"
+        ]
+      },
+      "PostDongdongNoticeResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "咚咚客户端发送通知DTO",
+            "x-java-type": "com.jd.open.rest.client.cs.notice.model.dto.DongdongNoticeDTO",
+            "type": "object",
+            "properties": {
+              "noticeId": {
+                "description": "通知id | 示例: 7a53d52f-b428-48ea-97b1-c035a614ae44",
+                "type": "string",
+                "example": "7a53d52f-b428-48ea-97b1-c035a614ae44",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误码 | 示例: 10609001001",
+                "type": "string",
+                "example": "10609001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 请求参数为空",
+                "type": "string",
+                "example": "请求参数为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "PostDongdongMessageV1Request": {
+        "type": "object",
+        "properties": {
+          "postDongdongMessageRequest": {
+            "description": "请求参数实体 | 必填",
+            "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.request.PostDongdongMessageRequest",
+            "type": "object",
+            "properties": {
+              "dongdongSceneMessage": {
+                "description": "参数实体类",
+                "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.dto.DongdongSceneMessageDTO",
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "description": "访问签名信息 | 必填",
+                    "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.dto.AccessDTO",
+                    "type": "object",
+                    "properties": {
+                      "aspId": {
+                        "description": "ASP ID | 示例: 22DBE2FC-07B0-4A98-993C-EFF434651363 | 必填",
+                        "type": "string",
+                        "example": "22DBE2FC-07B0-4A98-993C-EFF434651363",
+                        "default": ""
+                      },
+                      "accessToken": {
+                        "description": "access token | 示例: 8c7d270b8a176031d472dcf45e849e61 | 必填",
+                        "type": "string",
+                        "example": "8c7d270b8a176031d472dcf45e849e61",
+                        "default": ""
+                      },
+                      "source": {
+                        "description": "消息管控的 source | 示例: dd_msg_7953683d4eb74607a18f049c8ca50c47_f55b87dab92f492f80bc2004fd12515713 | 必填",
+                        "type": "string",
+                        "example": "dd_msg_7953683d4eb74607a18f049c8ca50c47_f55b87dab92f492f80bc2004fd12515713",
+                        "default": ""
+                      }
+                    },
+                    "required": [
+                      "aspId",
+                      "accessToken",
+                      "source"
+                    ]
+                  },
+                  "sender": {
+                    "description": "发送者信息",
+                    "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.dto.MessageParticipantDTO",
+                    "type": "object",
+                    "properties": {
+                      "app": {
+                        "description": "应用标识 | 示例: im.waiter",
+                        "type": "string",
+                        "example": "im.waiter",
+                        "default": ""
+                      },
+                      "pin": {
+                        "x-jd-public": true,
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "receiver": {
+                    "description": "接受者信息",
+                    "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.dto.MessageParticipantDTO",
+                    "type": "object",
+                    "properties": {
+                      "app": {
+                        "description": "应用标识 | 示例: im.customer",
+                        "type": "string",
+                        "example": "im.customer",
+                        "default": ""
+                      },
+                      "pin": {
+                        "description": "顾客pin | 示例: jimit8",
+                        "type": "string",
+                        "example": "jimit8",
+                        "default": ""
+                      },
+                      "xidBuyer": {
+                        "description": "顾客pin衍生字段 | 示例: o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                        "type": "string",
+                        "example": "o*AATyM3fBNvsaTeIQx3UyqP9EYTA1CpqXkGPAaJwGsWxolv8PC9c",
+                        "default": ""
+                      },
+                      "ouid": {
+                        "description": "顾客pin衍生字段 | 示例: ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                        "type": "string",
+                        "example": "ou*AAS6W5wS6NVx7vU8FxR-tys9ODE5ACu9z3HxxOqSoyp1Mby6HUh4",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "bizParam": {
+                    "description": "业务参数 | 示例:  {   &quot;orderId&quot;: 321718438576,                 &quot;content&quot;: &quot;订单通知&quot;,                 &quot;title&quot;: &quot;订单通知&quot;             }",
+                    "x-java-type": "java.util.Map",
+                    "type": "object"
+                  },
+                  "bizScene": {
+                    "description": "场景标识 | 示例: dd_ss_tyyhxxsj_6bf0119bec38499fa00ba8e8cbc79bbd",
+                    "type": "string",
+                    "example": "dd_ss_tyyhxxsj_6bf0119bec38499fa00ba8e8cbc79bbd",
+                    "default": ""
+                  },
+                  "isReceiver": {
+                    "description": "示例: true | 默认: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": true
+                  },
+                  "isSender": {
+                    "description": "示例: true | 默认: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": true
+                  },
+                  "isCtrl": {
+                    "description": "示例: true | 默认: true",
+                    "type": "boolean",
+                    "example": true,
+                    "default": true
+                  },
+                  "venderId": {
+                    "x-jd-public": true,
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "access"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "postDongdongMessageRequest"
+        ]
+      },
+      "PostDongdongMessageV1Response": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回数据",
+            "x-java-type": "com.jd.open.rest.client.cs.messagev1.model.dto.DongdongSceneMessageDTO",
+            "type": "object",
+            "properties": {
+              "msgId": {
+                "description": "消息ID | 示例: 685a71b844068479ab85e21b",
+                "type": "string",
+                "example": "685a71b844068479ab85e21b",
+                "default": ""
+              },
+              "accessId": {
+                "description": "访问ID | 示例: 685a71b844068479ab85e21b",
+                "type": "string",
+                "example": "685a71b844068479ab85e21b",
+                "default": ""
+              },
+              "sendTime": {
+                "description": "咚咚收到接入方消息时间戳毫秒数 | 示例: 1643723400000",
+                "type": "integer",
+                "example": 1643723400000,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误信息",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "状态码 | 示例: 10611001001",
+                "type": "string",
+                "example": "10611001001",
+                "default": ""
+              },
+              "message": {
+                "description": "错误信息 | 示例: 必填参数为空",
+                "type": "string",
+                "example": "必填参数为空",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 必填参数为空",
+                "type": "string",
+                "example": "必填参数为空",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

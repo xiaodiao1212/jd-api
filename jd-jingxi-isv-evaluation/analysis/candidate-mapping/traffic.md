@@ -1,0 +1,93 @@
+# 需求与API候选映射（已完成范围审核）
+
+只使用本模块需求、已有能力事实与相关API索引。平台接口覆盖不包括我方生成/算法能力，也不默认扩展为自动回写。核心无需京东接口时，“直接支持”仅表示不需要新增平台接口；产品能力以最终矩阵为准。
+
+## R024
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；getReportSchema；postReport；getSensitiveReportSchema；postSensitiveReport |
+| support | 部分支持 |
+| read_data | 广告计划/单元可读 impressions、clicks、CTR 等；通用报表可按 schema 查询，但未证明商品粒度、曝光/点击指标及时间粒度 |
+| write_action | 未发现 CTR 诊断结果或商品策略回写 API |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 通用报表未证实SKU曝光点击及渠道口径，广告CTR不能代表全域商品CTR。 输出可解释低点击诊断，先确认分母、时间窗口与样本阈值。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L49；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；API050 getSensitiveReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L141；API051 postSensitiveReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L215；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05 |
+
+审核边界：输出可解释低点击诊断，先确认分母、时间窗口与样本阈值。
+
+## R025
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；getReportSchema；postReport；getSensitiveReportSchema；postSensitiveReport |
+| support | 部分支持 |
+| read_data | 广告域可读 clicks、orders/carts、CTR、ROI 等；通用报表可提交筛选和字段列表，但未证明商品 CVR 所需完整口径 |
+| write_action | 未发现转化诊断结果或商品优化动作回写 API |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 点击与成交必须对齐SKU、渠道和归因窗口，才能判定转化不足。 区分访问、点击、订单及支付转化口径。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L50；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；API050 getSensitiveReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L141；API051 postSensitiveReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L215；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05 |
+
+审核边界：区分访问、点击、订单及支付转化口径。
+
+## R026
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | 可发现报表 schema、指标/属性/条件并读取报表行；未证明搜索词、标题、首屏素材字段 |
+| write_action | 未发现关键词、标题或搜索素材写入 API；生成优化内容不等于京东回写接口 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 商品信息优化可复用，搜索词表现与首屏素材效果仍依赖平台数据。 先优化商品信息，搜索增长结论需关键词与流量证据。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L51；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01,EC02,EC03；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q02,Q03,Q05 |
+
+审核边界：先优化商品信息，搜索增长结论需关键词与流量证据。
+
+## R027
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listProductOpportunities；getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | listProductOpportunities 可读商机名称/编码、类目、热度、供需比、销售 SKU/店铺数及价格区间；通用报表可读动态 schema 数据 |
+| write_action | 未发现推荐曝光配置或推荐流量写入 API |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 商机热度不证明推荐曝光不足，需推荐渠道曝光与转化明细。 按推荐流量缺口排序，不能用全域销量替代推荐效率。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L52；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API001 listProductOpportunities references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5839-L5902；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05 |
+
+审核边界：按推荐流量缺口排序，不能用全域销量替代推荐效率。
+
+## R028
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listProductOpportunities；getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | listProductOpportunities 提供商机/热度/供需等输入；通用报表可读动态字段和商品候选数据，但未证明完整 SKU 经营指标 |
+| write_action | 未发现流量放大或商品流量配置写入 API；输出潜力 SKU 清单本身无需京东回写 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 可放大SKU需要渠道边际表现与供给承接能力，不能只按当前销量排序。 与商品经营潜力SKU共享事实但分开评价目标。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L53；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API001 listProductOpportunities references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5839-L5902；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q04,Q05 |
+
+审核边界：与商品经营潜力SKU共享事实但分开评价目标。
+
+## R029
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAdsCampaigns；listAdsGroups；getReportSchema；postReport |
+| support | 部分支持 |
+| read_data | 可读取广告计划/单元预算、ROI、GMV、CTR、曝光、点击、成本、订单/购物车；通用报表可查询动态数据，但搜索/推荐指标未具体证明 |
+| write_action | 生成组合增量方案不要求京东提供 AI 算法或自动写入；未发现广告/搜索/推荐策略自动执行写入 API |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 跨搜索、推荐与广告的方案需要预算和目标约束及各渠道证据。 输出组合建议，不承诺必然获得增量流量。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L54；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API020 listAdsCampaigns references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L598-L693；API022 listAdsGroups references\jd-api\京东开放平台文档\jd-api-文档\推广API\jd-apis.d.ts:L108-L193；API048 getReportSchema C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L7；API049 postReport C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\数据API\jd-apis.d.ts:L81；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q05,Q09 |
+
+审核边界：输出组合建议，不承诺必然获得增量流量。

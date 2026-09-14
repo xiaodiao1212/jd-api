@@ -1,0 +1,108 @@
+# 需求与API候选映射（已完成范围审核）
+
+只使用本模块需求、已有能力事实与相关API索引。平台接口覆盖不包括我方生成/算法能力，也不默认扩展为自动回写。核心无需京东接口时，“直接支持”仅表示不需要新增平台接口；产品能力以最终矩阵为准。
+
+## R017
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis |  |
+| support | 不支持 |
+| read_data | 站内外商品特征、图片/文本和匹配结果来源未在限定资料中提供。 |
+| write_action | 需新增相似度检索、人工复核和结果存储；无现成京东写回证据。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | OPEN_API_NOT_FOUND：站内外商品样本、访问授权与同款标识是识别的前提。 同款与相似品需分开阈值；未发现接口不代表平台无内部能力。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L35；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；INFERENCE_TECHNICAL: 主审产品边界；问题Q06 |
+
+审核边界：同款与相似品需分开阈值；未发现接口不代表平台无内部能力。
+
+## R018
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis |  |
+| support | 不支持 |
+| read_data | 竞品 SKU、实时价、促销价和时间戳字段未发现。 |
+| write_action | 需保存采价快照并展示；无价格写回动作证据。 |
+| callback_event | 需可靠获得触发/结果数据；先确认轮询频率、配额与可接受延迟，再判断是否必须Callback/Event。京麦任务记录不等同业务事件交付。 |
+| public_api_closed_loop | False |
+| gaps | OPEN_API_NOT_FOUND：实时竞品到手价受地区、人群、促销和刷新时效影响，不能用建议价替代。 先确认可合法获得的竞品数据范围与实时性。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L36；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；INFERENCE_TECHNICAL: 主审产品边界；问题Q06 |
+
+审核边界：先确认可合法获得的竞品数据范围与实时性。
+
+## R019
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis |  |
+| support | 不支持 |
+| read_data | 历史价格序列、促销状态和时间粒度字段未发现。 |
+| write_action | 需自建历史快照、趋势计算和图表存储；无京东写回动作。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | OPEN_API_NOT_FOUND：历史展示依赖可信历史价格序列，当前没有明确对应公开数据证据。 历史回溯与今后持续采集是不同路径，不擅自承诺既往历史。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L37；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；INFERENCE_TECHNICAL: 主审产品边界；问题Q06 |
+
+审核边界：历史回溯与今后持续采集是不同路径，不擅自承诺既往历史。
+
+## R020
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listSuggestedPrices；listPriceStars |
+| support | 部分支持 |
+| read_data | 可候选读取 SKU/SPU、建议价/目标价/利益点及竞争力辅助字段；竞品、成本/毛利和完整平台规则未证实。 |
+| write_action | 生成并展示建议价，未发现自动改价写接口。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 平台建议价不能替代竞品、商家毛利底线和活动约束的联合判断。 输出建议价及依据，不默认回写价格。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L38；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API016 listSuggestedPrices references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5141-L5190；API017 listPriceStars references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5660-L5744；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q06,Q07,Q08 |
+
+审核边界：输出建议价及依据，不默认回写价格。
+
+## R021
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listAccountRecords；listBills |
+| support | 部分支持 |
+| read_data | 候选读取钱包流水和订单结算账单；商品成本、活动费用、广告费、补贴、税费等完整口径未证实。 |
+| write_action | 本地计算并保存毛利结果；未发现财务结果写回接口。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | False |
+| gaps | 实际利润取决于采购、履约、广告、补贴和退款费用的统一归属口径。 区分商家输入的情景测算与真实结算核算，不以估算冒充实际利润。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L39；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API086 listAccountRecords C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\财务API\jd-apis.d.ts:L7；API087 listBills C:\Users\vanna\OneDrive\Zhizi\JD\jd-jingxi-isv-evaluation\references\jd-api\京东开放平台文档\jd-api-文档\财务API\jd-apis.d.ts:L57；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q07 |
+
+审核边界：区分商家输入的情景测算与真实结算核算，不以估算冒充实际利润。
+
+## R022
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis |  |
+| support | 直接支持 |
+| read_data | 商家成本结构是明确前提；广告消耗、转化、收入等平台数据未发现候选字段。 |
+| write_action | 原文核心交付为生成/计算结果，不需要修改京东状态；自动上传、发布或发送按另行明确的扩展范围评估。 |
+| callback_event | 原文核心范围未要求持续事件订阅；存在平台写操作时需确认同步结果或状态查询，不能仅因未找到Callback判定无法交付。 |
+| public_api_closed_loop | 不适用：核心交付不需要京东API；这里的直接支持仅指无需补京东接口，不代表产品已完成。 |
+| gaps | ROI底线可按商家明确成本计算，但广告归因和利润口径必须一致。 先提供透明成本模型；缺失成本不猜测。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L40；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；INFERENCE_TECHNICAL: 主审产品边界；问题Q07 |
+
+审核边界：先提供透明成本模型；缺失成本不猜测。
+
+## R023
+
+| 字段 | 结果 |
+|---|---|
+| candidate_apis | listSuggestedPrices；listPriceStars |
+| support | 部分支持 |
+| read_data | 持续竞争环境与成本约束；listSuggestedPrices/listPriceStars可作策略辅助，但不替代竞品实时价及历史序列。 |
+| write_action | 仅持续给出调价策略，不自动修改价格；实际改价由R055另行授权。 |
+| callback_event | 需可靠获得触发/结果数据；先确认轮询频率、配额与可接受延迟，再判断是否必须Callback/Event。京麦任务记录不等同业务事件交付。 |
+| public_api_closed_loop | False |
+| gaps | 持续策略需要稳定竞品数据、成本底线与变化触发规则。 原文仅持续给出调价策略，自动改价在授权执行中另行定义。 |
+| evidence | FACT_REQUIREMENT: inputs\京东京喜-ISV-需求清单.md:L41；FACT_EXISTING_PRODUCT: inputs\existing-capabilities.md；EC01；API016 listSuggestedPrices references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5141-L5190；API017 listPriceStars references\jd-api\京东开放平台文档\jd-api-文档\商品API\jd-apis.d.ts:L5660-L5744；INFERENCE_TECHNICAL: 主审产品边界；问题Q01,Q06,Q07,Q08 |
+
+审核边界：原文仅持续给出调价策略，自动改价在授权执行中另行定义。

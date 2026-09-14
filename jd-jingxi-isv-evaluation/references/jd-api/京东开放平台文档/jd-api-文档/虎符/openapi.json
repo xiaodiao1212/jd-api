@@ -1,0 +1,865 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 虎符",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/listAccessedScenes": {
+      "get": {
+        "operationId": "listAccessedScenes",
+        "summary": "查询已接入场景列表",
+        "description": "查询已接入场景列表\n\nJD method: GET.open-hufu.v0.hufuSceneses",
+        "tags": [
+          "虎符"
+        ],
+        "x-jd-method": "GET.open-hufu.v0.hufuSceneses",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAccessedScenesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAccessedScenesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12502004000": {
+                    "summary": "参数错误@#$检查参数错误"
+                  },
+                  "12502005000": {
+                    "summary": "系统错误@#$联系技术人员"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listRouters": {
+      "get": {
+        "operationId": "listRouters",
+        "summary": "查询路由列表",
+        "description": "查询路由列表\n\nJD method: GET.open-hufu.v0.hufuRouters",
+        "tags": [
+          "虎符"
+        ],
+        "x-jd-method": "GET.open-hufu.v0.hufuRouters",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListRoutersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRoutersResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12501005000": {
+                    "summary": "系统异常@#$联系技术人员"
+                  },
+                  "12501004000": {
+                    "summary": "参数异常@#$检查参数配置"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/saveRouter": {
+      "post": {
+        "operationId": "saveRouter",
+        "summary": "申请对接路由",
+        "description": "申请对接路由\n\nJD method: POST.open-hufu.v0.hufuRouters",
+        "tags": [
+          "虎符"
+        ],
+        "x-jd-method": "POST.open-hufu.v0.hufuRouters",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveRouterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveRouterResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12501005000": {
+                    "summary": "系统异常@#$联系技术人员"
+                  },
+                  "12501004000": {
+                    "summary": "参数异常@#$查看参数是否正确"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/confirmRouter": {
+      "post": {
+        "operationId": "confirmRouter",
+        "summary": "确认路由对接申请",
+        "description": "确认路由对接申请 status=1 审核通过 status=2 驳回\n\nJD method: POST.open-hufu.v0.hufuRouters.validations",
+        "tags": [
+          "虎符"
+        ],
+        "x-jd-method": "POST.open-hufu.v0.hufuRouters.validations",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmRouterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfirmRouterResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "12501005000": {
+                    "summary": "系统异常@#$联系技术人员"
+                  },
+                  "12501004000": {
+                    "summary": "参数异常@#$检查参数是否缺失或正确"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListAccessedScenesRequest": {
+        "type": "object",
+        "properties": {
+          "listAccessedScenesDTO": {
+            "description": "请求体",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.req.ListAccessedScenesDTO",
+            "type": "object",
+            "properties": {
+              "pageNumber": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "sceneId": {
+                "description": "场景ID | 示例: 33",
+                "type": "integer",
+                "example": 33,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "分页大小（1-100） | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "appKey": {
+                "description": "应用appKey | 示例: AJSIOJDOIJODJOIDJOPDJ",
+                "type": "string",
+                "example": "AJSIOJDOIJODJOIDJOPDJ",
+                "default": ""
+              }
+            },
+            "required": [
+              "pageNumber",
+              "pageSize"
+            ]
+          }
+        }
+      },
+      "ListAccessedScenesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回值",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.ListAccessedScenesResultDTO",
+            "type": "object",
+            "properties": {
+              "accessedScenes": {
+                "description": "响应体",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "accessedScenesItem": {
+                    "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.AccessedSceneDTO",
+                    "type": "object",
+                    "properties": {
+                      "appName": {
+                        "description": "应用名称 | 示例: 我的测试应用",
+                        "type": "string",
+                        "example": "我的测试应用",
+                        "default": ""
+                      },
+                      "sceneName": {
+                        "description": "场景名称 | 示例: 虎符三方互通场景",
+                        "type": "string",
+                        "example": "虎符三方互通场景",
+                        "default": ""
+                      },
+                      "sceneDocUrl": {
+                        "description": "场景文档地址 | 示例: https://open.jd.com/v2/#/doc/dev-guide?listId=1101656",
+                        "type": "string",
+                        "example": "https://open.jd.com/v2/#/doc/dev-guide?listId=1101656",
+                        "default": ""
+                      },
+                      "imgUrl": {
+                        "description": "应用图标链接 | 示例: xxxxxx",
+                        "type": "string",
+                        "example": "xxxxxx",
+                        "default": ""
+                      },
+                      "sceneDesc": {
+                        "description": "场景描述 | 示例: ERP/WMS接入方案",
+                        "type": "string",
+                        "example": "ERP/WMS接入方案",
+                        "default": ""
+                      },
+                      "appTypeDesc": {
+                        "description": "应用类型描述 | 示例: 通用应用",
+                        "type": "string",
+                        "example": "通用应用",
+                        "default": ""
+                      },
+                      "createTime": {
+                        "description": "创建时间 | 示例: yyyy-MM-dd HH:mm:ss",
+                        "type": "string",
+                        "example": "yyyy-MM-dd HH:mm:ss",
+                        "default": ""
+                      },
+                      "appType": {
+                        "description": "应用类型 | 示例: 3",
+                        "type": "string",
+                        "example": "3",
+                        "default": ""
+                      },
+                      "sceneDocName": {
+                        "description": "场景文档名 | 示例: 虎符接入文档",
+                        "type": "string",
+                        "example": "虎符接入文档",
+                        "default": ""
+                      },
+                      "sceneId": {
+                        "description": "场景id | 示例: 32",
+                        "type": "integer",
+                        "example": 32,
+                        "default": 0
+                      },
+                      "appKey": {
+                        "description": "应用appKey | 示例: DBEIUDBNCSMDIHDJHA",
+                        "type": "string",
+                        "example": "DBEIUDBNCSMDIHDJHA",
+                        "default": ""
+                      },
+                      "accessSceneId": {
+                        "description": "场景接入id | 示例: 67",
+                        "type": "integer",
+                        "example": 67,
+                        "default": 0
+                      },
+                      "appTypeLevel": {
+                        "description": "应用类型层级 0 上游 1 下游 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "totalCount": {
+                "description": "总数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "返回值列表",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.JOSResponseDTO.ErrorList",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "响应码 | 示例: 12502005000",
+                "type": "integer",
+                "example": 12502005000,
+                "default": 0
+              },
+              "details": {
+                "description": "详细描述 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              },
+              "message": {
+                "description": "详细信息 | 示例: 系统错误",
+                "type": "string",
+                "example": "系统错误",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListRoutersRequest": {
+        "type": "object",
+        "properties": {
+          "listroutersDTO": {
+            "description": "请求体",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.req.ListRoutersDTO",
+            "type": "object",
+            "properties": {
+              "appKey": {
+                "description": "应用appKey | 示例: AFGSVXBIAIYNIDNI | 必填",
+                "type": "string",
+                "example": "AFGSVXBIAIYNIDNI",
+                "default": ""
+              },
+              "targetAppKey": {
+                "description": "目标应用appKey | 示例: AFGSVXBIAIYNIDNI",
+                "type": "string",
+                "example": "AFGSVXBIAIYNIDNI",
+                "default": ""
+              },
+              "sceneId": {
+                "description": "场景id | 示例: 23 | 必填",
+                "type": "integer",
+                "example": 23,
+                "default": 0
+              },
+              "status": {
+                "description": "路由状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "routerType": {
+                "description": "路由类型0 联调 1 线上 | 示例: 0",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "interFlowAccessId": {
+                "description": "场景接入id | 示例: 23 | 必填",
+                "type": "integer",
+                "example": 23,
+                "default": 0
+              },
+              "customerId": {
+                "description": "业务编码 | 示例: test-001",
+                "type": "string",
+                "example": "test-001",
+                "default": ""
+              },
+              "appUrl": {
+                "description": "应用回调地址 | 示例: http://test.com",
+                "type": "string",
+                "example": "http://test.com",
+                "default": ""
+              },
+              "pageNumber": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "分页大小 | 示例: 20 | 必填",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              }
+            },
+            "required": [
+              "appKey",
+              "sceneId",
+              "interFlowAccessId",
+              "pageNumber",
+              "pageSize"
+            ]
+          }
+        }
+      },
+      "ListRoutersResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应体",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.ListRoutersResultDTO",
+            "type": "object",
+            "properties": {
+              "records": {
+                "description": "响应体",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "recordsItem": {
+                    "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.RouterDTO",
+                    "type": "object",
+                    "properties": {
+                      "targetAppName": {
+                        "description": "对方应用名称 | 示例: test001",
+                        "type": "string",
+                        "example": "test001",
+                        "default": ""
+                      },
+                      "routerType": {
+                        "description": "路由类型 | 示例: 0",
+                        "type": "integer",
+                        "example": 0,
+                        "default": 0
+                      },
+                      "applyReason": {
+                        "description": "申请原因 | 示例: 测试",
+                        "type": "string",
+                        "example": "测试",
+                        "default": ""
+                      },
+                      "shopName": {
+                        "description": "商家名称 | 示例: 我的测试店铺",
+                        "type": "string",
+                        "example": "我的测试店铺",
+                        "default": ""
+                      },
+                      "appUrl": {
+                        "description": "应用后端服务地址 | 示例: https://test.com",
+                        "type": "string",
+                        "example": "https://test.com",
+                        "default": ""
+                      },
+                      "updateTime": {
+                        "description": "更新时间 | 示例: YYYY-MM-DD",
+                        "type": "string",
+                        "example": "YYYY-MM-DD",
+                        "default": ""
+                      },
+                      "reviewComments": {
+                        "description": "审核意见 | 示例: 同意",
+                        "type": "string",
+                        "example": "同意",
+                        "default": ""
+                      },
+                      "targetAppImgUrl": {
+                        "description": "对方应用的图像地址 | 示例: xxxxxxx",
+                        "type": "string",
+                        "example": "xxxxxxx",
+                        "default": ""
+                      },
+                      "createTime": {
+                        "description": "创建时间 | 示例: YYYY-MM-DD",
+                        "type": "string",
+                        "example": "YYYY-MM-DD",
+                        "default": ""
+                      },
+                      "routerId": {
+                        "description": "路由id | 示例: 43",
+                        "type": "integer",
+                        "example": 43,
+                        "default": 0
+                      },
+                      "customerId": {
+                        "description": "业务编码 | 示例: test-001",
+                        "type": "string",
+                        "example": "test-001",
+                        "default": ""
+                      },
+                      "targetAppKey": {
+                        "description": "对方应用appKey | 示例: AHDJIOSJNOINONDO",
+                        "type": "string",
+                        "example": "AHDJIOSJNOINONDO",
+                        "default": ""
+                      },
+                      "status": {
+                        "description": "状态0-待上线；1-已上线 | 示例: 1",
+                        "type": "integer",
+                        "example": 1,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "totalCount": {
+                "description": "总条数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "详细信息",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.JOSResponseDTO.ErrorList",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "响应码 | 示例: 12501005000",
+                "type": "integer",
+                "example": 12501005000,
+                "default": 0
+              },
+              "details": {
+                "description": "详情 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              },
+              "message": {
+                "description": "详细信息 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "SaveRouterRequest": {
+        "type": "object",
+        "properties": {
+          "saveRouterDTO": {
+            "description": "请求体",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.req.SaveRouterDTO",
+            "type": "object",
+            "properties": {
+              "sceneId": {
+                "description": "场景id | 示例: 53 | 必填",
+                "type": "integer",
+                "example": 53,
+                "default": 0
+              },
+              "routerId": {
+                "description": "路由id | 示例: 53",
+                "type": "integer",
+                "example": 53,
+                "default": 0
+              },
+              "interflowAccessId": {
+                "description": "三方互通接入申请id | 示例: 53 | 必填",
+                "type": "integer",
+                "example": 53,
+                "default": 0
+              },
+              "sourceAppKey": {
+                "description": "源应用appKey | 示例: AZUXHIOXOINMDGDBXOWN | 必填",
+                "type": "string",
+                "example": "AZUXHIOXOINMDGDBXOWN",
+                "default": ""
+              },
+              "targetAppKey": {
+                "description": "目标应用appKey | 示例: AZUXHIOXOINMDGDBXOWN | 必填",
+                "type": "string",
+                "example": "AZUXHIOXOINMDGDBXOWN",
+                "default": ""
+              },
+              "sourceAppUrl": {
+                "description": "源应用后端服务地址 | 示例: https://api.example.com | 必填",
+                "type": "string",
+                "example": "https://api.example.com",
+                "default": ""
+              },
+              "shopName": {
+                "description": "商家名称 | 示例: 我的测试店铺 | 必填",
+                "type": "string",
+                "example": "我的测试店铺",
+                "default": ""
+              },
+              "routerType": {
+                "description": "路由类型：0-联调；1-线上 | 示例: 0 | 必填",
+                "type": "integer",
+                "example": 0,
+                "default": 0
+              },
+              "applyReason": {
+                "description": "申请原因 | 示例: 测试联调",
+                "type": "string",
+                "example": "测试联调",
+                "default": ""
+              }
+            },
+            "required": [
+              "sceneId",
+              "interflowAccessId",
+              "sourceAppKey",
+              "targetAppKey",
+              "sourceAppUrl",
+              "shopName",
+              "routerType"
+            ]
+          }
+        }
+      },
+      "SaveRouterResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "返回值",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.SaveRouterResultDTO",
+            "type": "object",
+            "properties": {
+              "result": {
+                "description": "响应体 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "响应信息列表",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.JOSResponseDTO.ErrorList",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "响应码 | 示例: 12501005000",
+                "type": "integer",
+                "example": 12501005000,
+                "default": 0
+              },
+              "details": {
+                "description": "描述 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              },
+              "message": {
+                "description": "详细信息 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ConfirmRouterRequest": {
+        "type": "object",
+        "properties": {
+          "confirmRouterDTO": {
+            "description": "请求体",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.req.ConfirmRouterDTO",
+            "type": "object",
+            "properties": {
+              "interFlowAccessId": {
+                "description": "场景接入id | 示例: 53 | 必填",
+                "type": "integer",
+                "example": 53,
+                "default": 0
+              },
+              "sceneId": {
+                "description": "场景id | 示例: 53 | 必填",
+                "type": "integer",
+                "example": 53,
+                "default": 0
+              },
+              "appKey": {
+                "description": "应用appKey | 示例: ABUXBIUSINIANNIDB | 必填",
+                "type": "string",
+                "example": "ABUXBIUSINIANNIDB",
+                "default": ""
+              },
+              "routerId": {
+                "description": "路由id | 示例: 37 | 必填",
+                "type": "integer",
+                "example": 37,
+                "default": 0
+              },
+              "customerId": {
+                "description": "业务编码(唯一) | 示例: test-001 | 必填",
+                "type": "string",
+                "example": "test-001",
+                "default": ""
+              },
+              "targetAppUrl": {
+                "description": "应用后端服务地址 | 示例: https://test.com | 必填",
+                "type": "string",
+                "example": "https://test.com",
+                "default": ""
+              },
+              "status": {
+                "description": "状态 1 审核通过 2 驳回 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "reviewComments": {
+                "description": "审核意见 | 示例: 通过",
+                "type": "string",
+                "example": "通过",
+                "default": ""
+              }
+            },
+            "required": [
+              "interFlowAccessId",
+              "sceneId",
+              "appKey",
+              "routerId",
+              "customerId",
+              "targetAppUrl",
+              "status"
+            ]
+          }
+        }
+      },
+      "ConfirmRouterResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "响应值",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.ConfirmRouterResultDTO",
+            "type": "object",
+            "properties": {
+              "result": {
+                "description": "返回值 | 示例: true",
+                "type": "boolean",
+                "example": true,
+                "default": false
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "返回信息列表",
+            "x-java-type": "com.jdcloud.ecop.tripod.hufuopenapi.jdo.model.res.JOSResponseDTO.ErrorList",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "业务返回码 | 示例: 12501005000",
+                "type": "integer",
+                "example": 12501005000,
+                "default": 0
+              },
+              "details": {
+                "description": "详细描述 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              },
+              "message": {
+                "description": "详细信息 | 示例: 系统异常",
+                "type": "string",
+                "example": "系统异常",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

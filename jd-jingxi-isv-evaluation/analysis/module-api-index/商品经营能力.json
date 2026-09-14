@@ -1,0 +1,562 @@
+{
+  "module": "商品经营能力",
+  "requirement_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R006",
+    "R007",
+    "R008",
+    "R009"
+  ],
+  "candidate_count": 12,
+  "candidates": [
+    {
+      "category": "商品API",
+      "api_name": "listProductOpportunities",
+      "method": "GET.sp-product.v0.product-opportunities   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "opportunityType/opportunityVersion, page/pageSize/scrollId ",
+      "outputs": " opportunity name/code, categories, popularity, supplyDemandRatio, saleSkuNum/saleShopNum, price range",
+      "requirement_ids": [
+        "R001",
+        "R008",
+        "R027",
+        "R028"
+      ],
+      "reason": "商机与热度/供需数据明确；潜力定义需业务映射",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5839-L5902",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P04",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L16-L18",
+          "fact_excerpt": "listProductOpportunities 的 method、输入及商机属性字段事实。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "postProductApply",
+      "method": "POST.sp-product.v0.product-applies   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "request.schema、productApplyDTO（仅productId/spuSkuApplyGray/saveActionType/limitInfoSubmitMethod/categoryDTO已展开）、身份及scene",
+      "outputs": " apply result/applyId",
+      "requirement_ids": [
+        "R002",
+        "R005",
+        "R006",
+        "R007",
+        "R055"
+      ],
+      "reason": "创建/整版编辑申请候选；当前完整内容可写合同不足（P01）",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1304-L1338",
+      "confidence": "high",
+      "verification_source": "商品API\\openapi.json:L557-L583,L11073-L11172",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "POST.sp-product.v0.product-applies",
+        "required outer request",
+        "schema/productApplyDTO/pin/venderId/scene/recommendId",
+        "productId/spuSkuApplyGray/saveActionType/limitInfoSubmitMethod/categoryDTO.lastCategoryId"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "title/shortTitle/sellingPoint/detail/image requiredness and writable scope"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "patchProductApply",
+      "method": "PATCH.sp-product.v0.product-applies._applyId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": "applyId and partial product application fields ",
+      "outputs": " update result",
+      "requirement_ids": [
+        "R002",
+        "R005",
+        "R006",
+        "R055"
+      ],
+      "reason": "承接生成后的商品字段写回；可修改范围待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1094-L1144",
+      "confidence": "medium",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "listProductPublishTemplates",
+      "method": "GET.sp-product.v0.product-schemas   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "category ",
+      "outputs": " product schema template",
+      "requirement_ids": [
+        "R002",
+        "R005"
+      ],
+      "reason": "为发品和属性补全提供类目模板",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1023-L1050",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "postProductValidation",
+      "method": "POST.sp-product.v0.product-schemas.validations   HTTP: POST",
+      "operation_type": "ACTION",
+      "inputs": "schema/productApplyDTO including title/category/brand/main image/attributes ",
+      "outputs": " violation fields/reasons",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006"
+      ],
+      "reason": "明确商品信息合规检测；规则检测不等于 AI 优化",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2937-L2974",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "getHealthScore",
+      "method": "GET.sp-product.v0.health-infos._healthInfoId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "healthScoreId/detectFactor ",
+      "outputs": " healthScore, level, improvement troubleCode/name/desc",
+      "requirement_ids": [
+        "R003",
+        "R004",
+        "R006"
+      ],
+      "reason": "直接提供健康分和改进项",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5745-L5787",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "listHealthScores",
+      "method": "GET.sp-product.v0.health-infos   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "product/SKU, score range, pagination ",
+      "outputs": " health scores and improvement list",
+      "requirement_ids": [
+        "R003",
+        "R004",
+        "R006"
+      ],
+      "reason": "批量发现信息分问题",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5788-L5838",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "listSkus",
+      "method": "GET.sp-product.v0.skus   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "分页/状态/商品筛选 ",
+      "outputs": " skuId、skuName、sku状态/商品关联",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取 SKU 是发品、素材批处理和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L7-L117",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "listProducts",
+      "method": "GET.sp-product.v0.products   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "分页/状态/类目筛选 ",
+      "outputs": " productId、商品名称、SKU/状态等列表字段",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取商品标题/属性/状态作为优化和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L118-L315",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "getProduct",
+      "method": "GET.sp-product.v0.products._productId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "productId ",
+      "outputs": " 商品详情、SKU、属性/详情字段",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取单商品详情用于字段补全、优化、素材关联和写后核验",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L316-L995",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "getReportSchema",
+      "method": "GET.sp-data.v0.report-schemas._reportSchemaId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "requirement_ids": [
+        "R008",
+        "R009",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
+        "R035",
+        "R044",
+        "R048",
+        "R052",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L7",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 7,
+      "confirmed_input_fields": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R008",
+          "R009",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R052",
+          "R056",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "postReport",
+      "method": "POST.sp-data.v0.reports   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": [
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDTO:object",
+        "request.reportDTO.criterionList:array",
+        "request.reportDTO.fieldList:array",
+        "request.page:integer",
+        "request.pageSize:integer",
+        "request.pin:string",
+        "request.subjectInfo:string",
+        "request.sortBy:array",
+        "request.sortBy[].propertyName:string",
+        "request.sortBy[].direction:string",
+        "request.isAsync:boolean",
+        "request.requestUUID:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "data.isAsync:boolean",
+        "data.reportDownloadTask:object",
+        "data.reportDownloadTask.reportDownloadTaskId:string",
+        "data.reportDownloadTask.reportSchemaId:string",
+        "data.reportDownloadTask.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R008",
+        "R009",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
+        "R035",
+        "R044",
+        "R048",
+        "R052",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "请求 reportSchemaId、筛选条件与时间范围；返回报表数据或下载任务（指标语义待定点确认）",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L81",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 81,
+      "confirmed_input_fields": [
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDTO:object",
+        "request.reportDTO.criterionList:array",
+        "request.reportDTO.fieldList:array",
+        "request.page:integer",
+        "request.pageSize:integer",
+        "request.pin:string",
+        "request.subjectInfo:string",
+        "request.sortBy:array",
+        "request.sortBy[].propertyName:string",
+        "request.sortBy[].direction:string",
+        "request.isAsync:boolean",
+        "request.requestUUID:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "data.isAsync:boolean",
+        "data.reportDownloadTask:object",
+        "data.reportDownloadTask.reportDownloadTaskId:string",
+        "data.reportDownloadTask.reportSchemaId:string",
+        "data.reportDownloadTask.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R008",
+          "R009",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R052",
+          "R056",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    }
+  ]
+}

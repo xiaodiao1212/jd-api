@@ -1,0 +1,315 @@
+{
+  "module": "比价与定价能力",
+  "requirement_ids": [
+    "R017",
+    "R018",
+    "R019",
+    "R020",
+    "R021",
+    "R022",
+    "R023"
+  ],
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "category": "商品API",
+      "api_name": "listSuggestedPrices",
+      "method": "GET.sp-order.v0.suggested-prices   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "SKU list ",
+      "outputs": " targetPrice/advicePrice/benefitPoint",
+      "requirement_ids": [
+        "R020",
+        "R023"
+      ],
+      "reason": "直接提供建议价格；竞品/毛利来源未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5141-L5190",
+      "confidence": "medium",
+      "verification_source": "商品API\\openapi.json:L3896-L3920 and ListSuggestedPricesRequest schema",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "GET.sp-order.v0.suggested-prices",
+        "required request with appkey/pin/venderId/skuIdList"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "competitor, margin, and rule provenance; real-time/history semantics"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R023"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "listPriceStars",
+      "method": "GET.sp-product.v0.price-stars   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "SKU/SPU, competitiveness filters ",
+      "outputs": " priceStar/competitivePower/handPrice",
+      "requirement_ids": [
+        "R020",
+        "R023"
+      ],
+      "reason": "价格竞争力辅助字段；不是实时竞品历史",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L5660-L5744",
+      "confidence": "medium",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R023"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "财务API",
+      "api_name": "listAccountRecords",
+      "method": "GET.sp-finance.v0.accounts._memberId.records   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "memberId:integer",
+        "request:object",
+        "request.venderId:integer",
+        "request.type:integer",
+        "request.pageNum:integer",
+        "request.startTime:integer",
+        "request.endTime:integer"
+      ],
+      "outputs": [
+        "paginationData:object",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "paginationData.currentPage:integer",
+        "data:array",
+        "data[].detailCreateTime:integer",
+        "data[].billDate:string",
+        "data[].sourceId:string",
+        "data[].memberId:integer",
+        "data[].accountName:string",
+        "data[].currency:string",
+        "data[].balanceType:string",
+        "data[].incomeAmount:object",
+        "data[].expendAmount:object",
+        "data[].accountBalance:object",
+        "data[].detailDesc:string",
+        "data[].outTradeNo:string",
+        "data[].originalOutTradeNo:string",
+        "data[].tradeDesc:string",
+        "data[].accountReqCode:string",
+        "data[].tradeNo:string",
+        "data[].bizTradeNo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R021",
+        "R032",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts:L7",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "verification_source_line": 7,
+      "confirmed_input_fields": [
+        "memberId:integer",
+        "request:object",
+        "request.venderId:integer",
+        "request.type:integer",
+        "request.pageNum:integer",
+        "request.startTime:integer",
+        "request.endTime:integer"
+      ],
+      "confirmed_output_fields": [
+        "paginationData:object",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "paginationData.currentPage:integer",
+        "data:array",
+        "data[].detailCreateTime:integer",
+        "data[].billDate:string",
+        "data[].sourceId:string",
+        "data[].memberId:integer",
+        "data[].accountName:string",
+        "data[].currency:string",
+        "data[].balanceType:string",
+        "data[].incomeAmount:object",
+        "data[].expendAmount:object",
+        "data[].accountBalance:object",
+        "data[].detailDesc:string",
+        "data[].outTradeNo:string",
+        "data[].originalOutTradeNo:string",
+        "data[].tradeDesc:string",
+        "data[].accountReqCode:string",
+        "data[].tradeNo:string",
+        "data[].bizTradeNo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "未证明活动/广告/补贴与 SKU 毛利关联字段",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "财务API",
+      "api_name": "listBills",
+      "method": "GET.sp-finance.v0.bills   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "request:object",
+        "request.type:integer",
+        "request.secondMerchantNo:string",
+        "request.venderId:integer",
+        "request.startTime:integer",
+        "request.endTime:integer",
+        "request.detailType:integer",
+        "request.billStatus:integer",
+        "request.statementIdList:object",
+        "request.statementIdList.statementId:string",
+        "request.pageSize:integer",
+        "request.cursor:string"
+      ],
+      "outputs": [
+        "paginationData:object",
+        "paginationData.nextCursor:string",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "data:object",
+        "data.secondMerchantNo:string",
+        "data.venderId:integer",
+        "data.outTradeNo:string",
+        "data.rfBusiId:string",
+        "data.rfBusiType:integer",
+        "data.rfBusiTypeDesc:string",
+        "data.detailNo:string",
+        "data.orderId:string",
+        "data.skuId:string",
+        "data.skuName:string",
+        "data.skuNum:integer",
+        "data.billDate:string",
+        "data.feeCode:integer",
+        "data.feeName:string",
+        "data.direction:integer",
+        "data.billStatus:integer",
+        "data.billStatusDesc:string",
+        "data.settlementStatus:integer",
+        "data.settlementStatusDesc:string",
+        "data.happenTime:integer",
+        "data.deliveredTime:integer",
+        "data.finishTime:integer",
+        "data.updateTime:integer",
+        "data.bal:object",
+        "data.remark:string",
+        "data.orderId (账单关联订单 ID)",
+        "data.skuId (账单关联 SKU ID)",
+        "data.skuName (SKU 名称)",
+        "data.feeName (费用名称)",
+        "data.bal (费用金额对象)",
+        "data.remark (账单备注)"
+      ],
+      "requirement_ids": [
+        "R021",
+        "R032",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts:L57",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "verification_source_line": 57,
+      "confirmed_input_fields": [
+        "request:object",
+        "request.type:integer",
+        "request.secondMerchantNo:string",
+        "request.venderId:integer",
+        "request.startTime:integer",
+        "request.endTime:integer",
+        "request.detailType:integer",
+        "request.billStatus:integer",
+        "request.statementIdList:object",
+        "request.statementIdList.statementId:string",
+        "request.pageSize:integer",
+        "request.cursor:string"
+      ],
+      "confirmed_output_fields": [
+        "paginationData:object",
+        "paginationData.nextCursor:string",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "data:object",
+        "data.secondMerchantNo:string",
+        "data.venderId:integer",
+        "data.outTradeNo:string",
+        "data.rfBusiId:string",
+        "data.rfBusiType:integer",
+        "data.rfBusiTypeDesc:string",
+        "data.detailNo:string",
+        "data.orderId:string",
+        "data.skuId:string",
+        "data.skuName:string",
+        "data.skuNum:integer",
+        "data.billDate:string",
+        "data.feeCode:integer",
+        "data.feeName:string",
+        "data.direction:integer",
+        "data.billStatus:integer",
+        "data.billStatusDesc:string",
+        "data.settlementStatus:integer",
+        "data.settlementStatusDesc:string",
+        "data.happenTime:integer",
+        "data.deliveredTime:integer",
+        "data.finishTime:integer",
+        "data.updateTime:integer",
+        "data.bal:object",
+        "data.remark:string"
+      ],
+      "verification_limits": "未证明活动/广告/补贴与 SKU 毛利关联字段",
+      "deep_evidence": [
+        [
+          "data.orderId",
+          "/components/schemas/ListBillsResponse/properties/data/properties/orderId",
+          "账单关联订单 ID"
+        ],
+        [
+          "data.skuId",
+          "/components/schemas/ListBillsResponse/properties/data/properties/skuId",
+          "账单关联 SKU ID"
+        ],
+        [
+          "data.skuName",
+          "/components/schemas/ListBillsResponse/properties/data/properties/skuName",
+          "SKU 名称"
+        ],
+        [
+          "data.feeName",
+          "/components/schemas/ListBillsResponse/properties/data/properties/feeName",
+          "费用名称"
+        ],
+        [
+          "data.bal",
+          "/components/schemas/ListBillsResponse/properties/data/properties/bal",
+          "费用金额对象"
+        ],
+        [
+          "data.remark",
+          "/components/schemas/ListBillsResponse/properties/data/properties/remark",
+          "账单备注"
+        ]
+      ],
+      "principal_verification_refs": []
+    }
+  ]
+}

@@ -1,0 +1,2043 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "京东开放平台 财务API",
+    "description": "由 open.jd.com 概览页网络抓包自动生成。所有接口通过京东宙斯网关调用，请求体为业务参数 JSON。",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.jd.com/routerjson",
+      "description": "京东宙斯开放网关 (实际调用需携带 method/app_key/sign 等网关参数)"
+    }
+  ],
+  "paths": {
+    "/listAccountRecords": {
+      "get": {
+        "operationId": "listAccountRecords",
+        "summary": "查询钱包流水明细",
+        "description": "查询钱包流水明细请于上午8点以后调取接口，以保证能够取到当天完整数据，所有数据为接口开通之日起的数据，未包含历史数据\n\n\nJD method: GET.sp-finance.v0.accounts._memberId.records",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "GET.sp-finance.v0.accounts._memberId.records",
+        "x-jd-level": "R3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAccountRecordsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAccountRecordsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10804011001": {
+                    "summary": "请求参数为空@#$请求参数为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listBills": {
+      "get": {
+        "operationId": "listBills",
+        "summary": "查询商家账单明细",
+        "description": "查询商家账单明细（订单结算明细），支持近一年的数据查询。查询时间范围仅支持1个月，时间范围不支持跨月查询。\n\n\nJD method: GET.sp-finance.v0.bills",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "GET.sp-finance.v0.bills",
+        "x-jd-level": "R3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListBillsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBillsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10803001002": {
+                    "summary": "商家编号不能为空@#$请检查入参"
+                  },
+                  "10803001001": {
+                    "summary": "查询类型不能为空@#$请检查入参"
+                  },
+                  "10803001006": {
+                    "summary": "请求参数为空@#$请检查入参"
+                  },
+                  "10803012501": {
+                    "summary": "数据查询已经到底了，请检查查询参数或cursor参数@#$检查游标参数是否传递，游标过期、数据最后一页时再继续查询，会提示该错误。"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listInvoiceApplications": {
+      "get": {
+        "operationId": "listInvoiceApplications",
+        "summary": "查询发票申请列表",
+        "description": "分页查询商家发票申请的列表信息。\n\nJD method: GET.sp-finance.v0.invoice-applications",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "GET.sp-finance.v0.invoice-applications",
+        "x-jd-level": "R2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListInvoiceApplicationsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListInvoiceApplicationsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1080020001": {
+                    "summary": "请求参数为空@#$检查请求参数"
+                  },
+                  "1080020002": {
+                    "summary": "页码小于1或者太大@#$检查页码"
+                  },
+                  "1080020003": {
+                    "summary": "每页条数小于1或者太大@#$检查每页条数"
+                  },
+                  "1080020004": {
+                    "summary": "发票状态不合法@#$检查发票状态"
+                  },
+                  "1080020005": {
+                    "summary": "开始时间或结束时间为空@#$检查开始结束时间"
+                  },
+                  "1080020006": {
+                    "summary": "结束时间早于开始时间@#$检查开始结束时间"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listInvoices": {
+      "get": {
+        "operationId": "listInvoices",
+        "summary": "自开电子发票分页查询接口",
+        "description": "自开电子发票分页查询接口，支持按条件筛选和分页。\n\nJD method: GET.sp-finance.v0.invoices",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "GET.sp-finance.v0.invoices",
+        "x-jd-level": "R1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListInvoicesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListInvoicesResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1080010001": {
+                    "summary": "请求参数为空@#$检查入参"
+                  },
+                  "1080010002": {
+                    "summary": "页码小于1或者太大@#$检查页码"
+                  },
+                  "1080010003": {
+                    "summary": "每页条数小于1或者太大@#$检查每页条数"
+                  },
+                  "1080010004": {
+                    "summary": "发票状态不合法@#$检查发票状态"
+                  },
+                  "1080010005": {
+                    "summary": "开始时间或结束时间为空@#$检查开始结束时间"
+                  },
+                  "1080010006": {
+                    "summary": "结束时间早于开始时间@#$检查开始结束时间"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/putInvoice": {
+      "put": {
+        "operationId": "putInvoice",
+        "summary": "自开电子发票红票上传",
+        "description": "自开电子发票红票上传接口，用于冲红\n\nJD method: PUT.sp-finance.v0.invoices._invoiceNo",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "PUT.sp-finance.v0.invoices._invoiceNo",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutInvoiceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PutInvoiceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "1080010015": {
+                    "summary": "发票号码不能为空@#$检查发票号码"
+                  },
+                  "1080010016": {
+                    "summary": "开票时间不能为空@#$检查开票时间"
+                  },
+                  "1080010017": {
+                    "summary": "原蓝票发票代码不能为空@#$检查原蓝票发票代码"
+                  },
+                  "1080010018": {
+                    "summary": "原蓝票发票号码不能为空@#$检查原蓝票发票号码"
+                  },
+                  "1080010019": {
+                    "summary": "发票PDF文件不能为空@#$检查发票PDF文件"
+                  },
+                  "1080010020": {
+                    "summary": "开票时间格式错误，应为yyyy-MM-dd格式@#$检查开票时间格式"
+                  },
+                  "1080010021": {
+                    "summary": "销货方识别号不能为空@#$检查销货方识别号"
+                  },
+                  "1080010022": {
+                    "summary": "销货方公司名称不能为空@#$检查销货方公司名称"
+                  },
+                  "1080010023": {
+                    "summary": "发票抬头不能为空@#$检查发票抬头"
+                  },
+                  "1080010024": {
+                    "summary": "开票金额不能为空@#$检查开票金额"
+                  },
+                  "1080010025": {
+                    "summary": "商品列表不能超过20个@#$检查商品列表"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postInvoice": {
+      "post": {
+        "operationId": "postInvoice",
+        "summary": "自开电子发票蓝票上传",
+        "description": "自开电子发票蓝票上传接口，用于上传蓝票信息\n\nJD method: POST.sp-finance.v0.invoices",
+        "tags": [
+          "财务API"
+        ],
+        "x-jd-method": "POST.sp-finance.v0.invoices",
+        "x-jd-level": "W1",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostInvoiceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "业务响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostInvoiceResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "业务错误码",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "10801002501": {
+                    "summary": "上传蓝票失败@#$您还没有开通电子发票自开服务，请到京麦商家后台开通该服务后再调用接口"
+                  },
+                  "10801001002": {
+                    "summary": "请求参数不规范@#$开票时间格式错误，应为yyyy-MM-dd格式"
+                  },
+                  "10801001001": {
+                    "summary": "请求参数不能为空@#$发票号码不能为空"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListAccountRecordsRequest": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "description": "二级商户号,通过商家后台页面-商家信息页最下方查看） | 必填",
+            "type": "integer",
+            "default": 0
+          },
+          "request": {
+            "description": "查询账户流水列表请求 | 必填",
+            "x-java-type": "com.jd.open.rest.client.finance.account.model.request.ListAccountRecordsRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家编号 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "type": {
+                "description": "查询类型      type:[1:按账单日查询，2:按到账日查询] | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "pageNum": {
+                "description": "页数(每页200条数据) | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "endTime": {
+                "description": "截止时间 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "type",
+              "pageNum",
+              "startTime",
+              "endTime"
+            ]
+          }
+        },
+        "required": [
+          "memberId",
+          "request"
+        ]
+      },
+      "ListAccountRecordsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "totalItems": {
+                "description": "总条数",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "页大小",
+                "type": "integer",
+                "default": 0
+              },
+              "currentPage": {
+                "description": "当前页",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.finance.account.model.dto.AccountRecordDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "detailCreateTime": {
+                  "description": "日期（必须）",
+                  "type": "integer",
+                  "default": 0
+                },
+                "billDate": {
+                  "description": "账单日期",
+                  "type": "string",
+                  "default": ""
+                },
+                "sourceId": {
+                  "description": "流水号（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "memberId": {
+                  "description": "账户代码（必须）",
+                  "type": "integer",
+                  "default": 0
+                },
+                "accountName": {
+                  "description": "账户名称（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "currency": {
+                  "description": "币种（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "balanceType": {
+                  "description": "收支类型【IN:收入,OUT:支出】（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "incomeAmount": {
+                  "description": "收入金额（单位：元）",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "expendAmount": {
+                  "description": "支出金额（单位：元）",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "accountBalance": {
+                  "description": "账户余额（必须）（单位：元）",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "detailDesc": {
+                  "description": "交易类型",
+                  "type": "string",
+                  "default": ""
+                },
+                "outTradeNo": {
+                  "description": "商户订单号（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "originalOutTradeNo": {
+                  "description": "原商户订单号（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "tradeDesc": {
+                  "description": "交易备注",
+                  "type": "string",
+                  "default": ""
+                },
+                "accountReqCode": {
+                  "description": "记账请求号（必须）",
+                  "type": "string",
+                  "default": ""
+                },
+                "tradeNo": {
+                  "description": "交易订单号",
+                  "type": "string",
+                  "default": ""
+                },
+                "bizTradeNo": {
+                  "description": "业务订单号",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "提示信息",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "提示信息",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListBillsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "查询账单列表的请求参数，包含查询类型、时间范围、商户信息等",
+            "x-java-type": "com.jd.open.rest.client.finance.bill.model.request.ListBillRequest",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "查询方式,示例【1:按账单日查询，2:按到账日查询，3：按更新时间查询,4：按结算单号查询】 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "secondMerchantNo": {
+                "description": "二级商户号（通过商家后台页面-商家信息页最下方查看）\n      示例值: 123456789012 | 示例: 110514530002",
+                "type": "string",
+                "example": "110514530002",
+                "default": ""
+              },
+              "venderId": {
+                "description": "系统隐式传参 | 示例: 71932458 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 71932458,
+                "default": 0
+              },
+              "startTime": {
+                "description": "开始时间，支持近一年的数据查，type=1/2/3时必填，（开始-结束时间不支持跨月查询） | 示例: 1751332860000",
+                "type": "integer",
+                "example": 1751332860000,
+                "default": 0
+              },
+              "endTime": {
+                "description": "截止时间，支持近一年的数据查询，type=1/2/3时必填。（开始-结束时间不支持跨月查询） | 示例: 1751331860000",
+                "type": "integer",
+                "example": 1751331860000,
+                "default": 0
+              },
+              "detailType": {
+                "description": "账单类型，2:E卡账单，3:账期结算单 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "billStatus": {
+                "description": "账单状态，1:待结算，2:已结算，3:无需结算 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "statementIdList": {
+                "description": "结算单号集合，一次最多传入5个（推荐1个），type=4时必填",
+                "x-java-type": "java.util.List",
+                "type": "object",
+                "properties": {
+                  "statementId": {
+                    "description": "结算单号(京麦-账单查询页面查看) | 示例: 4123412341234",
+                    "type": "string",
+                    "example": "4123412341234",
+                    "default": ""
+                  }
+                }
+              },
+              "pageSize": {
+                "description": "每页大小； 最大200条，不传默认就是200条； | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "cursor": {
+                "description": "游标ID，第一次查询时传空，第二次传返回的cursor\n      示例值: xrcgvhrtfdgaf | 示例: FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoCBZkbWswY09Wc1NlLVo3UUszY3hzUG93AAAAAQs_ZSkWcXcyMkI5WjRTWTIxaThieXVEV1lJdxYwQVk3aUwxWlNvV0twUklDSHhORFBBAAAACQH4ztgWTGlrLW5INXFSZS04X3NEQUQ1OEtGZxZGbURCZi1YdFM0S0dWa0hvYUp3Y3hRAAAACQzVyawWVUZMR1ozaHdUWTZqRlZyUUxRY2xkZxZrNVlP",
+                "type": "string",
+                "example": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoCBZkbWswY09Wc1NlLVo3UUszY3hzUG93AAAAAQs_ZSkWcXcyMkI5WjRTWTIxaThieXVEV1lJdxYwQVk3aUwxWlNvV0twUklDSHhORFBBAAAACQH4ztgWTGlrLW5INXFSZS04X3NEQUQ1OEtGZxZGbURCZi1YdFM0S0dWa0hvYUp3Y3hRAAAACQzVyawWVUZMR1ozaHdUWTZqRlZyUUxRY2xkZxZrNVlP",
+                "default": ""
+              }
+            },
+            "required": [
+              "type",
+              "venderId"
+            ]
+          }
+        }
+      },
+      "ListBillsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "paginationData": {
+            "description": "分页出参",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "nextCursor": {
+                "description": "下一个游标 | 示例: xrcgvhrtfdgafadkals123",
+                "type": "string",
+                "example": "xrcgvhrtfdgafadkals123",
+                "default": ""
+              },
+              "totalItems": {
+                "description": "总条数 | 示例: 10",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "页大小 | 示例: 200",
+                "type": "integer",
+                "example": 200,
+                "default": 0
+              }
+            }
+          },
+          "data": {
+            "description": "返回数据的对象",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "secondMerchantNo": {
+                "description": "账户代码，二级商户号（必须） | 示例:  110514530002",
+                "type": "string",
+                "example": " 110514530002",
+                "default": ""
+              },
+              "venderId": {
+                "description": "店铺号（必须） | 示例: 70872",
+                "type": "integer",
+                "example": 70872,
+                "default": 0
+              },
+              "outTradeNo": {
+                "description": " 商户订单号，商户订单号（代表结算至商家钱包后对应资金流水账单中的商户订单号） | 示例: 11003724200115307735306095013",
+                "type": "string",
+                "example": "11003724200115307735306095013",
+                "default": ""
+              },
+              "rfBusiId": {
+                "description": "单号（必须），单号（必须）售后场景为售后服务单号 | 示例: 231736632263",
+                "type": "string",
+                "example": "231736632263",
+                "default": ""
+              },
+              "rfBusiType": {
+                "description": "单据类型【1001:订单,1002:售后服务单,1003:取消退款单】（必须） | 示例: 1001",
+                "type": "integer",
+                "example": 1001,
+                "default": 0
+              },
+              "rfBusiTypeDesc": {
+                "description": "【1001:订单,1002:售后服务单,1003:取消退款单,1102:非销售单】（ | 示例: 订单",
+                "type": "string",
+                "example": "订单",
+                "default": ""
+              },
+              "detailNo": {
+                "description": "单据编号（唯一编号） | 示例: 101001180704460286173109",
+                "type": "string",
+                "example": "101001180704460286173109",
+                "default": ""
+              },
+              "orderId": {
+                "description": "订单编号（必须） | 示例: 231736632263",
+                "type": "string",
+                "example": "231736632263",
+                "default": ""
+              },
+              "skuId": {
+                "description": "商品编号（必须 | 示例: 28369753288",
+                "type": "string",
+                "example": "28369753288",
+                "default": ""
+              },
+              "skuName": {
+                "description": "商品名称（必须） | 示例: 商品名称",
+                "type": "string",
+                "example": "商品名称",
+                "default": ""
+              },
+              "skuNum": {
+                "description": "SKU数量 | 示例: 20",
+                "type": "integer",
+                "example": 20,
+                "default": 0
+              },
+              "billDate": {
+                "description": "账单日期（必须）格式yyyyMMdd | 示例: 示例值: 20180702",
+                "type": "string",
+                "example": "示例值: 20180702",
+                "default": ""
+              },
+              "feeCode": {
+                "description": "费用类型：30、货款，40、佣金，18、京豆，81、代收配送费。参考feeName描述 | 示例: 30",
+                "type": "integer",
+                "example": 30,
+                "default": 0
+              },
+              "feeName": {
+                "description": "费用项（必须） | 示例: 货款",
+                "type": "string",
+                "example": "货款",
+                "default": ""
+              },
+              "direction": {
+                "description": "收支方向【1:商家应收,-1:商家应付】（必须） | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "billStatus": {
+                "description": "账单状态 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "billStatusDesc": {
+                "description": "1：待结算，2：已结算，3：无需结算 | 示例: 待结算",
+                "type": "string",
+                "example": "待结算",
+                "default": ""
+              },
+              "settlementStatus": {
+                "description": "结算状态【0:初始化,11:付款中/待确认,15/18:已付款,-1:数据作废】 | 示例: 15",
+                "type": "integer",
+                "example": 15,
+                "default": 0
+              },
+              "settlementStatusDesc": {
+                "description": "结算状态【0:初始化,11:付款中/待确认,15/18:已付款,-1:数据作废】 | 示例: 已付款",
+                "type": "string",
+                "example": "已付款",
+                "default": ""
+              },
+              "happenTime": {
+                "description": "发生时间 | 示例: 1748948272000",
+                "type": "integer",
+                "example": 1748948272000,
+                "default": 0
+              },
+              "deliveredTime": {
+                "description": "订单妥投时间 | 示例: 1748948272000",
+                "type": "integer",
+                "example": 1748948272000,
+                "default": 0
+              },
+              "finishTime": {
+                "description": "付款完成时间 | 示例: 1748948272000",
+                "type": "integer",
+                "example": 1748948272000,
+                "default": 0
+              },
+              "updateTime": {
+                "description": "更新时间（必须） | 示例: 1748948272000",
+                "type": "integer",
+                "example": 1748948272000,
+                "default": 0
+              },
+              "bal": {
+                "description": "金额（必须）,单元：元 | 示例: 8.6",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "remark": {
+                "description": "钱包结算备注 | 示例: 其他支付方式货款",
+                "type": "string",
+                "example": "其他支付方式货款",
+                "default": ""
+              },
+              "currency": {
+                "description": "币种（必须） | 示例: CNY",
+                "type": "string",
+                "example": "CNY",
+                "default": ""
+              },
+              "extendNode": {
+                "description": "扩展节点集合(标准json)部分优惠券承担方信息 | 示例:  [{dataCode:10010001,name:京劵,bearer:1,value:39.600000}]",
+                "type": "string",
+                "example": " [{dataCode:10010001,name:京劵,bearer:1,value:39.600000}]",
+                "default": ""
+              },
+              "dparentId": {
+                "description": "父单号（直接父单） | 示例: parent123",
+                "type": "string",
+                "example": "parent123",
+                "default": ""
+              },
+              "parentId": {
+                "description": "店铺父单号（顶级父单） | 示例: parent456",
+                "type": "string",
+                "example": "parent456",
+                "default": ""
+              },
+              "billType": {
+                "description": "单据业务类型，101001：普通SOP 352001：E卡支付 | 示例: 101001",
+                "type": "integer",
+                "example": 101001,
+                "default": 0
+              },
+              "transactionType": {
+                "description": "付款方式，15：网银钱包扣收， 71：网银钱包转账 | 示例: 15",
+                "type": "integer",
+                "example": 15,
+                "default": 0
+              },
+              "detailType": {
+                "description": "账单类型，2:E卡账单，3:账期结算单 | 示例: 2",
+                "type": "integer",
+                "example": 2,
+                "default": 0
+              },
+              "statementId": {
+                "description": "结算单号 | 示例: 4123412341234",
+                "type": "string",
+                "example": "4123412341234",
+                "default": ""
+              },
+              "paymentId": {
+                "description": "付款申请单号 | 示例: 241234",
+                "type": "string",
+                "example": "241234",
+                "default": ""
+              },
+              "uuid": {
+                "description": "uuid | 示例: b6aa53f697ffcd8d913fc39f2427bd72",
+                "type": "string",
+                "example": "b6aa53f697ffcd8d913fc39f2427bd72",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List",
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "错误代码 | 示例: 10803011001",
+                "type": "string",
+                "example": "10803011001",
+                "default": ""
+              },
+              "details": {
+                "description": "错误详情 | 示例: 错误详情描述",
+                "type": "string",
+                "example": "错误详情描述",
+                "default": ""
+              },
+              "message": {
+                "description": "错误消息 | 示例: 错误消息内容",
+                "type": "string",
+                "example": "错误消息内容",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "ListInvoiceApplicationsRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "查询请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.finance.model.request.ListInvoiceApplicationRequest",
+            "type": "object",
+            "properties": {
+              "venderId": {
+                "description": "商家id | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "default": 0
+              },
+              "invoiceStatusList": {
+                "description": "发票状态列表，一次最多传入20个",
+                "x-java-type": "java.util.List <java.lang.Integer>",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "orderId": {
+                "description": "订单编号",
+                "type": "integer",
+                "default": 0
+              },
+              "sortBy": {
+                "description": "排序字段，目前仅支持applyTime字段",
+                "type": "string",
+                "default": ""
+              },
+              "sortOrder": {
+                "description": "按申请时间排序规则示例值: ASC升序 DESC降序",
+                "type": "string",
+                "default": ""
+              },
+              "orderCompleteStartTime": {
+                "description": "订单完成时间-开始",
+                "type": "integer",
+                "default": 0
+              },
+              "orderCompleteEndTime": {
+                "description": "订单完成时间-结束",
+                "type": "integer",
+                "default": 0
+              },
+              "applyStartTime": {
+                "description": "申请时间-开始（仅支持查询申请时间在两年内的发票申请记录）",
+                "type": "integer",
+                "default": 0
+              },
+              "applyEndTime": {
+                "description": "申请时间-结束（仅支持查询申请时间在两年内的发票申请记录）",
+                "type": "integer",
+                "default": 0
+              },
+              "companyId": {
+                "description": "公司主体id",
+                "type": "integer",
+                "default": 0
+              },
+              "page": {
+                "description": "目标页 | 必填",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小 | 必填",
+                "type": "integer",
+                "default": 0
+              }
+            },
+            "required": [
+              "venderId",
+              "page",
+              "pageSize"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListInvoiceApplicationsResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "申请单详情",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.finance.model.dto.InvoiceApplicationDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "applyId": {
+                  "description": "申请单号（废弃，不返回信息）",
+                  "type": "integer",
+                  "default": 0
+                },
+                "venderId": {
+                  "description": "商家编号",
+                  "type": "integer",
+                  "default": 0
+                },
+                "orderId": {
+                  "description": "订单号",
+                  "type": "integer",
+                  "default": 0
+                },
+                "invoiceType": {
+                  "description": "发票类型 1:电子发票自开, 2:电子发票代开, 3:普通发票, 4:增值税专用发票",
+                  "type": "integer",
+                  "default": 0
+                },
+                "sourceId": {
+                  "description": "申请单来源 10000:来自下单消息, 10010:电子发票系统补开, 10020:自助发票系统补开, 10030:交易纠纷系统补开, 10040:JOS平台",
+                  "type": "integer",
+                  "default": 0
+                },
+                "invoiceStatus": {
+                  "description": "发票状态 1:待开票, 3:开票中, 4:开票成功, 5:开票失败, 6:冲红中, 7:冲红成功, 8:冲红失败, 9:已驳回, 11:蓝票审核失败, 12:红票审核失败, 13:待换开, 14:换开中, 15:换开驳回, 16:退款关闭, 17:驳回关闭",
+                  "type": "integer",
+                  "default": 0
+                },
+                "invoiceTitleType": {
+                  "description": "发票抬头类型 4:个人, 5:企业",
+                  "type": "integer",
+                  "default": 0
+                },
+                "invoiceTitle": {
+                  "description": "发票抬头",
+                  "type": "string",
+                  "default": ""
+                },
+                "consumerTaxId": {
+                  "description": "买家税号",
+                  "type": "string",
+                  "default": ""
+                },
+                "consumerAddress": {
+                  "description": "购买方公司地址",
+                  "type": "string",
+                  "default": ""
+                },
+                "consumerPhone": {
+                  "description": "购买方公司电话",
+                  "type": "string",
+                  "default": ""
+                },
+                "consumerBankName": {
+                  "description": "购买方公司开户行信息",
+                  "type": "string",
+                  "default": ""
+                },
+                "consumerBankAccount": {
+                  "description": "购买方公司银行账号",
+                  "type": "string",
+                  "default": ""
+                },
+                "logisticsReceiverName": {
+                  "description": "收票人姓名",
+                  "type": "string",
+                  "default": ""
+                },
+                "logisticsReceiverPhone": {
+                  "description": "收票人电话",
+                  "type": "string",
+                  "default": ""
+                },
+                "logisticsReceiverAddress": {
+                  "description": "收货地址信息",
+                  "type": "string",
+                  "default": ""
+                },
+                "applyTime": {
+                  "description": "发票申请时间",
+                  "type": "integer",
+                  "default": 0
+                },
+                "auditTime": {
+                  "description": "审核时间",
+                  "type": "integer",
+                  "default": 0
+                },
+                "orderCompleteTime": {
+                  "description": "订单完成时间",
+                  "type": "integer",
+                  "default": 0
+                },
+                "rejectReason": {
+                  "description": "驳回原因",
+                  "type": "string",
+                  "default": ""
+                },
+                "invoiceContentType": {
+                  "description": "发票内容类型 1:明细 2:类别",
+                  "type": "integer",
+                  "default": 0
+                },
+                "invoiceContentName": {
+                  "description": "发票内容名称",
+                  "type": "string",
+                  "default": ""
+                },
+                "customerEmail": {
+                  "description": "消费者邮箱",
+                  "type": "string",
+                  "default": ""
+                },
+                "invoiceAmount": {
+                  "description": "建议开票金额",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "shouldInvoiceAmount": {
+                  "description": "该字段废弃，不返回信息",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "amountDetail": {
+                  "description": "发票内容明细",
+                  "x-java-type": "java.util.List <com.jd.open.rest.client.finance.model.dto.data.OrderShouldInvoiceAmountDTO>",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "shouldInvoiceAmount": {
+                        "description": "该金额项的应开票金额，等于 price*num",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "num": {
+                        "description": "商品（费用项）数量，单位由商品本身决定",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "price": {
+                        "description": "商品（费用项）单价，单位元",
+                        "x-java-type": "java.math.BigDecimal",
+                        "type": "object"
+                      },
+                      "productId": {
+                        "description": "商品（费用项）编号",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "productName": {
+                        "description": "商品（费用项）名称",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailType": {
+                        "description": "商品行性质 1:主要商品, 2:其它商品",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "companyId": {
+                        "description": "公司主体id",
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "companyName": {
+                        "description": "公司主体名称",
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  }
+                },
+                "invoiceTypeName": {
+                  "description": "开票类型",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          },
+          "paginationData": {
+            "description": "分页信息",
+            "x-java-type": "com.jd.open.rest.client.common.PaginationData",
+            "type": "object",
+            "properties": {
+              "currentPage": {
+                "description": "当前页",
+                "type": "integer",
+                "default": 0
+              },
+              "pageSize": {
+                "description": "每页大小",
+                "type": "integer",
+                "default": 0
+              },
+              "totalItems": {
+                "description": "总条数",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功",
+            "type": "boolean",
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码",
+                  "type": "string",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情",
+                  "type": "string",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "ListInvoicesRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "请求参数 | 必填",
+            "x-java-type": "com.jd.open.rest.client.finance.model.request.ListInvoicesRequest",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单编号 | 示例: 123213",
+                "type": "string",
+                "example": "123213",
+                "default": ""
+              },
+              "invoiceCode": {
+                "description": "发票代码 | 示例: 22223444",
+                "type": "string",
+                "example": "22223444",
+                "default": ""
+              },
+              "invoiceNo": {
+                "description": "发票号码 | 示例: 22335669985",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "invoiceType": {
+                "description": "发票类型 1-蓝票 2-红票 | 示例: 1",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "invoiceStartTime": {
+                "description": "开票时间开始查询时间 时间戳，仅支持天维度传入；时间范围两年内 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "invoiceEndTime": {
+                "description": "开票时间结束查询时间 时间戳，仅支持天维度传入；时间范围两年内 | 示例: 1748506618000",
+                "type": "integer",
+                "example": 1748506618000,
+                "default": 0
+              },
+              "page": {
+                "description": "每页条数 | 示例: 10 | 必填",
+                "type": "integer",
+                "example": 10,
+                "default": 0
+              },
+              "pageSize": {
+                "description": "页码 | 示例: 1 | 必填",
+                "type": "integer",
+                "example": 1,
+                "default": 0
+              },
+              "venderId": {
+                "description": "商家id | 示例: 70277 | 必填",
+                "x-jd-public": true,
+                "type": "integer",
+                "example": 70277,
+                "default": 0
+              }
+            },
+            "required": [
+              "page",
+              "pageSize",
+              "venderId"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "ListInvoicesResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "发票列表信息",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.finance.model.dto.InvoiceDTO>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "invoiceSerialId": {
+                  "description": "发票流水号 | 示例: 7654321",
+                  "type": "string",
+                  "example": "7654321",
+                  "default": ""
+                },
+                "orderId": {
+                  "description": "订单编号 | 示例: 23234343545",
+                  "type": "integer",
+                  "example": 23234343545,
+                  "default": 0
+                },
+                "venderId": {
+                  "description": "商家编号 | 示例: 70277",
+                  "type": "string",
+                  "example": "70277",
+                  "default": ""
+                },
+                "status": {
+                  "description": "开票状态 1-等待开票 2-开票中 3-开票成功 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "invoiceType": {
+                  "description": "发票类型 1-蓝票 2-红票 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "receiverTaxNo": {
+                  "description": "销货方识别号（税号） | 示例: ddddd3333",
+                  "type": "string",
+                  "example": "ddddd3333",
+                  "default": ""
+                },
+                "receiverName": {
+                  "description": "销货方公司名称 | 示例: 销货方公司名称",
+                  "type": "string",
+                  "example": "销货方公司名称",
+                  "default": ""
+                },
+                "invoiceCode": {
+                  "description": "发票代码 | 示例: dfd23434",
+                  "type": "string",
+                  "example": "dfd23434",
+                  "default": ""
+                },
+                "invoiceNo": {
+                  "description": "发票号码 | 示例: 22335669985",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "invoiceTitle": {
+                  "description": "发票抬头 | 示例: 京东尚科公司",
+                  "type": "string",
+                  "example": "京东尚科公司",
+                  "default": ""
+                },
+                "invoiceTime": {
+                  "description": "发票时间 | 示例: 2025-12-10",
+                  "type": "string",
+                  "example": "2025-12-10",
+                  "default": ""
+                },
+                "pdfInfo": {
+                  "description": "发票PDF文件地址 | 示例: https//www.jd.com",
+                  "type": "string",
+                  "example": "https//www.jd.com",
+                  "default": ""
+                },
+                "orderType": {
+                  "description": "订单类型 22: pop订单 | 示例: 22",
+                  "type": "integer",
+                  "example": 22,
+                  "default": 0
+                },
+                "invoiceContentType": {
+                  "description": "开票内容编号 1: 明细 2: 类别 | 示例: 1",
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                },
+                "invoiceContentName": {
+                  "description": "开票内容名称 | 示例: 购买手机发票",
+                  "type": "string",
+                  "example": "购买手机发票",
+                  "default": ""
+                },
+                "invoiceRemark": {
+                  "description": "发票备注 | 示例: 分开",
+                  "type": "string",
+                  "example": "分开",
+                  "default": ""
+                },
+                "receiverAddress": {
+                  "description": "销货方公司地址 | 示例: 湖北省武汉市",
+                  "type": "string",
+                  "example": "湖北省武汉市",
+                  "default": ""
+                },
+                "receiverPhone": {
+                  "description": "销货方公司电话 | 示例: 18771078293",
+                  "type": "string",
+                  "example": "18771078293",
+                  "default": ""
+                },
+                "receiverBankName": {
+                  "description": "销货方公司开户行信息 | 示例: 中国人民银行",
+                  "type": "string",
+                  "example": "中国人民银行",
+                  "default": ""
+                },
+                "receiverBankAccount": {
+                  "description": "销货方公司银行账号 | 示例: 2323333ddddd",
+                  "type": "string",
+                  "example": "2323333ddddd",
+                  "default": ""
+                },
+                "drawer": {
+                  "description": "开票人 | 示例: 李大大",
+                  "type": "string",
+                  "example": "李大大",
+                  "default": ""
+                },
+                "payee": {
+                  "description": "收款人 | 示例: 李哈哈",
+                  "type": "string",
+                  "example": "李哈哈",
+                  "default": ""
+                },
+                "blueInvoiceCode": {
+                  "description": "原蓝票发票代码 | 示例: xxxx",
+                  "type": "string",
+                  "example": "xxxx",
+                  "default": ""
+                },
+                "blueInvoiceNo": {
+                  "description": "原蓝票发票号码 | 示例: 22335669977",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                },
+                "totalPrice": {
+                  "description": "开票金额 单位元 | 示例: 12.11",
+                  "x-java-type": "java.math.BigDecimal",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1080010001",
+                  "type": "string",
+                  "example": "1080010001",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误详情 | 示例: 请求参数为空",
+                  "type": "string",
+                  "example": "请求参数为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "错误标题 | 示例: 检查入参",
+                  "type": "string",
+                  "example": "检查入参",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PutInvoiceRequest": {
+        "type": "object",
+        "properties": {
+          "invoiceNo": {
+            "description": "发票号码 | 示例: 23234343545 | 必填",
+            "x-java-type": "java.math.BigDecimal",
+            "type": "object"
+          },
+          "request": {
+            "description": "发票信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.finance.model.request.PutInvoiceRequest",
+            "type": "object",
+            "properties": {
+              "invoiceDTO": {
+                "description": "发票信息 | 必填",
+                "x-java-type": "com.jd.open.rest.client.finance.model.dto.InvoiceDTO",
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "description": "订单编号 | 示例: 23234343545 | 必填",
+                    "type": "integer",
+                    "example": 23234343545,
+                    "default": 0
+                  },
+                  "venderId": {
+                    "description": "商家编号 | 示例: 70277",
+                    "x-jd-public": true,
+                    "type": "integer",
+                    "example": 70277,
+                    "default": 0
+                  },
+                  "invoiceCode": {
+                    "description": "发票代码 | 示例: 2234343",
+                    "type": "string",
+                    "example": "2234343",
+                    "default": ""
+                  },
+                  "invoiceNo": {
+                    "description": "发票号码 | 示例: 323556896611 | 必填",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "invoiceTime": {
+                    "description": "发票时间 | 示例: 2025-12-30 | 必填",
+                    "type": "string",
+                    "example": "2025-12-30",
+                    "default": ""
+                  },
+                  "blueInvoiceCode": {
+                    "description": "原蓝票发票代码 | 示例: ddxx1111",
+                    "type": "string",
+                    "example": "ddxx1111",
+                    "default": ""
+                  },
+                  "blueInvoiceNo": {
+                    "description": "原蓝票发票号码 | 示例: 323556896613 | 必填",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "pdfInfo": {
+                    "description": "发票PDF文件地址 | 示例: xxx | 必填",
+                    "type": "string",
+                    "example": "xxx",
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "orderId",
+                  "invoiceNo",
+                  "invoiceTime",
+                  "blueInvoiceNo",
+                  "pdfInfo"
+                ]
+              }
+            },
+            "required": [
+              "invoiceDTO"
+            ]
+          }
+        },
+        "required": [
+          "invoiceNo",
+          "request"
+        ]
+      },
+      "PutInvoiceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "上传是否成功",
+            "x-java-type": "com.jd.open.rest.client.finance.model.dto.InvoiceDTO",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单编号 | 示例: 343434355",
+                "type": "integer",
+                "example": 343434355,
+                "default": 0
+              },
+              "invoiceNo": {
+                "description": "发票号码 | 示例: 323556896611",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              },
+              "invoiceCode": {
+                "description": "发票代码 | 示例: xx3333",
+                "type": "string",
+                "example": "xx3333",
+                "default": ""
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1080010015",
+                  "type": "string",
+                  "example": "1080010015",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 发票号码不能为空",
+                  "type": "string",
+                  "example": "发票号码不能为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 检查发票号码",
+                  "type": "string",
+                  "example": "检查发票号码",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "PostInvoiceRequest": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "description": "发票信息 | 必填",
+            "x-java-type": "com.jd.open.rest.client.finance.model.request.CreateInvoiceRequest",
+            "type": "object",
+            "properties": {
+              "invoiceDTO": {
+                "description": "发票信息 | 必填",
+                "x-java-type": "com.jd.open.rest.client.finance.model.dto.InvoiceDTO",
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "description": "订单编号 | 示例: 23234343545 | 必填",
+                    "type": "integer",
+                    "example": 23234343545,
+                    "default": 0
+                  },
+                  "venderId": {
+                    "description": "商家编号 | 示例: 70277",
+                    "x-jd-public": true,
+                    "type": "integer",
+                    "example": 70277,
+                    "default": 0
+                  },
+                  "receiverTaxNo": {
+                    "description": "销货方识别号（税号） | 示例: xxxx222 | 必填",
+                    "type": "string",
+                    "example": "xxxx222",
+                    "default": ""
+                  },
+                  "receiverName": {
+                    "description": "销货方公司名称 | 示例: 京东尚科有限公司 | 必填",
+                    "type": "string",
+                    "example": "京东尚科有限公司",
+                    "default": ""
+                  },
+                  "invoiceCode": {
+                    "description": "发票代码 | 示例: 2234343",
+                    "type": "string",
+                    "example": "2234343",
+                    "default": ""
+                  },
+                  "invoiceNo": {
+                    "description": "发票号码 | 示例: 65400000000321000000 | 必填",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "invoiceTitle": {
+                    "description": "发票抬头 | 示例: 李哈哈 | 必填",
+                    "type": "string",
+                    "example": "李哈哈",
+                    "default": ""
+                  },
+                  "totalPrice": {
+                    "description": "开票金额 单位元 | 示例: 12.11 | 必填",
+                    "x-java-type": "java.math.BigDecimal",
+                    "type": "object"
+                  },
+                  "invoiceTime": {
+                    "description": "发票时间，时间格式yyyy-MM-dd | 示例: 2025-12-30 | 必填",
+                    "type": "string",
+                    "example": "2025-12-30",
+                    "default": ""
+                  },
+                  "pdfInfo": {
+                    "description": "发票PDF文件二进制流base64 | 示例: xxx | 必填",
+                    "type": "string",
+                    "example": "xxx",
+                    "default": ""
+                  },
+                  "orderType": {
+                    "description": "订单类型 22: pop订单 | 示例: 22",
+                    "type": "integer",
+                    "example": 22,
+                    "default": 0
+                  },
+                  "invoiceContentType": {
+                    "description": "开票内容编号 1: 明细 2: 类别 | 示例: 1",
+                    "type": "integer",
+                    "example": 1,
+                    "default": 0
+                  },
+                  "invoiceContentName": {
+                    "description": "开票内容名称 | 示例: 普通发票",
+                    "type": "string",
+                    "example": "普通发票",
+                    "default": ""
+                  },
+                  "eiRemark": {
+                    "description": "发票备注 | 示例: 备注信息",
+                    "type": "string",
+                    "example": "备注信息",
+                    "default": ""
+                  },
+                  "receiverAddress": {
+                    "description": "销货方公司地址 | 示例: 湖北省武汉市",
+                    "type": "string",
+                    "example": "湖北省武汉市",
+                    "default": ""
+                  },
+                  "receiverPhone": {
+                    "description": "销货方公司电话 | 示例: 18752025631",
+                    "type": "string",
+                    "example": "18752025631",
+                    "default": ""
+                  },
+                  "receiverBankName": {
+                    "description": "销货方公司开户行 | 示例: 中国工商银行",
+                    "type": "string",
+                    "example": "中国工商银行",
+                    "default": ""
+                  },
+                  "receiverBankAccount": {
+                    "description": "销货方公司银行账号 | 示例: 33334444",
+                    "type": "string",
+                    "example": "33334444",
+                    "default": ""
+                  },
+                  "drawer": {
+                    "description": "开票人 | 示例: 李哈哈",
+                    "type": "string",
+                    "example": "李哈哈",
+                    "default": ""
+                  },
+                  "payee": {
+                    "description": "收款人 | 示例: 刘先生",
+                    "type": "string",
+                    "example": "刘先生",
+                    "default": ""
+                  },
+                  "consumerAddress": {
+                    "description": "购买方公司地址 | 示例: xxx",
+                    "type": "string",
+                    "example": "xxx",
+                    "default": ""
+                  },
+                  "consumerPhone": {
+                    "description": "购买方公司电话 | 示例: 18752025639",
+                    "type": "string",
+                    "example": "18752025639",
+                    "default": ""
+                  },
+                  "consumerBankName": {
+                    "description": "购买方公司开户行信息 | 示例: 中国工商银行",
+                    "type": "string",
+                    "example": "中国工商银行",
+                    "default": ""
+                  },
+                  "consumerBankAccount": {
+                    "description": "购买方公司银行账号 | 示例: 123232323",
+                    "type": "string",
+                    "example": "123232323",
+                    "default": ""
+                  },
+                  "skuList": {
+                    "description": "发票商品列表信息",
+                    "x-java-type": "java.util.List <com.jd.open.rest.client.finance.model.dto.data.InvoiceProductDTO>",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "skuListItem": {
+                          "x-java-type": "com.jd.open.rest.client.finance.model.dto.data.InvoiceProductDTO",
+                          "type": "object",
+                          "properties": {
+                            "skuId": {
+                              "description": "SKU编号 | 示例: 123332123",
+                              "type": "string",
+                              "example": "123332123",
+                              "default": ""
+                            },
+                            "skuName": {
+                              "description": "SKU名称 | 示例: T恤",
+                              "type": "string",
+                              "example": "T恤",
+                              "default": ""
+                            },
+                            "num": {
+                              "description": "数量 | 示例: 12",
+                              "type": "string",
+                              "example": "12",
+                              "default": ""
+                            },
+                            "price": {
+                              "description": "单价，单位元 | 示例: 3.91",
+                              "x-java-type": "java.math.BigDecimal",
+                              "type": "object"
+                            },
+                            "spec": {
+                              "description": "规格 | 示例: 黄色",
+                              "type": "string",
+                              "example": "黄色",
+                              "default": ""
+                            },
+                            "unit": {
+                              "description": "单位 | 示例: 元",
+                              "type": "string",
+                              "example": "元",
+                              "default": ""
+                            },
+                            "taxRate": {
+                              "description": "税率 两位小数 | 示例: 1.22",
+                              "type": "string",
+                              "example": "1.22",
+                              "default": ""
+                            },
+                            "taxCategroyCode": {
+                              "description": "税收分类编码 | 示例: xxx",
+                              "type": "string",
+                              "example": "xxx",
+                              "default": ""
+                            },
+                            "taxDiscountFlag": {
+                              "description": "优惠政策标识 0-不使用 1-使用 | 示例: 1",
+                              "type": "integer",
+                              "example": 1,
+                              "default": 0
+                            },
+                            "taxDiscountContent": {
+                              "description": "增值税特殊管理 当优惠政策标识为1时填写 | 示例: 0.8",
+                              "type": "string",
+                              "example": "0.8",
+                              "default": ""
+                            },
+                            "zeroTax": {
+                              "description": "零税率标识 空-非零税率 0-出口退税 1-免税 2-不征收 3-普通零税率 | 示例: 1",
+                              "type": "string",
+                              "example": "1",
+                              "default": ""
+                            },
+                            "deductions": {
+                              "description": "扣除额 ，单位元 | 示例: 2.11",
+                              "x-java-type": "java.math.BigDecimal",
+                              "type": "object"
+                            },
+                            "imei": {
+                              "description": "商品IMEI码 | 示例: xxx",
+                              "type": "string",
+                              "example": "xxx",
+                              "default": ""
+                            },
+                            "discount": {
+                              "description": "折扣 | 示例: 0.8",
+                              "type": "string",
+                              "example": "0.8",
+                              "default": ""
+                            },
+                            "freight": {
+                              "description": "运费，单位元 | 示例: 1.12",
+                              "x-java-type": "java.math.BigDecimal",
+                              "type": "object"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "orderId",
+                  "receiverTaxNo",
+                  "receiverName",
+                  "invoiceNo",
+                  "invoiceTitle",
+                  "totalPrice",
+                  "invoiceTime",
+                  "pdfInfo"
+                ]
+              }
+            },
+            "required": [
+              "invoiceDTO"
+            ]
+          }
+        },
+        "required": [
+          "request"
+        ]
+      },
+      "PostInvoiceResponse": {
+        "description": "返回结果",
+        "x-java-type": "com.jd.jos.openApi.Response",
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "上传是否成功",
+            "x-java-type": "com.jd.open.rest.client.finance.model.dto.InvoiceDTO",
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "description": "订单编号 | 示例: 134343566",
+                "type": "integer",
+                "example": 134343566,
+                "default": 0
+              },
+              "invoiceCode": {
+                "description": "发票代码 | 示例: 2234343",
+                "type": "string",
+                "example": "2234343",
+                "default": ""
+              },
+              "invoiceNo": {
+                "description": "发票号码 | 示例: 65400000000321000000",
+                "x-java-type": "java.math.BigDecimal",
+                "type": "object"
+              }
+            }
+          },
+          "success": {
+            "description": "是否成功 | 示例: true",
+            "type": "boolean",
+            "example": true,
+            "default": false
+          },
+          "errorList": {
+            "description": "错误列表",
+            "x-java-type": "java.util.List <com.jd.open.rest.client.common.Error>",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "错误码 | 示例: 1080010013",
+                  "type": "string",
+                  "example": "1080010013",
+                  "default": ""
+                },
+                "details": {
+                  "description": "错误标题 | 示例: 发票信息不能为空",
+                  "type": "string",
+                  "example": "发票信息不能为空",
+                  "default": ""
+                },
+                "message": {
+                  "description": "详细描述与解决方案 | 示例: 检查发票信息",
+                  "type": "string",
+                  "example": "检查发票信息",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

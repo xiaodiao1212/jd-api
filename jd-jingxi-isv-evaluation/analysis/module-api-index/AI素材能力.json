@@ -1,0 +1,500 @@
+{
+  "module": "AI素材能力",
+  "requirement_ids": [
+    "R010",
+    "R011",
+    "R012",
+    "R013",
+    "R014",
+    "R015",
+    "R016"
+  ],
+  "candidate_count": 18,
+  "candidates": [
+    {
+      "category": "商品API",
+      "api_name": "batchCreateSkuMaterial",
+      "method": "POST.sp-product.v0.sku-materials.batch   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "batch SKU materials (透图/白底图/场景图/卖点图/定时主图) ",
+      "outputs": " item results",
+      "requirement_ids": [
+        "R010",
+        "R011",
+        "R014",
+        "R055"
+      ],
+      "reason": "明确多类 SKU 素材绑定",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2089-L2201",
+      "confidence": "high",
+      "verification_source": "商品API\\openapi.json:L707-L733,L14897-L15191",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "POST.sp-product.v0.sku-materials.batch",
+        "required batchCreateSkuMaterialRequest",
+        "pin and skuMaterials array",
+        "item productId/skuId/materials[]",
+        "material item skuId/textMaterial/imageMaterial/videoMaterial/materialType/order"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "material type enum, field requiredness, per-item response semantics"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "listSkuMaterials",
+      "method": "GET.sp-product.v0.sku-materials   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "SKU/material filters ",
+      "outputs": " SKU material information",
+      "requirement_ids": [
+        "R010",
+        "R011",
+        "R014"
+      ],
+      "reason": "读取现有素材用于替换/审计",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2203-L2288",
+      "confidence": "high",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "postMediaZoneImage",
+      "method": "POST.sp-product.v0.media-zones._zoneId.images   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "zoneId, imgBase64 or fileUrl, metadata ",
+      "outputs": " imageId/URL",
+      "requirement_ids": [
+        "R010",
+        "R011",
+        "R014",
+        "R055"
+      ],
+      "reason": "上传图片到商品图片空间；SKU绑定待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2481-L2517",
+      "confidence": "medium",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "getMediaZoneVideoUploadUrl",
+      "method": "GET.sp-product.v0.media-zones._zoneId.upload-urls   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "zoneId/video info ",
+      "outputs": " upload URL",
+      "requirement_ids": [
+        "R013",
+        "R014"
+      ],
+      "reason": "提供视频上传地址，不证明视频生成",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2683-L2721",
+      "confidence": "high",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "postMediaZoneVideo",
+      "method": "POST.sp-product.v0.media-zones._zoneId.videos   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "zoneId, video metadata, jdVideoId ",
+      "outputs": " videoId",
+      "requirement_ids": [
+        "R013",
+        "R014",
+        "R055"
+      ],
+      "reason": "明确保存商家主图视频",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2722-L2758",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "postMaterialExperiment",
+      "method": "POST.sp-product.v0.material-experiments   HTTP: POST",
+      "operation_type": "ACTION",
+      "inputs": "SKU/product, experiment period/type, material versions, routeRatio ",
+      "outputs": " experimentId/status",
+      "requirement_ids": [
+        "R015"
+      ],
+      "reason": "明确创建素材 AB 实验",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L3926-L4135",
+      "confidence": "high",
+      "verification_source": "商品API\\openapi.json:L2916-L3088,L22648-L23390",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "experiment base configuration",
+        "SKU/product/series/name/route/cycle/type/material versions",
+        "version code/routeRatio/materialType/orderNum/mainImageList/mainLongImageList/experimentMaterialList",
+        "PATCH updateType/status",
+        "response version id/code/routeRatio/material content/cycle/expectedEndTime"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "CTR/CVR/GMV/ROI effect metrics, winner selection, publish action"
+      ],
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "patchMaterialExperiment",
+      "method": "PATCH.sp-product.v0.material-experiments._experimentId   HTTP: PATCH",
+      "operation_type": "ACTION",
+      "inputs": "experimentId, experiment DTO, updateType ",
+      "outputs": " update status",
+      "requirement_ids": [
+        "R015"
+      ],
+      "reason": "更新实验配置/状态；优胜版本未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L4136-L4348",
+      "confidence": "medium",
+      "verification_source": "商品API\\openapi.json:L2916-L3088,L22648-L23390",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "experiment base configuration",
+        "SKU/product/series/name/route/cycle/type/material versions",
+        "version code/routeRatio/materialType/orderNum/mainImageList/mainLongImageList/experimentMaterialList",
+        "PATCH updateType/status",
+        "response version id/code/routeRatio/material content/cycle/expectedEndTime"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "CTR/CVR/GMV/ROI effect metrics, winner selection, publish action"
+      ],
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "listMaterialExperiments",
+      "method": "GET.sp-product.v0.material-experiments   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "SKU/product/status/scene/page ",
+      "outputs": " experiment status, period, versions, audit time",
+      "requirement_ids": [
+        "R015"
+      ],
+      "reason": "读取实验状态；效果指标待验证",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L4349-L4617",
+      "confidence": "medium",
+      "verification_source": "商品API\\openapi.json:L2916-L3088,L22648-L23390",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "experiment base configuration",
+        "SKU/product/series/name/route/cycle/type/material versions",
+        "version code/routeRatio/materialType/orderNum/mainImageList/mainLongImageList/experimentMaterialList",
+        "PATCH updateType/status",
+        "response version id/code/routeRatio/material content/cycle/expectedEndTime"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "CTR/CVR/GMV/ROI effect metrics, winner selection, publish action"
+      ],
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "推广API",
+      "api_name": "listAdsCampaigns",
+      "method": "listAdsCampaigns   HTTP: LISTADSCAMPAIGNS",
+      "operation_type": "READ",
+      "inputs": "campaign/time/status/pagination/metrics filters ",
+      "outputs": " budget, ROI, GMV, CTR, impressions, clicks, cost, orders/carts",
+      "requirement_ids": [
+        "R016",
+        "R024",
+        "R025",
+        "R029",
+        "R035",
+        "R036",
+        "R037",
+        "R039",
+        "R040",
+        "R041",
+        "R044",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "计划与指标读取最直接",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L598-L693",
+      "confidence": "high",
+      "verification_source": "推广API\\openapi.json:L618-L644,L3809-L3967,L4113-L4242",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "operationId listAdsCampaigns",
+        "raw x-jd-method listAdsCampaigns",
+        "non-standard HTTP operation key listadscampaigns",
+        "time/status/pagination/dataMetricsFilter",
+        "roi/totalOrderSumDeal/ctr/impressions/clicks/cost fields"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "many metrics are object/extension types; numeric unit and GMV/ROI definitions"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R016",
+          "R024",
+          "R025",
+          "R029",
+          "R035",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "listAdsGroups",
+      "method": "GET.ads-bidding.v0.ads-groups   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "campaign/group/status filters ",
+      "outputs": " groups and ROI/CTR/impressions/clicks/cost/orders",
+      "requirement_ids": [
+        "R016",
+        "R024",
+        "R025",
+        "R029",
+        "R035",
+        "R036",
+        "R039",
+        "R040",
+        "R041",
+        "R044",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "按单元读取投放表现",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L108-L193",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R016",
+          "R024",
+          "R025",
+          "R029",
+          "R035",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "内容API",
+      "api_name": "postContentImages",
+      "method": "POST.sp-content.v0.public-domain-content-images   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": "image upload params ",
+      "outputs": " asset result",
+      "requirement_ids": [
+        "R012",
+        "R016"
+      ],
+      "reason": "公域内容图片上传底座；商品/广告绑定未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L7-L32",
+      "confidence": "medium",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "内容API",
+      "api_name": "postContentVideos",
+      "method": "POST.sp-content.v0.public-domain-content-videos   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": "video upload params ",
+      "outputs": " upload URL/asset",
+      "requirement_ids": [
+        "R013",
+        "R016"
+      ],
+      "reason": "公域视频上传底座；不证明自动生成",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L33-L61",
+      "confidence": "medium",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "内容API",
+      "api_name": "postContents",
+      "method": "POST.sp-content.v0.public-domain-contents   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": "public content object with text/images/videos ",
+      "outputs": " contentId/result",
+      "requirement_ids": [
+        "R012",
+        "R016"
+      ],
+      "reason": "保存发布内容；目标场景待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L63-L163",
+      "confidence": "low",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "内容API",
+      "api_name": "putContents",
+      "method": "PUT.sp-content.v0.public-domain-contents._contentId   HTTP: PUT",
+      "operation_type": "READ",
+      "inputs": "contentId and content fields ",
+      "outputs": " update result",
+      "requirement_ids": [
+        "R012",
+        "R016"
+      ],
+      "reason": "支持内容修改；商品详情关联未证实",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L164-L265",
+      "confidence": "low",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "内容API",
+      "api_name": "listContents",
+      "method": "GET.sp-content.v0.public-domain-contents   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "pagination/filters ",
+      "outputs": " content list",
+      "requirement_ids": [
+        "R012",
+        "R016"
+      ],
+      "reason": "查询已发布公域内容",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\内容API\\jd-apis.d.ts:L266-L292",
+      "confidence": "medium",
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "listSkus",
+      "method": "GET.sp-product.v0.skus   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "分页/状态/商品筛选 ",
+      "outputs": " skuId、skuName、sku状态/商品关联",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取 SKU 是发品、素材批处理和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L7-L117",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "listProducts",
+      "method": "GET.sp-product.v0.products   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "分页/状态/类目筛选 ",
+      "outputs": " productId、商品名称、SKU/状态等列表字段",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取商品标题/属性/状态作为优化和写后验证输入链",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L118-L315",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "getProduct",
+      "method": "GET.sp-product.v0.products._productId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "productId ",
+      "outputs": " 商品详情、SKU、属性/详情字段",
+      "requirement_ids": [
+        "R002",
+        "R003",
+        "R005",
+        "R006",
+        "R014"
+      ],
+      "reason": "读取单商品详情用于字段补全、优化、素材关联和写后核验",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L316-L995",
+      "confidence": "high",
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1834 @@
+{
+  "module": "经营自动化能力要求",
+  "requirement_ids": [
+    "R054",
+    "R055",
+    "R056",
+    "R057",
+    "R058",
+    "R059",
+    "R060"
+  ],
+  "candidate_count": 28,
+  "candidates": [
+    {
+      "category": "商品API",
+      "api_name": "postProductApply",
+      "method": "POST.sp-product.v0.product-applies   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "request.schema、productApplyDTO（仅productId/spuSkuApplyGray/saveActionType/limitInfoSubmitMethod/categoryDTO已展开）、身份及scene",
+      "outputs": " apply result/applyId",
+      "requirement_ids": [
+        "R002",
+        "R005",
+        "R006",
+        "R007",
+        "R055"
+      ],
+      "reason": "创建/整版编辑申请候选；当前完整内容可写合同不足（P01）",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1304-L1338",
+      "confidence": "high",
+      "verification_source": "商品API\\openapi.json:L557-L583,L11073-L11172",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "POST.sp-product.v0.product-applies",
+        "required outer request",
+        "schema/productApplyDTO/pin/venderId/scene/recommendId",
+        "productId/spuSkuApplyGray/saveActionType/limitInfoSubmitMethod/categoryDTO.lastCategoryId"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "title/shortTitle/sellingPoint/detail/image requiredness and writable scope"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "patchProductApply",
+      "method": "PATCH.sp-product.v0.product-applies._applyId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": "applyId and partial product application fields ",
+      "outputs": " update result",
+      "requirement_ids": [
+        "R002",
+        "R005",
+        "R006",
+        "R055"
+      ],
+      "reason": "承接生成后的商品字段写回；可修改范围待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L1094-L1144",
+      "confidence": "medium",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P01",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L3-L5",
+          "fact_excerpt": "商品创建 DTO 字段：productId、spuSkuApplyGray、saveActionType、limitInfoSubmitMethod、categoryDTO。"
+        }
+      ]
+    },
+    {
+      "category": "商品API",
+      "api_name": "batchCreateSkuMaterial",
+      "method": "POST.sp-product.v0.sku-materials.batch   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "batch SKU materials (透图/白底图/场景图/卖点图/定时主图) ",
+      "outputs": " item results",
+      "requirement_ids": [
+        "R010",
+        "R011",
+        "R014",
+        "R055"
+      ],
+      "reason": "明确多类 SKU 素材绑定",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2089-L2201",
+      "confidence": "high",
+      "verification_source": "商品API\\openapi.json:L707-L733,L14897-L15191",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "POST.sp-product.v0.sku-materials.batch",
+        "required batchCreateSkuMaterialRequest",
+        "pin and skuMaterials array",
+        "item productId/skuId/materials[]",
+        "material item skuId/textMaterial/imageMaterial/videoMaterial/materialType/order"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "material type enum, field requiredness, per-item response semantics"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "postMediaZoneImage",
+      "method": "POST.sp-product.v0.media-zones._zoneId.images   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "zoneId, imgBase64 or fileUrl, metadata ",
+      "outputs": " imageId/URL",
+      "requirement_ids": [
+        "R010",
+        "R011",
+        "R014",
+        "R055"
+      ],
+      "reason": "上传图片到商品图片空间；SKU绑定待确认",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2481-L2517",
+      "confidence": "medium",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "商品API",
+      "api_name": "postMediaZoneVideo",
+      "method": "POST.sp-product.v0.media-zones._zoneId.videos   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "zoneId, video metadata, jdVideoId ",
+      "outputs": " videoId",
+      "requirement_ids": [
+        "R013",
+        "R014",
+        "R055"
+      ],
+      "reason": "明确保存商家主图视频",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\商品API\\jd-apis.d.ts:L2722-L2758",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": []
+    },
+    {
+      "category": "推广API",
+      "api_name": "listAdsCampaigns",
+      "method": "listAdsCampaigns   HTTP: LISTADSCAMPAIGNS",
+      "operation_type": "READ",
+      "inputs": "campaign/time/status/pagination/metrics filters ",
+      "outputs": " budget, ROI, GMV, CTR, impressions, clicks, cost, orders/carts",
+      "requirement_ids": [
+        "R016",
+        "R024",
+        "R025",
+        "R029",
+        "R035",
+        "R036",
+        "R037",
+        "R039",
+        "R040",
+        "R041",
+        "R044",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "计划与指标读取最直接",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L598-L693",
+      "confidence": "high",
+      "verification_source": "推广API\\openapi.json:L618-L644,L3809-L3967,L4113-L4242",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "operationId listAdsCampaigns",
+        "raw x-jd-method listAdsCampaigns",
+        "non-standard HTTP operation key listadscampaigns",
+        "time/status/pagination/dataMetricsFilter",
+        "roi/totalOrderSumDeal/ctr/impressions/clicks/cost fields"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "many metrics are object/extension types; numeric unit and GMV/ROI definitions"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R016",
+          "R024",
+          "R025",
+          "R029",
+          "R035",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "listAdsGroups",
+      "method": "GET.ads-bidding.v0.ads-groups   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": "campaign/group/status filters ",
+      "outputs": " groups and ROI/CTR/impressions/clicks/cost/orders",
+      "requirement_ids": [
+        "R016",
+        "R024",
+        "R025",
+        "R029",
+        "R035",
+        "R036",
+        "R039",
+        "R040",
+        "R041",
+        "R044",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "按单元读取投放表现",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L108-L193",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R016",
+          "R024",
+          "R025",
+          "R029",
+          "R035",
+          "R056",
+          "R057",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "postAdsCampaign",
+      "method": "postAdsCampaign   HTTP: POSTADSCAMPAIGN",
+      "operation_type": "WRITE",
+      "inputs": "campaign type/name/time/budget/bidding/targeting ",
+      "outputs": " campaignId",
+      "requirement_ids": [
+        "R037",
+        "R038",
+        "R055"
+      ],
+      "reason": "明确新建广告计划",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L269-L384",
+      "confidence": "high",
+      "verification_source": "推广API\\openapi.json:L432-L458,L2170-L2665",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "raw x-jd-method postAdsCampaign",
+        "campaign name/type/time/campaignBudgetDTO/bidding/targeting/uniformSpeed fields"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "KA/store scope and permission"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "patchAdsCampaign",
+      "method": "PATCH.ads-bidding.v0.ads-campaigns._adsCampaignId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": "campaignId, bidding control, premium, name ",
+      "outputs": " update result",
+      "requirement_ids": [
+        "R037",
+        "R039",
+        "R055"
+      ],
+      "reason": "支持单计划出价/溢价调整",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L232-L268",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "batchPatchAdsCampaign",
+      "method": "PATCH.ads-bidding.v0.ads-campaigns.batch   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": "campaign list, time/budget/strategy/targeting ",
+      "outputs": " item results",
+      "requirement_ids": [
+        "R037",
+        "R039",
+        "R040",
+        "R041",
+        "R055"
+      ],
+      "reason": "支持批量预算/策略调整",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L385-L477",
+      "confidence": "high",
+      "verification_source": "推广API\\openapi.json:L3964-L4640",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "campaign batch update",
+        "operateType and campaignIdList",
+        "group batch update with adGroupBudgetDTO/status",
+        "keywordAutomatedStatus/keywordAutomatedCoef/keywordList/adList"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "no explicit keyword add/delete operation field found; operateType enum, metric units and permission"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "batchPutAdsCampaignState",
+      "method": "PUT.ads-bidding.v0.ads-campaign-states.batch   HTTP: PUT",
+      "operation_type": "ACTION",
+      "inputs": "campaignId list, operateType ",
+      "outputs": " per-item success/error",
+      "requirement_ids": [
+        "R041",
+        "R055"
+      ],
+      "reason": "支持批量启停计划",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L42-L76",
+      "confidence": "high",
+      "verification_source": "推广API\\openapi.json:L3964-L4640",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "campaign batch update",
+        "operateType and campaignIdList",
+        "group batch update with adGroupBudgetDTO/status",
+        "keywordAutomatedStatus/keywordAutomatedCoef/keywordList/adList"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "no explicit keyword add/delete operation field found; operateType enum, metric units and permission"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "postAdsGroup",
+      "method": "POST.ads-bidding.v0.ads-groups   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "campaignId, group name/target/bidding, keyword automation/ad list ",
+      "outputs": " group result",
+      "requirement_ids": [
+        "R038",
+        "R042",
+        "R043",
+        "R055"
+      ],
+      "reason": "可创建广告单元；关键词/创意语义待验证",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L694-L794",
+      "confidence": "medium",
+      "verification_source": "推广API\\openapi.json:L3964-L4640",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "campaign batch update",
+        "operateType and campaignIdList",
+        "group batch update with adGroupBudgetDTO/status",
+        "keywordAutomatedStatus/keywordAutomatedCoef/keywordList/adList"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "no explicit keyword add/delete operation field found; operateType enum, metric units and permission"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "batchPostAdsGroup",
+      "method": "POST.ads-bidding.v0.ads-groups.batch   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": "campaignId, group list, budget/fee ",
+      "outputs": " per-item results",
+      "requirement_ids": [
+        "R038",
+        "R055"
+      ],
+      "reason": "批量建单元",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L194-L231",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "batchPatchAdsGroup",
+      "method": "PATCH.ads-bidding.v0.ads-groups.batch   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": "group list, budget/fee/bidding/targeting ",
+      "outputs": " per-item results",
+      "requirement_ids": [
+        "R039",
+        "R040",
+        "R041",
+        "R043",
+        "R055"
+      ],
+      "reason": "批量调整单元投放参数",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L826-L878",
+      "confidence": "medium",
+      "verification_source": "推广API\\openapi.json:L3964-L4640",
+      "verification_source_line": "",
+      "confirmed_input_fields": [
+        "campaign batch update",
+        "operateType and campaignIdList",
+        "group batch update with adGroupBudgetDTO/status",
+        "keywordAutomatedStatus/keywordAutomatedCoef/keywordList/adList"
+      ],
+      "confirmed_output_fields": [],
+      "verification_limits": [
+        "no explicit keyword add/delete operation field found; operateType enum, metric units and permission"
+      ],
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "推广API",
+      "api_name": "batchPutAdsGroupState",
+      "method": "PUT.ads-group-states.batch   HTTP: PUT",
+      "operation_type": "ACTION",
+      "inputs": "adGroupId list, operateType ",
+      "outputs": " per-item success/error",
+      "requirement_ids": [
+        "R041",
+        "R055"
+      ],
+      "reason": "支持批量启停单元",
+      "source_file": "references\\jd-api\\京东开放平台文档\\jd-api-文档\\推广API\\jd-apis.d.ts:L7-L41",
+      "confidence": "high",
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R055"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "getReportSchema",
+      "method": "GET.sp-data.v0.report-schemas._reportSchemaId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "requirement_ids": [
+        "R008",
+        "R009",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
+        "R035",
+        "R044",
+        "R048",
+        "R052",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L7",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 7,
+      "confirmed_input_fields": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R008",
+          "R009",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R052",
+          "R056",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "postReport",
+      "method": "POST.sp-data.v0.reports   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": [
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDTO:object",
+        "request.reportDTO.criterionList:array",
+        "request.reportDTO.fieldList:array",
+        "request.page:integer",
+        "request.pageSize:integer",
+        "request.pin:string",
+        "request.subjectInfo:string",
+        "request.sortBy:array",
+        "request.sortBy[].propertyName:string",
+        "request.sortBy[].direction:string",
+        "request.isAsync:boolean",
+        "request.requestUUID:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "data.isAsync:boolean",
+        "data.reportDownloadTask:object",
+        "data.reportDownloadTask.reportDownloadTaskId:string",
+        "data.reportDownloadTask.reportSchemaId:string",
+        "data.reportDownloadTask.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R008",
+        "R009",
+        "R024",
+        "R025",
+        "R026",
+        "R027",
+        "R028",
+        "R029",
+        "R035",
+        "R044",
+        "R048",
+        "R052",
+        "R056",
+        "R057",
+        "R058",
+        "R059",
+        "R060"
+      ],
+      "reason": "请求 reportSchemaId、筛选条件与时间范围；返回报表数据或下载任务（指标语义待定点确认）",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L81",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 81,
+      "confirmed_input_fields": [
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDTO:object",
+        "request.reportDTO.criterionList:array",
+        "request.reportDTO.fieldList:array",
+        "request.page:integer",
+        "request.pageSize:integer",
+        "request.pin:string",
+        "request.subjectInfo:string",
+        "request.sortBy:array",
+        "request.sortBy[].propertyName:string",
+        "request.sortBy[].direction:string",
+        "request.isAsync:boolean",
+        "request.requestUUID:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "data.isAsync:boolean",
+        "data.reportDownloadTask:object",
+        "data.reportDownloadTask.reportDownloadTaskId:string",
+        "data.reportDownloadTask.reportSchemaId:string",
+        "data.reportDownloadTask.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "supplemental_mapping": {
+        "origin": "主评审候选",
+        "requirement_ids": [
+          "R008",
+          "R009",
+          "R026",
+          "R027",
+          "R028",
+          "R029",
+          "R052",
+          "R056",
+          "R058",
+          "R059",
+          "R060"
+        ],
+        "coverage_claim": false
+      },
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "getSensitiveReportSchema",
+      "method": "GET.sp-data.v0.yd-report-schemas._reportSchemaId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "requirement_ids": [
+        "R024",
+        "R025",
+        "R035",
+        "R044",
+        "R048",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L141",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 141,
+      "confirmed_input_fields": [
+        "reportSchemaId:string",
+        "request:object",
+        "request.subjectInfo:string",
+        "request.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.reportSchemaId:string",
+        "data.reportSchemaName:string",
+        "data.description:string",
+        "data.availableIndicators:array",
+        "data.availableIndicators[].id:string",
+        "data.availableIndicators[].name:string",
+        "data.availableIndicators[].description:string",
+        "data.availableIndicators[].dataType:string",
+        "data.availableIndicators[].sortable:boolean",
+        "data.availableAttributes:array",
+        "data.availableAttributes[].id:string",
+        "data.availableAttributes[].name:string",
+        "data.availableAttributes[].description:string",
+        "data.availableAttributes[].dataType:string",
+        "data.availableAttributes[].sortable:boolean",
+        "data.availableCriteria:array",
+        "data.availableCriteria[].property:string",
+        "data.availableCriteria[].name:string",
+        "data.availableCriteria[].required:boolean",
+        "data.availableCriteria[].supportedOperators:array",
+        "data.availableCriteria[].allowedValues:array",
+        "data.availableCriteria[].description:string",
+        "data.availableCriteria[].dataType:string",
+        "data.responseFields:array",
+        "data.responseFields[].id:string",
+        "data.responseFields[].name:string",
+        "data.responseFields[].description:string",
+        "data.responseFields[].dataType:string",
+        "data.responseFields[].sortable:boolean"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "postSensitiveReport",
+      "method": "POST.sp-data.v0.yd-reports   HTTP: POST",
+      "operation_type": "READ",
+      "inputs": [
+        "postReportRequest:object",
+        "postReportRequest.reportSchemaId:string",
+        "postReportRequest.reportDTO:object",
+        "postReportRequest.reportDTO.criterionList:array",
+        "postReportRequest.reportDTO.fieldList:array",
+        "postReportRequest.page:integer",
+        "postReportRequest.pageSize:integer",
+        "postReportRequest.pin:string",
+        "postReportRequest.subjectInfo:string",
+        "postReportRequest.sortBy:array",
+        "postReportRequest.sortBy[].propertyName:string",
+        "postReportRequest.sortBy[].direction:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R024",
+        "R025",
+        "R035",
+        "R044",
+        "R048",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L215",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 215,
+      "confirmed_input_fields": [
+        "postReportRequest:object",
+        "postReportRequest.reportSchemaId:string",
+        "postReportRequest.reportDTO:object",
+        "postReportRequest.reportDTO.criterionList:array",
+        "postReportRequest.reportDTO.fieldList:array",
+        "postReportRequest.page:integer",
+        "postReportRequest.pageSize:integer",
+        "postReportRequest.pin:string",
+        "postReportRequest.subjectInfo:string",
+        "postReportRequest.sortBy:array",
+        "postReportRequest.sortBy[].propertyName:string",
+        "postReportRequest.sortBy[].direction:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.dataRowList:array",
+        "data.dataRowList[].row:array",
+        "data.columnHeaderList:array",
+        "data.paginationData:object",
+        "data.paginationData.currentPage:integer",
+        "data.paginationData.pageSize:integer",
+        "data.paginationData.nextCursor:string",
+        "data.paginationData.totalItems:integer",
+        "data.paginationData.hasNextPage:boolean",
+        "data.paginationData.totalPages:integer",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "principal_verification_refs": [
+        {
+          "id": "P03",
+          "source_file": "analysis\\api-evidence\\principal-verification.md",
+          "source_lines": "L12-L14",
+          "fact_excerpt": "listAdsCampaigns 原始 method 与 impressions/clicks、roi/ctr/cost 字段类型事实。"
+        }
+      ]
+    },
+    {
+      "category": "数据API",
+      "api_name": "getReportDownloadTask",
+      "method": "GET.sp-data.v0.report-download-tasks._reportDownloadTaskId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "reportDownloadTaskId:string",
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDownloadTaskId:string",
+        "request.subjectInfo:string",
+        "request.venderId:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.status:string",
+        "data.downloadFileInfoList:array",
+        "data.downloadFileInfoList[].downloadUrl:string",
+        "data.downloadFileInfoList[].fileType:string",
+        "data.downloadFileInfoList[].fileSize:integer",
+        "data.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts:L267",
+      "confidence": "medium",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\数据API\\jd-apis.d.ts",
+      "verification_source_line": 267,
+      "confirmed_input_fields": [
+        "reportDownloadTaskId:string",
+        "request:object",
+        "request.reportSchemaId:string",
+        "request.reportDownloadTaskId:string",
+        "request.subjectInfo:string",
+        "request.venderId:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.status:string",
+        "data.downloadFileInfoList:array",
+        "data.downloadFileInfoList[].downloadUrl:string",
+        "data.downloadFileInfoList[].fileType:string",
+        "data.downloadFileInfoList[].fileSize:integer",
+        "data.extraInfo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "报表字段由 schema/查询条件动态决定，未证明商品/店铺/渠道/广告指标及时间粒度",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "财务API",
+      "api_name": "listAccountRecords",
+      "method": "GET.sp-finance.v0.accounts._memberId.records   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "memberId:integer",
+        "request:object",
+        "request.venderId:integer",
+        "request.type:integer",
+        "request.pageNum:integer",
+        "request.startTime:integer",
+        "request.endTime:integer"
+      ],
+      "outputs": [
+        "paginationData:object",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "paginationData.currentPage:integer",
+        "data:array",
+        "data[].detailCreateTime:integer",
+        "data[].billDate:string",
+        "data[].sourceId:string",
+        "data[].memberId:integer",
+        "data[].accountName:string",
+        "data[].currency:string",
+        "data[].balanceType:string",
+        "data[].incomeAmount:object",
+        "data[].expendAmount:object",
+        "data[].accountBalance:object",
+        "data[].detailDesc:string",
+        "data[].outTradeNo:string",
+        "data[].originalOutTradeNo:string",
+        "data[].tradeDesc:string",
+        "data[].accountReqCode:string",
+        "data[].tradeNo:string",
+        "data[].bizTradeNo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R021",
+        "R032",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts:L7",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "verification_source_line": 7,
+      "confirmed_input_fields": [
+        "memberId:integer",
+        "request:object",
+        "request.venderId:integer",
+        "request.type:integer",
+        "request.pageNum:integer",
+        "request.startTime:integer",
+        "request.endTime:integer"
+      ],
+      "confirmed_output_fields": [
+        "paginationData:object",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "paginationData.currentPage:integer",
+        "data:array",
+        "data[].detailCreateTime:integer",
+        "data[].billDate:string",
+        "data[].sourceId:string",
+        "data[].memberId:integer",
+        "data[].accountName:string",
+        "data[].currency:string",
+        "data[].balanceType:string",
+        "data[].incomeAmount:object",
+        "data[].expendAmount:object",
+        "data[].accountBalance:object",
+        "data[].detailDesc:string",
+        "data[].outTradeNo:string",
+        "data[].originalOutTradeNo:string",
+        "data[].tradeDesc:string",
+        "data[].accountReqCode:string",
+        "data[].tradeNo:string",
+        "data[].bizTradeNo:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "未证明活动/广告/补贴与 SKU 毛利关联字段",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "财务API",
+      "api_name": "listBills",
+      "method": "GET.sp-finance.v0.bills   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "request:object",
+        "request.type:integer",
+        "request.secondMerchantNo:string",
+        "request.venderId:integer",
+        "request.startTime:integer",
+        "request.endTime:integer",
+        "request.detailType:integer",
+        "request.billStatus:integer",
+        "request.statementIdList:object",
+        "request.statementIdList.statementId:string",
+        "request.pageSize:integer",
+        "request.cursor:string"
+      ],
+      "outputs": [
+        "paginationData:object",
+        "paginationData.nextCursor:string",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "data:object",
+        "data.secondMerchantNo:string",
+        "data.venderId:integer",
+        "data.outTradeNo:string",
+        "data.rfBusiId:string",
+        "data.rfBusiType:integer",
+        "data.rfBusiTypeDesc:string",
+        "data.detailNo:string",
+        "data.orderId:string",
+        "data.skuId:string",
+        "data.skuName:string",
+        "data.skuNum:integer",
+        "data.billDate:string",
+        "data.feeCode:integer",
+        "data.feeName:string",
+        "data.direction:integer",
+        "data.billStatus:integer",
+        "data.billStatusDesc:string",
+        "data.settlementStatus:integer",
+        "data.settlementStatusDesc:string",
+        "data.happenTime:integer",
+        "data.deliveredTime:integer",
+        "data.finishTime:integer",
+        "data.updateTime:integer",
+        "data.bal:object",
+        "data.remark:string",
+        "data.orderId (账单关联订单 ID)",
+        "data.skuId (账单关联 SKU ID)",
+        "data.skuName (SKU 名称)",
+        "data.feeName (费用名称)",
+        "data.bal (费用金额对象)",
+        "data.remark (账单备注)"
+      ],
+      "requirement_ids": [
+        "R021",
+        "R032",
+        "R057"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts:L57",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\财务API\\jd-apis.d.ts",
+      "verification_source_line": 57,
+      "confirmed_input_fields": [
+        "request:object",
+        "request.type:integer",
+        "request.secondMerchantNo:string",
+        "request.venderId:integer",
+        "request.startTime:integer",
+        "request.endTime:integer",
+        "request.detailType:integer",
+        "request.billStatus:integer",
+        "request.statementIdList:object",
+        "request.statementIdList.statementId:string",
+        "request.pageSize:integer",
+        "request.cursor:string"
+      ],
+      "confirmed_output_fields": [
+        "paginationData:object",
+        "paginationData.nextCursor:string",
+        "paginationData.totalItems:integer",
+        "paginationData.pageSize:integer",
+        "data:object",
+        "data.secondMerchantNo:string",
+        "data.venderId:integer",
+        "data.outTradeNo:string",
+        "data.rfBusiId:string",
+        "data.rfBusiType:integer",
+        "data.rfBusiTypeDesc:string",
+        "data.detailNo:string",
+        "data.orderId:string",
+        "data.skuId:string",
+        "data.skuName:string",
+        "data.skuNum:integer",
+        "data.billDate:string",
+        "data.feeCode:integer",
+        "data.feeName:string",
+        "data.direction:integer",
+        "data.billStatus:integer",
+        "data.billStatusDesc:string",
+        "data.settlementStatus:integer",
+        "data.settlementStatusDesc:string",
+        "data.happenTime:integer",
+        "data.deliveredTime:integer",
+        "data.finishTime:integer",
+        "data.updateTime:integer",
+        "data.bal:object",
+        "data.remark:string"
+      ],
+      "verification_limits": "未证明活动/广告/补贴与 SKU 毛利关联字段",
+      "deep_evidence": [
+        [
+          "data.orderId",
+          "/components/schemas/ListBillsResponse/properties/data/properties/orderId",
+          "账单关联订单 ID"
+        ],
+        [
+          "data.skuId",
+          "/components/schemas/ListBillsResponse/properties/data/properties/skuId",
+          "账单关联 SKU ID"
+        ],
+        [
+          "data.skuName",
+          "/components/schemas/ListBillsResponse/properties/data/properties/skuName",
+          "SKU 名称"
+        ],
+        [
+          "data.feeName",
+          "/components/schemas/ListBillsResponse/properties/data/properties/feeName",
+          "费用名称"
+        ],
+        [
+          "data.bal",
+          "/components/schemas/ListBillsResponse/properties/data/properties/bal",
+          "费用金额对象"
+        ],
+        [
+          "data.remark",
+          "/components/schemas/ListBillsResponse/properties/data/properties/remark",
+          "账单备注"
+        ]
+      ],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "postJmAiTask",
+      "method": "POST.sp-jm.v0.jm-ai-tasks   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": [
+        "postJmAiTaskRequest:object",
+        "postJmAiTaskRequest.bizCode:string",
+        "postJmAiTaskRequest.scheduled:integer",
+        "postJmAiTaskRequest.created:integer",
+        "postJmAiTaskRequest.result:string",
+        "postJmAiTaskRequest.editUrl:string",
+        "postJmAiTaskRequest.name:string",
+        "postJmAiTaskRequest.modified:integer",
+        "postJmAiTaskRequest.state:integer",
+        "postJmAiTaskRequest.detailUrl:string",
+        "postJmAiTaskRequest.deadline:integer",
+        "postJmAiTaskRequest.taskId:string",
+        "postJmAiTaskRequest.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L7",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 7,
+      "confirmed_input_fields": [
+        "postJmAiTaskRequest:object",
+        "postJmAiTaskRequest.bizCode:string",
+        "postJmAiTaskRequest.scheduled:integer",
+        "postJmAiTaskRequest.created:integer",
+        "postJmAiTaskRequest.result:string",
+        "postJmAiTaskRequest.editUrl:string",
+        "postJmAiTaskRequest.name:string",
+        "postJmAiTaskRequest.modified:integer",
+        "postJmAiTaskRequest.state:integer",
+        "postJmAiTaskRequest.detailUrl:string",
+        "postJmAiTaskRequest.deadline:integer",
+        "postJmAiTaskRequest.taskId:string",
+        "postJmAiTaskRequest.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "getJmAiTask",
+      "method": "GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "jmAiTaskId:string",
+        "getJmAiTaskRequest:object",
+        "getJmAiTaskRequest.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.bizCode:string",
+        "data.taskId:string",
+        "data.name:string",
+        "data.scheduled:integer",
+        "data.scheduleExecutionNum:integer",
+        "data.state:integer",
+        "data.stateName:string",
+        "data.creator:string",
+        "data.created:integer",
+        "data.modifier:string",
+        "data.modified:integer",
+        "data.deadline:integer",
+        "data.detailUrl:string",
+        "data.editUrl:string",
+        "data.result:string",
+        "success:boolean",
+        "errorList:object",
+        "errorList.code:string",
+        "errorList.details:string",
+        "errorList.message:string",
+        "data.scheduled (是否/类型调度字段)",
+        "data.scheduleExecutionNum (调度执行次数)",
+        "data.state (任务状态)",
+        "data.result (任务结果)"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L41",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 41,
+      "confirmed_input_fields": [
+        "jmAiTaskId:string",
+        "getJmAiTaskRequest:object",
+        "getJmAiTaskRequest.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.bizCode:string",
+        "data.taskId:string",
+        "data.name:string",
+        "data.scheduled:integer",
+        "data.scheduleExecutionNum:integer",
+        "data.state:integer",
+        "data.stateName:string",
+        "data.creator:string",
+        "data.created:integer",
+        "data.modifier:string",
+        "data.modified:integer",
+        "data.deadline:integer",
+        "data.detailUrl:string",
+        "data.editUrl:string",
+        "data.result:string",
+        "success:boolean",
+        "errorList:object",
+        "errorList.code:string",
+        "errorList.details:string",
+        "errorList.message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [
+        [
+          "data.scheduled",
+          "/components/schemas/GetJmAiTaskResponse/properties/data/properties/scheduled",
+          "是否/类型调度字段"
+        ],
+        [
+          "data.scheduleExecutionNum",
+          "/components/schemas/GetJmAiTaskResponse/properties/data/properties/scheduleExecutionNum",
+          "调度执行次数"
+        ],
+        [
+          "data.state",
+          "/components/schemas/GetJmAiTaskResponse/properties/data/properties/state",
+          "任务状态"
+        ],
+        [
+          "data.result",
+          "/components/schemas/GetJmAiTaskResponse/properties/data/properties/result",
+          "任务结果"
+        ]
+      ],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "patchJmAiTask",
+      "method": "PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": [
+        "jmAiTaskId:string",
+        "patchJmAiTaskRequest:object",
+        "patchJmAiTaskRequest.result:string",
+        "patchJmAiTaskRequest.editUrl:string",
+        "patchJmAiTaskRequest.pin:string",
+        "patchJmAiTaskRequest.name:string",
+        "patchJmAiTaskRequest.modified:integer",
+        "patchJmAiTaskRequest.state:integer",
+        "patchJmAiTaskRequest.detailUrl:string",
+        "patchJmAiTaskRequest.deadline:integer"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L80",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 80,
+      "confirmed_input_fields": [
+        "jmAiTaskId:string",
+        "patchJmAiTaskRequest:object",
+        "patchJmAiTaskRequest.result:string",
+        "patchJmAiTaskRequest.editUrl:string",
+        "patchJmAiTaskRequest.pin:string",
+        "patchJmAiTaskRequest.name:string",
+        "patchJmAiTaskRequest.modified:integer",
+        "patchJmAiTaskRequest.state:integer",
+        "patchJmAiTaskRequest.detailUrl:string",
+        "patchJmAiTaskRequest.deadline:integer"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "postJmAiTaskRecord",
+      "method": "POST.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records   HTTP: POST",
+      "operation_type": "WRITE",
+      "inputs": [
+        "jmAiTaskId:string",
+        "postJmAiTaskRecordRequest:object",
+        "postJmAiTaskRecordRequest.taskRecordId:string",
+        "postJmAiTaskRecordRequest.taskRecordName:string",
+        "postJmAiTaskRecordRequest.bizCode:string",
+        "postJmAiTaskRecordRequest.created:integer",
+        "postJmAiTaskRecordRequest.result:string",
+        "postJmAiTaskRecordRequest.pin:string",
+        "postJmAiTaskRecordRequest.name:string",
+        "postJmAiTaskRecordRequest.modified:integer",
+        "postJmAiTaskRecordRequest.state:integer",
+        "postJmAiTaskRecordRequest.detailUrl:string",
+        "postJmAiTaskRecordRequest.deadline:integer",
+        "postJmAiTaskRecordRequest.taskId:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L111",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 111,
+      "confirmed_input_fields": [
+        "jmAiTaskId:string",
+        "postJmAiTaskRecordRequest:object",
+        "postJmAiTaskRecordRequest.taskRecordId:string",
+        "postJmAiTaskRecordRequest.taskRecordName:string",
+        "postJmAiTaskRecordRequest.bizCode:string",
+        "postJmAiTaskRecordRequest.created:integer",
+        "postJmAiTaskRecordRequest.result:string",
+        "postJmAiTaskRecordRequest.pin:string",
+        "postJmAiTaskRecordRequest.name:string",
+        "postJmAiTaskRecordRequest.modified:integer",
+        "postJmAiTaskRecordRequest.state:integer",
+        "postJmAiTaskRecordRequest.detailUrl:string",
+        "postJmAiTaskRecordRequest.deadline:integer",
+        "postJmAiTaskRecordRequest.taskId:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "getJmAiTaskRecord",
+      "method": "GET.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId   HTTP: GET",
+      "operation_type": "READ",
+      "inputs": [
+        "jmAiTaskId:string",
+        "jmAiTaskRecordId:string",
+        "getJmAiTaskRecordRequest:object",
+        "getJmAiTaskRecordRequest.pin:string"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "data.bizCode:string",
+        "data.taskId:string",
+        "data.name:string",
+        "data.scheduled:string",
+        "data.state:string",
+        "data.stateName:string",
+        "data.creator:string",
+        "data.created:string",
+        "data.modifier:string",
+        "data.modified:string",
+        "data.deadline:string",
+        "data.detailUrl:string",
+        "data.result:string",
+        "data.taskRecordId:string",
+        "data.taskRecordName:string",
+        "success:boolean",
+        "errorList:object",
+        "errorList.code:string",
+        "errorList.details:string",
+        "errorList.message:string"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L147",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 147,
+      "confirmed_input_fields": [
+        "jmAiTaskId:string",
+        "jmAiTaskRecordId:string",
+        "getJmAiTaskRecordRequest:object",
+        "getJmAiTaskRecordRequest.pin:string"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "data.bizCode:string",
+        "data.taskId:string",
+        "data.name:string",
+        "data.scheduled:string",
+        "data.state:string",
+        "data.stateName:string",
+        "data.creator:string",
+        "data.created:string",
+        "data.modifier:string",
+        "data.modified:string",
+        "data.deadline:string",
+        "data.detailUrl:string",
+        "data.result:string",
+        "data.taskRecordId:string",
+        "data.taskRecordName:string",
+        "success:boolean",
+        "errorList:object",
+        "errorList.code:string",
+        "errorList.details:string",
+        "errorList.message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    },
+    {
+      "category": "京麦API",
+      "api_name": "patchJmAiTaskRecord",
+      "method": "PATCH.sp-jm.v0.jm-ai-tasks._jmAiTaskId.jm-ai-task-records._jmAiTaskRecordId   HTTP: PATCH",
+      "operation_type": "WRITE",
+      "inputs": [
+        "jmAiTaskId:string",
+        "jmAiTaskRecordId:string",
+        "patchJmAiTaskRecordRequest:object",
+        "patchJmAiTaskRecordRequest.result:string",
+        "patchJmAiTaskRecordRequest.pin:string",
+        "patchJmAiTaskRecordRequest.taskRecordName:string",
+        "patchJmAiTaskRecordRequest.modified:integer",
+        "patchJmAiTaskRecordRequest.state:integer",
+        "patchJmAiTaskRecordRequest.detailUrl:string",
+        "patchJmAiTaskRecordRequest.deadline:integer"
+      ],
+      "outputs": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "requirement_ids": [
+        "R054",
+        "R055",
+        "R056",
+        "R060"
+      ],
+      "reason": "接口描述与对应需求直接相关；仅作为候选证据，权限、京喜适用性及完整字段待确认。",
+      "source_file": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts:L188",
+      "confidence": "high",
+      "verification_source": "C:\\Users\\vanna\\OneDrive\\Zhizi\\JD\\jd-jingxi-isv-evaluation\\references\\jd-api\\京东开放平台文档\\jd-api-文档\\京麦API\\jd-apis.d.ts",
+      "verification_source_line": 188,
+      "confirmed_input_fields": [
+        "jmAiTaskId:string",
+        "jmAiTaskRecordId:string",
+        "patchJmAiTaskRecordRequest:object",
+        "patchJmAiTaskRecordRequest.result:string",
+        "patchJmAiTaskRecordRequest.pin:string",
+        "patchJmAiTaskRecordRequest.taskRecordName:string",
+        "patchJmAiTaskRecordRequest.modified:integer",
+        "patchJmAiTaskRecordRequest.state:integer",
+        "patchJmAiTaskRecordRequest.detailUrl:string",
+        "patchJmAiTaskRecordRequest.deadline:integer"
+      ],
+      "confirmed_output_fields": [
+        "data:object",
+        "data.jmAiTaskId:string",
+        "data.jmAiTaskRecordId:string",
+        "success:boolean",
+        "errorList:array",
+        "errorList[].code:string",
+        "errorList[].details:string",
+        "errorList[].message:string"
+      ],
+      "verification_limits": "仅见任务/记录同步与状态字段，未证明调度、事件触发或代 ISV 执行业务工具",
+      "deep_evidence": [],
+      "principal_verification_refs": []
+    }
+  ]
+}
