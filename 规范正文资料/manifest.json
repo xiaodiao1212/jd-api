@@ -1,0 +1,1033 @@
+{
+  "kind": "mtt-source-archive-v1",
+  "startedAt": "2026-09-17T07:44:22.636Z",
+  "entries": [
+    {
+      "title": "【官方建议】跑步机商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/20c291d9-f096-493c-ae79-5df1c7f6ef11.action",
+      "articleId": "20c291d9-f096-493c-ae79-5df1c7f6ef11",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-09",
+      "directory": "001-【官方建议】跑步机商品信息运营规范-20c291d9",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:44:45.125Z",
+      "error": null,
+      "imageCount": 34,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】被子 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/a7e62b0d-18a1-4303-b08b-23381be5f5af.action",
+      "articleId": "a7e62b0d-18a1-4303-b08b-23381be5f5af",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-09",
+      "directory": "002-【官方建议】被子 商品信息运营规范-a7e62b0d",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:44:56.297Z",
+      "error": null,
+      "imageCount": 32,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】腕表 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/48278bba-8f58-46bd-9381-24a8b597d88e.action",
+      "articleId": "48278bba-8f58-46bd-9381-24a8b597d88e",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-07",
+      "directory": "003-【官方建议】腕表 商品信息运营规范-48278bba",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:45:09.150Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】相机行业商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/3505c938-5643-4dd6-ae40-10c2526174b8.action",
+      "articleId": "3505c938-5643-4dd6-ae40-10c2526174b8",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-14",
+      "directory": "004-【官方建议】相机行业商品信息运营规范-3505c938",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:45:23.058Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】箱包 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/c59d0bbf-5353-4095-9903-bd20613d7c77.action",
+      "articleId": "c59d0bbf-5353-4095-9903-bd20613d7c77",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-12",
+      "directory": "005-【官方建议】箱包 商品信息运营规范-c59d0bbf",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:45:39.551Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】音频音响-商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/d7e195fc-3bbf-461d-835f-0f8b0a2968d8.action",
+      "articleId": "d7e195fc-3bbf-461d-835f-0f8b0a2968d8",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-11",
+      "directory": "006-【官方建议】音频音响-商品信息运营规范-d7e195fc",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:45:54.619Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】一次性用品商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/e678aae5-3b81-4c71-b8e4-e1f4ba417cfd.action",
+      "articleId": "e678aae5-3b81-4c71-b8e4-e1f4ba417cfd",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-09",
+      "directory": "007-【官方建议】一次性用品商品信息运营规范-e678aae5",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:46:07.601Z",
+      "error": null,
+      "imageCount": 31,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】耳机商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/19f8f1c8-4ac4-4e25-b8fb-c0f653771ff4.action",
+      "articleId": "19f8f1c8-4ac4-4e25-b8fb-c0f653771ff4",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-14",
+      "directory": "008-【官方建议】耳机商品信息运营规范-19f8f1c8",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:46:19.415Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】口腔电器 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/d6c9ae1b-357e-4588-8f47-ec8f413e4f00.action",
+      "articleId": "d6c9ae1b-357e-4588-8f47-ec8f413e4f00",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-04",
+      "directory": "009-【官方建议】口腔电器 商品信息运营规范-d6c9ae1b",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:46:29.610Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】汽车雨刷 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/63dbf1ce-61f8-4c29-b90c-84830cce5fe9.action",
+      "articleId": "63dbf1ce-61f8-4c29-b90c-84830cce5fe9",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-28",
+      "directory": "010-【官方建议】汽车雨刷 商品信息运营规范-63dbf1ce",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:46:40.312Z",
+      "error": null,
+      "imageCount": 22,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】内衣 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/610d9509-6a6c-4157-9880-fe283128a8fb.action",
+      "articleId": "610d9509-6a6c-4157-9880-fe283128a8fb",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-30",
+      "directory": "011-【官方建议】内衣 商品信息运营规范-610d9509",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:46:53.909Z",
+      "error": null,
+      "imageCount": 27,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】低温奶 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/6de6d35a-4ce7-440e-89f9-d32ac5a8f3ec.action",
+      "articleId": "6de6d35a-4ce7-440e-89f9-d32ac5a8f3ec",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-26",
+      "directory": "012-【官方建议】低温奶 商品信息运营规范-6de6d35a",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:47:05.937Z",
+      "error": null,
+      "imageCount": 28,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】口腔护理 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/b56116c4-f498-473f-9bd1-5825ee3f1bcf.action",
+      "articleId": "b56116c4-f498-473f-9bd1-5825ee3f1bcf",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-08",
+      "directory": "013-【官方建议】口腔护理 商品信息运营规范-b56116c4",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:47:15.700Z",
+      "error": null,
+      "imageCount": 18,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】文教文化 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/5765bfdc-7c57-4277-bf71-c382177110e3.action",
+      "articleId": "5765bfdc-7c57-4277-bf71-c382177110e3",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-24",
+      "directory": "014-【官方建议】文教文化 商品信息运营规范-5765bfdc",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:47:25.975Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】成人护理 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/f21a5286-546e-4e5d-8f2c-a371b578ee9e.action",
+      "articleId": "f21a5286-546e-4e5d-8f2c-a371b578ee9e",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-04",
+      "directory": "015-【官方建议】成人护理 商品信息运营规范-f21a5286",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:47:36.187Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】运动户外服饰 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/a774344a-8860-4b50-807d-ac8f995da72f.action",
+      "articleId": "a774344a-8860-4b50-807d-ac8f995da72f",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-02",
+      "directory": "016-【官方建议】运动户外服饰 商品信息运营规范-a774344a",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:47:49.494Z",
+      "error": null,
+      "imageCount": 32,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】婴童寝居 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/b2fdb9fd-39c5-494d-976d-d3ec7f02369e.action",
+      "articleId": "b2fdb9fd-39c5-494d-976d-d3ec7f02369e",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-02",
+      "directory": "017-【官方建议】婴童寝居 商品信息运营规范-b2fdb9fd",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:01.474Z",
+      "error": null,
+      "imageCount": 32,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】白酒&陈年白酒 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/306fefa4-bfcc-44b3-9ef1-0cda6f88c0fd.action",
+      "articleId": "306fefa4-bfcc-44b3-9ef1-0cda6f88c0fd",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-16",
+      "directory": "018-【官方建议】白酒&陈年白酒 商品信息运营规范-306fefa4",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:09.712Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】摩托车头盔 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/733c5a48-25fc-489b-aebc-edf76f40cf52.action",
+      "articleId": "733c5a48-25fc-489b-aebc-edf76f40cf52",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-15",
+      "directory": "019-【官方建议】摩托车头盔 商品信息运营规范-733c5a48",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:26.892Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】初级农产品商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/1fcba380-8576-4fe1-9396-2d64df30e4ca.action",
+      "articleId": "1fcba380-8576-4fe1-9396-2d64df30e4ca",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-11",
+      "directory": "020-【官方建议】初级农产品商品信息运营规范-1fcba380",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:38.318Z",
+      "error": null,
+      "imageCount": 28,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】焙烤点心 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/222da126-775c-449e-8b8c-c769cd2b66c7.action",
+      "articleId": "222da126-775c-449e-8b8c-c769cd2b66c7",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-08",
+      "directory": "021-【官方建议】焙烤点心 商品信息运营规范-222da126",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:49.415Z",
+      "error": null,
+      "imageCount": 31,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】摩托车机油 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/36779660-0a0f-4d7b-a7df-14045bcfa117.action",
+      "articleId": "36779660-0a0f-4d7b-a7df-14045bcfa117",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-26",
+      "directory": "022-【官方建议】摩托车机油 商品信息运营规范-36779660",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:48:57.846Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】童车 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/30f34007-38c5-483d-aa1e-696f736594a0.action",
+      "articleId": "30f34007-38c5-483d-aa1e-696f736594a0",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-24",
+      "directory": "023-【官方建议】童车 商品信息运营规范-30f34007",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:49:11.385Z",
+      "error": null,
+      "imageCount": 29,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】妈妈专区 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/3feab656-4f84-4d5b-bdc7-8d62a50a7bc8.action",
+      "articleId": "3feab656-4f84-4d5b-bdc7-8d62a50a7bc8",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-31",
+      "directory": "024-【官方建议】妈妈专区 商品信息运营规范-3feab656",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:49:21.964Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】身体护理 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/c3bf8106-c429-4ef3-8213-e012fabe7eb4.action",
+      "articleId": "c3bf8106-c429-4ef3-8213-e012fabe7eb4",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-14",
+      "directory": "025-【官方建议】身体护理 商品信息运营规范-c3bf8106",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:49:31.889Z",
+      "error": null,
+      "imageCount": 17,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】家用电器-洗衣机 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/1c65b9af-950c-4016-9a31-0a0a557102fc.action",
+      "articleId": "1c65b9af-950c-4016-9a31-0a0a557102fc",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-17",
+      "directory": "026-【官方建议】家用电器-洗衣机 商品信息运营规范-1c65b9af",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:49:43.827Z",
+      "error": null,
+      "imageCount": 22,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】坚果蜜饯行业 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/34d3cf9f-87b3-4650-82dc-ce497bb8449d.action",
+      "articleId": "34d3cf9f-87b3-4650-82dc-ce497bb8449d",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-16",
+      "directory": "027-【官方建议】坚果蜜饯行业 商品信息运营规范-34d3cf9f",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:49:55.849Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】聚会酒 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/e90bcd00-ccee-4f28-8be2-d955dfdc7def.action",
+      "articleId": "e90bcd00-ccee-4f28-8be2-d955dfdc7def",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-16",
+      "directory": "028-【官方建议】聚会酒 商品信息运营规范-e90bcd00",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:06.674Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】厨房小电-电饭煲 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/0de46647-e2b2-48c4-93b5-66ae0e9fe89e.action",
+      "articleId": "0de46647-e2b2-48c4-93b5-66ae0e9fe89e",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-06",
+      "directory": "029-【官方建议】厨房小电-电饭煲 商品信息运营规范-0de46647",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:13.852Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】奶粉 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/3a2898ff-8d6a-496c-9d6a-5a6e5cdab50b.action",
+      "articleId": "3a2898ff-8d6a-496c-9d6a-5a6e5cdab50b",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-22",
+      "directory": "030-【官方建议】奶粉 商品信息运营规范-3a2898ff",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:23.698Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】鞋靴 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/9e89474c-0800-4b44-ad25-c45e37cdb9b9.action",
+      "articleId": "9e89474c-0800-4b44-ad25-c45e37cdb9b9",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-16",
+      "directory": "031-【官方建议】鞋靴 商品信息运营规范-9e89474c",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:36.554Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】洗发护发 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/faacde9b-d30c-4a7e-b15c-d924ab033376.action",
+      "articleId": "faacde9b-d30c-4a7e-b15c-d924ab033376",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-21",
+      "directory": "032-【官方建议】洗发护发 商品信息运营规范-faacde9b",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:46.544Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】潮玩IP 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/e85ddda9-c30a-4738-a786-cc592cc1e3b5.action",
+      "articleId": "e85ddda9-c30a-4738-a786-cc592cc1e3b5",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-03",
+      "directory": "033-【官方建议】潮玩IP 商品信息运营规范-e85ddda9",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:50:55.670Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】熟肉制品 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/905dd7c6-bbae-4322-99d2-d776f9d7fd20.action",
+      "articleId": "905dd7c6-bbae-4322-99d2-d776f9d7fd20",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-27",
+      "directory": "034-【官方建议】熟肉制品 商品信息运营规范-905dd7c6",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:51:07.335Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】家用电器-厨卫大电 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/4d4dd182-86cc-4c57-aad2-24a560e1cd13.action",
+      "articleId": "4d4dd182-86cc-4c57-aad2-24a560e1cd13",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-01-09",
+      "directory": "035-【官方建议】家用电器-厨卫大电 商品信息运营规范-4d4dd182",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:51:22.838Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】车载吸尘器 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/4973226d-f27c-4324-93df-af22a049714f.action",
+      "articleId": "4973226d-f27c-4324-93df-af22a049714f",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-08-20",
+      "directory": "036-【官方建议】车载吸尘器 商品信息运营规范-4973226d",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:51:33.584Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】猫狗食品 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/ac35ad97-c4f1-4f8b-a8a3-7738c62e7cce.action",
+      "articleId": "ac35ad97-c4f1-4f8b-a8a3-7738c62e7cce",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-24",
+      "directory": "037-【官方建议】猫狗食品 商品信息运营规范-ac35ad97",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:51:44.170Z",
+      "error": null,
+      "imageCount": 22,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】电风扇 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/d1946ddd-ee3d-45ad-8878-7719fe226ef5.action",
+      "articleId": "d1946ddd-ee3d-45ad-8878-7719fe226ef5",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-10",
+      "directory": "038-【官方建议】电风扇 商品信息运营规范-d1946ddd",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:51:55.009Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】汽车-汽机油 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/0415c577-f1a5-4d34-a01f-24be711926b2.action",
+      "articleId": "0415c577-f1a5-4d34-a01f-24be711926b2",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-27",
+      "directory": "039-【官方建议】汽车-汽机油 商品信息运营规范-0415c577",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:52:07.933Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】饼干膨化 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/8597ce95-1bd2-490e-8f8e-03a1a3bff93c.action",
+      "articleId": "8597ce95-1bd2-490e-8f8e-03a1a3bff93c",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-28",
+      "directory": "040-【官方建议】饼干膨化 商品信息运营规范-8597ce95",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:52:18.575Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】行车记录仪 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/f858d7cc-7c78-4591-b03b-018e356f1745.action",
+      "articleId": "f858d7cc-7c78-4591-b03b-018e356f1745",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-30",
+      "directory": "041-【官方建议】行车记录仪 商品信息运营规范-f858d7cc",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:52:49.996Z",
+      "error": null,
+      "imageCount": 30,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】空调 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/0965439a-2dfb-42cb-9229-6e958a8864c2.action",
+      "articleId": "0965439a-2dfb-42cb-9229-6e958a8864c2",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-07-31",
+      "directory": "042-【官方建议】空调 商品信息运营规范-0965439a",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:52:59.608Z",
+      "error": null,
+      "imageCount": 24,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】摩托车/电动车轮胎商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/13e36a8d-7c8c-4467-9c5d-032e45eea972.action",
+      "articleId": "13e36a8d-7c8c-4467-9c5d-032e45eea972",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-18",
+      "directory": "043-【官方建议】摩托车_电动车轮胎商品信息运营规范-13e36a8d",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:53:16.772Z",
+      "error": null,
+      "imageCount": 28,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】农资园艺-鲜花 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/611218c8-25e7-4a85-8e66-b9f48b622909.action",
+      "articleId": "611218c8-25e7-4a85-8e66-b9f48b622909",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-02",
+      "directory": "044-【官方建议】农资园艺-鲜花 商品信息运营规范-611218c8",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:53:26.750Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】母婴-营养辅食 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/e53b9d7f-e06e-4c15-a704-4dcdebbefd05.action",
+      "articleId": "e53b9d7f-e06e-4c15-a704-4dcdebbefd05",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-01-30",
+      "directory": "045-【官方建议】母婴-营养辅食 商品信息运营规范-e53b9d7f",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:53:51.080Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】美发造型及假发 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/c62f04d2-d764-4695-8901-07d51836ffd3.action",
+      "articleId": "c62f04d2-d764-4695-8901-07d51836ffd3",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-05",
+      "directory": "046-【官方建议】美发造型及假发 商品信息运营规范-c62f04d2",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:54:02.077Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】车载香水 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/863c95f8-3006-416e-adcb-d70427e8a3ca.action",
+      "articleId": "863c95f8-3006-416e-adcb-d70427e8a3ca",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-27",
+      "directory": "047-【官方建议】车载香水 商品信息运营规范-863c95f8",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:54:30.079Z",
+      "error": null,
+      "imageCount": 33,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】家具-功能沙发 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/188c8c29-4e2e-47ef-b162-d5bca5ebfa81.action",
+      "articleId": "188c8c29-4e2e-47ef-b162-d5bca5ebfa81",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-30",
+      "directory": "048-【官方建议】家具-功能沙发 商品信息运营规范-188c8c29",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:54:39.413Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】儿童玩具 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/652592b6-0c54-4a67-854d-0a8ecb32a132.action",
+      "articleId": "652592b6-0c54-4a67-854d-0a8ecb32a132",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-28",
+      "directory": "049-【官方建议】儿童玩具 商品信息运营规范-652592b6",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:54:50.393Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】汽车贴膜 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/ca8a268a-60fa-4a88-b86c-75741795ae21.action",
+      "articleId": "ca8a268a-60fa-4a88-b86c-75741795ae21",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-03",
+      "directory": "050-【官方建议】汽车贴膜 商品信息运营规范-ca8a268a",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:03.840Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】电动车电池 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/59b0363b-48bb-45af-ae77-8a4f8788fc40.action",
+      "articleId": "59b0363b-48bb-45af-ae77-8a4f8788fc40",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-24",
+      "directory": "051-【官方建议】电动车电池 商品信息运营规范-59b0363b",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:16.401Z",
+      "error": null,
+      "imageCount": 28,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】素卤海味行业 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/11a62701-3cd5-4b6e-a9a2-56f5132faa37.action",
+      "articleId": "11a62701-3cd5-4b6e-a9a2-56f5132faa37",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-28",
+      "directory": "052-【官方建议】素卤海味行业 商品信息运营规范-11a62701",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:28.382Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】家用电器-清洁电器 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/d985cd9f-3625-4397-bf6d-472b3739a8c0.action",
+      "articleId": "d985cd9f-3625-4397-bf6d-472b3739a8c0",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-15",
+      "directory": "053-【官方建议】家用电器-清洁电器 商品信息运营规范-d985cd9f",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:36.112Z",
+      "error": null,
+      "imageCount": 17,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】安全座椅 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/524365e2-50d0-45df-8d4f-e8c3042ec4d0.action",
+      "articleId": "524365e2-50d0-45df-8d4f-e8c3042ec4d0",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-01",
+      "directory": "054-【官方建议】安全座椅 商品信息运营规范-524365e2",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:48.767Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】电钻 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/eb1030d3-5512-4090-a3e8-a183f755c3b2.action",
+      "articleId": "eb1030d3-5512-4090-a3e8-a183f755c3b2",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-29",
+      "directory": "055-【官方建议】电钻 商品信息运营规范-eb1030d3",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:55:58.737Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】基础建材 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/75acfc49-8c4b-48e5-a0c3-575f29aff276.action",
+      "articleId": "75acfc49-8c4b-48e5-a0c3-575f29aff276",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-12",
+      "directory": "056-【官方建议】基础建材 商品信息运营规范-75acfc49",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:56:08.388Z",
+      "error": null,
+      "imageCount": 23,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】电子教育 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/04606219-7377-4c77-a9dc-a47e5d57c41d.action",
+      "articleId": "04606219-7377-4c77-a9dc-a47e5d57c41d",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-02",
+      "directory": "057-【官方建议】电子教育 商品信息运营规范-04606219",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:56:17.907Z",
+      "error": null,
+      "imageCount": 19,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】汽车用品-美容清洗-清洁剂 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/aeced16c-9413-4b3d-b333-6d3a3120b532.action",
+      "articleId": "aeced16c-9413-4b3d-b333-6d3a3120b532",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-02",
+      "directory": "058-【官方建议】汽车用品-美容清洗-清洁剂 商品信息运营规范-aeced16c",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:56:49.240Z",
+      "error": null,
+      "imageCount": 33,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】衣物清洁 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/b3b5703c-48f1-4654-8457-149a029c46fd.action",
+      "articleId": "b3b5703c-48f1-4654-8457-149a029c46fd",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-16",
+      "directory": "059-【官方建议】衣物清洁 商品信息运营规范-b3b5703c",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:56:57.624Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】理容电器 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/136a19ba-8373-45e4-90ce-100f30953ab3.action",
+      "articleId": "136a19ba-8373-45e4-90ce-100f30953ab3",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-25",
+      "directory": "060-【官方建议】理容电器 商品信息运营规范-136a19ba",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:57:08.581Z",
+      "error": null,
+      "imageCount": 26,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】清洁纸品 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/8405cbfc-55f4-4caf-8220-2351cae7e572.action",
+      "articleId": "8405cbfc-55f4-4caf-8220-2351cae7e572",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-29",
+      "directory": "061-【官方建议】清洁纸品 商品信息运营规范-8405cbfc",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:57:18.335Z",
+      "error": null,
+      "imageCount": 22,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】轮胎 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/fe44c5fc-0a55-40ad-a598-005d8172ae66.action",
+      "articleId": "fe44c5fc-0a55-40ad-a598-005d8172ae66",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-04-23",
+      "directory": "062-【官方建议】轮胎 商品信息运营规范-fe44c5fc",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:57:38.576Z",
+      "error": null,
+      "imageCount": 27,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】家用电器-家庭服务机器人 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/e387d017-fb30-4c73-b682-a2b65852c4de.action",
+      "articleId": "e387d017-fb30-4c73-b682-a2b65852c4de",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-03-24",
+      "directory": "063-【官方建议】家用电器-家庭服务机器人 商品信息运营规范-e387d017",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:57:51.524Z",
+      "error": null,
+      "imageCount": 18,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】蓄电池 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/efafc010-f870-479e-a659-82e9f34bb817.action",
+      "articleId": "efafc010-f870-479e-a659-82e9f34bb817",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-26",
+      "directory": "064-【官方建议】蓄电池 商品信息运营规范-efafc010",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:58:02.212Z",
+      "error": null,
+      "imageCount": 20,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】安全锤 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/4b214876-0486-4ea7-a5f6-5457a99dd5e8.action",
+      "articleId": "4b214876-0486-4ea7-a5f6-5457a99dd5e8",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-24",
+      "directory": "065-【官方建议】安全锤 商品信息运营规范-4b214876",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:58:10.885Z",
+      "error": null,
+      "imageCount": 22,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】婴童-尿裤 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/2e41baac-214f-4dcd-a26e-53f896f49874.action",
+      "articleId": "2e41baac-214f-4dcd-a26e-53f896f49874",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-06-01",
+      "directory": "066-【官方建议】婴童-尿裤 商品信息运营规范-2e41baac",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:58:22.363Z",
+      "error": null,
+      "imageCount": 21,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】咖啡机及周边配件 商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/335615c4-758b-4ce9-b18b-0a8818fd4c05.action",
+      "articleId": "335615c4-758b-4ce9-b18b-0a8818fd4c05",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-05-26",
+      "directory": "067-【官方建议】咖啡机及周边配件 商品信息运营规范-335615c4",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:58:30.887Z",
+      "error": null,
+      "imageCount": 17,
+      "tableCount": 0
+    },
+    {
+      "title": "【官方建议】汽车养护品商品信息运营规范",
+      "url": "https://mtt.jd.com/article/articleView/cfe17b33-7323-4cab-9e50-d1fe89338a94.action",
+      "articleId": "cfe17b33-7323-4cab-9e50-d1fe89338a94",
+      "indexDateNote": "发布时间（待核实；createTime）：2026-09-17",
+      "directory": "068-【官方建议】汽车养护品商品信息运营规范-cfe17b33",
+      "status": "captured_pending_review",
+      "warnings": [
+        "1 张页面图片未单独保存，请复核截图并在必要时补充原图。"
+      ],
+      "capturedAt": "2026-09-17T07:58:43.000Z",
+      "error": null,
+      "imageCount": 25,
+      "tableCount": 0
+    }
+  ],
+  "updatedAt": "2026-09-17T07:58:44.510Z",
+  "counts": {
+    "archived": 68,
+    "failed": 0,
+    "pending": 0,
+    "withWarnings": 68
+  }
+}
